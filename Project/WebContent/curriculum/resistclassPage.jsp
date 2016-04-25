@@ -12,9 +12,9 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/bxslider.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
 
-<script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
-<script type="text/javascript" src="js/menu.js"></script>
-<script type="text/javascript" src="js/jquery.bxslider.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-1.12.2.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/menu.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery.bxslider.min.js"></script>
 
 <style type="text/css">
 	hr {
@@ -29,44 +29,38 @@
 	}
 	#menu {
 		width: 100px;
-		background-clip: border-box;
 		background-color: rgb(230, 230, 230);
 		vertical-align: top;
 		display: inline-block;
 	}
 	#answer {
 		display: inline-block;
-	}
-	.resistClass {
-		width: 100%;
-		height: 100%;
-		padding-left: 18%;
+		margin-left: 5px;
 	}
 	.button {
-		margin-left: 43%;
+		margin-bottom: 10px;
+		margin-left: 42%;
+		margin-top: 0px;
 	}
 	h3 {
 		margin: 10px;
 		padding: 0px;
 		display: inline-block;
 	}
-	.title {
-		width: 100%;
-	}
 	.direction {
 		padding-left: 57%;
 		font-size: 8pt;
 	}
-	li {
+	#ul li {
 		vertical-align: top;
 		padding: 12px 0px;
 		border-bottom: 1px solid silver;
 		border-top: 1px solid silver;
 	}
-	p {
+	#p {
 		margin-left: 3%;
 		margin-top: 5px;
-		margin-bottom: 15px;
+		margin-bottom: 5px;
 	}
 	textarea {
 		resize: none;
@@ -77,36 +71,38 @@
 <body>
 	<div class="container_12">
 		<!-- header -->
-		<%@include file="templet/header.jsp" %>
+		<%@include file="/templet/header.jsp" %>
 		<!-- nav -->
-		<%@include file="templet/nav.jsp" %>
+		<%@include file="/templet/nav.jsp" %>
 		<!-- aside1 -->
-		<%@include file="templet/aside1.jsp" %>
+		<%@include file="/templet/aside1.jsp" %>
 		
 		<!-- content start -->
-	<div class="resistClass">
-		<div class="title">
+	<div>
+		<div>
 			<h3>수강 신청 페이지</h3>
 			<span class="direction">
-				<a href='main.jsp'>
-					<span class='AB_navi_home'>
+				<a href='<%=request.getContextPath() %>/main.jsp'>
+					<span>
 						HOME
 					</span>
-				</a> &gt; 
-				<a href='/insiter.php?design_file=1486351.php'>
-					<span class='AB_navi_1'>
+				</a> &gt;
+				<a href="<%=request.getContextPath() %>/curriculum/curriculumInfo.jsp">
+					<span>
 						정규교육신청
 					</span>
-				</a> &gt; 
-					<span class='AB_navi_last'>
+				</a> &gt;
+				<a href="<%=request.getContextPath() %>/curriculum/resistclassPage.jsp">
+					<span>
 						쓰기
 					</span>
+				</a>
 			</span>
 		</div>
 		<hr/>
 		
-		<form action="resistClass.do">
-		<ul>
+		<form action="/resistClass.do">
+		<ul id="ul">
 			<li><label id="menu">지원과정</label><div id="answer"><span>자바 프로그래밍 </span></div></li>
 			<li><label id="menu">이름</label><div id="answer"><input type="text" maxlength="15" name="name"></div></li>
 			<li><label id="menu">이메일</label><div id="answer"><input type="text" maxlength="15" name="email1">
@@ -203,12 +199,12 @@
 				</select>
 				</div>
 			</li>
-			<li><label id="menu">내용</label><div id="answer"><textarea rows="10" cols="80"></textarea></div></li>
+			<li><label id="menu">내용</label><div id="answer"><textarea rows="10" cols="80" name="naeyong"></textarea></div></li>
 			<li><label id="menu">비밀번호</label><div id="answer"><input type="password" name="password"></div></li>
 			<li><label id="menu">파일첨부#1</label><div id="answer"><input type="file" name="file1"></div></li>
 			<li><label id="menu">파일첨부#2</label><div id="answer"><input type="file" name="file2"></div></li>
 		</ul>
-		<p><strong>개인정보보호를 위한 이용자 동의사항(자세한 내용은 개인정보 취급방침을 확인하시기 바랍니다.)</strong></p>
+		<br/><p id="p"><strong>개인정보보호를 위한 이용자 동의사항(자세한 내용은 개인정보 취급방침을 확인하시기 바랍니다.)</strong></p>
 		<textarea rows="10" cols="80" readonly="readonly" id="textarea">
 	
 개인정보의 수집범위 
@@ -263,9 +259,9 @@
 		<!-- content end -->
 		
 		<!-- aside2 -->
-		<%@include file="templet/aside2.jsp" %>
+		<%@include file="/templet/aside2.jsp" %>
 		<!-- footer -->
-		<%@include file="templet/footer.jsp" %>
+		<%@include file="/templet/footer.jsp" %>
 	</div>
 </body>
 </html>

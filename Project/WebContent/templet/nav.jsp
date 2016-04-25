@@ -2,7 +2,7 @@
 		<div class="nav_main grid12">
 			<ul>
 				<li><a href="#">센터소개</a></li>
-				<li><a href="resistClass.jsp">커리큘럼</a></li>
+				<li><a href="<%=request.getContextPath() %>/curriculum/curriculumInfo.jsp">커리큘럼</a></li>
 				<li><a href="#">취업정보</a></li>
 				<li><a href="#">고객센터</a></li>
 				<li><a href="mypage.do">마이페이지</a></li>
@@ -20,9 +20,6 @@
 				<li><a href="#">찾아오는 길</a></li>
 			</ul>
 			<ul id="sub2">
-				<li><a href="#">자바</a></li>
-				<li><a href="#">웹</a></li>
-				<li><a href="#">프레임워크</a></li>
 			</ul>
 			<ul id="sub3">
 				<li><a href="#">채용 정보</a></li>
