@@ -9,5 +9,7 @@
 					<button>로그인</button>
 				</div>
 			</form>
+			<div class="clear"></div>
+			<div class="anav"></div>
 		</div>
 		<div class="content templet grid8">
