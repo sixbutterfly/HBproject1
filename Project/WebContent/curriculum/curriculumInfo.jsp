@@ -104,7 +104,6 @@
 			</a>
 		</div>
 		<br/>
-		<br/>
 		<!-- content end -->
 		
 		<!-- aside2 -->
