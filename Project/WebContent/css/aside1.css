@@ -1,0 +1,30 @@
+	.aside1{
+		margin-top: 10px;
+		background-color: #E0E0E0;
+	}
+	.aside1>form>div{
+		width: 130px;
+		margin: 10px 0px;
+		margin-left: 10px;
+	}
+	.aside1>form>div+div{
+		width: 50px;
+		height: 44px;
+		margin-left: 0px;
+	}
+	.aside1 input{
+		width: 120px;
+	}
+	.aside1>form div{
+		display: inline-block;
+		float: left;
+	}
+	.aside1>form>div>button{
+		width: 100%;
+		height: 44px;
+	}
+	
+	
+	.content{
+		margin-top: 10px;
+	}

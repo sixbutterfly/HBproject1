@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+		<div class="nav">
 		<div class="nav_main grid12">
 			<ul>
 				<li><a href="#">센터소개</a></li>
@@ -38,3 +39,4 @@
 		</div>
 		
 		<div class="clear"></div>
+		</div>
