@@ -77,6 +77,7 @@
 }
 .button{
 	text-align: center;
+	margin-top: 20px;
 }
 .btn{
 	width: 8px;
@@ -86,7 +87,10 @@
 	width: 140px;
 }
 .inputtel{
-	width: 80px;
+	width: 60px;
+}
+.subbtn{
+	margin-right: 20px;
 }
 #overlab{
 	width:65px;
@@ -101,11 +105,34 @@
 #addrresult2{
 	width:230px;
 }
+.errmsg{
+	font-size: 9pt;
+	color: red;
+}
 
 </style>
-<script type="text/javascript" src="../js/jquery-1.12.2.min.js"></script>
-<script type="text/javascript" src="../js/menu.js"></script>
+<script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
+<script type="text/javascript" src="js/menu.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#overlab').click(function(){
+			$('#overlab').next().text(" 중복 확인");
+		});
+		
+		$('#submit').click(function(){
+		if($('#pw').val()=="" || $('#pw').val()==null){
+			$('#pw').next().text(' 비밀번호를 입력하세요');
+			return;
+		}
+		if($('#pw2').val()!=$('#pw').val()){
+			$('#pw2').next().text(' 위의 값과 동일한 값을 입력하세요');
+		}else{
+			$('#pw2').next().text('');
+		}
+		});
+	});
+</script>
 
 </head>
 <body>
@@ -122,18 +149,19 @@
 		<hr/>
 	</div>
 	<div>
-		<img src="joinimage/step2.gif"/>
+		<img src="join/joinimage/step2.gif"/>
 	</div>
 	<div>
-		<p><b><img class="btn" src="joinimage/btn_r.gif"> 회원정보입력</b></p>
+		<p><b><img class="btn" src="join/joinimage/btn_r.gif"> 회원정보입력</b></p>
 		<hr id="hrsub"/>
 		<div class="form"><label>아이디</label></div>
 		<div class="forminput"><input type="text" name="id" class="inputwidth"/>
-		<button id="overlab">중복확인</button></div>
+		<button id="overlab">중복확인</button><span class="errmsg"></span>
+		</div>
 		<div class="form"><label>비밀번호</label></div>
-		<div class="forminput"><input type="password" name="pw" class="inputwidth"/></div>
+		<div class="forminput"><input type="password" name="pw" class="inputwidth" id="pw" placeholder="비밀번호"/><span class="errmsg"></span></div>
 		<div class="form"><label>비밀번호확인</label></div>
-		<div class="forminput"><input type="password" name="pw2" class="inputwidth"/></div>
+		<div class="forminput"><input type="password" name="pw2" class="inputwidth" id="pw2" placeholder="비밀번호 확인"/><span class="errmsg"></span></div>
 		<div class="form"><label>이름</label></div>
 		<div class="forminput"><input type="text" class="inputwidth"/></div>
 		<div class="form"><label>성별</label></div>
@@ -248,16 +276,12 @@
 		<br/><input type="text" id="addrresult1" placeholder="주소" name="adrresult1"/> 
 		<input type="text" id="addrresult2" placeholder="상세주소" name="adrresult2"/>
 		</div>
-		<div class="form"><label>회사명</label></div>
-		<div class="forminput"><input type="text" class="inputwidth"></div>
-		<div class="form"><label>홈페이지</label></div>
-		<div class="forminput"><input type="text" value="http://"/></div>
 	</div>
 	<div>
 	<form action="#">
 	<div class="button">
-		<button type="submit">확인</button>
-		<button type="reset">취소</button>
+		<button class="subbtn" type="submit" id="submit">확인</button>
+		<button class="subbtn" type="reset">취소</button>
 	</div>
 	</form>
 </div>
