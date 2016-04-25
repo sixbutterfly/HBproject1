@@ -105,13 +105,6 @@
 		</div>
 		<br/>
 		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
 		<!-- content end -->
 		
 		<!-- aside2 -->
