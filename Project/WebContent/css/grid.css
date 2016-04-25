@@ -19,7 +19,7 @@
         ,.container_12>.grid11,.container_12>.grid12{
             float: left;
 /*            border: solid 1px red;*/
-            box-sizing: border-box;
+/*           box-sizing: border-box;*/
         }
         @media only screen and (max-width:399px){
             .mgrid1{width:8.33333%;}
