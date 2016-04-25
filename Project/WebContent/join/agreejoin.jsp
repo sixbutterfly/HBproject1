@@ -29,11 +29,10 @@ textarea{
 }
 button{
 	margin: 0 10px;
+	width: 50px;
 }
 .button{
-	width: 140px;
-	display: inline-flex;
-	margin-bottom: 15px;
+	margin-right: 70px;
 }
 .subbutton{
 	text-align:center;
@@ -54,11 +53,23 @@ button{
 <script type="text/javascript" src="../js/menu.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		var agr1 = $('#agree1').is(':checked');
-		var agr2 = $('#agree2').is(':checked');
-		if(agr1==true && agr2==true){
-			$('#link').prop("action","join.do").submit();
-		}
+		$('button').click(function(){
+			var agr1 = $('#agree1').is(':checked');
+			var agr2 = $('#agree2').is(':checked');
+			  if(agr1==true && agr2==true) {
+				  $('#link').attr("action","join.do").submit();
+			  }
+			  else {
+				  if(!$('#agree1').is(':checked')){
+				  alert("약관 동의해야 가입이 가능합니다");
+				  return;
+			 	 }
+			  	 if(!$('#agree2').is(':checked')){
+				  alert("약관 동의해야 가입이 가능합니다");
+				  return;
+			 	 }
+			  }
+		});
 	});
 </script>
 </head>

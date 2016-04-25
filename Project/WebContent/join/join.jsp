@@ -18,18 +18,19 @@
 	height: 2px;
 	border: none;
 }
-	input{
-	width: 200px;
-	}
 	button{
-	width: 80px;
+	width: 50px;
 	}
 	select{
 		width: 80px;
+		margin-left: 13px;
+	}
+	label{
+		margin-left: 13px;
 	}
 	.form{
 	height: 36px;
-	text-align: center;
+	text-align: left;
 	width:150px;
 	background-color: silver;
 	display: inline-block;
@@ -41,7 +42,7 @@
 	}
 	.forminput{
 	height: 36px;
-	width:75%;
+	width:80%;
 	background-color: #eeeeee;
 	display: inline-block;
 	vertical-align: middle;
@@ -59,7 +60,7 @@
 }
 .email{
 	height: 55px;
-	text-align: center;
+	text-align: left;
 	width:150px;
 	background-color: silver;
 	display: inline-block;
@@ -68,7 +69,7 @@
 }
 .emailset{
 	height: 55px;
-	width:70%;
+	width:80%;
 	background-color: #eeeeee;
 	display: inline-block;
 	vertical-align: middle;
@@ -80,6 +81,21 @@
 .btn{
 	width: 8px;
 	height: 12px;
+}
+.inputwidth{
+	width: 140px;
+}
+.inputtel{
+	width: 80px;
+}
+#overlab{
+	width:65px;
+}
+#serchaddr{
+	width:65px;
+}
+#addrresult{
+	width:330px;
 }
 
 </style>
@@ -106,17 +122,22 @@
 		<p><b><img class="btn" src="joinimage/btn_r.gif"> 회원정보입력</b></p>
 		<hr id="hrsub"/>
 		<div class="form"><label>아이디</label></div>
-		<div class="forminput"><input type="text" name="id"/>
-		<button>중복확인</button></div>
+		<div class="forminput"><input type="text" name="id" class="inputwidth"/>
+		<button id="overlab">중복확인</button></div>
 		<div class="form"><label>비밀번호</label></div>
-		<div class="forminput"><input type="password" name="pw"/></div>
+		<div class="forminput"><input type="password" name="pw" class="inputwidth"/></div>
 		<div class="form"><label>비밀번호확인</label></div>
-		<div class="forminput"><input type="password" name="pw2"/></div>
+		<div class="forminput"><input type="password" name="pw2" class="inputwidth"/></div>
 		<div class="form"><label>이름</label></div>
-		<div class="forminput"><input type="text"/></div>
+		<div class="forminput"><input type="text" class="inputwidth"/></div>
+		<div class="form"><label>성별</label></div>
+		<div class="forminput">
+		<input type="radio" name="sex" value="y">남자
+		<input type="radio" name="sex" value="n">여자
+		</div>
 		<div class="form"><label>전화번호</label></div>
 		<div class="forminput">
-			<select name="number">
+			<select name="tel">
 				<option value="02">02</option>
 				<option value="031">031</option>
 				<option value="032">032</option>
@@ -137,8 +158,8 @@
 				<option value="0505">0505</option>
 				<option value="0502">0502</option>
 			</select>
-			-<input type="text" name="number2">
-			-<input type="text" name="number3">
+			-<input type="text" name="number2" class="inputtel">
+			-<input type="text" name="number3" class="inputtel">
 		</div>
 		<div class="form"><label>H.P</label></div>
 		<div class="forminput">
@@ -151,12 +172,12 @@
 				<option value="019">019</option>
 				<option value="070">070</option>
 			</select>
-			-<input type="text" name="phone2">
-			-<input type="text" name="phone3">
+			-<input type="text" name="phone2" class="inputtel">
+			-<input type="text" name="phone3" class="inputtel">
 			</div>
 		<div class="email"><label>이메일</label></div>
 		<div class="emailset">
-		<input type="text" name="email"/>- <select>
+		<input type="text" name="email" class="inputwidth"/>- <select>
 				<option value="" selected>직접입력</option>
 				<option value="naver.com">naver.com</option>
 				<option value="chol.com">chol.com</option>
@@ -176,19 +197,19 @@
 				<option value="paran.com">paran.com</option>
 				<option value="yahoo.com">yahoo.com</option>
 				<option value="yahoo.co.kr">yahoo.co.kr</option>
-			</select>
-			이메일 수신동의
+			</select><br/>
+			<label >이메일 수신동의</label>
 			<input type="radio" name="emailagree" value="y">예
 			<input type="radio" name="emailagree" value="n">아니오
 			
 		</div>
 		<div class="email"><label>주소</label></div>
 		<div class="emailset">
-		<input type="text"/> <button>주소찾기</button>
-		<input type="text"/>
+		<input type="text" class="inputwidth"/> <button id="serchaddr">주소찾기</button>
+		<br/><input type="text" id="addrresult"/>
 		</div>
 		<div class="form"><label>회사명</label></div>
-		<div class="forminput"><input type="text"/></div>
+		<div class="forminput"><input type="text" class="inputwidth"></div>
 		<div class="form"><label>홈페이지</label></div>
 		<div class="forminput"><input type="text" value="http://"/></div>
 	</div>
