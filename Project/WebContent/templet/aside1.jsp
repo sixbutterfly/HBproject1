@@ -10,6 +10,10 @@
 				</div>
 			</form>
 			<div class="clear"></div>
-			<div class="anav"></div>
+			<div class="anav">
+				<div>
+					<ul></ul>
+				</div>
+			</div>
 		</div>
 		<div class="content templet grid8">
