@@ -38,9 +38,7 @@
 				<li><img alt="mainbenner3" src="<%=request.getContextPath() %>/imgs/mainbenner3.jpg"></li>
 				<li><img alt="mainbenner4" src="<%=request.getContextPath() %>/imgs/mainbenner4.jpg"></li>
 			</ul>			
-			
-			
-			
+
 			<br/>
 			공지사항 게시판 등
 			
