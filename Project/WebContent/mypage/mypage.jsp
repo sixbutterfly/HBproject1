@@ -51,7 +51,7 @@
 		<%@include file="/templet/nav.jsp"%>
 		<!-- aside1 -->
 		<%@include file="/templet/aside1.jsp"%>
-
+dd
 		<!-- content start -->
 		<div class="grid2 common">
 			<a href="editinfo.do">개인 정보 수정</a>
