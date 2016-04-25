@@ -2,23 +2,23 @@
 		<div class="nav">
 		<div class="nav_main grid12">
 			<ul>
-				<li>센터소개</li>
-				<li>커리큘럼</li>
-				<li>취업정보</li>
-				<li>고객센터</li>
-				<li>마이페이지</li>
+				<li><a href="<%=request.getContextPath() %>/center/init.jsp">센터소개</a></li>
+				<li><a href="#">커리큘럼</a></li>
+				<li><a href="#">취업정보</a></li>
+				<li><a href="#">고객센터</a></li>
+				<li><a href="mypage.do">마이페이지</a></li>
 			</ul>
 		</div>
 		<div class="clear"></div>
 		
 		<div class="nav_sub grid12">
 			<ul id="sub1">
-				<li><a href="#">개요</a></li>
-				<li><a href="#">인사말</a></li>
+				<li><a href="<%=request.getContextPath() %>/center/init.jsp">개요</a></li>
+				<li><a href="<%=request.getContextPath() %>/center/hello.jsp">인사말</a></li>
 				<li><a href="<%=request.getContextPath() %>/center/year.jsp">연혁</a></li>
-				<li><a href="#">교수진 소개</a></li>
-				<li><a href="#">입학안내</a></li>
-				<li><a href="#">찾아오는 길</a></li>
+				<li><a href="<%=request.getContextPath() %>/center/lecture.jsp">교수진 소개</a></li>
+				<li><a href="<%=request.getContextPath() %>/center/admission.jsp">입학안내</a></li>
+				<li><a href="<%=request.getContextPath() %>/center/map.jsp">찾아오는 길</a></li>
 			</ul>
 			<ul id="sub2">
 				<li><a href="#">자바</a></li>

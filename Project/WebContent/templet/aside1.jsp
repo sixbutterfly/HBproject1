@@ -9,11 +9,7 @@
 					<button>로그인</button>
 				</div>
 			</form>
+			<a href="#">회원가입</a>
 			<div class="clear"></div>
-			<div class="anav">
-				<div>
-					<ul></ul>
-				</div>
-			</div>
 		</div>
 		<div class="content templet grid8">
