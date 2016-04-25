@@ -15,7 +15,7 @@
 			<ul id="sub1">
 				<li><a href="#">개요</a></li>
 				<li><a href="#">인사말</a></li>
-				<li><a href="#">연혁</a></li>
+				<li><a href="<%=request.getContextPath() %>/center/year.jsp">연혁</a></li>
 				<li><a href="#">교수진 소개</a></li>
 				<li><a href="#">입학안내</a></li>
 				<li><a href="#">찾아오는 길</a></li>
