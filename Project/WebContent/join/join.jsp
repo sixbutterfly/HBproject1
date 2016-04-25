@@ -92,15 +92,21 @@
 	width:65px;
 }
 #serchaddr{
-	width:65px;
+	width:95px;
+	height: 22px;
 }
-#addrresult{
-	width:330px;
+#addrresult1{
+	width:230px;
+}
+#addrresult2{
+	width:230px;
 }
 
 </style>
 <script type="text/javascript" src="../js/jquery-1.12.2.min.js"></script>
 <script type="text/javascript" src="../js/menu.js"></script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+
 </head>
 <body>
 	<div class="container_12">
@@ -205,8 +211,42 @@
 		</div>
 		<div class="email"><label>주소</label></div>
 		<div class="emailset">
-		<input type="text" class="inputwidth"/> <button id="serchaddr">주소찾기</button>
-		<br/><input type="text" id="addrresult"/>
+		<input type="text" id="postnum" class="inputwidth" placeholder="우편번호" name="postnum"/>
+		<input type="button" id="serchaddr" value="우편번호 찾기" onclick="searchAddress()">
+		<script>
+  		function searchAddress(){
+  			new daum.Postcode({
+  	            oncomplete: function(data) {
+  	                var fullAddr = ''; // 최종 주소 변수
+  	                var extraAddr = ''; // 조합형 주소 변수
+
+  	                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+  	                    fullAddr = data.roadAddress;
+
+  	                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+  	                    fullAddr = data.jibunAddress;
+  	                }
+
+  	                if(data.userSelectedType === 'R'){
+  	                    if(data.bname !== ''){
+  	                        extraAddr += data.bname;
+  	                    }
+  	                    if(data.buildingName !== ''){
+  	                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+  	                    }
+  	                    fullAddr += (extraAddr !== '' ? ' ('+ extraAddr +')' : '');
+  	                }
+
+  	                document.getElementById('postnum').value = data.zonecode; //5자리 새우편번호 사용
+  	                document.getElementById('addrresult1').value = fullAddr;
+
+  	                document.getElementById('addrresult2').focus();
+  	            }
+  	        }).open();
+  	    }
+</script>
+		<br/><input type="text" id="addrresult1" placeholder="주소" name="adrresult1"/> 
+		<input type="text" id="addrresult2" placeholder="상세주소" name="adrresult2"/>
 		</div>
 		<div class="form"><label>회사명</label></div>
 		<div class="forminput"><input type="text" class="inputwidth"></div>
