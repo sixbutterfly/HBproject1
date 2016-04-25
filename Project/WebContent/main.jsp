@@ -7,14 +7,20 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/grid.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/header.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/bxslider.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
-<style type="text/css">
-	.content{
-		height: 800px;
-	}
-</style>
 <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
 <script type="text/javascript" src="js/menu.js"></script>
+<script type="text/javascript" src="js/jquery.bxslider.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.bxslider').bxSlider({
+		  'auto':true,
+		  'controls':false,
+		  'slideWidth':1500,
+		  });
+	});//ready end
+</script>
 </head>
 <body>
 	<div class="container_12">
@@ -26,7 +32,16 @@
 		<%@include file="templet/aside1.jsp" %>
 		
 		<!-- content start -->
-			메인 베너<br/>
+			<ul class="bxslider">
+				<li><img alt="mainbenner1" src="<%=request.getContextPath() %>/imgs/mainbenner1.jpg"></li>
+				<li><img alt="mainbenner2" src="<%=request.getContextPath() %>/imgs/mainbenner2.jpg"></li>
+				<li><img alt="mainbenner3" src="<%=request.getContextPath() %>/imgs/mainbenner3.jpg"></li>
+				<li><img alt="mainbenner4" src="<%=request.getContextPath() %>/imgs/mainbenner4.jpg"></li>
+			</ul>			
+			
+			
+			
+			<br/>
 			공지사항 게시판 등
 			
 		<!-- content end -->

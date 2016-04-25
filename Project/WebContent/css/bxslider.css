@@ -1,0 +1,38 @@
+	.bx-wrapper{
+		position: relative;
+		margin: 40px auto 70px 70px;
+		padding: 0;
+		*zoom: 1;
+	}
+	.bx-wrapper img{
+		max-width: 100%;
+		display: block;	
+	}
+	.bx-wrapper .bx-pager{
+		bottom: -30px;
+		width: 100%;
+	}
+	.bx-wrapper .bx-pager.bx-default-pager a {
+	background: #fff;
+	text-indent: -9999px;
+	display: block;
+	width: 10px;
+	height: 10px;
+	margin: -30px 0 5px 5px;
+	position: absolute;
+	outline: 0;
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+	border-radius: 0px;
+	}
+	.bx-wrapper .bx-pager.bx-default-pager a:hover,
+	.bx-wrapper .bx-pager.bx-default-pager a.active {
+		background: #f00;
+	}
+	.bx-pager-item{
+		display: inline-block;
+		width: 20px;
+	}
+	.bx-pager-item>a{
+		float: left;
+	}
