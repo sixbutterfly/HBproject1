@@ -16,6 +16,19 @@
 		margin: 5px 10px;
 		width: 780px;
 	}
+	.content p{
+		font-size: 30pt;
+		font-style: oblique;
+	}
+	.content span{
+		font-size: 15pt;
+		text-align: center;
+	}
+	.content div{
+		margin: 20px;
+		border-bottom: 3px solid #ddd;
+		color: #666;
+	}
 </style>
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-1.12.2.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/menu.js"></script>
@@ -30,6 +43,11 @@
 		<%@include file="../templet/aside1.jsp" %>
 		
 		<!-- content start -->
+			<div>
+				<p>CENTER INTRODUCTION</p>
+				<span>연혁</span>
+			</div>
+			
 			<img alt="" src="../imgs/2015.JPG">
 			<img alt="" src="../imgs/2014.JPG">
 			<img alt="" src="../imgs/2013.JPG">

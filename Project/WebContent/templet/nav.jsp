@@ -2,11 +2,11 @@
 		<div class="nav">
 		<div class="nav_main grid12">
 			<ul>
-				<li><a href="#">센터소개</a></li>
-				<li><a href="#">커리큘럼</a></li>
-				<li><a href="#">취업정보</a></li>
-				<li><a href="#">고객센터</a></li>
-				<li><a href="mypage.do">마이페이지</a></li>
+				<li>센터소개</li>
+				<li>커리큘럼</li>
+				<li>취업정보</li>
+				<li>고객센터</li>
+				<li>마이페이지</li>
 			</ul>
 		</div>
 		<div class="clear"></div>
