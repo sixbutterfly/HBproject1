@@ -187,7 +187,20 @@
 					교육시간
 				</label>
 				<div>
-				<select>
+				<select name="pay">
+					<option value="09:30~12:30">09:30~12:30
+					<option value="14:00~17:00">14:00~17:00
+					<option value="19:30~22:30">19:30~22:30
+					<option value="주말반(토,일)">주말반(토,일)
+				</select>
+				</div>
+			</li>
+			<li>
+				<label id="menu">
+					결제방법
+				</label>
+				<div>
+				<select name="pay">
 					<option value="신용카드">신용카드
 					<option value="능력카드">능력카드
 					<option value="현금">현금
