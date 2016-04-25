@@ -17,26 +17,25 @@
 <script type="text/javascript" src="js/jquery.bxslider.min.js"></script>
 
 <style type="text/css">
-	body {
-		vertical-align: middle;
-		scrollbar: true;
-	}
 	hr {
 		width: 100%;
 		height: 3px;
 		background-color: silver;
 		border: none;
 	}
+	#textarea {
+		width: 93%;
+		margin-left: 3%;
+	}
 	#menu {
 		width: 100px;
 		background-clip: border-box;
 		background-color: rgb(230, 230, 230);
-		display: inline-block;
 		vertical-align: top;
+		display: inline-block;
 	}
-	#textarea {
-		width: 93%;
-		margin-left: 3%;
+	#answer {
+		display: inline-block;
 	}
 	.resistClass {
 		width: 100%;
@@ -63,9 +62,6 @@
 		padding: 12px 0px;
 		border-bottom: 1px solid silver;
 		border-top: 1px solid silver;
-	}
-	div {
-		display: inline-block;
 	}
 	p {
 		margin-left: 3%;
@@ -111,9 +107,9 @@
 		
 		<form action="resistClass.do">
 		<ul>
-			<li><label id="menu">지원과정</label><div><span>자바 프로그래밍 </span></div></li>
-			<li><label id="menu">이름</label><div><input type="text" maxlength="15" name="name"></div></li>
-			<li><label id="menu">이메일</label><div><input type="text" maxlength="15" name="email1">
+			<li><label id="menu">지원과정</label><div id="answer"><span>자바 프로그래밍 </span></div></li>
+			<li><label id="menu">이름</label><div id="answer"><input type="text" maxlength="15" name="name"></div></li>
+			<li><label id="menu">이메일</label><div id="answer"><input type="text" maxlength="15" name="email1">
 				@	<input type="text" size="15" name="email1"> <select name="email1">
 											<option value="직접입력">직접입력
 											<option value="naver.com">naver.com
@@ -139,7 +135,7 @@
 				<label id="menu" name="tel">
 					연락처
 				</label>
-				<div>
+				<div id="answer">
 					<select>
 						<option value="010">010
 						<option value="011">011
@@ -157,7 +153,7 @@
 				<label id="menu">
 					구분
 				</label>
-				<div>
+				<div id="answer">
 					<input type="radio" id="r1" value="대학생, 일반" name="gubun"><lable for="r1">대학생, 일반</lable>
 					<input type="radio" id="r2" value="회사에서 교육비납부" name="gubun"><lable for="r2">회사에서 교육비납부</lable>
 					<input type="radio" id="r3" value="개인이 교육비납부(재직자)" name="gubun"><lable for="r3">개인이 교육비납부(재직자)</lable>
@@ -167,7 +163,7 @@
 				<label id="menu">
 					회사명
 				</label>
-				<div>
+				<div id="answer">
 				<input type="text" maxlength="40" size="91">
 				</div>
 			</li>
@@ -175,7 +171,7 @@
 				<label id="menu">
 					관련항목
 				</label>
-				<div>
+				<div id="answer">
 					<input type="checkbox" value="회사직원수가 300명 미만"><label><span>회사직원수가 300명 미만</span></label><br/>
 				 	<input type="checkbox" value="우선지원대상기업에 근무하는 재직자"><label><span>우선지원대상기업에 근무하는 재직자</span></label><br/>
 					<input type="checkbox" value="파견근로자"><label><span>파견근로자</span></label><br/>
@@ -186,7 +182,7 @@
 				<label id="menu">
 					교육시간
 				</label>
-				<div>
+				<div id="answer">
 				<select name="pay">
 					<option value="09:30~12:30">09:30~12:30
 					<option value="14:00~17:00">14:00~17:00
@@ -199,7 +195,7 @@
 				<label id="menu">
 					결제방법
 				</label>
-				<div>
+				<div id="answer">
 				<select name="pay">
 					<option value="신용카드">신용카드
 					<option value="능력카드">능력카드
@@ -207,10 +203,10 @@
 				</select>
 				</div>
 			</li>
-			<li><label id="menu">내용</label><div><textarea rows="10" cols="80"></textarea></div></li>
-			<li><label id="menu">비밀번호</label><div><input type="password" name="password"></div></li>
-			<li><label id="menu">파일첨부#1</label><div><input type="file" name="file1"></div></li>
-			<li><label id="menu">파일첨부#2</label><div><input type="file" name="file2"></div></li>
+			<li><label id="menu">내용</label><div id="answer"><textarea rows="10" cols="80"></textarea></div></li>
+			<li><label id="menu">비밀번호</label><div id="answer"><input type="password" name="password"></div></li>
+			<li><label id="menu">파일첨부#1</label><div id="answer"><input type="file" name="file1"></div></li>
+			<li><label id="menu">파일첨부#2</label><div id="answer"><input type="file" name="file2"></div></li>
 		</ul>
 		<p><strong>개인정보보호를 위한 이용자 동의사항(자세한 내용은 개인정보 취급방침을 확인하시기 바랍니다.)</strong></p>
 		<textarea rows="10" cols="80" readonly="readonly" id="textarea">
