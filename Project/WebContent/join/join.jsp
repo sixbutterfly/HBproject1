@@ -269,8 +269,7 @@
 			</div>
 		<div class="email"><label>이메일</label></div>
 		<div class="emailset">
-		<input type="text" name="email" class="inputwidth"/ id="emailtype2"> - 
-		<input type="text" name="email" class="inputwidth" id="emailtype"/>
+		<input type="text" name="email" class="inputwidth"/ id="emailtype2">@<input type="text" name="email" class="inputwidth" id="emailtype"/>
 			<select name="emailselect" id="emailselect">
 				<option value="" selected>직접입력</option>
 				<option value="naver.com">naver.com</option>
@@ -337,7 +336,7 @@
 		</div>
 	</div>
 	<div>
-	<form action="joinsuccess.korean">
+	<form action="joinsuccess.do">
 	<div class="button">
 		<button class="subbtn" type="submit" id="submit">확인</button>
 		<button class="subbtn" type="reset">취소</button>
