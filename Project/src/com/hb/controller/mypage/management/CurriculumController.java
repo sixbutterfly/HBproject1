@@ -1,4 +1,4 @@
-package com.hb.controller.mypage.manager;
+package com.hb.controller.mypage.management;
 
 import java.io.IOException;
 import java.util.ArrayList;

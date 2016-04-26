@@ -1,5 +1,4 @@
-
-package join;
+package com.hb.controller.mypage.management;
 
 import java.io.IOException;
 
@@ -9,11 +8,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/join/agreejoin.do")
-public class JoinAgree extends HttpServlet{
+import com.hb.model.student.StuDao;
+
+//강의실에 학생 배치
+@WebServlet("/addstu.korean")
+public class AddStudentController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		req.getRequestDispatcher("/join/agreejoin.jsp").forward(req, resp);
+		
+		StuDao dao = new StuDao();
+		
+		req.getRequestDispatcher("mypage/manager/addstu.jsp").forward(req, resp);
 	}
 }

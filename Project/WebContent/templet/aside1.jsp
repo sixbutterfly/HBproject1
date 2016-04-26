@@ -11,11 +11,7 @@
 		</div>
 	</form>
 	<div class="clear"></div>
-	<div class="grid10 submenu" style="border: solid 1px;">
-		<div class="eachmenu">
-
-		</div>
-
-	</div>
+	
 </div>
 <div class="content templet grid8">
+
