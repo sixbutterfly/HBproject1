@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>연혁</title>
+<title>한빛교육센터>개요</title>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/grid.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/header.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav.css"/>

@@ -33,7 +33,7 @@
 		<%@include file="templet/nav.jsp" %>
 		<!-- aside1 -->
 		<%@include file="templet/aside1.jsp" %>
-
+		
 		<!-- content start -->
 			<ul class="bxslider">
 				<li><img alt="mainbenner1" src="<%=request.getContextPath() %>/imgs/mainbenner1.jpg"></li>

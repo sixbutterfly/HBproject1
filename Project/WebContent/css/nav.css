@@ -1,5 +1,5 @@
 	.nav{
-		background-color: #f33;
+		background-color: #06c;
 		margin: 0px auto;
 	}
 	.nav_main>ul{
@@ -8,7 +8,7 @@
 	.nav_main>ul>li{
 		list-style: none;
 		width: 200px;
-		background-color: #f33;
+		background-color: #06c;
 		float: left;
 		margin: 0px auto;
 		text-align: center;
@@ -19,7 +19,7 @@
 		color: white;
 	}
 	.nav_main li:hover{
-		background-color: #c33;	
+		background-color: #3cf;	
 	}
 	.nav_sub{
 		height: 170px;
@@ -31,10 +31,10 @@
 		width: 200px;
 		height: 150px;
 		float: left;
-		background-color: #eee;
-		opacity: 0.9;
+		background-color: rgba(207,232,249,0.95);
 		display: inline-block;
-		border-right: 1px solid black;
+		border-right: 1px solid;
+		border-color: rgba(0,0,0,0.3);
 		margin: 0px auto;
 		box-sizing: border-box;
 	}
