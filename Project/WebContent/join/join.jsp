@@ -159,6 +159,45 @@
 				}
 		});
 		
+		$('#tel2').keyup(function(){
+			if($('#tel2').val().match(/[^0-9]/gi)){
+			$('#tel3').next().text(' 숫자만 입력 가능합니다');
+			$('#tel2').focus();
+			return false;
+			}else{
+			$('#tel3').next().text('');
+			return false;
+			}
+		});
+		$('#tel3').keyup(function(){
+			if($('#tel3').val().match(/[^0-9]/gi)){
+			$('#tel3').next().text(' 숫자만 입력 가능합니다');
+			return false;
+			}else{
+			$('#tel3').next().text('');
+			return false;
+			}
+		});
+		$('#phone2').keyup(function(){
+			if($('#phone2').val().match(/[^0-9]/gi)){
+			$('#phone3').next().text(' 숫자만 입력 가능합니다');
+			$('#phone2').focus();
+			return false;
+			}else{
+			$('#phone3').next().text('');
+			return false;
+			}
+		});
+		$('#phone3').keyup(function(){
+			if($('#phone3').val().match(/[^0-9]/gi)){
+			$('#phone3').next().text(' 숫자만 입력 가능합니다');
+			return false;
+			}else{
+			$('#phone3').next().text('');
+			return false;
+			}
+		});
+		
 		function email(){
 			$('#emailtype').val($('#emailselect').val())
 		}
@@ -168,24 +207,30 @@
 		$('#submit').click(function(){
 			if($('#id').val()==""||$('#id').val()==null){
 				alert("id를 입력하세요!");
+				$('#id').focus();
 				return false;
 			}else if($('#pw').val()==""||$('#pw').val()==null){
 				alert("비밀번호를 입력하세요!");
+				$('#pw').focus();
 				return false;
 			}else if($('#name').val()==""||$('#name').val()==null){
 				alert("이름를 입력하세요!");
+				$('#name').focus();
 				return false;
 			}else if(!($('#male').is(':checked')||$('#female').is(':checked'))){
 				alert("성별을 선택하세요!");
 				return false;
 			}else if($('#phone2').val()==""||$('#phone2').val()==null||$('#phone3').val()==""||$('#phone3').val()==null){
 				alert("핸드폰번호를 입력하세요!");
+				$('#phone2').focus();
 				return false;
 			}else if($('#emailtype').val()==""||$('#emailtype').val()==null||$('#emailtype2').val()==""||$('#emailtype2').val()==null){
 				alert("이메일을 입력하세요!");
+				$('#emailtype2').focus();
 				return false;
 			}else if($('#addrresult1').val()==""||$('#addrresult1').val()==null||$('#addrresult2').val()==""||$('#addrresult2').val()==null){
 				alert("주소를 입력하세요!");
+				$('#addrresult2').focus();
 				return false;
 			}else{}
 		});
@@ -221,11 +266,11 @@
 		<div class="form"><label>비밀번호확인</label></div>
 		<div class="forminput"><input type="password" name="pw2" class="inputwidth" id="pw2" placeholder="비밀번호 확인"/><span class="errmsg"></span></div>
 		<div class="form"><label>이름</label></div>
-		<div class="forminput"><input type="text" class="inputwidth" id="name"/></div>
+		<div class="forminput"><input type="text" class="inputwidth" id="name" name="name"/></div>
 		<div class="form"><label>성별</label></div>
 		<div class="forminput">
-		<input type="radio" name="sex" value="m" class="radio" id="male">남자
-		<input type="radio" name="sex" value="f" class="radio" id="female">여자
+		<input type="radio" name="gender" value="남자" class="radio" id="male">남자
+		<input type="radio" name="gender" value="여자" class="radio" id="female">여자
 		</div>
 		<div class="form"><label>전화번호</label></div>
 		<div class="forminput">
@@ -251,7 +296,7 @@
 				<option value="0502">0502</option>
 			</select>
 			-<input type="text" name="tel2" class="inputtel" maxlength="4" id="tel2">
-			-<input type="text" name="tel3" class="inputtel" maxlength="4" id="tel3">
+			-<input type="text" name="tel3" class="inputtel" maxlength="4" id="tel3"><span class="errmsg"></span>
 		</div>
 		<div class="form"><label>H.P</label></div>
 		<div class="forminput">
@@ -265,11 +310,11 @@
 				<option value="070">070</option>
 			</select>
 			-<input type="text" name="phone2" class="inputtel"  maxlength="4" id="phone2">
-			-<input type="text" name="phone3" class="inputtel"  maxlength="4" id="phone3">
+			-<input type="text" name="phone3" class="inputtel"  maxlength="4" id="phone3"><span class="errmsg"></span>
 			</div>
 		<div class="email"><label>이메일</label></div>
 		<div class="emailset">
-		<input type="text" name="email" class="inputwidth"/ id="emailtype2">@<input type="text" name="email" class="inputwidth" id="emailtype"/>
+		<input type="text" name="email" class="inputwidth"/ id="emailtype2">@<input type="text" name="email2" class="inputwidth" id="emailtype"/>
 			<select name="emailselect" id="emailselect">
 				<option value="" selected>직접입력</option>
 				<option value="naver.com">naver.com</option>
