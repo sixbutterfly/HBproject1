@@ -1,17 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <div class="aside1 grid2">
-	<form action="#">
-		<div>
-			<input type="text" name="id" value="아이디" /> <input type="password"
-				name="id" value="비밀번호" />
-		</div>
-		<div>
-			<button>로그인</button>
-		</div>
-	</form>
+	<div class="login">
+		<form action="#">
+			<div>
+				<input type="text" name="id" value="아이디" />
+				<input type="password" name="id" value="비밀번호" />
+			</div>
+			<div>
+				<button>로그인</button>
+			</div>
+		</form>
+	</div>
+	<a href="#">회원가입</a>
 	<div class="clear"></div>
-	<div class="grid10 submenu" style="border: solid 1px;">
+	
+	<div class="submenu">
 		<div class="common">
 			<a href="editinfo.do">개인 정보 수정</a>
 		</div>
