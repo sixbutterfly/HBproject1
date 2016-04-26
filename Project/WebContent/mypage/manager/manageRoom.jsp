@@ -86,30 +86,69 @@
 <script type="text/javascript" src="js/menu.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		//탭메뉴
-		$(".room .tab_content").hide();
-		$(".room .tab_content:first").show();
+				$("#stucheck").hide();
+				$("#delbtn").hide();
+				//탭메뉴
+				$(".room .tab_content").hide();
+				$(".room .tab_content:first").show();
 
-		$(".room ul.tabs li").click(function() {
-			$(".room ul.tabs li").removeClass("active").css("color", "#333");
-			$(this).addClass("active").css("color", "darked");
-			$(".room .tab_content").hide();
-			var activeTab = $(this).attr("id");
-			$("#" + activeTab + "_content").fadeIn();
-		});
-		//강사 배정
-		$("#btn3").hide();
-		$("#btn2").click(function() {
-			$("#roomselect").html("<select name=\"room\"><option value=\"1\">1강의실</option><option value=\"2\">2강의실</option><option value=\"3\">3강의실</option></select>");
-			$("#btn3").show();
-			$(this).hide();
-		});
-		$("#btn3").click(function() {
-			$("#roomselect").html("1강의실");
-			$("#btn2").show();
-			$(this).hide();
-		});
-	});
+				$(".room ul.tabs li").click(
+						function() {
+							$(".room ul.tabs li").removeClass("active").css("color", "#333");
+							$(this).addClass("active").css("color","darked");
+							$(".room .tab_content").hide();
+							var activeTab = $(this).attr("id");
+							$("#" + activeTab + "_content").fadeIn();
+						});
+						//학생 배정
+						//추가하기
+						$("#add").click(function() {
+							window.open("addstu.korean", "학생 배정",
+											"width=500 height=500");
+						});
+						//수정하기
+						$("#modify").click(function() {
+
+						});
+						//삭제하기
+						$("#del").click(function() {
+							$("#initbtn").hide();
+							$("#stucheck").show();
+
+							$("#delbtn").show();
+						});
+						//학생 삭제 완료
+						$("#delok").click(function(){
+							$("#initbtn").show();
+							$("#stucheck").hide();
+							$("#stucheck").attr("checked",false);
+							$("#delbtn").hide();
+						});
+						$("#cancle").click(function(){
+							$("#initbtn").show();
+							$("#stucheck").hide();
+							$("#delbtn").hide();
+						});
+						$("#room").change(function() {
+							console.log("뿌뿌");
+						});
+						//강사 배정
+						$("#btn3").hide();
+						$("#btn2")
+								.click(
+										function() {
+											$("#roomselect")
+													.html(
+															"<select name=\"room\"><option value=\"1\">1강의실</option><option value=\"2\">2강의실</option><option value=\"3\">3강의실</option></select>");
+											$("#btn3").show();
+											$(this).hide();
+										});
+						$("#btn3").click(function() {
+							$("#roomselect").html("1강의실");
+							$("#btn2").show();
+							$(this).hide();
+						});
+					});
 </script>
 </head>
 <body>
@@ -133,24 +172,35 @@
 				<div class="tab_container">
 					<!-- 학생관리 메뉴 -->
 					<div id="tab1_content" class="tab_content">
-						<form action="#">
-							<select name="room">
-								<option value="1">1강의실</option>
-								<option value="2">2강의실</option>
-								<option value="3">3강의실</option>
-							</select>
-							<table>
-								<tr>
-									<th>학번</th>
-									<th>이름</th>
-									<th>과정명</th>
-									<th>배정강의실</th>
-								</tr>
-							</table>
-							<button>추가</button>
-							<button>수정</button>
-							<button>삭제</button>
-						</form>
+						<select id="room">
+							<option value="1">1강의실</option>
+							<option value="2">2강의실</option>
+							<option value="3">3강의실</option>
+						</select>
+						<table>
+							<tr>
+								<th>학번</th>
+								<th>이름</th>
+								<th>과정명</th>
+								<th>배정강의실</th>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td>정현영</td>
+								<td>전자정부</td>
+								<td>1강의실</td>
+								<td><input type="checkbox" id="stucheck"/></td>
+							</tr>
+						</table>
+						<div id="initbtn">
+							<button id="add">추가하기</button>
+							<button id="modify">수정하기</button>
+							<button id="del">삭제하기</button>
+						</div>
+						<div id="delbtn">
+							<button id="delok">삭제완료</button>
+							<button id="cancle">취소</button>
+						</div>
 					</div>
 					<!-- 강사관리 메뉴 -->
 					<div id="tab2_content" class="tab_content">
@@ -163,9 +213,7 @@
 							<tr>
 								<td>1</td>
 								<td>정현영</td>
-								<td id="roomselect">
-									강의실1
-								</td>
+								<td id="roomselect">강의실1</td>
 							</tr>
 						</table>
 						<button id="btn2">강사배정</button>
