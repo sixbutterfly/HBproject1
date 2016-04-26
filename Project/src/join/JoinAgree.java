@@ -1,4 +1,5 @@
-package com.hb.controller.mypage;
+
+package join;
 
 import java.io.IOException;
 
@@ -8,11 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/editinfo.do")
-public class EditInfoController extends HttpServlet {
+@WebServlet("/join/agreejoin.do")
+public class JoinAgree extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		req.getRequestDispatcher("mypage/editInfo.jsp").forward(req, resp);
+		req.getRequestDispatcher("/join/agreejoin.jsp").forward(req, resp);
 	}
 }

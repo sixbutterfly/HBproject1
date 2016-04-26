@@ -7,17 +7,20 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/grid.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/header.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/aside1.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/bxslider.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/aside2.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
 <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
 <script type="text/javascript" src="js/menu.js"></script>
 <script type="text/javascript" src="js/jquery.bxslider.min.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('.bxslider').bxSlider({
 		  'auto':true,
 		  'controls':false,
-		  'slideWidth':1500,
+		  'slideWidth':750
 		  });
 	});//ready end
 </script>
@@ -38,9 +41,7 @@
 				<li><img alt="mainbenner3" src="<%=request.getContextPath() %>/imgs/mainbenner3.jpg"></li>
 				<li><img alt="mainbenner4" src="<%=request.getContextPath() %>/imgs/mainbenner4.jpg"></li>
 			</ul>			
-			
-			
-			
+
 			<br/>
 			공지사항 게시판 등
 			
