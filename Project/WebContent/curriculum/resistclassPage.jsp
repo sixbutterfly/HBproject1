@@ -101,7 +101,7 @@
 		</div>
 		<hr/>
 		
-		<form action="/resistClass.do">
+		<form action="/resistclassController.korean">
 		<ul id="ul">
 			<li><label id="menu">지원과정</label><div id="answer"><span>자바 프로그래밍 </span></div></li>
 			<li><label id="menu">이름</label><div id="answer"><input type="text" maxlength="15" name="name"></div></li>
@@ -180,8 +180,7 @@
 				</label>
 				<div id="answer">
 				<select name="pay">
-					<option value="09:30~12:30">09:30~12:30
-					<option value="14:00~17:00">14:00~17:00
+					<option value="09:30~18:00">09:30~18:00
 					<option value="19:30~22:30">19:30~22:30
 					<option value="주말반(토,일)">주말반(토,일)
 				</select>
