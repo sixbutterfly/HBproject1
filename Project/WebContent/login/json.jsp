@@ -3,6 +3,6 @@
 [
 	{
 	"result":<%=(Boolean)request.getAttribute("result") %>
-		,"name":"<%=(String)request.getAttribute("name") %>"
+		,"id":"<%=(String)request.getAttribute("id") %>"
 	}
 ]

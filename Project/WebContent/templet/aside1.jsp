@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>	
-
+	<script type="text/javascript" src="js/login.js" charset="utf-8"></script>
 		<div class="aside1 grid2">
 			<%
 			Boolean re = (Boolean)session.getAttribute("login");
@@ -14,10 +14,8 @@
 					<div class="login">
 						<input type="text" name="id" value="아이디"/>
 						<input type="password" name="pw" value="비밀번호"/>
-					</div>
-					<div class="login">
 						<button>로그인</button>
-					</div>
+					</div>				
 				</form>
 			<%
 				}
@@ -26,10 +24,8 @@
 					<div class="login">
 						<input type="text" name="id" value="아이디"/>
 						<input type="password" name="pw" value="비밀번호"/>
-					</div>
-					<div class="login">
-						<button>로그인</button>
-					</div>
+						<button>로그인</button>						
+					</div>					
 				</form>	
 		<%} %>
 			

@@ -9,22 +9,14 @@ $(document).ready(function(){
 				"data":{"id":arr[0],"pw":arr[1]},
 				"method":"POST",
 				"dataType":"json",
-				"error":function(){
-					alert('error');
+				"error" : function( jqXHR, textStatus, errorThrown ) {
+					alert(jqXHR+textStatus+errorThrown);
 				},
 				"success":function(data){
-					/*xml
-					 * var name=$(data).find("name").text();
-					var result=$(data).find("result").text();
-					var st = "<div>"+name+"님 환영합니다</div>";
-					st +="<div><a href='/Project/login/logout.korean'><span>logout</span></a></div>";
-					$(".grid5").html(st);
-					*/
-//					var obj = JSON.parse(data);
 					if(data[0].result){
-						var st = "<div>"+data[0].id+"님 환영합니다</div>";
+						var st = "<div>"+data[0].id+"占쎈뻷 占쎌넎占쎌겫占쎈�占쎈빍占쎈뼄</div>";
 						st +="<div><a href='/Project/login/logout.korean'><span>logout</span></a></div>";
-						$(".grid5").html(st);
+						$(".grid2").html(st);
 					}
 					
 				}
