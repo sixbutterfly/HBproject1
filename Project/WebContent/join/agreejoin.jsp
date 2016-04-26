@@ -80,7 +80,7 @@ button{
 		<!-- nav -->
 		<%@include file="/templet/nav.jsp" %>
 		<!-- aside1 -->
-		<%@include file="/templet/aside1.jsp" %>
+		<%@include file="/templet/subnav0.jsp" %>
 	<div>
 		<p>회원가입동의</p>
 		<hr />

@@ -1,12 +1,12 @@
 	.aside1{
 		margin-top: 10px;
 	}
-	.aside1>form>div{
+	.login>form>div{
 		width: 130px;
 		margin: 10px 0px;
 		margin-left: 10px;
 	}
-	.aside1>form>div+div{
+	.login>form>div+div{
 		width: 50px;
 		height: 44px;
 		margin-left: 0px;
@@ -14,15 +14,16 @@
 	.aside1 input{
 		width: 120px;
 	}
-	.aside1>form div{
+	.login div{
 		display: inline-block;
 		float: left;
 	}
-	.aside1>form>div>button{
+	button{
+		margin: 2px auto;
 		width: 100%;
 		height: 44px;
 	}
-	.aside1 a{
+	.aside1>a{
 		width: 50pt;
 		margin: 10px;
 		display: block;
@@ -32,7 +33,25 @@
 		color: black;
 		font-size: 10pt;
 	}
-
+	.submenu{
+		width: 170px;
+		margin: 20px 10px;
+		border-top: solid 4px #06c;
+		border-bottom: solid 4px #06c;
+		background-color: white;
+		position: absolute;
+	}
+	.eachmenu a{
+		margin: 10px 10px;
+		text-decoration: none;
+		display: block;
+		color: black;
+	}
+	.eachmenu>a:hover{
+		background-color: #CCE5FF;
+		color: #69f;
+		font-style: oblique;
+	}
 	
 	.content{
 		margin: 20px auto;

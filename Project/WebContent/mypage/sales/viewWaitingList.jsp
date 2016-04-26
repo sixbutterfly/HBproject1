@@ -23,7 +23,7 @@
 		<!-- nav -->
 		<%@include file="/templet/nav.jsp" %>
 		<!-- aside1 -->
-		<%@include file="/templet/aside1.jsp" %>
+		<%@include file="/templet/subnav3.jsp" %>
 		
 		<!-- content start -->
 			<h1>수강 대기자</h1>

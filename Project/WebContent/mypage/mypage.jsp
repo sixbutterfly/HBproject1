@@ -5,14 +5,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/grid.css" />
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/header.css" />
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/nav.css" />
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/footer.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/grid.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/header.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/nav.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/subnav5.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/aside2.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/footer.css" />
 <style type="text/css">
 .eachmenu>.grid2 {
 	<!--display: none;-->
@@ -50,8 +48,8 @@
 		<!-- nav -->
 		<%@include file="/templet/nav.jsp"%>
 		<!-- aside1 -->
-		<%@include file="/templet/aside1.jsp"%>
-dd
+		<%@include file="/templet/subnav5.jsp"%>
+		
 		<!-- content start -->
 		<div class="grid2 common">
 			<a href="editinfo.do">개인 정보 수정</a>

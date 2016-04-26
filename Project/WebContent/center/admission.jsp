@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/grid.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/header.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav.css"/>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/aside1.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/subnav1.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/aside2.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
 <style type="text/css">
@@ -40,7 +40,7 @@
 		<!-- nav -->
 		<%@include file="../templet/nav.jsp" %>
 		<!-- aside1 -->
-		<%@include file="../templet/aside1.jsp" %>
+		<%@include file="../templet/subnav1.jsp" %>
 		
 		<!-- content start -->
 			<div>
@@ -48,7 +48,7 @@
 				<span>교수진 소개</span>
 			</div>
 			
-			<img alt="" src="../imgs/admission.jpg">
+			<img alt="" src="./imgs/admission.jpg">
 		<!-- content end -->
 		
 		<!-- aside2 -->

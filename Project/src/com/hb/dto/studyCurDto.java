@@ -7,8 +7,10 @@ public class studyCurDto {
 	private int curNo;
 	private String curName;
 	private String Location;
-	private Date curDate;
 	private int curSupply;
+	private Date curDate;
+	
+	private Date curDateEnd;
 	
 	public int getCurNo() {
 		return curNo;
@@ -19,11 +21,11 @@ public class studyCurDto {
 	public String getLocation() {
 		return Location;
 	}
-	public Date getCurDate() {
-		return curDate;
-	}
 	public int getCurSupply() {
 		return curSupply;
+	}
+	public Date getCurDate() {
+		return curDate;
 	}
 	public void setCurNo(int curNo) {
 		this.curNo = curNo;
@@ -34,10 +36,19 @@ public class studyCurDto {
 	public void setLocation(String location) {
 		Location = location;
 	}
-	public void setCurDate(Date curDate) {
-		this.curDate = curDate;
-	}
 	public void setCurSupply(int curSupply) {
 		this.curSupply = curSupply;
 	}
+	public void setCurDate(Date curDate) {
+		this.curDate = curDate;
+	}
+	
+	
+	public Date getCurDateEnd() {
+		return curDateEnd;
+	}
+	public void setCurDateEnd(Date curDateEnd) {
+		this.curDateEnd = curDateEnd;
+	}
+
 }

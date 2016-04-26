@@ -19,7 +19,7 @@
 		color: white;
 	}
 	.nav_main li:hover{
-		background-color: #3cf;	
+		background-color: #9cf;	
 	}
 	.nav_sub{
 		height: 170px;
@@ -33,13 +33,9 @@
 		float: left;
 		background-color: rgba(207,232,249,0.95);
 		display: inline-block;
-		border-right: 1px solid;
-		border-color: rgba(0,0,0,0.3);
+
 		margin: 0px auto;
 		box-sizing: border-box;
-	}
-	.nav_sub ul+ul+ul+ul+ul{
-		border-right: 0px solid black;
 	}
 	.nav_sub ul>li:FIRST-CHILD{
 		margin-top: 10px;

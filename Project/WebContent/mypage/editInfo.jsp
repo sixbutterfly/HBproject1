@@ -23,7 +23,7 @@
 		<!-- nav -->
 		<%@include file="/templet/nav.jsp" %>
 		<!-- aside1 -->
-		<%@include file="/templet/aside1.jsp" %>
+		<%@include file="/templet/subnav5.jsp" %>
 		
 		<!-- content start -->
 			<h1>개인 정보 수정 페이지</h1>

@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/grid.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/header.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav.css"/>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/aside1.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/subnav1.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/aside2.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
 <style type="text/css">
@@ -22,7 +22,6 @@
 	}
 	.content span{
 		font-size: 15pt;
-		text-align: center;
 	}
 	.content div{
 		margin: 20px;
@@ -40,7 +39,7 @@
 		<!-- nav -->
 		<%@include file="../templet/nav.jsp" %>
 		<!-- aside1 -->
-		<%@include file="../templet/aside1.jsp" %>
+		<%@include file="../templet/subnav1.jsp" %>
 		
 		<!-- content start -->
 			<div>
@@ -48,7 +47,7 @@
 				<span>개요</span>
 			</div>
 			
-			<img alt="" src="../imgs/int.jpg">
+			<img alt="" src="./imgs/int.jpg">
 		<!-- content end -->
 		
 		<!-- aside2 -->
