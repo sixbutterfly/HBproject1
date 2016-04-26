@@ -8,11 +8,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.hb.model.student.StuDao;
+
+//강의실에 학생 배치
 @WebServlet("/addstu.korean")
-public class AddStudentController extends HttpServlet{
-@Override
-protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-		throws ServletException, IOException {
-	req.getRequestDispatcher("mypage/manager/addstu.jsp").forward(req, resp);
-}
+public class AddStudentController extends HttpServlet {
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		
+		StuDao dao = new StuDao();
+		
+		req.getRequestDispatcher("mypage/manager/addstu.jsp").forward(req, resp);
+	}
 }

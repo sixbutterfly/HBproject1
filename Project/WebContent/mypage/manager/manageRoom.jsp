@@ -1,3 +1,5 @@
+<%@page import="com.hb.model.student.StuDto"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -86,7 +88,7 @@
 <script type="text/javascript" src="js/menu.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-				$("#stucheck").hide();
+				$(".stucheck").hide();
 				$("#delbtn").hide();
 				//탭메뉴
 				$(".room .tab_content").hide();
@@ -113,15 +115,14 @@
 						//삭제하기
 						$("#del").click(function() {
 							$("#initbtn").hide();
-							$("#stucheck").show();
-
+							$(".stucheck").show();
 							$("#delbtn").show();
 						});
 						//학생 삭제 완료
 						$("#delok").click(function(){
 							$("#initbtn").show();
-							$("#stucheck").hide();
-							$("#stucheck").attr("checked",false);
+							$(".stucheck").hide();
+							$(".stucheck").attr("checked",false);
 							$("#delbtn").hide();
 						});
 						$("#cancle").click(function(){
@@ -185,12 +186,18 @@
 								<th>배정강의실</th>
 							</tr>
 							<tr>
-								<td>1</td>
-								<td>정현영</td>
-								<td>전자정부</td>
-								<td>1강의실</td>
-								<td><input type="checkbox" id="stucheck"/></td>
+							<%
+								ArrayList<StuDto> list = (ArrayList<StuDto>)request.getAttribute("list");
+								for(StuDto bean : list){
+							%>
+									<td><%=bean.getStuno()%></td>
+									<td><%=bean.getStuname()%></td>
+									<td><%=bean.getCurname()%></td>
+									<td><%=bean.getCurlocation()%></td>
+								<td><input type="checkbox" class="stucheck"/></td>
 							</tr>
+							
+							<%	}	%>
 						</table>
 						<div id="initbtn">
 							<button id="add">추가하기</button>
