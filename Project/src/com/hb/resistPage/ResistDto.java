@@ -1,4 +1,4 @@
-package com.hb.resistDao;
+package com.hb.resistPage;
 
 public class ResistDto {
 	String name;
