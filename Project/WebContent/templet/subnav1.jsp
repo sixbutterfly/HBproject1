@@ -17,12 +17,12 @@
 	
 	<div class="submenu">
 		<div class="eachmenu">
-			<a href="init.do">개요</a>
-			<a href="hello.do">인사말</a>
-			<a href="year.do">연혁</a>	
-			<a href="lecture.do">교수진 소개</a>
-			<a href="admission.do">입학 안내</a>
-			<a href="map.do">찾아오는 길</a>
+			<a href="init.korean">개요</a>
+			<a href="hello.korean">인사말</a>
+			<a href="year.korean">연혁</a>	
+			<a href="lecture.korean">교수진 소개</a>
+			<a href="admission.korean">입학 안내</a>
+			<a href="map.korean">찾아오는 길</a>
 		</div>
 
 	</div>

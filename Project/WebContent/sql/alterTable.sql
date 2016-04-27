@@ -2,12 +2,22 @@
 ALTER TABLE REGISTER MODIFY JOBINFO VARCHAR2(350);
 ALTER TABLE REGISTER MODIFY CONTENT VARCHAR2(200) NULL;
 
---강의실 테이블의 curno, tchno가 널값 허용되게 변경
-alter table sturoom modify(curNo null, tchNo null);
-commit
-
 --강사가 강의실 번호를 참조 받음
 alter table teacher add (roomno number(5));
 ALTER TABLE teacher
 ADD FOREIGN KEY (roomno) REFERENCES sturoom(roomno);
 
+-- stuCur 테이블 curriculum으로 이름 변경
+rename studyCur to curriculum;
+
+-- 커리큘럼 테이블 null값 허용
+alter table curriculum modify(curNo null, tchNo null);
+
+-- 학생 테이블 행정부 번호 컬럼 삭제
+alter table student drop column admNo;
+
+-- register 테이블 submitValue -> file1로 변경
+alter table register rename column submitValue to file1;
+
+-- register 테이블 file2컬럼 추가
+alter table register add(file2 VARCHAR2(10));
