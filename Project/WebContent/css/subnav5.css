@@ -1,0 +1,58 @@
+	.aside1{
+		margin-top: 10px;
+	}
+	.login>form>div{
+		width: 130px;
+		margin: 10px 0px;
+		margin-left: 10px;
+	}
+	.login>form>div+div{
+		width: 50px;
+		height: 44px;
+		margin-left: 0px;
+	}
+	.aside1 input{
+		width: 120px;
+	}
+	.login div{
+		display: inline-block;
+		float: left;
+	}
+	.login button{
+		margin: 2px auto;
+		width: 100%;
+		height: 44px;
+	}
+	.aside1>a{
+		width: 50pt;
+		margin: 10px;
+		display: block;
+		clear: both;
+		text-decoration: none;
+		text-align: center;
+		color: black;
+		font-size: 10pt;
+	}
+	.submenu{
+		width: 170px;
+		margin: 20px 10px;
+		border-top: solid 4px #06c;
+		border-bottom: solid 4px #06c;
+		background-color: white;
+		position: absolute;
+	}
+	.submenu a{
+		margin: 10px 10px;
+		text-decoration: none;
+		display: block;
+		color: black;
+	}
+	.submenu a:hover{
+		background-color: #CCE5FF;
+		color: #69f;
+		font-style: oblique;
+	}
+	
+	.content{
+		margin: 20px auto;
+	}

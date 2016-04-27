@@ -1,11 +1,13 @@
 	$(document).ready(function(){
 		$('.nav_sub').css('display','none');
 		
-		$('.nav_main a').mouseover(function(){
-			$('.nav_sub').slideDown(800);
+		$('.nav').mouseover(function(){
+			$('.nav_sub').stop().slideDown(400);
 			return false;
 		});
-		$('.nav_sub').mouseleave(function(){
-			$('.nav_sub').slideUp(800);
-		});
+
+		$('.nav').mouseleave(function(){
+			$('.nav_sub').stop().slideUp(400);
+		}).stop();
+
 	});//ready end

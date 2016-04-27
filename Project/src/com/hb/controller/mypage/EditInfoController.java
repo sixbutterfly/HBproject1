@@ -13,6 +13,6 @@ public class EditInfoController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		req.getRequestDispatcher("mypage/guest/editInfo.jsp").forward(req, resp);
+		req.getRequestDispatcher("mypage/editInfo.jsp").forward(req, resp);
 	}
 }

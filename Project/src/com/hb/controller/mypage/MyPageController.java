@@ -15,6 +15,7 @@ public class MyPageController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		req.setAttribute("level", 0);
+
 		req.getRequestDispatcher("mypage/mypage.jsp").forward(req, resp);
 	}
 }
