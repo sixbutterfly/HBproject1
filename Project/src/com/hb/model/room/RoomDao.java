@@ -60,8 +60,6 @@ public class RoomDao {
 				pstmt.setInt(1, Integer.parseInt(tchlist[i]));
 				pstmt.setInt(2, Integer.parseInt(roomlist[i]));
 				result = pstmt.executeUpdate();
-				System.out.println(Integer.parseInt(tchlist[i]));
-				System.out.println(Integer.parseInt(roomlist[i]));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

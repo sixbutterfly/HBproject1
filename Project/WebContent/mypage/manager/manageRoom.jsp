@@ -162,12 +162,15 @@
 							var roomlist = [];
 							$('.roomselect').each(function(idx,item){
 								roomlist[idx] = $('#tch'+idx+' option:selected').attr("value");
-								console.log(roomlist[idx]);
 							});
 							$.ajax({
 								    "url" : "assignroom.korean",
 								    "data" : { "tchlist" : tchlist, "roomlist" : roomlist},
 								    "success" : function(data) {
+								    	var str = data;
+								    	$('.roomlist').each(function(idx,item){
+								    		console.log($(item).text(str.charAt(idx)));
+										});
 								        alert("썩쎄쓰!");
 								    },
 								    "error" : function() {
