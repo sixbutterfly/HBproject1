@@ -1,3 +1,5 @@
+<%@page import="com.hb.model.room.RoomDto"%>
+<%@page import="com.hb.model.teacher.TeacherDto"%>
 <%@page import="com.hb.model.student.StuDto"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -84,30 +86,38 @@
 	margin: 0 auto;
 }
 </style>
+<%
+	ArrayList<StuDto> slist = (ArrayList<StuDto>)request.getAttribute("slist");
+	ArrayList<TeacherDto> tlist = (ArrayList<TeacherDto>)request.getAttribute("tlist");
+%>
 <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
 <script type="text/javascript" src="js/menu.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-				$(".stucheck").hide();
-				$("#delbtn").hide();
-				//탭메뉴
-				$(".room .tab_content").hide();
-				$(".room .tab_content:first").show();
+						$(".stucheck").hide();
+						$("#delbtn").hide();
+						$(".roomselect").hide();
+						//탭메뉴
+						$(".room .tab_content").hide();
+						$(".room .tab_content:first").show();
 
-				$(".room ul.tabs li").click(
-						function() {
-							$(".room ul.tabs li").removeClass("active").css("color", "#333");
-							$(this).addClass("active").css("color","darked");
-							$(".room .tab_content").hide();
-							var activeTab = $(this).attr("id");
-							$("#" + activeTab + "_content").fadeIn();
-						});
+						$(".room ul.tabs li").click(
+								function() {
+									$(".room ul.tabs li").removeClass("active")
+											.css("color", "#333");
+									$(this).addClass("active").css("color",
+											"darked");
+									$(".room .tab_content").hide();
+									var activeTab = $(this).attr("id");
+									$("#" + activeTab + "_content").fadeIn();
+								});
 						//학생 배정
 						//추가하기
-						$("#add").click(function() {
-							window.open("addstu.korean", "학생 배정",
+						$("#add").click(
+								function() {
+									window.open("addstu.korean", "학생 배정",
 											"width=500 height=500");
-						});
+								});
 						//수정하기
 						$("#modify").click(function() {
 
@@ -119,13 +129,13 @@
 							$("#delbtn").show();
 						});
 						//학생 삭제 완료
-						$("#delok").click(function(){
+						$("#delok").click(function() {
 							$("#initbtn").show();
 							$(".stucheck").hide();
-							$(".stucheck").attr("checked",false);
+							$(".stucheck").attr("checked", false);
 							$("#delbtn").hide();
 						});
-						$("#cancle").click(function(){
+						$("#cancle").click(function() {
 							$("#initbtn").show();
 							$("#stucheck").hide();
 							$("#delbtn").hide();
@@ -133,19 +143,42 @@
 						$("#room").change(function() {
 							console.log("뿌뿌");
 						});
+
 						//강사 배정
 						$("#btn3").hide();
-						$("#btn2")
-								.click(
-										function() {
-											$("#roomselect")
-													.html(
-															"<select name=\"room\"><option value=\"1\">1강의실</option><option value=\"2\">2강의실</option><option value=\"3\">3강의실</option></select>");
+						//배정하기
+						$("#btn2").click(function() {
+											$(".roomlist").hide();
+											$(".roomselect").show();
 											$("#btn3").show();
 											$(this).hide();
 										});
+						//수정 완료
 						$("#btn3").click(function() {
-							$("#roomselect").html("1강의실");
+							var tchlist = [];
+							$('.tchlist').each(function(idx,item){
+								tchlist[idx]= $(item).text();
+							});
+							var roomlist = [];
+							$('.roomselect').each(function(idx,item){
+								roomlist[idx] = $('#tch'+idx+' option:selected').attr("value");
+							});
+							$.ajax({
+								    "url" : "assignroom.korean",
+								    "data" : { "tchlist" : tchlist, "roomlist" : roomlist},
+								    "success" : function(data) {
+								    	var str = data;
+								    	$('.roomlist').each(function(idx,item){
+								    		console.log($(item).text(str.charAt(idx)));
+										});
+								        alert("썩쎄쓰!");
+								    },
+								    "error" : function() {
+								        alert("에러났소!");
+								    }
+							});
+							$(".roomlist").show();
+							$(".roomselect").hide();
 							$("#btn2").show();
 							$(this).hide();
 						});
@@ -159,8 +192,8 @@
 		<!-- nav -->
 		<%@include file="/templet/nav.jsp"%>
 		<!-- aside1 -->
-		<%@include file="/templet/subnav5.jsp" %>
-		
+		<%@include file="/templet/subnav5.jsp"%>
+
 		<!-- content start -->
 		<div class="room">
 			<h1>강의실 관리</h1>
@@ -186,18 +219,20 @@
 								<th>배정강의실</th>
 							</tr>
 							<tr>
-							<%
-								ArrayList<StuDto> list = (ArrayList<StuDto>)request.getAttribute("list");
-								for(StuDto bean : list){
-							%>
-									<td><%=bean.getStuno()%></td>
-									<td><%=bean.getStuname()%></td>
-									<td><%=bean.getCurname()%></td>
-									<td><%=bean.getCurlocation()%></td>
-								<td><input type="checkbox" class="stucheck"/></td>
+								<%
+									for(StuDto bean : slist){
+								%>
+								<td><%=bean.getStuno()%></td>
+								<td><%=bean.getStuname()%></td>
+								<td><%=bean.getCurname()%></td>
+								<td><%=bean.getCurlocation()%></td>
+								
+								<td><input type="checkbox" class="stucheck" /></td>
 							</tr>
-							
-							<%	}	%>
+
+							<%
+								}
+							%>
 						</table>
 						<div id="initbtn">
 							<button id="add">추가하기</button>
@@ -218,10 +253,30 @@
 								<th>배정강의실</th>
 							</tr>
 							<tr>
-								<td>1</td>
-								<td>정현영</td>
-								<td id="roomselect">강의실1</td>
+								<%
+									int tchidx = 0;
+									for(TeacherDto bean : tlist){
+								%>
+								<td class="tchlist"><%=bean.getTchno()%></td>
+								<td><%=bean.getTchname()%></td>
+								<td class="roomlist"><%=bean.getRoomno()%></td>
+								<td class="roomselect">
+									<select id = "tch<%=tchidx++%>">
+								<%ArrayList<RoomDto> rlist = (ArrayList<RoomDto>)request.getAttribute("rlist"); 
+									for(RoomDto bean2 : rlist){
+										%>
+										<option value = "<%=bean2.getRoomno()%>"><%=bean2.getRoomno() %></option>
+								<%
+									}
+								%>
+									</select>
+								</td>
+								<td><input type="checkbox" class="stucheck" /></td>
 							</tr>
+
+							<%
+								}
+							%>
 						</table>
 						<button id="btn2">강사배정</button>
 						<button id="btn3">수정완료</button>
