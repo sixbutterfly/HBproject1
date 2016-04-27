@@ -1,3 +1,4 @@
+<%@page import="com.hb.model.sturoom.sturoomDto"%>
 <%@page import="com.hb.model.curriculum.studyCurDto"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -20,31 +21,22 @@
 	.content>div>span{
 		font-size: 15pt;
 	}
-	.content div{
+	.content>div{
 		margin: 20px;
 		border-bottom: 3px solid #ddd;
 		color: #666;
 	}
-	.table{
-		width: 700px;
-		margin: 10px auto;
-	}
-	.table th{
-		background-color: rgba(204,229,255,0.5);
-	}
-	.table tr{
-		text-align: center;
-	}
-	.table tr a{
-		text-decoration: none;
+	#cur>ul{
+		margin: 10px 20px;
+		font-size: 15pt;
 		color: black;
+		list-style: square;
 	}
-	.table tr a:hover{
-		color: #06c;
-	}
+	
 	.content button{
+		display: inline-block;
 		width: 50px;
-		margin: 10px 350px;
+		margin: 10px;
 	}
 </style>
 <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
@@ -62,25 +54,37 @@
 		<!-- content start -->
 			<div>
 				<p>MY PAGE</p>
-				<span>커리큘럼 관리</span>
+				<span>커리큘럼 추가</span>
 			</div>
 			
-			<table class="table">
-				<tr><th>과정명</th><th>교육 시작기간</th><th>교육 종료기간</th><th>배정인원</th></tr>
-				<%
-					ArrayList<studyCurDto> list = (ArrayList<studyCurDto>)request.getAttribute("list");
-					for(studyCurDto dto : list){
-				%>
-					<tr>
-						<td><a href="curdetail.korean?curNo=<%=dto.getCurNo() %>"><%=dto.getCurName() %></a></td>
-						<td><%=dto.getCurDate() %></td>
-						<td><%=dto.getCurDateEnd() %></td>
-						<td><%=dto.getCurSupply() %></td>
-					</tr>
-				<%} %>
-			</table>
+			<%
+				ArrayList<sturoomDto> list = (ArrayList)request.getAttribute("list");
+			%>
 			
-			<a href="curadd.korean"><button type="button">추가</button></a>
+			<form action="addcurriculum.korean">
+			<div id="cur">
+				<ul>
+					<li>커리큘럼 명 : <input type="text" name="curName"/></li>
+					<li>교육 시작날짜 : <input type="date" name="curDate"/></li>
+					<li>교육 장소 : <select name="curLocation">
+									<%
+										for(sturoomDto bean : list){
+											if(bean.getCurNo()==0){
+									%>
+										<option value="<%=bean.getRoomNo() %>강의실"><%=bean.getRoomNo() %>강의실</option>
+									<%		}
+										}	%>
+									</select></li>
+					<li>교육 인원 : <input type="number" name="curSupply" min="0" max="20"/></li>
+				</ul>
+				<button type="submit">추가</button>
+				<button type="reset">취소</button>
+				<a href="curriculum.korean"><button type="button">목록</button></a>
+			</div>
+			</form>
+			
+			
+			
 			
 		<!-- content end -->
 		

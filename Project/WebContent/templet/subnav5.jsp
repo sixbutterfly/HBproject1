@@ -78,7 +78,7 @@
 				<a href="teacher.do">강사 관리</a>
 			</div>
 			<div class="manager">
-				<a href="curriculum.do">커리큘럼 관리</a>
+				<a href="curriculum.korean">커리큘럼 관리</a>
 			</div>
 		</div>
 

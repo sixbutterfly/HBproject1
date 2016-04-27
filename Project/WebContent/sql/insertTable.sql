@@ -26,24 +26,25 @@ insert into member values (mem_seq.nextval, 'admin', 'admin', 'admin', 'address'
 --행정부 추가
 insert into admin values (adm_seq.nextval, 'admin', '1');
 
---학생 추가
+--학생 추가 (stuNo,memNo,roomNo,admNo 순)
 insert into student values (stu_seq.nextval, 3, 1, 1);
 
 --강사 추가
 insert into teacher values (tch_seq.nextval, 2, '한국인');
 
---강의실 추가
-insert into sturoom values (room_seq.nextval, 1, 1);
+--강의실 추가 (roomNo,curNo,tchNo 순)
+insert into sturoom values (room_seq.nextval, null, 2);
+insert into sturoom values (room_seq.nextval, null, null);
 
 --커리큘럼 추가
-insert into studycur values (cur_seq.nextval, '전자정부프레임워크','1강의실',sysdate,20);
-insert into studycur values (cur_seq.nextval, '한국인프레임워크','2강의실',sysdate,20);
-insert into studyCur (curNo, curName, curLocation, curDate, curSupply) values (cur_seq.nextval,'자바개발자과정','건국대점','2016/05/01',20);
+insert into studycur values (cur_seq.nextval, '전자정부프레임워크', '1강의실', '2016/04/01',20);
+insert into studycur values (cur_seq.nextval, '한국인프레임워크', '2강의실', '2016/04/01',20);
+insert into studyCur values (cur_seq.nextval, '자바개발자과정', '3강의실', '2016/05/01',20);
 
 --실험은 여기서 하세요---------------
 select * from studyCur;
 select curDateS, last_day(curDateS) from studyCur;
-
+select * from sturoom;
 
 --끝난 실험은 삭제할 것!----------------
 

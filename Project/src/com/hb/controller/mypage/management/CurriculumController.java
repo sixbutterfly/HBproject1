@@ -9,17 +9,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.hb.dao.studyCurDao;
-import com.hb.dto.studyCurDto;
+import com.hb.model.curriculum.studyCurDao;
+import com.hb.model.curriculum.studyCurDto;
 
-@WebServlet("/curriculum.do")
+@WebServlet("/curriculum.korean")
 public class CurriculumController extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
 		studyCurDao dao = new studyCurDao();
-		ArrayList<studyCurDto> list = dao.sellectAll();
+		ArrayList<studyCurDto> list = dao.selectAll();
 		req.setAttribute("list", list);
 		req.getRequestDispatcher("mypage/manager/manageCurriculum.jsp").forward(req, resp);
 	}

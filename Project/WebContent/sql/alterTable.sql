@@ -1,0 +1,1 @@
+alter table sturoom modify(curNo null, tchNo null);
