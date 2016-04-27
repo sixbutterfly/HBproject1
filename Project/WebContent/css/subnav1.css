@@ -1,0 +1,23 @@
+	.submenu{
+		width: 170px;
+		margin: 20px 10px;
+		border-top: solid 4px #06c;
+		border-bottom: solid 4px #06c;
+		background-color: white;
+		position: absolute;
+	}
+	.eachmenu a{
+		margin: 10px 10px;
+		text-decoration: none;
+		display: block;
+		color: black;
+	}
+	.eachmenu>a:hover{
+		background-color: #CCE5FF;
+		color: #69f;
+		font-style: oblique;
+	}
+	
+	.content{
+		margin: 20px auto;
+	}

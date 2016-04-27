@@ -14,9 +14,9 @@ $(document).ready(function(){
 				},
 				"success":function(data){
 					if(data[0].result){
-						var st = "<div>"+data[0].id+"占쎈뻷 占쎌넎占쎌겫占쎈�占쎈빍占쎈뼄</div>";
+						var st = "<div>"+data[0].id+"님 환영합니다.</div>";
 						st +="<div><a href='/Project/login/logout.korean'><span>logout</span></a></div>";
-						$(".grid2").html(st);
+						$(".login").html(st);						
 					}
 					
 				}

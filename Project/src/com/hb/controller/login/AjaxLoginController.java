@@ -24,13 +24,7 @@ public class AjaxLoginController extends HttpServlet {
 			request.getSession().setAttribute("login", true);
 			request.getSession().setAttribute("id", id);
 			request.getSession().setMaxInactiveInterval(900);
-			String sessionId = request.getSession().getId();
-			int sessionTime = request.getSession().getMaxInactiveInterval();
-			long sessionLasttime = request.getSession().getLastAccessedTime();
-			
-			System.out.println("sessionId:"+sessionId+"/sessionTime:"+sessionTime
-								+"/sessionLasttime:"+sessionLasttime);
-			
+		
 			request.setAttribute("result", true);
 			request.setAttribute("id", id);
 			request.getRequestDispatcher("/login/json.jsp").forward(request, response);

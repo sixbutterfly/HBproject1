@@ -23,7 +23,7 @@
 		<!-- nav -->
 		<%@include file="/templet/nav.jsp" %>
 		<!-- aside1 -->
-		<%@include file="/templet/aside1.jsp" %>
+		<%@include file="/templet/subnav5.jsp" %>
 		
 		<!-- content start -->
 			<h1>성적 입력</h1>

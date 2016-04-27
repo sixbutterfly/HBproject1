@@ -2,8 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>회원가입 동의</title>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/grid.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/header.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav.css"/>
@@ -49,8 +49,8 @@ button{
 }
 
 </style>
-<script type="text/javascript" src="../js/jquery-1.12.2.min.js"></script>
-<script type="text/javascript" src="../js/menu.js"></script>
+<script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
+<script type="text/javascript" src="js/menu.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('button').click(function(){
@@ -80,16 +80,16 @@ button{
 		<!-- nav -->
 		<%@include file="/templet/nav.jsp" %>
 		<!-- aside1 -->
-		<%@include file="/templet/aside1.jsp" %>
+		<%@include file="/templet/subnav0.jsp" %>
 	<div>
 		<p>회원가입동의</p>
 		<hr />
 	</div>
 	<div>
-		<img src="joinimage/step1.gif"/>
+		<img src="join/joinimage/step1.gif"/>
 	</div>
 	<div>
-		<p><b><img class="btn" src="joinimage/btn_r.gif">이용약관</b></p>
+		<p><b><img class="btn" src="join/joinimage/btn_r.gif">이용약관</b></p>
 		<textarea rows="8" cols="100" readonly="readonly">
 제1장 총칙
 제1조 [목적]
@@ -291,7 +291,7 @@ button{
 “한빛교육센터”는 분쟁이 발생하였을 경우에 “이용자”가 제기하는 정당한 의견이나 불만을 반영하여 적절하고 신속한 조치를 취합니다. 다만, 신속한 처리가 곤란한 경우에 “한빛교육센터”는 “이용자”에게 그 사유와 처리일정을 통보합니다.
 </textarea><p/>
 <input type="checkbox" class="chkbox" id="agree1" value="y"/><b>위 개인정보 취급방침에 동의합니다.</b>
-	<p><b><img class="btn" src="joinimage/btn_r.gif">개인정보 보호정책</b></p>
+	<p><b><img class="btn" src="join/joinimage/btn_r.gif">개인정보 보호정책</b></p>
 		<textarea rows="8" cols="100" readonly="readonly">
 개인정보의 수집범위
 한빛교육센터은 별도의 회원가입 절차 없이 대부분의 컨텐츠에 자유롭게 접근할 수 있습니다. 한빛교육센터의 회원제 서비스를 이용하시고자 할 경우 다음의 정보를 입력해주셔야 하며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.

@@ -17,7 +17,7 @@ public class MemberDao {
 	public MemberDao() {
 		conn = DB.getConnection();
 	}
-	
+
 	public boolean loginCk(String id, String pw) {
 		System.out.println("login id:"+id+",pw:"+pw);
 		String sql = "select count(*) as cnt from member where memid=? and mempw=?";
@@ -37,4 +37,5 @@ public class MemberDao {
 		if(result==1)return true;
 		return false;
 	}
+		
 }
