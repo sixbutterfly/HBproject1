@@ -21,3 +21,7 @@ column memname format a6;
 column mempw format a15;
 column memaddress format a15;
 column mememail format a15;
+-- curriculum table
+column curname format a20;
+column curlocation format a15;
+column c format a15;

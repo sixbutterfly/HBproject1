@@ -1,4 +1,4 @@
-package com.hb.controller.register;
+package com.hb.resistPage;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -45,7 +45,7 @@ public class RegisterDao {
 		try {
 			memno = getMemno();
 			String sql="INSERT INTO REGISTER (REGNO, MEMNO, NAME, EMAIL, TEL, GUBUN, JOB, JOBINFO, TIME, PAY, CONTENT, PASSWORD, FILE1, FILE2) VALUES " +
-					"(REG_SEQ.NEXTVAL, "+memno+", ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+					"(REGNO_SEQ.NEXTVAL, "+memno+", ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1,	name);
 			pstmt.setString(2,	email);
@@ -59,8 +59,7 @@ public class RegisterDao {
 			pstmt.setString(10,	password);
 			pstmt.setString(11,	file1);
 			pstmt.setString(12,	file2);
-			System.out.println(jobinfo);
-			// result = pstmt.executeUpdate();
+			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

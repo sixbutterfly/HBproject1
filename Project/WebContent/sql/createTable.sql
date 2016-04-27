@@ -1,7 +1,6 @@
-CREATE TABLE admin
+CREATE TABLE mangement
 (
 	admNo                 NUMBER(5)  NOT NULL ,
-	admName               VARCHAR2(30)  NULL ,
 	memNo                 NUMBER(5)  NOT NULL 
 );
 

@@ -23,7 +23,7 @@
 		  'controls':false,
 		  'slideWidth':750
 		  });
-	});//ready end
+	}); //ready end
 </script>
 </head>
 <body>
@@ -34,18 +34,14 @@
 		<%@include file="templet/nav.jsp" %>
 		<!-- aside1 -->
 		<%@include file="templet/subnav0.jsp" %>
-		
 		<!-- content start -->
 			<ul class="bxslider">
 				<li><img alt="mainbenner1" src="<%=request.getContextPath() %>/imgs/mainbenner1.jpg"></li>
 				<li><img alt="mainbenner2" src="<%=request.getContextPath() %>/imgs/mainbenner2.jpg"></li>
 				<li><img alt="mainbenner3" src="<%=request.getContextPath() %>/imgs/mainbenner3.jpg"></li>
 				<li><img alt="mainbenner4" src="<%=request.getContextPath() %>/imgs/mainbenner4.jpg"></li>
-			</ul>			
-
-			<br/>
+			</ul>
 			공지사항 게시판 등
-			
 		<!-- content end -->
 		
 		<!-- aside2 -->
