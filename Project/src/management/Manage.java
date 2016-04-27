@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.hb.model.login.MemberDao;
+import com.hb.model.login.MemberDto;
+
 
 @WebServlet("/mglevel.do")
 public class Manage extends HttpServlet{

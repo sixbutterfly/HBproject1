@@ -3,7 +3,7 @@
 		<div class="nav_main grid12">
 			<ul>
 				<li><a href="init.do">센터소개</a></li>
-				<li><a href="#">커리큘럼</a></li>
+				<li><a href="registerInfo.korean">커리큘럼</a></li>
 				<li><a href="#">취업정보</a></li>
 				<li><a href="#">고객센터</a></li>
 				<li><a href="mypage.do">마이페이지</a></li>
@@ -21,7 +21,7 @@
 				<li><a href="map.do">찾아오는 길</a></li>
 			</ul>
 			<ul>
-				<li><a href="#">취업교육과정</a></li>
+				<li><a href="registerInfo.korean">취업교육과정</a></li>
 			</ul>
 			<ul>
 				<li><a href="#">채용 정보</a></li>
