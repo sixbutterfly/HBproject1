@@ -268,7 +268,7 @@
 		<br/>
 		<br/>
 		<div class="resist">
-			<a href="<%=request.getContextPath() %>/curriculum/resistclassPage.jsp">
+			<a href="<%=request.getContextPath() %>/curriculum/registerclassPage.jsp">
 				<img src="<%=request.getContextPath() %>/imgs/btn.jpg">
 			</a>
 		</div>

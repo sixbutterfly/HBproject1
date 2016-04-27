@@ -47,10 +47,13 @@
 		margin-top: 10px;
 		font-size: 14pt;
 	}
-	.resist {
+	.register {
 		margin-bottom: 10px;
 		margin-left: 42%;
 		margin-top: 0px;
+	}
+	.register a {
+		text-decoration: none;
 	}
 </style>
 </head>
@@ -95,8 +98,8 @@
 		<tr><td><strong>교육비용</strong></td><td> : </td><td>전화/온라인 문의</td></tr>
 		<tr><td><strong>문의전화</strong></td><td> : </td><td>02-707-1480</td></tr>
 		</table>
-		<div class="resist">
-			<a href="<%=request.getContextPath() %>/curriculum/resistclassPage.jsp">
+		<div class="register">
+			<a href="<%=request.getContextPath() %>/curriculum/registerclassPage.jsp">
 				<img src="<%=request.getContextPath() %>/imgs/btn.jpg">
 			</a>
 			<a href="<%=request.getContextPath() %>/curriculum/javacurriculumPage.jsp">

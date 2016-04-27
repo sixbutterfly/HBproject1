@@ -15,7 +15,88 @@
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-1.12.2.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/menu.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery.bxslider.min.js"></script>
-
+<script type="text/javascript">
+	function jobinfo() {
+		var jobinfo = document.getElementsByName("jobinfo");
+		var result = "";
+		for ( var i = 0; i < jobinfo.length; i++) {
+			if (jobinfo[i].checked) {
+				if (result=="" || result==null) {
+					result += jobinfo[i].value;
+				} else {
+					result += ", "+jobinfo[i].value;
+				}
+			}
+		}
+		$('input[name="jobinfo"]').val(result);
+	}
+	// 전화번호 입력란에 숫자 0-9 이외의 값이 입력되면 바로 삭제하는 기능
+	$(document).on("keyup", "#tel2", function() {
+		$(this).val($(this).val().replace(/[^0-9]/gi, ""));
+	});
+	$(document).on("keyup", "#tel3", function() {
+		$(this).val($(this).val().replace(/[^0-9]/gi, ""));
+	});
+	
+	$(document).ready(function() {
+		$('#email3').change(function(){
+			$('#email3 option:selected').each(function() {
+				if($(this).val() == 'self'){
+					$('#email2').val();
+					$('#email2').attr("hidden", false);
+				} else if ($(this).val == 'select'){
+					$('#email2').val();
+					$('#email2').attr("hidden", false);
+				} else {
+					$('#email2').val($(this).text());
+					$('#email2').attr("hidden", true);
+				}
+			});
+		});
+		$('#submit').click(function(){
+			jobinfo();
+			if($('#name').val()==""||$('#name').val()==null){
+	            alert("이름를 입력하세요!");
+	            $('#name').focus();
+	            return false;
+	 		}else if(!$('#agreed').is(':checked')){
+	            alert("약관에 동의하셔야 수강 신청이 가능합니다.");
+	            $('#agreed').focus();
+				return false;
+			}else if($('#email1').val()==""||$('#email1').val()==null||$('#email2').val()==""||$('#email2').val()==null){
+	            alert("메일 주소를 입력하세요!");
+	            return false;
+			}else if($('#tel1').val()==""||$('#tel1').val()==null){
+	            alert("전화번호를 입력하세요!");
+	            $('#tel1').focus();
+	            return false;
+	 		}else if($('#tel2').val()==""||$('#tel2').val()==null){
+	            alert("전화번호를 입력하세요!");
+	            $('#tel2').focus();
+	            return false;
+	 		}else if($('#tel3').val()==""||$('#tel3').val()==null){
+	            alert("전화번호를 입력하세요!");
+	            $('#tel3').focus();
+	            return false;
+	 		}else if(!($('#gubun1').is(':checked')||$('#gubun2').is(':checked')||$('#gubun3').is(':checked'))){
+	            alert("구분(납부 방식)을 선택하세요!");
+	            $('#gubun1').focus();
+	            return false;
+			}else if($('#job').val()==""||$('#job').val()==null){
+	            alert("회사명을 입력하세요!");
+	            $('#job').focus();
+	            return false;
+	 		}else if(!($('#jobinfo1').is(':checked')||$('#jobinfo2').is(':checked')||$('#jobinfo3').is(':checked')||$('#jobinfo4').is(':checked')||$('#jobinfo5').is(':checked')||$('#jobinfo6').is(':checked'))){
+	            alert("관련 항목을 1개 이상 선택하세요!");
+	            return false;
+			}else if($('#pw').val()==""||$('#=w').val()==null){
+	            alert("비밀번호를 입력하세요!");
+	            $('#pw').focus();
+	            return false;
+			}else{}
+		});
+	});
+</script>
 <style type="text/css">
 	hr {
 		width: 100%;
@@ -92,7 +173,7 @@
 						정규교육신청
 					</span>
 				</a> &gt;
-				<a href="<%=request.getContextPath() %>/curriculum/resistclassPage.jsp">
+				<a href="<%=request.getContextPath() %>/curriculum/registerclassPage.jsp">
 					<span>
 						쓰기
 					</span>
@@ -101,13 +182,14 @@
 		</div>
 		<hr/>
 		
-		<form action="/resistclassController.korean">
+		<form action="register.korean" method="post">
 		<ul id="ul">
 			<li><label id="menu">지원과정</label><div id="answer"><span>자바 프로그래밍 </span></div></li>
-			<li><label id="menu">이름</label><div id="answer"><input type="text" maxlength="15" name="name"></div></li>
-			<li><label id="menu">이메일</label><div id="answer"><input type="text" maxlength="15" name="email1">
-				@	<input type="text" size="15" name="email1"> <select name="email1">
-											<option value="직접입력">직접입력
+			<li><label id="menu">이름</label><div id="answer"><input type="text" maxlength="15" name="name" id="name"></div></li>
+			<li><label id="menu">이메일</label><div id="answer"><input type="text" maxlength="15" name="email1" id="email1">
+				@	<input type="text" size="15" name="email2" id="email2"> 
+										<select name="email3" id="email3">
+											<option value="self">직접입력
 											<option value="naver.com">naver.com
 											<option value="chol.com">chol.com
 											<option value="dreamwiz.com">dreamwiz.com
@@ -125,24 +207,23 @@
 											<option value="netian.com">netian.com
 											<option value="paran.com">paran.com
 											<option value="yahoo.com">yahoo.com
-											<option value="yahoo.co.kr">yahoo.co.kr
 										</select></div></li>
 			<li>
-				<label id="menu" name="tel">
+				<label id="menu">
 					연락처
 				</label>
 				<div id="answer">
-					<select>
-						<option value="010">010
-						<option value="011">011
-						<option value="016">016
-						<option value="017">017
-						<option value="018">018
-						<option value="019">019
-						<option value="070">070
+					<select name="tel1" id="tel1">
+						<option value="10">010
+						<option value="11">011
+						<option value="16">016
+						<option value="17">017
+						<option value="18">018
+						<option value="19">019
+						<option value="70">070
 					 </select>
-					 -<input type="tel" maxlength="4" size="11">
-					 -<input type="tel" maxlength="4" size="11">
+					 -<input type="tel" maxlength="4" size="11" name="tel2" id="tel2">
+					 -<input type="tel" maxlength="4" size="11" name="tel3" id="tel3">
 				</div>
 			</li>
 			<li>
@@ -150,9 +231,9 @@
 					구분
 				</label>
 				<div id="answer">
-					<input type="radio" id="r1" value="대학생, 일반" name="gubun"><lable for="r1">대학생, 일반</lable>
-					<input type="radio" id="r2" value="회사에서 교육비납부" name="gubun"><lable for="r2">회사에서 교육비납부</lable>
-					<input type="radio" id="r3" value="개인이 교육비납부(재직자)" name="gubun"><lable for="r3">개인이 교육비납부(재직자)</lable>
+					<input type="radio" id="gubun1" value="대학생, 일반" name="gubun"><label for="gubun1">대학생, 일반</label>
+					<input type="radio" id="gubun2" value="회사에서 교육비납부" name="gubun"><label for="gubun2">회사에서 교육비납부</label>
+					<input type="radio" id="gubun3" value="개인이 교육비납부(재직자)" name="gubun"><label for="gubun3">개인이 교육비납부(재직자)</label>
 				</div>
 			</li>
 			<li>
@@ -160,7 +241,7 @@
 					회사명
 				</label>
 				<div id="answer">
-				<input type="text" maxlength="40" size="91">
+				<input type="text" maxlength="40" size="91" name="job" id="job">
 				</div>
 			</li>
 			<li>
@@ -168,19 +249,19 @@
 					관련항목
 				</label>
 				<div id="answer">
-					<input type="checkbox" value="회사직원수가 300명 미만"><label><span>회사직원수가 300명 미만</span></label><br/>
-				 	<input type="checkbox" value="우선지원대상기업에 근무하는 재직자"><label><span>우선지원대상기업에 근무하는 재직자</span></label><br/>
-					<input type="checkbox" value="파견근로자"><label><span>파견근로자</span></label><br/>
-					<input type="checkbox" value="만 40세 이상인자(재직중)"><label><span>만 40세 이상인자(재직중)</span></label><br/>
-					<input type="checkbox" value="회사직원수가 300명 이상"><label><span>회사직원수가 300명 이상</span></label><br/>
-					<input type="checkbox" value="1년이하 계약직"><label><span>1년이하 계약직</span></label></div></li>
+					<input type="checkbox" value="회사직원수가 300명 미만" name="jobinfo" id="jobinfo1"><label for="jobinfo1"><span>회사직원수가 300명 미만</span></label><br/>
+				 	<input type="checkbox" value="우선지원대상기업에 근무하는 재직자" name="jobinfo" id="jobinfo2"><label for="jobinfo2"><span>우선지원대상기업에 근무하는 재직자</span></label><br/>
+					<input type="checkbox" value="파견근로자" name="jobinfo" id="jobinfo3"><label for="jobinfo3"><span>파견근로자</span></label><br/>
+					<input type="checkbox" value="만 40세 이상인자(재직중)" name="jobinfo" id="jobinfo4"><label for="jobinfo4"><span>만 40세 이상인자(재직중)</span></label><br/>
+					<input type="checkbox" value="회사직원수가 300명 이상" name="jobinfo" id="jobinfo5"><label for="jobinfo5"><span>회사직원수가 300명 이상</span></label><br/>
+					<input type="checkbox" value="1년이하 계약직" name="jobinfo" id="jobinfo6"><label for="jobinfo6"><span>1년이하 계약직</span></label></div></li>
 			<li>
 				<label id="menu">
 					교육시간
 				</label>
 				<div id="answer">
-				<select name="pay">
-					<option value="09:30~18:00">09:30~18:00
+				<select name="time">
+					<option value="09:00~18:00">09:00~18:00
 					<option value="19:30~22:30">19:30~22:30
 					<option value="주말반(토,일)">주말반(토,일)
 				</select>
@@ -198,10 +279,10 @@
 				</select>
 				</div>
 			</li>
-			<li><label id="menu">내용</label><div id="answer"><textarea rows="10" cols="80" name="naeyong"></textarea></div></li>
-			<li><label id="menu">비밀번호</label><div id="answer"><input type="password" name="password"></div></li>
-			<li><label id="menu">파일첨부#1</label><div id="answer"><input type="file" name="file1"></div></li>
-			<li><label id="menu">파일첨부#2</label><div id="answer"><input type="file" name="file2"></div></li>
+			<li><label id="menu">내용</label><div id="answer"><textarea rows="10" cols="80" name="content"></textarea></div></li>
+			<li><label id="menu">비밀번호</label><div id="answer"><input type="password" name="password" id="pw"></div></li>
+			<li><label id="menu">파일첨부#1</label><div id="answer"><input type="file" name="file1" id="file1"></div></li>
+			<li><label id="menu">파일첨부#2</label><div id="answer"><input type="file" name="file2" id="file2"></div></li>
 		</ul>
 		<br/><p id="p"><strong>개인정보보호를 위한 이용자 동의사항(자세한 내용은 개인정보 취급방침을 확인하시기 바랍니다.)</strong></p>
 		<textarea rows="10" cols="80" readonly="readonly" id="textarea">
@@ -247,9 +328,9 @@
 ② 귀하의 동의를 받아 보유하고 있는 거래정보 등을 귀하께서 열람을 요구하는 경우 한빛교육센터은 지체없이 그 열람,확인 할 수 있도록 조치합니다.
 	
 		</textarea>
-		<p><input type="checkbox">위 개인정보 취급방침에 동의합니다.</p>
+		<p><input type="checkbox" name="agreed" id="agreed"><label for="agreed">위 개인정보 취급방침에 동의합니다.</label></p>
 		<div class="button">
-			<button type="submit">확인</button>
+			<button type="submit" id="submit" onClick="jobinfo()">확인</button>
 			<button type="reset">취소</button>
 		</div>
 		</form>
