@@ -129,10 +129,11 @@
 		});
 		
 		$('#id').keyup(function(){
-		if($('#id').val().match(/[`~!@#$%^&amp;*|\\\'\";:\/?]/gi))
+		if($('#id').val().match(/[`~!@#$%^&*-=|\\\'\";:\/?]/gi)){
 			alert("특수문자는 사용할 수 없습니다.");
 			$('#id').focus();
 			return false;
+			}
 		});
 		
 		$('#pw'&&'#pw2').focus(function(){
@@ -209,7 +210,7 @@
 				alert("id를 입력하세요!");
 				$('#id').focus();
 				return false;
-			}else if($('#pw').val()==""||$('#pw').val()==null){
+				}else if($('#pw').val()==""||$('#pw').val()==null){
 				alert("비밀번호를 입력하세요!");
 				$('#pw').focus();
 				return false;
@@ -223,10 +224,6 @@
 			}else if($('#phone2').val()==""||$('#phone2').val()==null||$('#phone3').val()==""||$('#phone3').val()==null){
 				alert("핸드폰번호를 입력하세요!");
 				$('#phone2').focus();
-				return false;
-			}else if($('#emailtype').val()==""||$('#emailtype').val()==null||$('#emailtype2').val()==""||$('#emailtype2').val()==null){
-				alert("이메일을 입력하세요!");
-				$('#emailtype2').focus();
 				return false;
 			}else if($('#addrresult1').val()==""||$('#addrresult1').val()==null||$('#addrresult2').val()==""||$('#addrresult2').val()==null){
 				alert("주소를 입력하세요!");
@@ -254,6 +251,7 @@
 	<div>
 		<img src="join/joinimage/step2.gif"/>
 	</div>
+	<form action="memberjoin.do" method="get">
 	<div>
 		<p><b><img class="btn" src="join/joinimage/btn_r.gif"> 회원정보입력</b></p>
 		<hr id="hrsub"/>
@@ -338,7 +336,7 @@
 			</select><br/>
 			<label class="emailagree">이메일 수신동의</label>
 			<input type="radio" name="emailagree" value="y" class="radio"><label class="emailagree">예</label>
-			<input type="radio" name="emailagree" value="n" class="radio"><label class="emailagree">아니오</label>
+			<input type="radio" name="emailagree" value="n" class="radio" checked><label class="emailagree">아니오</label>
 			
 		</div>
 		<div class="email"><label>주소</label></div>
@@ -380,8 +378,7 @@
 		<input type="text" id="addrresult2" placeholder="상세주소" name="adrresult2"/>
 		</div>
 	</div>
-	<div>
-	<form action="joinsuccess.do">
+<div>
 	<div class="button">
 		<button class="subbtn" type="submit" id="submit">확인</button>
 		<button class="subbtn" type="reset">취소</button>
@@ -392,6 +389,5 @@
 		<!-- footer -->
 		<%@include file="/templet/footer.jsp" %>
 	</div>
-	<div></div>
 </body>
 </html>

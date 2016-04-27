@@ -8,32 +8,51 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.hb.model.login.MemberDao;
+import com.hb.model.login.MemberDto;
+
 @WebServlet("/memberjoin.do")
 public class MemJoin extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+//		if(name.equals("gender")){
+//		String gender = req.getParameter(name);
+//		}
 		String id = req.getParameter("id");
 		String pw = req.getParameter("pw");
 		String name = req.getParameter("name");
 		String gender = req.getParameter("gender");
-//		if(name.equals("gender")){
-//		String gender = req.getParameter(name);
-//		}
-		int tel = Integer.parseInt(req.getParameter("tel"));
-		int tel2 = Integer.parseInt(req.getParameter("tel2"));
-		int tel3 = Integer.parseInt(req.getParameter("tel3"));
+		String tel = req.getParameter("tel");
+		String tel2 = req.getParameter("tel2");
+		String tel3 = req.getParameter("tel3");
 		
-		int phone = Integer.parseInt(req.getParameter("phone"));
-		int phone2 = Integer.parseInt(req.getParameter("phone2"));
-		int phone3 = Integer.parseInt(req.getParameter("phone3"));
+		String phone = req.getParameter("phone");
+		String phone2 = req.getParameter("phone2");
+		String phone3 = req.getParameter("phone3");
 		
 		String email = req.getParameter("email");
 		String email2 = req.getParameter("email2");
 		String emailagree = req.getParameter("emailagree");
 		
 		String postnum = req.getParameter("postnum");
-		String adrresult1 = req.getParameter("adrresult1");
-		String adrresult2 = req.getParameter("adrresult2");
+		String addrresult1 = req.getParameter("addrresult1");
+		String addrresult2 = req.getParameter("addrresult2");
+		int authno=0;
+		MemberDao dao = new MemberDao();
+		MemberDto dto = new MemberDto(id, pw, name, gender, tel, tel2, tel3, phone, phone2,phone3, email, email2, emailagree, postnum, addrresult1, addrresult2, authno);
+		int rs = dao.memjoin(dto);
+		if(rs>0){
+			resp.sendRedirect("joinsuccess.do");
+		}
+		else {
+			resp.sendRedirect("join.do");
+			
+		}
+	}
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		doGet(req, resp);
 	}
 }
