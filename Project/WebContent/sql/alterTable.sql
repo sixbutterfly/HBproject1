@@ -1,0 +1,3 @@
+-- register table column attribute's some changed. (Á¤ÇöÀç)
+ALTER TABLE REGISTER MODIFY JOBINFO VARCHAR2(350);
+ALTER TABLE REGISTER MODIFY CONTENT VARCHAR2(200) NULL;

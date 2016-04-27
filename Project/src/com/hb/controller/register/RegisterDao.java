@@ -59,7 +59,8 @@ public class RegisterDao {
 			pstmt.setString(10,	password);
 			pstmt.setString(11,	file1);
 			pstmt.setString(12,	file2);
-			result = pstmt.executeUpdate();
+			System.out.println(jobinfo);
+			// result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
