@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.hb.model.curriculum.studyCurDao;
-import com.hb.model.curriculum.studyCurDto;
+import com.hb.model.curriculum.curriculumDao;
+import com.hb.model.curriculum.curriculumDto;
 import com.hb.model.sturoom.sturoomDao;
 
 @WebServlet("/curedit.korean")
@@ -23,7 +23,7 @@ public class CurriculumEditController extends HttpServlet {
 		String curLocation = request.getParameter("curLocation");
 		int curSupply = Integer.parseInt(request.getParameter("curSupply"));
 		
-		studyCurDao dao = new studyCurDao();
+		curriculumDao dao = new curriculumDao();
 		int result = dao.editOne(curNo,curDate,curLocation,curSupply);
 		
 		if(result>0){

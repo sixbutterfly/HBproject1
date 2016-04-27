@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.hb.model.curriculum.studyCurDao;
+import com.hb.model.curriculum.curriculumDao;
 
 @WebServlet("/curdelete.korean")
 public class CurriculumDeleteController extends HttpServlet {
@@ -16,7 +16,7 @@ public class CurriculumDeleteController extends HttpServlet {
 		
 		int curNo = Integer.parseInt(request.getParameter("curNo"));
 		
-		studyCurDao dao = new studyCurDao();
+		curriculumDao dao = new curriculumDao();
 		int result = dao.deleteOne(curNo);
 		
 		if(result>0){

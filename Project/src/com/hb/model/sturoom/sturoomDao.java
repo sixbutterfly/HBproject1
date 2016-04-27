@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import com.hb.model.curriculum.studyCurDto;
+import com.hb.model.curriculum.curriculumDto;
 import com.hb.util.DB;
 
 public class sturoomDao {

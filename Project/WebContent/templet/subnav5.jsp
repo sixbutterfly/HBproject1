@@ -63,7 +63,7 @@
 				<a href="addgrade.do">성적 입력</a>
 			</div>
 			<div class="sales">
-				<a href="waitinlist.do">수강 대기자</a>
+				<a href="waitinlist.korean">수강 대기자</a>
 			</div>
 			<div class="manager">
 				<a href="allmember.do">회원관리</a>

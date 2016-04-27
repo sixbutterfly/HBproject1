@@ -1,5 +1,5 @@
 <%@page import="com.hb.model.sturoom.sturoomDto"%>
-<%@page import="com.hb.model.curriculum.studyCurDto"%>
+<%@page import="com.hb.model.curriculum.curriculumDto"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -7,12 +7,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>메인 페이지</title>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/grid.css"/>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/header.css"/>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav.css"/>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/subnav5.css"/>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/aside2.css"/>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/grid.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/header.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/nav.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/subnav5.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/aside2.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/footer.css"/>
 <style type="text/css">
 	.content>div>p{
 		font-size: 30pt;
@@ -58,9 +58,9 @@
 			</div>
 			
 			<%
-				studyCurDto dto = (studyCurDto)request.getAttribute("dto");
-				ArrayList<sturoomDto> list = (ArrayList)request.getAttribute("list");
-			%>
+							curriculumDto dto = (curriculumDto)request.getAttribute("dto");
+								ArrayList<sturoomDto> list = (ArrayList)request.getAttribute("list");
+						%>
 			
 			<form action="curedit.korean">
 			<div id="cur">

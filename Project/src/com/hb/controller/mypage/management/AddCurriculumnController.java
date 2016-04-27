@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.hb.model.curriculum.studyCurDao;
+import com.hb.model.curriculum.curriculumDao;
 
 @WebServlet("/addcurriculum.korean")
 public class AddCurriculumnController extends HttpServlet {
@@ -19,7 +19,7 @@ public class AddCurriculumnController extends HttpServlet {
 		String curLocation = request.getParameter("curLocation");
 		int curSupply = Integer.parseInt(request.getParameter("curSupply"));
 		
-		studyCurDao dao = new studyCurDao();
+		curriculumDao dao = new curriculumDao();
 		int result = dao.addOne(curName, curDate, curLocation, curSupply);
 		if(result>0){
 			response.sendRedirect("curriculum.korean");

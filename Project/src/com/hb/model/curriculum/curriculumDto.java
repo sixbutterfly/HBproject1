@@ -2,7 +2,7 @@ package com.hb.model.curriculum;
 
 import java.util.Date;
 
-public class studyCurDto {
+public class curriculumDto {
 
 	private int curNo;
 	private String curName;

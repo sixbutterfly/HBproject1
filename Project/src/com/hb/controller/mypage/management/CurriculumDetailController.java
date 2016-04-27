@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.hb.model.curriculum.studyCurDao;
-import com.hb.model.curriculum.studyCurDto;
+import com.hb.model.curriculum.curriculumDao;
+import com.hb.model.curriculum.curriculumDto;
 import com.hb.model.sturoom.sturoomDao;
 import com.hb.model.sturoom.sturoomDto;
 
@@ -20,8 +20,8 @@ public class CurriculumDetailController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int curNo = Integer.parseInt(request.getParameter("curNo"));
 		
-		studyCurDao dao = new studyCurDao();
-		studyCurDto dto = dao.selectOne(curNo);
+		curriculumDao dao = new curriculumDao();
+		curriculumDto dto = dao.selectOne(curNo);
 		request.setAttribute("dto", dto);
 		
 		sturoomDao dao2 = new sturoomDao();
