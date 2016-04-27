@@ -8,6 +8,7 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/header.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
+
 <style type="text/css">
 	.content{
 		height: 800px;
@@ -15,6 +16,7 @@
 </style>
 <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
 <script type="text/javascript" src="js/menu.js"></script>
+
 </head>
 <body>
 	<div class="container_12">
@@ -26,13 +28,8 @@
 		<%@include file="/templet/aside1.jsp" %>
 		
 		<!-- content start -->
-			<h1>출결 입력</h1>
-			<table>
-				<tr><th>학번</th><th>이름</th><th>강의실</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr>
-			</table>
-			기본 값은 출석 O,
-			결석이나 조퇴한 사람은 이름을 클릭한 뒤 수정페이지에서 수정.
-			select 버튼을 써도 좋을듯?
+			
+			
 		<!-- content end -->
 		
 		<!-- aside2 -->
