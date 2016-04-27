@@ -16,6 +16,5 @@ CREATE SEQUENCE cur_seq;
 
 CREATE SEQUENCE room_seq;
 
-
 CREATE SEQUENCE tch_seq;
 
