@@ -10,9 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/addgrade.do")
 public class AddGradeController extends HttpServlet{
-@Override
-protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-		throws ServletException, IOException {
-	req.getRequestDispatcher("mypage/teacher/addGrade.jsp").forward(req, resp);
-}
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		GradeDao dao = new GradeDao();
+		dao.list();
+		req.getRequestDispatcher("mypage/teacher/addGrade.jsp").forward(req, resp);
+	}
 }
