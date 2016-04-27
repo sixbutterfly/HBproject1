@@ -12,7 +12,7 @@
 			</div>
 		</form>
 	</div>
-	<a href="#">회원가입</a>
+	<a href="agreejoin.do">회원가입</a>
 	<div class="clear"></div>
 	
 </div>
