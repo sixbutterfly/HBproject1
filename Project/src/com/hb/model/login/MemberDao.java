@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
 import com.hb.util.DB;
 
 public class MemberDao {
@@ -55,4 +56,20 @@ public class MemberDao {
 		}catch(Exception ex){}
 			return result;
 	}
+//	public MemberDto overlab(String id){
+//		System.out.println(id);
+//		String sql2="select memid from member where memid=?";
+//		try{
+//			pstmt = conn.prepareStatement(sql2);
+//			pstmt.setString(1, id);
+//			rs = pstmt.executeQuery();
+//			boolean result = false;
+//			while(rs.next()){
+//				result = true;
+//			}
+//		}catch(Exception e){
+//			e.printStackTrace();
+//		}
+//		return overlab(id);
+//	}
 }

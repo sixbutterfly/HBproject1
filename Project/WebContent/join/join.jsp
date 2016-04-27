@@ -1,3 +1,4 @@
+<%@page import="com.hb.model.login.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -107,6 +108,23 @@
 }
 #emailtype{
 }
+#close{
+    width:50px;
+    margin-bottom:50px;
+    cursor:pointer;
+    font-weight:bold;
+   }
+ #popup{
+    width:400px;
+    height:300px;
+    background:#dddddd;
+    position:absolute;
+    top:10px;
+    left:500px;
+    text-align:center; 
+    border:2px solid #000;
+    display: none;
+   }
 .errmsg{
 	font-size: 9pt;
 	color: red;
@@ -125,12 +143,33 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('#overlab').click(function(){
-			$('#overlab').next().text(" 중복 확인");
+			$('#popup').show();
+			var id=$('#id').val();
+			$.ajax({
+				url:"overlab.jsp",
+				data:"id="+id,
+				type:"post",
+				dataType:"xml",
+				success:function(data){
+					var using=$(data).find("result").text();
+					if(using='true'){
+						$('#popup>div>span').text("사용중인 아이디입니다");
+					}else{
+						$('#popup>div>span').text("사용 가능한 아이디입니다");
+					}
+				}
+			});
+			
+			return false;
+			});
+		$('#popclose').click(function(){
+			$('#popup').hide();
+			return false;
 		});
-		
 		$('#id').keyup(function(){
 		if($('#id').val().match(/[`~!@#$%^&*-=|\\\'\";:\/?]/gi)){
 			alert("특수문자는 사용할 수 없습니다.");
+			$('#id').val("");
 			$('#id').focus();
 			return false;
 			}
@@ -251,13 +290,17 @@
 	<div>
 		<img src="join/joinimage/step2.gif"/>
 	</div>
+	<div id="popup">
+		<div style="height: 270px;"><span></span></div>
+		<div id="popclose">닫기</div>
+	</div>
 	<form action="memberjoin.do" method="get">
 	<div>
 		<p><b><img class="btn" src="join/joinimage/btn_r.gif"> 회원정보입력</b></p>
 		<hr id="hrsub"/>
 		<div class="form"><label>아이디</label></div>
 		<div class="forminput"><input type="text" name="id" class="inputwidth" id="id"/>
-		<button id="overlab">중복확인</button><span class="errmsg"></span>
+		<button type="submit" id="overlab" name="overlab">중복확인</button><span class="errmsg"></span>
 		</div>
 		<div class="form"><label>비밀번호</label></div>
 		<div class="forminput"><input type="password" name="pw" class="inputwidth" id="pw" placeholder="비밀번호"/><span class="errmsg"></span></div>
@@ -374,8 +417,8 @@
   	        }).open();
   	    }
 </script>
-		<br/><input type="text" id="addrresult1" placeholder="주소" name="adrresult1"/> 
-		<input type="text" id="addrresult2" placeholder="상세주소" name="adrresult2"/>
+		<br/><input type="text" id="addrresult1" placeholder="주소" name="addrresult1"/> 
+		<input type="text" id="addrresult2" placeholder="상세주소" name="addrresult2"/>
 		</div>
 	</div>
 <div>

@@ -39,6 +39,7 @@ public class MemJoin extends HttpServlet{
 		String addrresult1 = req.getParameter("addrresult1");
 		String addrresult2 = req.getParameter("addrresult2");
 		int authno=0;
+		
 		MemberDao dao = new MemberDao();
 		MemberDto dto = new MemberDto(id, pw, name, gender, tel, tel2, tel3, phone, phone2,phone3, email, email2, emailagree, postnum, addrresult1, addrresult2, authno);
 		int rs = dao.memjoin(dto);
@@ -47,7 +48,6 @@ public class MemJoin extends HttpServlet{
 		}
 		else {
 			resp.sendRedirect("join.do");
-			
 		}
 	}
 	@Override
