@@ -1,12 +1,14 @@
 	.aside1{
 		margin-top: 10px;
+		background-color: #dcdcdc;
 	}
-	.login>form>div{
+			
+	.login>div{
 		width: 130px;
 		margin: 10px 0px;
 		margin-left: 10px;
 	}
-	.login>form>div+div{
+	.login>div+div{
 		width: 50px;
 		height: 44px;
 		margin-left: 0px;
@@ -23,18 +25,13 @@
 		width: 100%;
 		height: 44px;
 	}
-	.aside1 a{
-		width: 50pt;
-		margin: 10px;
+	.reg{		
 		display: block;
-		clear: both;
-		text-decoration: none;
-		text-align: center;
-		color: black;
-		font-size: 10pt;
+		clear: both;			
+		font-size: 10pt;	
+		margin-left: 80px;
+		height: 30px;
 	}
-
+		
 	
-	.content{
-		margin: 20px auto;
-	}
+	
