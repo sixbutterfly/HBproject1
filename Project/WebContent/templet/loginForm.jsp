@@ -34,6 +34,6 @@
 				<%} %>
 				
 			</div>
-			<button class="reg">회원가입</button>
+			<a class="reg">회원가입</a>
 			<div class="clear"></div>
 

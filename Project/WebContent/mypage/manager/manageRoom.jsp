@@ -7,14 +7,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>메인 페이지</title>
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/grid.css" />
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/header.css" />
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/nav.css" />
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/footer.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/grid.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/header.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/subnav0.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/subnav5.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/aside2.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
 <style type="text/css">
 .content {
 	height: 800px;
@@ -159,6 +158,7 @@
 		<!-- nav -->
 		<%@include file="/templet/nav.jsp"%>
 		<!-- aside1 -->
+		<%@include file="/templet/loginForm.jsp" %>
 		<%@include file="/templet/subnav5.jsp" %>
 		
 		<!-- content start -->
