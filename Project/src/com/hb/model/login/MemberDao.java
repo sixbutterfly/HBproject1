@@ -39,7 +39,7 @@ public class MemberDao {
 	}
 
 	public int memjoin(MemberDto dto) {
-		String sql = "insert into member values (mem_seq.nextval,?,?,?,?,?,?,0,?,?,?)";
+		String sql = "INSERT INTO MEMBER VALUES (MEM_SEQ.NEXTVAL,?,?,?,?,?,?,0,?,?,?,SYSDATE)";
 		int result = 0;
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -56,20 +56,4 @@ public class MemberDao {
 		}catch(Exception ex){}
 			return result;
 	}
-//	public MemberDto overlab(String id){
-//		System.out.println(id);
-//		String sql2="select memid from member where memid=?";
-//		try{
-//			pstmt = conn.prepareStatement(sql2);
-//			pstmt.setString(1, id);
-//			rs = pstmt.executeQuery();
-//			boolean result = false;
-//			while(rs.next()){
-//				result = true;
-//			}
-//		}catch(Exception e){
-//			e.printStackTrace();
-//		}
-//		return overlab(id);
-//	}
 }

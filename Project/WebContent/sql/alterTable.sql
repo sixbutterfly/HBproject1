@@ -22,13 +22,14 @@ alter table register rename column submitValue to file1;
 -- register 테이블 file2컬럼 추가
 alter table register add(file2 VARCHAR2(10));
 
+------멤버 테이블 속성 널값으로 변경							
 ALTER TABLE MEMBER MODIFY (MEMPW VARCHAR2(30) NOT NULL,
 							MEMID VARCHAR2(30) NOT NULL,
 							MEMNAME VARCHAR2(30) NOT NULL,
 							MEMADDRESS VARCHAR2(100) NOT NULL,
 							MEMPHONE VARCHAR2(20) NOT NULL);
-------멤버 테이블 속성 널값으로 변경							
+------멤버 테이블 속성 추가
 ALTER TABLE MEMBER ADD MEMTEL VARCHAR2(20) NULL;
 ALTER TABLE MEMBER ADD MEMGENDER VARCHAR2(10) NOT NULL;
 ALTER TABLE MEMBER ADD EMAILAGREE VARCHAR2(5) NOT NULL;
-------멤버 테이블 속성 추가
+ALTER TABLE MEMBER ADD JOINDAY VARCHAR2(20) NOT NULL;

@@ -17,9 +17,6 @@ public class MemJoin extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		req.getCharacterEncoding();
-//		if(name.equals("gender")){
-//		String gender = req.getParameter(name);
-//		}
 		String id = req.getParameter("id");
 		String pw = req.getParameter("pw");
 		String name = req.getParameter("name");
@@ -45,10 +42,10 @@ public class MemJoin extends HttpServlet{
 		MemberDto dto = new MemberDto(id, pw, name, gender, tel, tel2, tel3, phone, phone2,phone3, email, email2, emailagree, postnum, addrresult1, addrresult2, authno);
 		int rs = dao.memjoin(dto);
 		if(rs>0){
-			resp.sendRedirect("joinsuccess.do");
+			resp.sendRedirect("joinsuccess.korean");
 		}
 		else {
-			resp.sendRedirect("join.do");
+			resp.sendRedirect("join.korean");
 		}
 	}
 	@Override
