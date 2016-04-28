@@ -1,8 +1,6 @@
 	.aside1{
 		margin-top: 10px;
-		background-color: #dcdcdc;
 	}
-			
 	.login>div{
 		width: 130px;
 		margin: 10px 0px;
@@ -20,7 +18,7 @@
 		display: inline-block;
 		float: left;
 	}
-	button{
+	.login button{
 		margin: 2px auto;
 		width: 100%;
 		height: 44px;
@@ -34,4 +32,6 @@
 	}
 		
 	
-	
+	.content{
+		margin: 10px auto;
+	}

@@ -10,24 +10,11 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/loginForm.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/subnav1.css"/>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/aside2.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
 
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-1.12.2.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/menu.js"></script>
 <style>
-	.title p{
-		font-size: 30pt;
-		font-style: oblique;
-	}
-	.title>span{
-		font-size: 15pt;
-	}
-	.title{
-		margin: 20px;
-		border-bottom: 3px solid #ddd;
-		color: #666;
-	}
 	h3 {
 		display: inline-block;
 		margin: 10px 0px;
@@ -40,12 +27,8 @@
 		margin: 10px 0px;
 	}
 	.direction {
-		padding-left: 80%;
+		padding-left: 54%;
 		font-size: 8pt;
-	}
-	a{
-		text-decoration: none;
-		color: black;
 	}
 	.table1 {
 		float: right;
@@ -76,20 +59,19 @@
 		<%@include file="/templet/subnav2.jsp" %>
 		
 		<!-- content start -->
-		<div class="title">
-			<p>REGULAR CURRICULUM</p>
-			<span>취업교육과정</span>
-		</div>
-	
+		<br/>
+		<img src="<%=request.getContextPath() %>/imgs/curriculum.png">
+		<br/>
+		<h3>자바(JAVA)개발자 입문과정</h3>
 		<span class="direction">
-				<a href='index.do'>
+				<a href='<%=request.getContextPath() %>/main.jsp'>
 					<span>
 						HOME
 					</span>
-				</a> &gt;
-				<a href='registerInfo.korean'>
+				</a> &gt; 
+				<a href='<%=request.getContextPath() %>/curriculum/curriculumInfo.jsp'>
 					<span>
-						취업교육과정
+						정규교육신청
 					</span>
 				</a>
 			</span>
@@ -97,9 +79,8 @@
 		
 		<hr/>
 		<img src="<%=request.getContextPath() %>/imgs/java1.jpg">
-
 		<table class="table1">
-		<tr><td><strong>교육과목</strong></td><td> : </td><td>자바(JAVA)개발자 과정</td></tr>
+		<tr><td><strong>교육과목</strong></td><td> : </td><td>자바 프로그래밍</td></tr>
 		<tr><td><strong>교육기간</strong></td><td> : </td><td>[주중반] 2016.05.02 ~ 2016.05.30</td></tr>
 		<tr><td></td><td> : </td><td>[주말반] 2016.05.1 ~ 2016.05.29</td></tr>
 		<tr><td><strong>교육일정</strong></td><td> : </td><td>[주중반] 총 160시간 월~금 09:00~18:00</td></tr>
@@ -109,12 +90,11 @@
 		<tr><td><strong>교육비용</strong></td><td> : </td><td>전화/온라인 문의</td></tr>
 		<tr><td><strong>문의전화</strong></td><td> : </td><td>02-707-1480</td></tr>
 		</table>
-		
 		<div class="register">
-			<a href="resisterController.korean?title=자바(JAVA)개발자 과정">
+			<a href="<%=request.getContextPath() %>/curriculum/registerclassPage.jsp">
 				<img src="<%=request.getContextPath() %>/imgs/btn.jpg">
 			</a>
-			<a href="detailController.korean?title=자바(JAVA)개발자 과정">
+			<a href="<%=request.getContextPath() %>/curriculum/javacurriculumPage.jsp">
 				<img src="<%=request.getContextPath() %>/imgs/curriculumdetailBtn.png">
 			</a>
 		</div>

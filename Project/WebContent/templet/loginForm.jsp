@@ -31,9 +31,8 @@
 				<div class="login">
 					<button>login</button>
 				</div>
-			<%	}
-			%>
-		</div>
-	</div>
-	<a class="reg">회원가입</a>
-	<div class="clear"></div>
+				<%} %>
+				
+			</div>
+			<a href="agreejoin.korean" class="reg">회원가입</a>
+			<div class="clear"></div>

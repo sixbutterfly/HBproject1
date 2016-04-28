@@ -19,9 +19,10 @@ public class WaitingListController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
 		registerDao dao = new registerDao();
-		ArrayList<registerDto> list = dao.selectAll();
+		ArrayList<registerDto> list = dao.selectNull();
 		
 		req.setAttribute("list", list);
+		
 		req.getRequestDispatcher("mypage/sales/viewWaitingList.jsp").forward(req, resp);
 	}
 }

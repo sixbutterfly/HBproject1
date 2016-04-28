@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-	<div class="grid10 submenu" style="border: solid 1px;">
-		<div class="eachmenu">
-
+			<div class="submenu">
+				<div class="eachmenu">
+					<a href="registerInfo.korean">취업교육과정</a>
+				</div>
+			</div>
 		</div>
-
-	</div>
-</div>
-<div class="content templet grid8">
+	<div class="content grid8">

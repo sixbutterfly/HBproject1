@@ -16,6 +16,7 @@ public class registerDto {
 	private String pay;
 	private String content;
 	private String password;
+	private int curNo;
 	
 	public int getRegNo() {
 		return regNo;
@@ -59,6 +60,9 @@ public class registerDto {
 	public String getPassword() {
 		return password;
 	}
+	public int getCurNo() {
+		return curNo;
+	}
 	public void setRegNo(int regNo) {
 		this.regNo = regNo;
 	}
@@ -100,5 +104,8 @@ public class registerDto {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public void setCurNo(int curNo) {
+		this.curNo = curNo;
 	}
 }

@@ -41,12 +41,17 @@ public class RegisterclassController extends HttpServlet {
 		String password = request.getParameter("password");
 		
 		registerDao dao = new registerDao();
-		int result = dao.registerClass(id, name, email, tel, gubun, job, jobinfo, time, pay, content, password, file1, file2);
+		int result1 = dao.registerClass(id, name, email, tel, gubun, job, jobinfo, time, pay, content, password, file1, file2);
+		int result = dao.registerClass(name, email, tel, gubun, job, jobinfo, time, pay, content, password, file1, file2);
 		
-		if (result>0) {
+		if (result1>0) {
 			request.getRequestDispatcher("register/registerdonePage.jsp").forward(request, response);
 		} else {
 			System.out.println("수강 등록 실패");
+		}
+		if(result>0){
+			request.getRequestDispatcher("register/registerdonePage.jsp").forward(request, response);
+		}else{
 		}
 	}
 }

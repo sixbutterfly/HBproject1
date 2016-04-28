@@ -9,19 +9,19 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/grid.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/header.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav.css"/>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/subnav0.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/loginForm.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/subnav5.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/aside2.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
 <style type="text/css">
-	.content>div>p{
+	.title>p{
 		font-size: 30pt;
 		font-style: oblique;
 	}
-	.content>div>span{
+	.title>span{
 		font-size: 15pt;
 	}
-	.content div{
+	.title{
 		margin: 20px;
 		border-bottom: 3px solid #ddd;
 		color: #666;
@@ -43,7 +43,7 @@
 	.table tr a:hover{
 		color: #06c;
 	}
-	.content button{
+	.content>a>button{
 		width: 50px;
 		margin: 10px 350px;
 	}
@@ -62,7 +62,7 @@
 		<%@include file="/templet/subnav5.jsp" %>
 		
 		<!-- content start -->
-			<div>
+			<div class="title">
 				<p>MY PAGE</p>
 				<span>커리큘럼 관리</span>
 			</div>
