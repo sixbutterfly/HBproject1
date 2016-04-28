@@ -31,7 +31,7 @@ public class TeacherDao {
 				TeacherDto bean = new TeacherDto();
 				bean.setTchno(rs.getInt("tchno"));
 				bean.setTchname(rs.getString("tchname"));
-				bean.setRoomno(rs.getInt("roomno"));
+				bean.setRoomno(rs.getString("roomno"));
 				list.add(bean);
 			}
 		} catch (SQLException e) {
@@ -57,8 +57,7 @@ public class TeacherDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			for (int i = 0; i < tchlist.length; i++) {
-			System.out.println("½ÇÇà");
-				pstmt.setInt(1, Integer.parseInt(roomlist[i]));
+				pstmt.setString(1, roomlist[i]);
 				pstmt.setInt(2, Integer.parseInt(tchlist[i]));
 				result = pstmt.executeUpdate();
 			}
@@ -66,18 +65,41 @@ public class TeacherDao {
 			e.printStackTrace();
 		} finally {
 			try {
-				if (rs != null)
-					rs.close();
 				if (pstmt != null)
 					pstmt.close();
 				if (conn != null)
 					conn.close();
-				System.out.println("»Ñ??");
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
 
+		return result;
+	}
+
+	public int removeAll(String[] tchlist, String[] checklist) {
+		int result = 0;
+		sql = "update teacher set roomno = null where tchno = ?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			for (int i = 0; i < tchlist.length; i++) {
+				if("true".equals(checklist[i])){
+					pstmt.setString(1, tchlist[i]);
+					result = pstmt.executeUpdate();
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 		return result;
 	}
 }

@@ -15,29 +15,26 @@ import com.hb.model.room.RoomDao;
 import com.hb.model.teacher.TeacherDao;
 import com.hb.model.teacher.TeacherDto;
 
-@WebServlet("/assignroom.korean")
-public class AssignRoomController extends HttpServlet {
+@WebServlet("/delroom.korean")
+public class DelRoomController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		
-		String tchlist[] = req.getParameterValues("tchlist"+"[]");
-		String roomlist[] = req.getParameterValues("roomlist"+"[]");
-		
-		//강의실 테이블 업데이트
-		RoomDao rdao = new RoomDao();
-		int result1 = rdao.updateAll(tchlist, roomlist);
-		//강사 테이블 업데이트
+
+		String tchlist[] = req.getParameterValues("tchlist" + "[]");
+		String checklist[] = req.getParameterValues("checklist" + "[]");
+		// 강사 테이블 업데이트
 		TeacherDao tdao = new TeacherDao();
-		int result2 = tdao.updateAll(tchlist, roomlist);
+		int result2 = tdao.removeAll(tchlist, checklist);
 		
 		TeacherDao tdao2 = new TeacherDao();
 		ArrayList<TeacherDto> tlist = new ArrayList();
 		tlist = tdao2.selectAll();
-		
+//		req.setAttribute("tlist", tlist);
+//		req.getRequestDispatcher("mypage/json.jsp").forward(req, resp);
 		PrintWriter out = resp.getWriter();
 		for (int i = 0; i < tlist.size(); i++) {
-			out.print(tlist.get(i).getRoomno());
+			out.print(tlist.get(i).getRoomno()+"/");
 		}
 	}
 }

@@ -1,3 +1,6 @@
+--학생 테이블의 roomno를 널값 허용으로 변경
+alter table student modify roomno null;
+
 -- register table column attribute's some changed. (정현재)
 ALTER TABLE REGISTER MODIFY JOBINFO VARCHAR2(350);
 ALTER TABLE REGISTER MODIFY CONTENT VARCHAR2(200) NULL;

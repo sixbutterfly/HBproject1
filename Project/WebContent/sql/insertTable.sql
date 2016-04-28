@@ -104,6 +104,7 @@ select curDateS, last_day(curDateS) from studyCur;
 select TEACHER.tchno, TEACHER.tchname, STUROOM.roomno from TEACHER, STUROOM;
 select * from register where file1 is not null and file2 is not null;
 
+select stuno, memname, roomno from student, member where student.memno = member.memno and roomno is null;
 update sturoom set tchno = 21 where roomno = 2;
 
 select stuno, member.memname, roomno from student, member where student.memno = member.memno;
@@ -111,4 +112,6 @@ select javagrade, webgrade, framerade,stuno,roomno, member.mamname from grade, m
 
 update register set curNo=4 where curNo is null;
 
+SELECT student.stuno, student.roomno, member.memname from student, member where STUDENT.MEMNO = MEMBER.MEMNO;
+update teacher set roomno = null where tchno = 1;
 --끝난 실험은 삭제할 것!----------------
