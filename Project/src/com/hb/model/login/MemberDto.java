@@ -18,6 +18,15 @@ public class MemberDto {
 	private String addrresult1;
 	private String addrresult2;
 	private int authno;
+	private int memno;
+	private int level;
+	private String memname;
+	private String memgender;
+	private String memphone;
+	private Object memtel;
+	private String memaddress;
+	private String mememail;
+	private String joinday;
 	
 	
 	public MemberDto(String id, String pw, String name, String gender,
@@ -41,6 +50,20 @@ public class MemberDto {
 		this.postnum = postnum;
 		this.addrresult1 = addrresult1;
 		this.addrresult2 = addrresult2;
+	}
+	public MemberDto(int memno, int level, String memname, String memgender, String memphone,
+			String memtel, String memaddress, String mememail, String emailagree,
+			String joinday) {
+		this.memno = memno;
+		this.level = level;
+		this.memname = memname;
+		this.memgender = memgender;
+		this.memphone = memphone;
+		this.memtel = memtel;
+		this.memaddress = memaddress;
+		this.mememail = mememail;
+		this.emailagree = emailagree;
+		this.joinday = joinday;
 	}
 	public String getId() {
 		return id;
@@ -93,6 +116,33 @@ public class MemberDto {
 	public int getAuthno() {
 		return authno;
 	}
+	public int getMemno() {
+		return memno;
+	}
+	public String getMemname() {
+		return memname;
+	}
+	public String getMemgender() {
+		return memgender;
+	}
+	public String getMemphone() {
+		return memphone;
+	}
+	public Object getMemtel() {
+		return memtel;
+	}
+	public String getMemaddress() {
+		return memaddress;
+	}
+	public String getMememail() {
+		return mememail;
+	}
+	public String getJoinday() {
+		return joinday;
+	}
+	public int getLevel() {
+		return level;
+	}
 	public void setId(String id) {
 		this.id = id;
 	}
@@ -143,5 +193,32 @@ public class MemberDto {
 	}
 	public void setAuthno(int authno) {
 		this.authno = authno;
+	}
+	public void setMemno(int memno) {
+		this.memno = memno;
+	}
+	public void setMemname(String memname) {
+		this.memname = memname;
+	}
+	public void setMemgender(String memgender) {
+		this.memgender = memgender;
+	}
+	public void setMemphone(String memphone) {
+		this.memphone = memphone;
+	}
+	public void setMemtel(Object memtel) {
+		this.memtel = memtel;
+	}
+	public void setMemaddress(String memaddress) {
+		this.memaddress = memaddress;
+	}
+	public void setMememail(String mememail) {
+		this.mememail = mememail;
+	}
+	public void setJoinday(String joinday) {
+		this.joinday = joinday;
+	}
+	public void setLevel(int level) {
+		this.level = level;
 	}
 }

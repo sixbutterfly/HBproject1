@@ -379,8 +379,8 @@
 				<option value="yahoo.co.kr">yahoo.co.kr</option>
 			</select><br/>
 			<label class="emailagree">이메일 수신동의</label>
-			<input type="radio" name="emailagree" value="y" class="radio"><label class="emailagree">예</label>
-			<input type="radio" name="emailagree" value="n" class="radio" checked><label class="emailagree">아니오</label>
+			<input type="radio" name="emailagree" value="yes" class="radio"><label class="emailagree">예</label>
+			<input type="radio" name="emailagree" value="no" class="radio" checked><label class="emailagree">아니오</label>
 			
 		</div>
 		<div class="email"><label>주소*</label></div>
