@@ -85,6 +85,8 @@ select * from student;
 select * from member;
 select curDateS, last_day(curDateS) from studyCur;
 select TEACHER.tchno, TEACHER.tchname, STUROOM.roomno from TEACHER, STUROOM;
-
+select stuno, memname, roomno from student, member where student.memno = member.memno and roomno is null;
 update sturoom set tchno = 21 where roomno = 2;
+SELECT student.stuno, student.roomno, member.memname from student, member where STUDENT.MEMNO = MEMBER.MEMNO;
+update teacher set roomno = null where tchno = 1;
 --끝난 실험은 삭제할 것!----------------

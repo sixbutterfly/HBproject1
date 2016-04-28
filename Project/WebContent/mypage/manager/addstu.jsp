@@ -1,3 +1,5 @@
+<%@page import="com.hb.model.student.StuDto"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,7 +12,6 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#submit").click(function(){
-			
 			
 			window.close();
 		});
@@ -25,9 +26,19 @@
 		<tr>
 			<th></th><th>학번</th><th>이름</th><th>배정강의실</th>
 		</tr>
+			<%
+				ArrayList<StuDto> slist = (ArrayList<StuDto>)request.getAttribute("slist");
+				for(StuDto bean : slist){
+					%>
 		<tr>
 			<td><input type = "checkbox"/></td>
+				<td><%=bean.getStuno() %></td>
+				<td><%=bean.getStuname() %></td>
+				<td><%=bean.getRoomno() %></td>
 		</tr>
+			<%
+				}
+			%>
 	</table>
 	<button id = "submit">완료</button>
 	<button id = "cancle">취소</button>
