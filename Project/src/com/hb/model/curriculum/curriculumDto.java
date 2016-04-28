@@ -1,12 +1,12 @@
-package com.hb.dto;
+package com.hb.model.curriculum;
 
 import java.util.Date;
 
-public class studyCurDto {
+public class curriculumDto {
 
 	private int curNo;
 	private String curName;
-	private String Location;
+	private String curLocation;
 	private int curSupply;
 	private Date curDate;
 	
@@ -18,8 +18,8 @@ public class studyCurDto {
 	public String getCurName() {
 		return curName;
 	}
-	public String getLocation() {
-		return Location;
+	public String getCurLocation() {
+		return curLocation;
 	}
 	public int getCurSupply() {
 		return curSupply;
@@ -33,8 +33,8 @@ public class studyCurDto {
 	public void setCurName(String curName) {
 		this.curName = curName;
 	}
-	public void setLocation(String location) {
-		Location = location;
+	public void setCurLocation(String location) {
+		curLocation = location;
 	}
 	public void setCurSupply(int curSupply) {
 		this.curSupply = curSupply;

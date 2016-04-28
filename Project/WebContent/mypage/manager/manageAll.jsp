@@ -1,3 +1,5 @@
+<%@page import="com.hb.model.login.MemberDto"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -7,6 +9,9 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/grid.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/header.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/subnav0.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/subnav5.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/aside2.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
 <style type="text/css">
 	.content{
@@ -23,21 +28,52 @@
 		<!-- nav -->
 		<%@include file="/templet/nav.jsp" %>
 		<!-- aside1 -->
+		<%@include file="/templet/loginForm.jsp" %>
 		<%@include file="/templet/subnav5.jsp" %>
-		
 		<!-- content start -->
-			<h1>회원 관리</h1>
-			<table>
-				<tr><th>회원번호</th><th>이름</th><th>연락처</th><th>email</th><th>권한</th></tr>
-			</table>
-				모든 회원 리스트 출력
-			
-		<!-- content end -->
-		
-		<!-- aside2 -->
-		<%@include file="/templet/aside2.jsp" %>
+	<div>
+		<p>회원 권한 수정</p>
+		<hr/>
+	</div>
+	<div>
+		<select>
+			<option>전체보기</option>
+			<option>회원</option>
+			<option>학생</option>
+			<option>강사</option>
+			<option>영업부</option>
+			<option>행정부</option>
+		</select>
+		<hr/>
+	</div>
+	<div>
+		<span>회원번호</span><span>이름</span><span>핸드폰번호</span><span>가입일</span><span>권한</span>
+	</div>
+	<div>
+		<a href="#"><span>0000</span><span>ㅇㅇㅇ</span><span>010-1234-1234</span><span>15/03/03</span><span>학생</span></a>
+	</div>
+	
+	<%
+		ArrayList<MemberDto> arr = (ArrayList<MemberDto>)request.getAttribute("list");
+				for(MemberDto dto:arr){
+		%>
+		<div>
+			<a href="memdetail.do?idx=<%=dto.get%>">
+			<span><%=dto.get()%></span>
+			<span><%=dto.get()%></span>
+			<span><%=dto.get()%></span>
+			<span><%=dto.get()%></span>
+			<span><%=dto.get()%></span>
+			</a>
+		</div>
+		<%
+			}
+		%>
+			<!-- content end -->
+	<%@include file="/templet/aside2.jsp" %>
 		<!-- footer -->
 		<%@include file="/templet/footer.jsp" %>
 	</div>
+</body>
 </body>
 </html>

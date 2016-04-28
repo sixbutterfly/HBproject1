@@ -39,7 +39,7 @@
 		<!-- nav -->
 		<%@include file="/templet/nav.jsp" %>
 		<!-- aside1 -->
-		<%@include file="/templet/aside1.jsp" %>
+		<%@include file="/templet/loginForm.jsp" %>
 		
 		<!-- content start -->
 			<br/>

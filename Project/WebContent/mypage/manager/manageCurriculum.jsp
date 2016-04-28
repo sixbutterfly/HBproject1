@@ -1,4 +1,4 @@
-<%@page import="com.hb.dto.studyCurDto"%>
+<%@page import="com.hb.model.curriculum.curriculumDto"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -9,6 +9,7 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/grid.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/header.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/subnav0.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/subnav5.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/aside2.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
@@ -25,9 +26,26 @@
 		border-bottom: 3px solid #ddd;
 		color: #666;
 	}
-	table{
+	.table{
+		width: 700px;
 		margin: 10px auto;
+	}
+	.table th{
+		background-color: rgba(204,229,255,0.5);
+	}
+	.table tr{
 		text-align: center;
+	}
+	.table tr a{
+		text-decoration: none;
+		color: black;
+	}
+	.table tr a:hover{
+		color: #06c;
+	}
+	.content button{
+		width: 50px;
+		margin: 10px 350px;
 	}
 </style>
 <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
@@ -40,6 +58,7 @@
 		<!-- nav -->
 		<%@include file="/templet/nav.jsp" %>
 		<!-- aside1 -->
+		<%@include file="/templet/loginForm.jsp" %>
 		<%@include file="/templet/subnav5.jsp" %>
 		
 		<!-- content start -->
@@ -48,14 +67,14 @@
 				<span>커리큘럼 관리</span>
 			</div>
 			
-			<table>
+			<table class="table">
 				<tr><th>과정명</th><th>교육 시작기간</th><th>교육 종료기간</th><th>배정인원</th></tr>
 				<%
-					ArrayList<studyCurDto> list = (ArrayList<studyCurDto>)request.getAttribute("list");
-					for(studyCurDto dto : list){
+					ArrayList<curriculumDto> list = (ArrayList<curriculumDto>)request.getAttribute("list");
+							for(curriculumDto dto : list){
 				%>
 					<tr>
-						<td><%=dto.getCurName() %></td>
+						<td><a href="curdetail.korean?curNo=<%=dto.getCurNo() %>"><%=dto.getCurName() %></a></td>
 						<td><%=dto.getCurDate() %></td>
 						<td><%=dto.getCurDateEnd() %></td>
 						<td><%=dto.getCurSupply() %></td>
@@ -63,9 +82,7 @@
 				<%} %>
 			</table>
 			
-			<button>추가</button>
-			<button>수정</button>
-			<button>삭제</button>
+			<a href="curadd.korean"><button type="button">추가</button></a>
 			
 		<!-- content end -->
 		

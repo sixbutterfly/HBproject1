@@ -3,6 +3,8 @@
 -- authority(권한) 추가
 -- studyCur 추가
 -- curNo : 커리큘럼 번호, curName : 커리뮬럼 이름, curLocation : 교육장소, curDateS : 교육시작날짜, curDateE : 교육 종료날짜, curSupply : 교육인원
+-- 강의실 테이블의 roomno는 시퀀스가 아닌 일반 값을 사용 할 것, curno와 tchno 널값 허용되게 변경
+-- register 추가/방아름
 
 ----------------------------------------
 -- 변경해야 할 사항
@@ -34,26 +36,36 @@ insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone
 insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno) values (mem_seq.nextval, 'kimstudent', 'kim', '김학생', '김학생의 집', 'kimstudent@gmail.com',
  '010-2468-7852', 4);
 insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno) values (mem_seq.nextval, 'kimgraduate', 'kim', '김졸업', '김졸업의 집', 'kimgraduate@gmail.com
+<<<<<<< HEAD
 ', '010-3211-6123', 5);
 
 --행정부 추가
 insert into management (admno, memno) values (adm_seq.nextval, '1');
+insert into admin values (adm_seq.nextval, 'admin', '1');
 
---학생 추가
+--학생 추가 (stuNo,memNo,roomNo 순)
 insert into student (stuno, memno, roomno) values (stu_seq.nextval, 20, 2);
+insert into student values (stu_seq.nextval, 1, 1);
 
 --강사 추가
 insert into teacher (tchno, tchname, memno) values (TCH_SEQ.nextval, '김선생', 19);
+insert into teacher values (tch_seq.nextval, 2, '한국인');
 
---강의실 추가
+--강의실 추가 (roomNo,curNo,tchNo 순)
 insert into sturoom (roomno, tchno, curno) values (1, 2, 1);
 insert into sturoom (roomno, tchno, curno) values (2, 2, 2);
 insert into sturoom (roomno, tchno, curno) values (3, 2, 3);
+insert into sturoom values (room_seq.nextval, null, 2);
+insert into sturoom values (room_seq.nextval, null, null);
 
---커리큘럼 추가
+
+--커리큘럼 추가 (curNo, curName, curLocation, curDate, curSupply 순)
 insert into curriculum (curno, curname, curlocation, curdate, cursupply) values (cur_seq.nextval, '전자정부프레임워크', '1강의실', '2016-04-01', '20');
 insert into curriculum (curno, curname, curlocation, curdate, cursupply) values (cur_seq.nextval, '전자정부프레임워크', '2강의실', '2016-05-01', '20');
 insert into curriculum (curno, curname, curlocation, curdate, cursupply) values (cur_seq.nextval, '전자정부프레임워크', '3강의실', '2016-06-01', '20');
+insert into curriculum values (cur_seq.nextval, '전자정부프레임워크', '1강의실', '2016/04/01',20);
+insert into curriculum values (cur_seq.nextval, '한국인프레임워크', '2강의실', '2016/04/01',20);
+insert into curriculum values (cur_seq.nextval, '자바개발자과정', '3강의실', '2016/05/01',20);
 
 --영업부 추가
 insert into sales (salesno, memno) values (sal_seq.nextval, 18);
@@ -61,10 +73,17 @@ insert into sales (salesno, memno) values (sal_seq.nextval, 18);
 --성적 추가
 insert into grade (grdno, stuno, roomno, javagrade, webgrade, framegrade) values (grd_seq.nextval, 4, 2, 90, 85, 65);
 
+--수강신청자 추가 (regNo,memNo,file1,file2,name,email,tel,gubun,job,jobinfo,time,pay,content,password 순)
+insert into register (regNo,memNo) values (reg_seq.nextval,1);
+
 --실험은 여기서 하세요---------------
 select * from studyCur;
+select * from sturoom;
+select * from register;
+select * from student;
+select * from member;
 select curDateS, last_day(curDateS) from studyCur;
+select TEACHER.tchno, TEACHER.tchname, STUROOM.roomno from TEACHER, STUROOM;
 
-
+update sturoom set tchno = 21 where roomno = 2;
 --끝난 실험은 삭제할 것!----------------
-

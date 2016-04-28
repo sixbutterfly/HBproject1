@@ -15,7 +15,7 @@
 <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
 <script type="text/javascript" src="js/menu.js"></script>
 <script type="text/javascript" src="js/jquery.bxslider.min.js"></script>
-<script type="text/javascript" src="js/login.js"></script>
+
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('.bxslider').bxSlider({
@@ -33,7 +33,10 @@
 		<!-- nav -->
 		<%@include file="templet/nav.jsp" %>
 		<!-- aside1 -->
-		<%@include file="templet/subnav0.jsp" %>
+		<%@include file="templet/loginForm.jsp" %>
+			</div>
+		<div class="content templet grid8">
+		
 		<!-- content start -->
 			<ul class="bxslider">
 				<li><img alt="mainbenner1" src="<%=request.getContextPath() %>/imgs/mainbenner1.jpg"></li>

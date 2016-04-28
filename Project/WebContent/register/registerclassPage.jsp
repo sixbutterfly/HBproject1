@@ -156,7 +156,7 @@
 		<!-- nav -->
 		<%@include file="/templet/nav.jsp" %>
 		<!-- aside1 -->
-		<%@include file="/templet/aside1.jsp" %>
+		<%@include file="/templet/loginForm.jsp" %>
 		
 		<!-- content start -->
 	<div>
@@ -185,7 +185,13 @@
 		<form action="register.korean" method="post">
 		<ul id="ul">
 			<li><label id="menu">지원과정</label><div id="answer"><span>자바 프로그래밍 </span></div></li>
-			<li><label id="menu">이름</label><div id="answer"><input type="text" maxlength="15" name="name" id="name"></div></li>
+			<li>
+				<label id="menu">이름</label>
+				<div id="answer">
+					<input type="text" maxlength="15" id="name" value="<%=request.getAttribute("name") %>" disabled="disabled">
+					<input type="hidden" name="name" value="<%=request.getAttribute("name") %>"/>
+				</div>
+			</li>
 			<li><label id="menu">이메일</label><div id="answer"><input type="text" maxlength="15" name="email1" id="email1">
 				@	<input type="text" size="15" name="email2" id="email2"> 
 										<select name="email3" id="email3">

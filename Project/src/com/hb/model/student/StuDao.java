@@ -20,7 +20,7 @@ public class StuDao {
 		conn = DB.getConnection();
 	}
 
-	public ArrayList selectRoomList() {
+	public ArrayList selectAll() {
 		ArrayList<StuDto> list = new ArrayList<StuDto>();
 		String sql = "select stuNo, memname, curname, curlocation from student, member, studycur where student.memno = member.memno";
 		try {

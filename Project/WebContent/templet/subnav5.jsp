@@ -27,20 +27,7 @@
 		}
 	});
 </script>
-<div class="aside1 grid2">
-	<div class="login">
-		<form action="#">
-			<div>
-				<input type="text" name="id" value="아이디" />
-				<input type="password" name="id" value="비밀번호" />
-			</div>
-			<div>
-				<button>로그인</button>
-			</div>
-		</form>
-	</div>
-	<a href="#">회원가입</a>
-	<div class="clear"></div>
+
 
 	<div class="submenu">
 		<div class="common">
@@ -63,7 +50,7 @@
 				<a href="addgrade.do">성적 입력</a>
 			</div>
 			<div class="sales">
-				<a href="waitinlist.do">수강 대기자</a>
+				<a href="waitinlist.korean">수강 대기자</a>
 			</div>
 			<div class="manager">
 				<a href="allmember.do">회원관리</a>
@@ -78,7 +65,7 @@
 				<a href="teacher.do">강사 관리</a>
 			</div>
 			<div class="manager">
-				<a href="curriculum.do">커리큘럼 관리</a>
+				<a href="curriculum.korean">커리큘럼 관리</a>
 			</div>
 		</div>
 
