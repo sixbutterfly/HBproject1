@@ -20,6 +20,10 @@ public class GradeDao {
 	public void GradeDao() {
 	}
 	
+	public void getGrade() {
+		
+	}
+	
 	public void list() {
 		sql="SELECT JAVAGRADE, WEBGRADE, FRAMEGRADE FROM GRADE WHERE STUNO=?";
 		try {

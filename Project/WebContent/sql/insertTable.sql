@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 --자유롭게 추가해주세요!-----------
 -- 변경 된 사항
 -- authority(권한) 추가
@@ -10,7 +9,7 @@
 -- 멤버 테이블에 가입일 컬럼 추가하는게 좋을듯
 -- 행정부 컬럼명 변경(management)
 ------------------------------------------
-
+--권한 테이블
 insert into authority (authNo, departName) values (0, '일반유저');
 insert into authority (authNo, departName) values (1, '행정부');
 insert into authority (authNo, departName) values (2, '영업부');
@@ -36,6 +35,7 @@ insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone
  '010-2468-7852', 4);
 insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno) values (mem_seq.nextval, 'kimgraduate', 'kim', '김졸업', '김졸업의 집', 'kimgraduate@gmail.com
 ', '010-3211-6123', 5);
+
 --행정부 추가
 insert into management (admno, memno) values (adm_seq.nextval, '1');
 
