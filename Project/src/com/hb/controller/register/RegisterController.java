@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.hb.model.register.registerDao;
 
 @WebServlet("/resisterController.korean")
-public class ResisterController extends HttpServlet {
+public class RegisterController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}

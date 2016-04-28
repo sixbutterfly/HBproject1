@@ -1,4 +1,4 @@
-package com.hb.controller.mypage.teacher;
+package com.hb.model.grade;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,35 +12,39 @@ public class GradeDao {
 	String user="scott";
 	String password="tiger";
 	String sql="";
-	
+	GradeDto bean = new GradeDto();
 	Connection conn;
 	PreparedStatement pstmt;
 	ResultSet rs;
-	
-	public void GradeDao() {
-	}
-	
-	public void getGrade() {
-		
-	}
-	
-	public void list() {
-		sql="SELECT JAVAGRADE, WEBGRADE, FRAMEGRADE FROM GRADE WHERE STUNO=?";
+	public GradeDto list() {
+		sql="select stuno, member.memname, roomno, javagrade, webgrade, framegrade from grade, " +
+			"member where member.memno = (select memno from student)";
 		try {
 			Class.forName(driver);
 			conn = DriverManager.getConnection(url, user, password);
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, 4);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				String javagrade = rs.getString("javagrade");
-				String webgrade = rs.getString("webgrade");
-				String framegrade = rs.getString("framegrade");
+				bean.setStuno(rs.getInt("stuno"));
+				bean.setMemname(rs.getString("memname"));
+				bean.setRoomno(rs.getInt("roomno"));
+				bean.setJavagrade(rs.getString("javagrade"));
+				bean.setWebgrade(rs.getString("webgrade"));
+				bean.setFramegrade(rs.getString("framegrade"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if (rs!=null) rs.close();
+				if (pstmt!=null) pstmt.close();
+				if (conn!=null) conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
+		return bean;
 	}
 }

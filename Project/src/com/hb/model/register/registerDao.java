@@ -36,6 +36,14 @@ public class registerDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if (rs!=null) rs.close();
+				if (pstmt!=null) pstmt.close();
+				if (conn!=null) conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return list;
 	}
@@ -51,6 +59,14 @@ public class registerDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if (rs!=null) rs.close();
+				if (pstmt!=null) pstmt.close();
+				if (conn!=null) conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return memNo;
 	}
@@ -65,6 +81,14 @@ public class registerDao {
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if (rs!=null) rs.close();
+				if (pstmt!=null) pstmt.close();
+				if (conn!=null) conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return result;
 	}
@@ -80,6 +104,14 @@ public class registerDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if (rs!=null) rs.close();
+				if (pstmt!=null) pstmt.close();
+				if (conn!=null) conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return name;
 	}
