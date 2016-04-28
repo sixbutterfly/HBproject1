@@ -1,3 +1,5 @@
+<%@page import="com.hb.model.register.registerDto"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -7,13 +9,39 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/grid.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/header.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav.css"/>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/subnav0.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/loginForm.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/subnav5.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/aside2.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
 <style type="text/css">
-	.content{
-		height: 800px;
+	.title>p{
+		font-size: 30pt;
+		font-style: oblique;
+	}
+	.title>span{
+		font-size: 15pt;
+	}
+	.title{
+		margin: 20px;
+		border-bottom: 3px solid #ddd;
+		color: #666;
+	}
+	.table{
+		width: 700px;
+		margin: 10px auto;
+	}
+	.table th{
+		background-color: rgba(204,229,255,0.5);
+	}
+	.table tr{
+		text-align: center;
+	}
+	.table tr a{
+		text-decoration: none;
+		color: black;
+	}
+	.table tr a:hover{
+		color: #06c;
 	}
 </style>
 <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
@@ -30,11 +58,27 @@
 		<%@include file="/templet/subnav5.jsp" %>
 		
 		<!-- content start -->
-			<h1>수강 최종 승인</h1>
-			<table>
-				<tr><th>회원번호</th><th>이름</th><th>연락처</th><th>email</th><th>서류제출</th></tr>
+			<div class="title">
+				<p>MY PAGE</p>
+				<span>수강 최종 승인</span>
+			</div>
+			
+			<table class="table">
+				<tr><th>회원번호</th><th>이름</th><th>연락처</th><th>email</th><th>서류제출1</th><th>서류제출2</th></tr>
+				<%
+					ArrayList<registerDto> list = (ArrayList<registerDto>) request.getAttribute("list");
+					for(registerDto bean : list){
+				%>
+				<tr>
+					<td><%=bean.getMemNo() %></td>
+					<td><a href="finaldatile.korean?memNo=<%=bean.getMemNo() %>"><%=bean.getName() %></a></td>
+					<td><%=bean.getTel() %></td>
+					<td><%=bean.getEmail() %></td>
+					<td><%=bean.getFile1() %></td>
+					<td><%=bean.getFile2() %></td>
+				</tr>
+				<% } %>
 			</table>
-			서류제출이 완료된 리스트
 		<!-- content end -->
 		
 		<!-- aside2 -->

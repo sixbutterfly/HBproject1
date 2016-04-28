@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.hb.model.register.registerDao;
+
 
 @WebServlet("/register.korean")
 public class RegisterclassController extends HttpServlet {
@@ -38,9 +40,14 @@ public class RegisterclassController extends HttpServlet {
 		String content = request.getParameter("content");
 		String password = request.getParameter("password");
 		
-		RegisterDao dao = new RegisterDao();
-		dao.registerClass(name, email, tel, gubun, job, jobinfo, time, pay, content, password, file1, file2);
+		registerDao dao = new registerDao();
+		int result = dao.registerClass(name, email, tel, gubun, job, jobinfo, time, pay, content, password, file1, file2);
 		
-		request.getRequestDispatcher("register/registerdonePage.jsp").forward(request, response);
+		if(result>0){
+			request.getRequestDispatcher("register/registerdonePage.jsp").forward(request, response);
+		}else{
+			
+		}
+		
 	}
 }

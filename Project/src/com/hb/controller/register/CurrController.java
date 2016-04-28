@@ -10,11 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/registerInfo.korean")
 public class CurrController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		request.getRequestDispatcher("register/curriculumInfo.jsp").forward(request, response);
 	}
+	
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doPost(req, resp);
 	}
 }

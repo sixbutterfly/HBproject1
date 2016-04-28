@@ -1,3 +1,4 @@
+<%@page import="com.hb.model.curriculum.curriculumDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -9,12 +10,13 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/grid.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/header.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav.css"/>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/bxslider.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/loginForm.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/subnav1.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/aside2.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
 
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-1.12.2.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/menu.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery.bxslider.min.js"></script>
 <script type="text/javascript">
 	function jobinfo() {
 		var jobinfo = document.getElementsByName("jobinfo");
@@ -156,7 +158,8 @@
 		<!-- nav -->
 		<%@include file="/templet/nav.jsp" %>
 		<!-- aside1 -->
-		<%@include file="/templet/subnav0.jsp" %>
+		<%@include file="/templet/loginForm.jsp" %>
+		<%@include file="/templet/subnav2.jsp" %>
 		
 		<!-- content start -->
 	<div>
@@ -170,7 +173,7 @@
 				</a> &gt;
 				<a href="registerInfo.korean">
 					<span>
-						정규교육신청
+						취업교육과정
 					</span>
 				</a> &gt;
 				<a href="resisterController.korean">
@@ -183,8 +186,12 @@
 		<hr/>
 		
 		<form action="register.korean" method="post">
+		<%
+			curriculumDto dto = (curriculumDto)request.getAttribute("dto");
+		%>
+		<input type="hidden" name="curNo" value="<%=dto.getCurNo() %>"/>
 		<ul id="ul">
-			<li><label id="menu">지원과정</label><div id="answer"><span>자바 프로그래밍 </span></div></li>
+			<li><label id="menu">지원과정</label><div id="answer"><span><%=dto.getCurName() %></span></div></li>
 			<li><label id="menu">이름</label><div id="answer"><input type="text" maxlength="15" name="name" id="name"></div></li>
 			<li><label id="menu">이메일</label><div id="answer"><input type="text" maxlength="15" name="email1" id="email1">
 				@	<input type="text" size="15" name="email2" id="email2"> 

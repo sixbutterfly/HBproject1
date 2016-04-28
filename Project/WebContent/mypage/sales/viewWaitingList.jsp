@@ -1,3 +1,5 @@
+<%@page import="com.hb.model.register.registerDto"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -7,8 +9,8 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/grid.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/header.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav.css"/>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/subnav0.css"/>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/subnav3.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/loginForm.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/subnav5.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/aside2.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
 <style type="text/css">
@@ -57,7 +59,7 @@
 		<%@include file="/templet/nav.jsp" %>
 		<!-- aside1 -->
 		<%@include file="/templet/loginForm.jsp" %>
-		<%@include file="/templet/subnav3.jsp" %>
+		<%@include file="/templet/subnav5.jsp" %>
 		
 		<!-- content start -->
 			<div>
@@ -66,9 +68,21 @@
 			</div>
 			
 			<table class="table">
-				<tr><th>회원번호</th><th>이름</th><th>연락처</th><th>email</th><th>서류제출</th></tr>
+				<tr><th>회원번호</th><th>이름</th><th>연락처</th><th>email</th><th>서류제출1</th><th>서류제출2</th></tr>
+				<%
+					ArrayList<registerDto> list = (ArrayList<registerDto>) request.getAttribute("list");
+					for(registerDto bean : list){
+				%>
+				<tr>
+					<td><%=bean.getMemNo() %></td>
+					<td><%=bean.getName() %></td>
+					<td><%=bean.getTel() %></td>
+					<td><%=bean.getEmail() %></td>
+					<td><%=bean.getFile1() %></td>
+					<td><%=bean.getFile2() %></td>
+				</tr>
+				<% } %>
 			</table>
-			서류 제출 안된 수강 신청자 출력
 		<!-- content end -->
 		
 		<!-- aside2 -->

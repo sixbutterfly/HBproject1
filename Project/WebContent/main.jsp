@@ -7,7 +7,7 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/grid.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/header.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav.css"/>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/subnav0.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/loginForm.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/bxslider.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/aside2.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
@@ -34,8 +34,7 @@
 		<%@include file="templet/nav.jsp" %>
 		<!-- aside1 -->
 		<%@include file="templet/loginForm.jsp" %>
-			</div>
-		<div class="content templet grid8">
+		<%@include file="templet/subnav0.jsp" %>
 		
 		<!-- content start -->
 			<ul class="bxslider">
