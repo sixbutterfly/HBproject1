@@ -53,7 +53,20 @@ public class MemberDao {
 			pstmt.setString(8, dto.getGender());
 			pstmt.setString(9, dto.getEmailagree());
 			result = pstmt.executeUpdate();
-		}catch(Exception ex){}
+		}catch(Exception ex){
+			
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}		
 			return result;
 	}
 //	public MemberDto overlab(String id){
