@@ -36,4 +36,5 @@
 				<%} %>
 				
 			</div>
+			<a class="reg" href="agreejoin.korean">회원가입</a>
 			<div class="clear"></div>

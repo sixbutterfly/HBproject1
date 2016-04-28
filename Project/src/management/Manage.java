@@ -1,6 +1,7 @@
 package management;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -13,15 +14,20 @@ import com.hb.model.login.MemberDao;
 import com.hb.model.login.MemberDto;
 
 
-@WebServlet("/mglevel.do")
+@WebServlet("/manageall.korean")
 public class Manage extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		MemberDao dao = new MemberDao();
-		ArrayList<MemberDto> arr = dao.list();
-		req.setAttribute("list", arr);
+		ArrayList<MemberDto> list = null;
+		try {
+			list = dao.selectAll();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		req.setAttribute("list", list);
 		
-		req.getRequestDispatcher("mypage/manager/manageLevel.jsp").forward(req, resp);
+		req.getRequestDispatcher("mypage/manager/manageAll.jsp").forward(req, resp);
 	}
 }

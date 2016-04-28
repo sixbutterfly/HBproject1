@@ -31,14 +31,14 @@ alter table register modify(file1 VARCHAR2(50));
 alter table register modify(file2 VARCHAR2(50));
 alter table register modify(gubun VARCHAR2(100));
 
+------멤버 테이블 속성 널값으로 변경							
 ALTER TABLE MEMBER MODIFY (MEMPW VARCHAR2(30) NOT NULL,
 							MEMID VARCHAR2(30) NOT NULL,
 							MEMNAME VARCHAR2(30) NOT NULL,
 							MEMADDRESS VARCHAR2(100) NOT NULL,
 							MEMPHONE VARCHAR2(20) NOT NULL);
-							
-------멤버 테이블 속성 널값으로 변경							
+------멤버 테이블 속성 추가
 ALTER TABLE MEMBER ADD MEMTEL VARCHAR2(20) NULL;
 ALTER TABLE MEMBER ADD MEMGENDER VARCHAR2(10) NOT NULL;
 ALTER TABLE MEMBER ADD EMAILAGREE VARCHAR2(5) NOT NULL;
-------멤버 테이블 속성 추가
+ALTER TABLE MEMBER ADD JOINDAY VARCHAR2(20) NOT NULL;
