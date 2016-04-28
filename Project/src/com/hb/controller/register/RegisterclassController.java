@@ -17,6 +17,8 @@ public class RegisterclassController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
+		int curNo = Integer.parseInt(request.getParameter("curNo"));
+		
 		String name = request.getParameter("name");
 		String email1 = request.getParameter("email1");
 		String email2 = request.getParameter("email2");
@@ -41,7 +43,7 @@ public class RegisterclassController extends HttpServlet {
 		String password = request.getParameter("password");
 		
 		registerDao dao = new registerDao();
-		int result = dao.registerClass(name, email, tel, gubun, job, jobinfo, time, pay, content, password, file1, file2);
+		int result = dao.registerClass(curNo, name, email, tel, gubun, job, jobinfo, time, pay, content, password, file1, file2);
 		
 		if(result>0){
 			request.getRequestDispatcher("register/registerdonePage.jsp").forward(request, response);

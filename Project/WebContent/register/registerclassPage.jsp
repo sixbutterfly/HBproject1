@@ -192,7 +192,7 @@
 		<input type="hidden" name="curNo" value="<%=dto.getCurNo() %>"/>
 		<ul id="ul">
 			<li><label id="menu">지원과정</label><div id="answer"><span><%=dto.getCurName() %></span></div></li>
-			<li><label id="menu">이름</label><div id="answer"><input type="text" maxlength="15" name="name" id="name"></div></li>
+			<li><label id="menu">이름</label><div id="answer"><%=request.getAttribute("name") %><input type="hidden" name="name" value="<%=request.getAttribute("name") %>"/></div></li>
 			<li><label id="menu">이메일</label><div id="answer"><input type="text" maxlength="15" name="email1" id="email1">
 				@	<input type="text" size="15" name="email2" id="email2"> 
 										<select name="email3" id="email3">

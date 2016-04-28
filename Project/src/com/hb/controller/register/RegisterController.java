@@ -9,9 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.hb.model.curriculum.curriculumDao;
 import com.hb.model.curriculum.curriculumDto;
+import com.hb.model.register.registerDao;
 
 @WebServlet("/resisterController.korean")
-public class ResisterController extends HttpServlet {
+public class RegisterController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
@@ -19,6 +20,11 @@ public class ResisterController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String title = request.getParameter("title");
+		String id = (String)request.getSession().getAttribute("id");
+		
+		registerDao dao1 = new registerDao();
+		String name = dao1.getName(id);
+		request.setAttribute("name", name);
 		
 		curriculumDao dao = new curriculumDao();
 		curriculumDto dto = dao.selectOne(title);

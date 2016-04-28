@@ -60,22 +60,46 @@ public class registerDao {
 //		} catch (SQLException e) {
 //			e.printStackTrace();
 //		}finally{
-	//		try {
-	//			if(rs!=null){rs.close();}
-	//			if(pstmt!=null){pstmt.close();}
-	//			if(conn!=null){conn.close();}
-	//		} catch (SQLException e) {
-	//			e.printStackTrace();
-	//		}
+//			try {
+//				if(rs!=null){rs.close();}
+//				if(pstmt!=null){pstmt.close();}
+//				if(conn!=null){conn.close();}
+//			} catch (SQLException e) {
+//				e.printStackTrace();
+//			}
 //		}
 //		return memNo;
 //	}
 	
-	public int registerClass(String name, String email, String tel,String gubun, String job, String jobinfo, String time, String pay,String content, String password, String file1, String file2) {
+	public String getName(String id) {
+	      String name="";
+	      String sql = "SELECT MEMNAME FROM MEMBER WHERE MEMID='"+id+"'";
+	      try {
+	         pstmt = conn.prepareStatement(sql);
+	         rs = pstmt.executeQuery();
+	         while (rs.next()) {
+	            name = rs.getString("memname");
+	         }
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         try {
+	            if (rs!=null) rs.close();
+	            if (pstmt!=null) pstmt.close();
+	            if (conn!=null) conn.close();
+	         } catch (SQLException e) {
+	            e.printStackTrace();
+	         }
+	      }
+	      return name;
+	   }
+	
+	
+	public int registerClass(int curNo, String name, String email, String tel,String gubun, String job, String jobinfo, String time, String pay,String content, String password, String file1, String file2) {
 		int result = 0;
-//		String sql2 = "select * from curriculum where curName="+curName;
-		String sql = "INSERT INTO REGISTER (REGNO, MEMNO, NAME, EMAIL, TEL, GUBUN, JOB, JOBINFO, TIME, PAY, CONTENT, PASSWORD, FILE1, FILE2) VALUES " +
-					"(REG_SEQ.NEXTVAL, (select memNo from member where memName='"+name+"'), '"+name+"', '"+email+"', '"+tel+"', '"+gubun+"', '"+job+"', '"+jobinfo+"', '"+time+"', '"+pay+"', '"+content+"', '"+password+"', '"+file1+"', '"+file2+"')";
+		String sql = "INSERT INTO REGISTER (REGNO, MEMNO, NAME, EMAIL, TEL, GUBUN, JOB, JOBINFO, TIME, PAY, CONTENT, PASSWORD, FILE1, FILE2, CURNO) VALUES " +
+					"(REG_SEQ.NEXTVAL, (select memNo from member where memName='"+name+"'), '"+name+"', '"+email+"', '"+tel+"', '"+gubun+"', '"+job+"', '"+jobinfo+"', '"+time+"', '"+pay+"', '"+content+"', '"+password+"', '"+file1+"', '"+file2+"',"+curNo+")";
+//		System.out.println(sql);
 		try {
 			pstmt = conn.prepareStatement(sql);
 			result = pstmt.executeUpdate();
@@ -129,6 +153,7 @@ public class registerDao {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			if(rs.next()){
+				dto.setCurNo(rs.getInt("curNo"));
 				dto.setRegNo(rs.getInt("regNo"));
 				dto.setMemNo(rs.getInt("memNo"));
 				dto.setFile1(rs.getString("file1"));
