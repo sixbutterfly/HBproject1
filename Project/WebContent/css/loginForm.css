@@ -30,7 +30,12 @@
 		margin-left: 80px;
 		height: 30px;
 	}
-		
+	.user+div>a{
+		text-decoration: none;
+		color: blue;
+		font-size: 8pt;
+		margin: ;
+	}
 	
 	.content{
 		margin: 10px auto;

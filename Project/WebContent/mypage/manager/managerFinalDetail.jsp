@@ -1,3 +1,4 @@
+<%@page import="com.hb.model.curriculum.curriculumDto"%>
 <%@page import="com.hb.model.register.registerDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -60,19 +61,26 @@
 			
 			<%
 				registerDto dto = (registerDto)request.getAttribute("dto");
+				curriculumDto cdto = (curriculumDto)request.getAttribute("cdto");
 			%>
 			
 			<form action="finalConfirm.korean">
 			<div id="cur">
 				<ul>
+					<li>신청 과정 : <%=cdto.getCurName() %></li>
 					<li>이름 : <%=dto.getName() %></li>
 					<li>전화번호 : <%=dto.getTel() %></li>
 					<li>이메일 : <%=dto.getEmail() %></li>
-					<li></li>
+					<li>서류1 : <%=dto.getFile1() %></li>
+					<li>서류2 : <%=dto.getFile2() %></li>
+					<li>회사명 : <%=dto.getJob() %></li>
+					<li>구분 : <%=dto.getGubun() %></li>
+					<li>관련항목 : <%=dto.getJobinfo() %></li>
+					<li>결제방법 : <%=dto.getPay() %></li>
+					<li>내용 : <p><%=dto.getContent() %></p></li>
 				</ul>
-				<button type="submit">수정</button>
-				<a href=""><button type="button">삭제</button></a>
-				<a href=""><button type="button">목록</button></a>
+				<button type="submit">승인</button>
+				<a href="finallist.korean"><button type="button">목록</button></a>
 			</div>
 			</form>
 						
