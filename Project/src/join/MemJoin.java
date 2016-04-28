@@ -11,11 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 import com.hb.model.login.MemberDao;
 import com.hb.model.login.MemberDto;
 
-@WebServlet("/memberjoin.do")
+@WebServlet("/memberjoin.korean")
 public class MemJoin extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		req.getCharacterEncoding();
 //		if(name.equals("gender")){
 //		String gender = req.getParameter(name);
 //		}

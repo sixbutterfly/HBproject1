@@ -57,7 +57,7 @@ button{
 			var agr1 = $('#agree1').is(':checked');
 			var agr2 = $('#agree2').is(':checked');
 			  if(agr1==true && agr2==true) {
-				  $('#link').attr("action","join.do").submit();
+				  $('#link').attr("action","join.korean").submit();
 			  }
 			  else {
 				  if(!$('#agree1').is(':checked')){
