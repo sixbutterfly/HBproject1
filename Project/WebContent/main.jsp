@@ -34,6 +34,7 @@
 		<%@include file="templet/nav.jsp" %>
 		<!-- aside1 -->
 		<%@include file="templet/loginForm.jsp" %>
+		<%@include file="templet/subnav0.jsp" %>
 			</div>
 		<div class="content templet grid8">
 		
