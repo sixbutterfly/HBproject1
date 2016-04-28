@@ -91,7 +91,7 @@
 		<!-- nav -->
 		<%@include file="/templet/nav.jsp" %>
 		<!-- aside1 -->
-		<%@include file="/templet/aside1.jsp" %>
+		<%@include file="/templet/subnav0.jsp" %>
 		
 		<!-- content start -->
 		<br/>
