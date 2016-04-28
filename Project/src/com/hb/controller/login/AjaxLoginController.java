@@ -30,16 +30,4 @@ public class AjaxLoginController extends HttpServlet {
 			request.getRequestDispatcher("/login/json.jsp").forward(request, response);
 		}
 	}
-
 }
-
-
-
-
-
-
-
-
-
-
-

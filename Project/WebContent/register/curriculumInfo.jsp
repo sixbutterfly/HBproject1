@@ -8,22 +8,26 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/grid.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/header.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav.css"/>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/bxslider.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/loginForm.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/subnav1.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/aside2.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
 
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-1.12.2.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/menu.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery.bxslider.min.js"></script>
-<script type="text/javascript">
-	$(document).ready(function(){
-		$('.bxslider').bxSlider({
-		  'auto':true,
-		  'controls':false,
-		  'slideWidth':1500,
-		  });
-	}); //ready end
-</script>
 <style>
+	.title p{
+		font-size: 30pt;
+		font-style: oblique;
+	}
+	.title>span{
+		font-size: 15pt;
+	}
+	.title{
+		margin: 20px;
+		border-bottom: 3px solid #ddd;
+		color: #666;
+	}
 	h3 {
 		display: inline-block;
 		margin: 10px 0px;
@@ -36,8 +40,12 @@
 		margin: 10px 0px;
 	}
 	.direction {
-		padding-left: 54%;
+		padding-left: 80%;
 		font-size: 8pt;
+	}
+	a{
+		text-decoration: none;
+		color: black;
 	}
 	.table1 {
 		float: right;
@@ -64,13 +72,15 @@
 		<!-- nav -->
 		<%@include file="/templet/nav.jsp" %>
 		<!-- aside1 -->
-		<%@include file="/templet/aside1.jsp" %>
+		<%@include file="/templet/loginForm.jsp" %>
+		<%@include file="/templet/subnav2.jsp" %>
 		
 		<!-- content start -->
-		<br/>
-		<img src="<%=request.getContextPath() %>/imgs/curriculum.png">
-		<br/>
-		<h3>자바(JAVA)개발자 입문과정</h3>
+		<div class="title">
+			<p>REGULAR CURRICULUM</p>
+			<span>취업교육과정</span>
+		</div>
+	
 		<span class="direction">
 				<a href='index.do'>
 					<span>
@@ -79,7 +89,7 @@
 				</a> &gt;
 				<a href='registerInfo.korean'>
 					<span>
-						정규교육신청
+						취업교육과정
 					</span>
 				</a>
 			</span>
@@ -87,8 +97,9 @@
 		
 		<hr/>
 		<img src="<%=request.getContextPath() %>/imgs/java1.jpg">
+
 		<table class="table1">
-		<tr><td><strong>교육과목</strong></td><td> : </td><td>자바 프로그래밍</td></tr>
+		<tr><td><strong>교육과목</strong></td><td> : </td><td>자바(JAVA)개발자 과정</td></tr>
 		<tr><td><strong>교육기간</strong></td><td> : </td><td>[주중반] 2016.05.02 ~ 2016.05.30</td></tr>
 		<tr><td></td><td> : </td><td>[주말반] 2016.05.1 ~ 2016.05.29</td></tr>
 		<tr><td><strong>교육일정</strong></td><td> : </td><td>[주중반] 총 160시간 월~금 09:00~18:00</td></tr>
@@ -98,11 +109,12 @@
 		<tr><td><strong>교육비용</strong></td><td> : </td><td>전화/온라인 문의</td></tr>
 		<tr><td><strong>문의전화</strong></td><td> : </td><td>02-707-1480</td></tr>
 		</table>
+		
 		<div class="register">
-			<a href="resisterController.korean">
+			<a href="resisterController.korean?title=자바(JAVA)개발자 과정">
 				<img src="<%=request.getContextPath() %>/imgs/btn.jpg">
 			</a>
-			<a href="detailController.korean">
+			<a href="detailController.korean?title=자바(JAVA)개발자 과정">
 				<img src="<%=request.getContextPath() %>/imgs/curriculumdetailBtn.png">
 			</a>
 		</div>

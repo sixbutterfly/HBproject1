@@ -8,6 +8,8 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/grid.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/header.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/loginForm.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/subnav1.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
 <style type="text/css">
 	div>p{
@@ -281,7 +283,8 @@
 		<!-- nav -->
 		<%@include file="/templet/nav.jsp" %>
 		<!-- aside1 -->
-		<%@include file="/templet/subnav0.jsp" %>
+		<%@include file="/templet/loginForm.jsp" %>
+		<%@include file="/templet/subnav1.jsp" %>
 		
 	<div>
 		<p>회원가입</p>

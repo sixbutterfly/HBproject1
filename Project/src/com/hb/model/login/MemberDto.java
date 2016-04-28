@@ -19,7 +19,6 @@ public class MemberDto {
 	private String addrresult2;
 	private int authno;
 	
-	
 	public MemberDto(String id, String pw, String name, String gender,
 			String tel, String tel2, String tel3, String phone,
 			String phone2, String phone3, String email, String email2,

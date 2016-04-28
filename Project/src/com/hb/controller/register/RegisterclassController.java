@@ -9,12 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.hb.model.register.registerDao;
 
 @WebServlet("/register.korean")
 public class RegisterclassController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
+		String id = (String) request.getSession().getAttribute("id");
 		String name = request.getParameter("name");
 		String email1 = request.getParameter("email1");
 		String email2 = request.getParameter("email2");
@@ -38,9 +40,18 @@ public class RegisterclassController extends HttpServlet {
 		String content = request.getParameter("content");
 		String password = request.getParameter("password");
 		
-		RegisterDao dao = new RegisterDao();
-		dao.registerClass(name, email, tel, gubun, job, jobinfo, time, pay, content, password, file1, file2);
+		registerDao dao = new registerDao();
+		int result1 = dao.registerClass(id, name, email, tel, gubun, job, jobinfo, time, pay, content, password, file1, file2);
+		int result = dao.registerClass(name, email, tel, gubun, job, jobinfo, time, pay, content, password, file1, file2);
 		
-		request.getRequestDispatcher("register/registerdonePage.jsp").forward(request, response);
+		if (result1>0) {
+			request.getRequestDispatcher("register/registerdonePage.jsp").forward(request, response);
+		} else {
+			System.out.println("수강 등록 실패");
+		}
+		if(result>0){
+			request.getRequestDispatcher("register/registerdonePage.jsp").forward(request, response);
+		}else{
+		}
 	}
 }

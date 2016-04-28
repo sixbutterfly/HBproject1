@@ -40,6 +40,14 @@ public class curriculumDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally{
+			try {
+				if(rs!=null){rs.close();}
+				if(pstmt!=null){pstmt.close();}
+				if(conn!=null){conn.close();}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return list;
 	}//selectAll end
@@ -59,9 +67,41 @@ public class curriculumDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally{
+			try {
+				if(rs!=null){rs.close();}
+				if(pstmt!=null){pstmt.close();}
+				if(conn!=null){conn.close();}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return dto;
-	}//selectOne end
+	}//selectOne(curNo) end
+	
+	public curriculumDto selectOne(String title) {
+		curriculumDto dto = new curriculumDto();
+		String sql = "SELECT * FROM CURRICULUM WHERE CURNAME='"+title+"'";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				dto.setCurNo(rs.getInt("curNo"));
+				dto.setCurName(rs.getString("curName"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				if(rs!=null){rs.close();}
+				if(pstmt!=null){pstmt.close();}
+				if(conn!=null){conn.close();}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return dto;
+	}//selectOne(title) end
 
 	public int editOne(int curNo, String curDate, String curLocation, int curSupply) {
 		int result = 0;

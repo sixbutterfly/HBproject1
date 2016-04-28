@@ -1,31 +1,35 @@
+<%@page import="com.hb.model.curriculum.curriculumDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<title>커리큘럼 보기(자바 프로그래밍)</title>
+<title>커리큘럼 보기</title>
 
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/grid.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/header.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav.css"/>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/bxslider.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/loginForm.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/subnav1.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/aside2.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
 
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-1.12.2.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/menu.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery.bxslider.min.js"></script>
-
-<script type="text/javascript">
-	$(document).ready(function(){
-		$('.bxslider').bxSlider({
-		  'auto':true,
-		  'controls':false,
-		  'slideWidth':1500,
-		  });
-	}); //ready end
-</script>
 <style>
+	.title p{
+		font-size: 30pt;
+		font-style: oblique;
+	}
+	.title>span{
+		font-size: 15pt;
+	}
+	.title{
+		margin: 20px;
+		border-bottom: 3px solid #ddd;
+		color: #666;
+	}
 	.table1 {
 		float: right;
 		width: 480px;
@@ -33,6 +37,10 @@
 		margin-right: 30px;
 		margin-top: 10px;
 		font-size: 14pt;
+	}
+	a{
+		text-decoration: none;
+		color: black;
 	}
 	.table2 {
 		width: 800px;
@@ -91,14 +99,26 @@
 		<!-- nav -->
 		<%@include file="/templet/nav.jsp" %>
 		<!-- aside1 -->
-		<%@include file="/templet/aside1.jsp" %>
+		<%@include file="/templet/loginForm.jsp" %>
+<<<<<<< HEAD
+=======
+		<%@include file="/templet/subnav2.jsp" %>
+>>>>>>> branch '방아름' of https://github.com/sixbutterfly/HBproject1.git
 		
 		<!-- content start -->
+		<div class="title">
+			<p>REGULAR CURRICULUM</p>
+			<span>취업교육과정</span>
+		</div>
+		
 		<br/>
 		<br/>
 		<img src="<%=request.getContextPath() %>/imgs/java1.jpg">
+		<%
+			curriculumDto dto = (curriculumDto)request.getAttribute("dto");
+		%>
 		<table class="table1">
-		<tr><td><strong>교육과목</strong></td><td> : </td><td>자바 프로그래밍</td></tr>
+		<tr><td><strong>교육과목</strong></td><td> : </td><td><%=dto.getCurName() %></td></tr>
 		<tr><td><strong>교육기간</strong></td><td> : </td><td>[주중반] 2016.05.02 ~ 2016.05.30</td></tr>
 		<tr><td></td><td> : </td><td>[주말반] 2016.05.1 ~ 2016.05.29</td></tr>
 		<tr><td><strong>교육일정</strong></td><td> : </td><td>[주중반] 총 160시간 월~금 09:00~18:00</td></tr>
@@ -268,7 +288,7 @@
 		<br/>
 		<br/>
 		<div class="resist">
-			<a href="resisterController.korean">
+			<a href="resisterController.korean?title=<%=dto.getCurName() %>">
 				<img src="<%=request.getContextPath() %>/imgs/btn.jpg">
 			</a>
 		</div>

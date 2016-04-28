@@ -16,7 +16,8 @@ drop table admin purge;
 
 drop table member purge;
 
-drop table studycur purge;
+-- studyCur 테이블이 curriculum으로 바뀜.
+drop table curriculum purge;
 
 drop table authority purge;
 
