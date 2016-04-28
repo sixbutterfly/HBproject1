@@ -27,11 +27,12 @@
 			<th></th><th>학번</th><th>이름</th><th>배정강의실</th>
 		</tr>
 			<%
+				int checkidx = 0;
 				ArrayList<StuDto> slist = (ArrayList<StuDto>)request.getAttribute("slist");
 				for(StuDto bean : slist){
-					%>
+			%>
 		<tr>
-			<td><input type = "checkbox"/></td>
+			<td><input type = "checkbox" class = "checkbox" id = "checkidx<%=checkidx++%>"/></td>
 				<td><%=bean.getStuno() %></td>
 				<td><%=bean.getStuname() %></td>
 				<td><%=bean.getRoomno() %></td>
