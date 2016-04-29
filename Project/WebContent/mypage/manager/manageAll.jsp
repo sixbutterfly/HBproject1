@@ -44,9 +44,6 @@
 		display: inline-block;
 		text-decoration: none;
 	}
-	#detailcon2{
-		display: none;
-	}
 	
 </style>
 <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
@@ -55,9 +52,54 @@
 	$(document).ready(function(){
 		$('#selauth').click(function(){
 			if($('#selauth').val()=="all"){
-				$('.seeall').css('display','inline-block');
-			}else{
-				$('.seeall').css('display','none');
+				$('.no0').css('display','inline-block');
+				$('.no1').css('display','inline-block');
+				$('.no2').css('display','inline-block');
+				$('.no3').css('display','inline-block');
+				$('.no4').css('display','inline-block');
+				$('.no5').css('display','inline-block');
+			}else if($('#selauth').val()=="guest"){
+				$('.no0').css('display','inline-block');
+				$('.no1').css('display','none');
+				$('.no2').css('display','none');
+				$('.no3').css('display','none');
+				$('.no4').css('display','none');
+				$('.no5').css('display','none');
+			}else if($('#selauth').val()=="student"){
+				$('.no0').css('display','none');
+				$('.no1').css('display','inline-block');
+				$('.no2').css('display','none');
+				$('.no3').css('display','none');
+				$('.no4').css('display','none');
+				$('.no5').css('display','none');
+			}else if($('#selauth').val()=="teacher"){
+				$('.no0').css('display','none');
+				$('.no1').css('display','none');
+				$('.no2').css('display','inline-block');
+				$('.no3').css('display','none');
+				$('.no4').css('display','none');
+				$('.no5').css('display','none');
+			}else if($('#selauth').val()=="finish"){
+				$('.no0').css('display','none');
+				$('.no1').css('display','none');
+				$('.no2').css('display','none');
+				$('.no3').css('display','inline-block');
+				$('.no4').css('display','none');
+				$('.no5').css('display','none');
+			}else if($('#selauth').val()=="sale"){
+				$('.no0').css('display','none');
+				$('.no1').css('display','none');
+				$('.no2').css('display','none');
+				$('.no3').css('display','none');
+				$('.no4').css('display','inline-block');
+				$('.no5').css('display','none');
+			}else if($('#selauth').val()=="admin"){
+				$('.no0').css('display','none');
+				$('.no1').css('display','none');
+				$('.no2').css('display','none');
+				$('.no3').css('display','none');
+				$('.no4').css('display','none');
+				$('.no5').css('display','inline-block');
 			}
 		});
 	});
@@ -94,8 +136,8 @@
 		<div>회원번호</div>
 			<div>소속</div>
 			<div>이름</div>
-			<div>성별</div>
-			<div>핸드폰번호</div>
+			<div style="width:10%;">성별</div>
+			<div style="width:12.3%;">핸드폰번호</div>
 			<div>메일</div>
 			<div style="font-size: 11pt">메일 수신여부</div>
 			<div>가입일</div>
@@ -106,38 +148,16 @@
 				for(MemberDto dto:arr){
 		%>
 		<div id="detailcon">
-			<div>
+			<div class="no<%=dto.getLevel()%>" style="width : 100%;">
 			<a href="memdetail.do?idx=<%=dto.getMemno()%>">
 			<div class="seeall"><%=dto.getMemno()%></div>
-			<div class="seeall"><%=dto.getAuthno()%></div>
+			<div class="seeall"><%=dto.getLevel()%></div>
 			<div class="seeall"><%=dto.getMemname()%></div>
-			<div class="seeall"><%=dto.getMemgender()%></div>
-			<div class="seeall"><%=dto.getMemphone()%></div>
+			<div class="seeall" style="width:10%;"><%=dto.getMemgender()%></div>
+			<div class="seeall" style="width:12.3%;"><%=dto.getMemphone()%></div>
 			<div class="seeall"><%=dto.getMememail()%></div>
 			<div class="seeall"><%=dto.getEmailagree()%></div>
 			<div class="seeall"><%=dto.getJoinday()%></div>
-			</a>
-			</div>
-		</div>
-		<%
-			}
-		%>
-		
-		<%
-		ArrayList<MemberDto> arr2 = (ArrayList<MemberDto>)request.getAttribute("list");
-				for(MemberDto dto2:arr){
-		%>
-		<div id="detailcon2">
-			<div>
-			<a href="memdetail.do?idx=<%=dto2.getMemno()%>">
-			<div class="seestu"><%=dto2.getMemno()%></div>
-			<div class="seestu"><%=dto2.getAuthno()%></div>
-			<div class="seestu"><%=dto2.getMemname()%></div>
-			<div class="seestu"><%=dto2.getMemgender()%></div>
-			<div class="seestu"><%=dto2.getMemphone()%></div>
-			<div class="seestu"><%=dto2.getMememail()%></div>
-			<div class="seestu"><%=dto2.getEmailagree()%></div>
-			<div class="seestu"><%=dto2.getJoinday()%></div>
 			</a>
 			</div>
 		</div>
