@@ -1,3 +1,4 @@
+<%@page import="com.hb.model.notice.noticeDto"%>
 <%@page import="com.hb.model.register.registerDto"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -43,6 +44,10 @@
 	.table tr a:hover{
 		color: #06c;
 	}
+	.content>a>button{
+		width: 50px;
+		margin: 10px 350px;
+	}
 </style>
 <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
 <script type="text/javascript" src="js/menu.js"></script>
@@ -63,6 +68,24 @@
 				<span>공지사항</span>
 			</div>
 			
+			<table class="table">
+				<tr><th>글번호</th><th>제목</th><th>작성일</th><th>작성자</th></tr>
+
+				<%
+					ArrayList<noticeDto> list = (ArrayList) request.getAttribute("list");
+					for(noticeDto dto : list){
+				%>
+
+				<tr>
+					<td><%=dto.getNotNo() %></td>
+					<td><a href="noticedetail.korean?nonNo=?<%=dto.getNotNo() %>"><%=dto.getTitle() %></a></td>
+					<td><%=dto.getNotDate() %></td>
+					<td><%=dto.getName() %></td>
+				</tr>
+				<%} %>
+			</table>
+			
+			<a href="#"><button type="button">글쓰기</button></a>
 			
 		<!-- content end -->
 		

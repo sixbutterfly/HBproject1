@@ -34,10 +34,6 @@ alter table register modify(file1 VARCHAR2(50));
 alter table register modify(file2 VARCHAR2(50));
 alter table register modify(gubun VARCHAR2(100));
 
--- notice 테이블 title, content 컬럼 사이즈 변경
-alter table notice modify(title varchar2(500));
-alter table notice modify(content varchar2(5000));
-
 ------멤버 테이블 속성 널값으로 변경							
 ALTER TABLE MEMBER MODIFY (MEMPW VARCHAR2(30) NOT NULL,
 							MEMID VARCHAR2(30) NOT NULL,

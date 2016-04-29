@@ -75,12 +75,9 @@ insert into sturoom values (room_seq.nextval, null, null);
 
 
 --커리큘럼 추가 (curNo, curName, curLocation, curDate, curSupply 순)
-insert into curriculum (curno, curname, curlocation, curdate, cursupply) values (cur_seq.nextval, '전자정부프레임워크', '1강의실', '2016-04-01', '20');
-insert into curriculum (curno, curname, curlocation, curdate, cursupply) values (cur_seq.nextval, '전자정부프레임워크', '2강의실', '2016-05-01', '20');
-insert into curriculum (curno, curname, curlocation, curdate, cursupply) values (cur_seq.nextval, '전자정부프레임워크', '3강의실', '2016-06-01', '20');
-insert into curriculum values (cur_seq.nextval, '전자정부프레임워크', '1강의실', '2016/04/01',20);
-insert into curriculum values (cur_seq.nextval, '한국인프레임워크', '2강의실', '2016/04/01',20);
-insert into curriculum values (cur_seq.nextval, '자바개발자과정', '3강의실', '2016/05/01',20);
+insert into curriculum (curno, curname, curlocation, curdate, cursupply) values (cur_seq.nextval, '전자정부프레임워크', '1강의실', '2016/04/01',20);
+insert into curriculum (curno, curname, curlocation, curdate, cursupply) values (cur_seq.nextval, '한국인프레임워크', '2강의실', '2016/04/01',20);
+insert into curriculum (curno, curname, curlocation, curdate, cursupply) values (cur_seq.nextval, '자바(JAVA)개발자 과정', '3강의실', '2016/05/01',20);
 
 --영업부 추가
 insert into sales (salesno, memno) values (sal_seq.nextval, 18);
@@ -93,7 +90,7 @@ insert into register (regNo,memNo,name,email,tel) values (reg_seq.nextval,13,'한
 
 
 -- 공지사항 추가 (notNo,Title,Content,notDate,name)
-insert into notice (notNo,Title,Content,notDate,name) values (not_seq.nextval, "2012년도 한빛교육센터 교육평가등급 안내입니다","2012년도 고용노동부에서 평가한 직업훈련 교육기관 평가에서 A 등급을 획득하였습니다. * 총점 : 84.93(100점기준) * 세부점수 - 훈련실시능력 : 27.25점 (30점 기준) - 훈련성과(수료률+취업실적+훈련생만족도+수요평가) : 57.68점 (60점 기준) - 지방노동관서평가 : 10점 (10점 기준) 올해 2013년도 교육기관 평가에서도 2년연속 A 등급을 획득할수 있도록 교육서비스와 취업지원 향상에 최선을 다할 것을 약속합니다. 교육연수생 여러분들의 성원과 격려도 부탁드립니다. 감사합니다.",sysdate,"관리자");
+insert into notice (notNo,Title,Content,notDate,name) values (not_seq.nextval, "한빛교육센터 교육평가등급 안내입니다","고용노동부에서 평가한 직업훈련 교육기관 평가에서 A 등급을 획득하였습니다. 올해 교육기관 평가에서도 A 등급을 획득할수 있도록 교육서비스와 취업지원 향상에 최선을 다할 것을 약속합니다.",sysdate,"관리자");
 
 --실험은 여기서 하세요---------------
 select * from curriculum;
@@ -105,17 +102,16 @@ select * from management;
 select * from sales;
 select * from teacher;
 select * from grade;
+select * from notice;
+
 select curDateS, last_day(curDateS) from studyCur;
 select TEACHER.tchno, TEACHER.tchname, STUROOM.roomno from TEACHER, STUROOM;
 select * from register where file1 is not null and file2 is not null;
-
 select stuno, memname, roomno from student, member where student.memno = member.memno and roomno is null;
 update sturoom set tchno = 21 where roomno = 2;
 
 select stuno, member.memname, roomno from student, member where student.memno = member.memno;
 select javagrade, webgrade, framerade,stuno,roomno, member.mamname from grade, member where member.memno = (select memno from student);
-
-update register set curNo=4 where curNo is null;
 
 SELECT student.stuno, student.roomno, member.memname from student, member where STUDENT.MEMNO = MEMBER.MEMNO;
 update teacher set roomno = null where tchno = 1;

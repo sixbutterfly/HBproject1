@@ -239,7 +239,7 @@ ALTER TABLE stuRoom
 
 
 ALTER TABLE teacher
---ADD ( FOREIGN KEY (memNo) REFERENCES member(memNo));
+  ADD ( FOREIGN KEY (memNo) REFERENCES member(memNo));
 
 ---------------------------------------------------------------------------------------------
 -- 컬럼 변경
@@ -256,10 +256,10 @@ ALTER TABLE teacher
 create table notice (
 
 	notNo		NUMBER(5) not null, -- 글번호
-	Title	varchar2(50) not null,	-- 제목
-	Content	varchar2(200) not null,	-- 내용
-	notDate	date not null,	-- 작성날짜
-	name varchar2(10) not null	-- 작성자
+	Title	varchar2(100)  null,	-- 제목
+	Content	clob  null,	-- 내용
+	notDate	date  null,	-- 작성날짜
+	name varchar2(50)  null	-- 작성자
 );
 ALTER TABLE notice
 	ADD  PRIMARY KEY (notNo);
