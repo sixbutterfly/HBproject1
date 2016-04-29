@@ -57,11 +57,7 @@
 		});
 		$('#submit').click(function(){
 			jobinfo();
-			if($('#name').val()==""||$('#name').val()==null){
-	            alert("이름를 입력하세요!");
-	            $('#name').focus();
-	            return false;
-	 		}else if(!$('#agreed').is(':checked')){
+			if(!$('#agreed').is(':checked')){
 	            alert("약관에 동의하셔야 수강 신청이 가능합니다.");
 	            $('#agreed').focus();
 				return false;
@@ -110,7 +106,7 @@
 		width: 93%;
 		margin-left: 3%;
 	}
-	#menu {
+	.menu {
 		width: 100px;
 		background-color: rgb(230, 230, 230);
 		vertical-align: top;
@@ -190,9 +186,9 @@
 		%>
 		<input type="hidden" name="curNo" value="<%=dto.getCurNo() %>"/>
 		<ul id="ul">
-			<li><label id="menu">지원과정</label><div id="answer"><span><%=dto.getCurName() %></span></div></li>
-			<li><label id="menu">이름</label><div id="answer"><%=request.getAttribute("name") %><input type="hidden" name="name" value="<%=request.getAttribute("name") %>"/></div></li>
-			<li><label id="menu">이메일</label><div id="answer"><input type="text" maxlength="15" name="email1" id="email1">
+			<li><label class="menu">지원과정</label><div id="answer"><span><%=dto.getCurName() %></span></div></li>
+			<li><label class="menu">이름</label><div id="answer"><%=request.getAttribute("name") %><input type="hidden" name="name" value="<%=request.getAttribute("name") %>"/></div></li>
+			<li><label class="menu">이메일</label><div id="answer"><input type="text" maxlength="15" name="email1" id="email1">
 				@	<input type="text" size="15" name="email2" id="email2"> 
 										<select name="email3" id="email3">
 											<option value="self">직접입력
@@ -215,7 +211,7 @@
 											<option value="yahoo.com">yahoo.com
 										</select></div></li>
 			<li>
-				<label id="menu">
+				<label class="menu">
 					연락처
 				</label>
 				<div id="answer">
@@ -233,7 +229,7 @@
 				</div>
 			</li>
 			<li>
-				<label id="menu">
+				<label class="menu">
 					구분
 				</label>
 				<div id="answer">
@@ -243,7 +239,7 @@
 				</div>
 			</li>
 			<li>
-				<label id="menu">
+				<label class="menu">
 					회사명
 				</label>
 				<div id="answer">
@@ -251,7 +247,7 @@
 				</div>
 			</li>
 			<li>
-				<label id="menu">
+				<label class="menu">
 					관련항목
 				</label>
 				<div id="answer">
@@ -262,7 +258,7 @@
 					<input type="checkbox" value="회사직원수가 300명 이상" name="jobinfo" id="jobinfo5"><label for="jobinfo5"><span>회사직원수가 300명 이상</span></label><br/>
 					<input type="checkbox" value="1년이하 계약직" name="jobinfo" id="jobinfo6"><label for="jobinfo6"><span>1년이하 계약직</span></label></div></li>
 			<li>
-				<label id="menu">
+				<label class="menu">
 					교육시간
 				</label>
 				<div id="answer">
@@ -274,7 +270,7 @@
 				</div>
 			</li>
 			<li>
-				<label id="menu">
+				<label class="menu">
 					결제방법
 				</label>
 				<div id="answer">
@@ -285,10 +281,10 @@
 				</select>
 				</div>
 			</li>
-			<li><label id="menu">내용</label><div id="answer"><textarea rows="10" cols="80" name="content"></textarea></div></li>
-			<li><label id="menu">비밀번호</label><div id="answer"><input type="password" name="password" id="pw"></div></li>
-			<li><label id="menu">파일첨부#1</label><div id="answer"><input type="file" name="file1" id="file1"></div></li>
-			<li><label id="menu">파일첨부#2</label><div id="answer"><input type="file" name="file2" id="file2"></div></li>
+			<li><label class="menu">내용</label><div id="answer"><textarea rows="10" cols="80" name="content"></textarea></div></li>
+			<li><label class="menu">비밀번호</label><div id="answer"><input type="password" name="password" id="pw"></div></li>
+			<li><label class="menu">파일첨부#1</label><div id="answer"><input type="file" name="file1" id="file1"></div></li>
+			<li><label class="menu">파일첨부#2</label><div id="answer"><input type="file" name="file2" id="file2"></div></li>
 		</ul>
 		<br/><p id="p"><strong>개인정보보호를 위한 이용자 동의사항(자세한 내용은 개인정보 취급방침을 확인하시기 바랍니다.)</strong></p>
 		<textarea rows="10" cols="80" readonly="readonly" id="textarea">

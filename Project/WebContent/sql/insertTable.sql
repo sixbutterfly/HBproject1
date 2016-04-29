@@ -91,6 +91,10 @@ insert into grade (grdno, stuno, roomno, javagrade, webgrade, framegrade) values
 --수강신청자 추가 (regNo,memNo,file1,file2,name,email,tel,gubun,job,jobinfo,time,pay,content,password 순)
 insert into register (regNo,memNo,name,email,tel) values (reg_seq.nextval,13,'한국인','korea@korea.com','000-0000-000');
 
+
+-- 공지사항 추가 (notNo,Title,Content,notDate,name)
+insert into notice (notNo,Title,Content,notDate,name) values (not_seq.nextval, "2012년도 한빛교육센터 교육평가등급 안내입니다","2012년도 고용노동부에서 평가한 직업훈련 교육기관 평가에서 A 등급을 획득하였습니다. * 총점 : 84.93(100점기준) * 세부점수 - 훈련실시능력 : 27.25점 (30점 기준) - 훈련성과(수료률+취업실적+훈련생만족도+수요평가) : 57.68점 (60점 기준) - 지방노동관서평가 : 10점 (10점 기준) 올해 2013년도 교육기관 평가에서도 2년연속 A 등급을 획득할수 있도록 교육서비스와 취업지원 향상에 최선을 다할 것을 약속합니다. 교육연수생 여러분들의 성원과 격려도 부탁드립니다. 감사합니다.",sysdate,"관리자");
+
 --실험은 여기서 하세요---------------
 select * from curriculum;
 select * from sturoom;
@@ -100,6 +104,7 @@ select * from member;
 select * from management;
 select * from sales;
 select * from teacher;
+select * from grade;
 select curDateS, last_day(curDateS) from studyCur;
 select TEACHER.tchno, TEACHER.tchname, STUROOM.roomno from TEACHER, STUROOM;
 select * from register where file1 is not null and file2 is not null;
@@ -114,4 +119,6 @@ update register set curNo=4 where curNo is null;
 
 SELECT student.stuno, student.roomno, member.memname from student, member where STUDENT.MEMNO = MEMBER.MEMNO;
 update teacher set roomno = null where tchno = 1;
+delete from grade where stuno is null;
+
 --끝난 실험은 삭제할 것!----------------

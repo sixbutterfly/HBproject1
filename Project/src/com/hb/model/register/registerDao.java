@@ -183,4 +183,33 @@ public class registerDao {
 		return dto;
 	}//seletOne end
 
+	public int deleteOne(int memNo) {
+		int result = 0;
+		String sql = "delete from register where memNo="+memNo;
+		String sql2 = "insert into grade (grdNo, stuNo ) values (grd_seq.nextval, (select stuNo from student where memNo="+memNo+"))";
+		System.out.println(sql2);
+		try {
+			conn.setAutoCommit(false);
+			pstmt = conn.prepareStatement(sql);
+			result = pstmt.executeUpdate();
+			pstmt = conn.prepareStatement(sql2);
+			result = pstmt.executeUpdate();
+			conn.commit();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {e1.printStackTrace();}
+		}finally{
+			try {
+				conn.setAutoCommit(true);
+				if(pstmt!=null){pstmt.close();}
+				if(conn!=null){conn.close();}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}//deleteOne end
+
 }

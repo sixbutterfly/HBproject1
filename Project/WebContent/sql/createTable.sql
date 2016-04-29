@@ -250,3 +250,16 @@ ALTER TABLE teacher
 ---------------------------------------------------------------------------------------------
 	ADD ( FOREIGN KEY (memNo) REFERENCES member(memNo) ON DELETE SET NULL);
 
+---------------------------------------------------------------------------------------------
+-- 공지사항 게시판 추가
+
+create table notice (
+
+	notNo		NUMBER(5) not null, -- 글번호
+	Title	varchar2(50) not null,	-- 제목
+	Content	varchar2(200) not null,	-- 내용
+	notDate	date not null,	-- 작성날짜
+	name varchar2(10) not null	-- 작성자
+);
+ALTER TABLE notice
+	ADD  PRIMARY KEY (notNo);

@@ -1,3 +1,5 @@
+<%@page import="com.hb.model.register.registerDto"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -53,20 +55,15 @@
 		<%@include file="/templet/nav.jsp" %>
 		<!-- aside1 -->
 		<%@include file="/templet/loginForm.jsp" %>
-		<%@include file="/templet/subnav5.jsp" %>
+		<%@include file="/templet/subnav4.jsp" %>
 		
 		<!-- content start -->
 			<div class="title">
-				<p>MY PAGE</p>
-				<span>수강 신청 목록</span>
+				<p>CUSTOMER CENTER</p>
+				<span>공지사항</span>
 			</div>
-
-			<table class="table">
-				<tr><th>이름</th><th>연락처</th><th>신청과정명</th></tr>
-			</table>
-
-			신청한 과정명 출력
-			<button>수강 취소</button>
+			
+			
 		<!-- content end -->
 		
 		<!-- aside2 -->

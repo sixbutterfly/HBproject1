@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.hb.model.login.MemberDao;
-import com.hb.model.login.MemberDto;
+import com.hb.model.member.MemberDao;
+import com.hb.model.member.MemberDto;
 
 @WebServlet("/memberjoin.korean")
 public class MemJoin extends HttpServlet{

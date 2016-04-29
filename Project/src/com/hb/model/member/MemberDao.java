@@ -1,4 +1,4 @@
-package com.hb.model.login;
+package com.hb.model.member;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import com.hb.util.DB;
 
 public class MemberDao {
+	
 	private Connection conn;
-	private Statement stmt;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 	private ResultSet rs2;
@@ -129,5 +129,46 @@ public class MemberDao {
 		}
 		return list;
 	}
+
+	public int updateOne(int memNo) {
+		int result = 0;
+		String sql = "update member set authNo=4 where memNo="+memNo;
+		//System.out.println(sql);
+		try {
+			pstmt = conn.prepareStatement(sql);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				if(pstmt!=null){pstmt.close();}
+				if(conn!=null){conn.close();}
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return result;
+	}//updateOne end
+
+	public MemberDto selectOne(String id) {
+		MemberDto dto = new MemberDto();
+		String sql = "select memName, memtel from member where memid='"+id+"'";
+		System.out.println(sql);
+//		try {
+//			pstmt = conn.prepareStatement(sql);
+//			rs = pstmt.executeQuery();
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}finally{
+//			try {
+//				if(rs!=null){rs.close();}
+//				if(pstmt!=null){pstmt.close();}
+//				if(conn!=null){conn.close();}
+//			} catch (Exception e2) {
+//				e2.printStackTrace();
+//			}
+//		}
+		return null;
+	}//selectOne end
 	
 }
