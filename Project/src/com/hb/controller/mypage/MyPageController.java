@@ -12,10 +12,19 @@ import javax.servlet.http.HttpServletResponse;
 public class MyPageController extends HttpServlet{
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
-		req.setAttribute("level", 0);
-
-		req.getRequestDispatcher("mypage/mypage.jsp").forward(req, resp);
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException ,IOException {	
+	req.setCharacterEncoding("utf-8");
+		
+		/*Integer authNo = (Integer)req.getSession().getAttribute("authNo");
+		int auth = authNo.intValue(); */
+				
+		String login = (String)req.getSession().getAttribute("login");
+		System.out.println(login);
+		/*if(login.equals("false")){
+			resp.sendRedirect("login/login.jsp");
+		}
+		else{
+			req.getRequestDispatcher("mypage/mypage.jsp").forward(req, resp);
+		}*/
 	}
 }

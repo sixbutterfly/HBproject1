@@ -18,24 +18,23 @@ public class MemberDao {
 		conn = DB.getConnection();
 	}
 
-	public boolean loginCk(String id, String pw) {
+	public int loginCk(String id, String pw) {
 		System.out.println("login id:"+id+",pw:"+pw);
-		String sql = "select count(*) as cnt from member where memid=? and mempw=?";
-		int result = 0;
+		String sql = "select m.authNo as authNo from member m, authority a where m.authNo = a.authNo and memId = ? and memPw=?";
+		int authNo = 0;
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			pstmt.setString(2, pw);
 			rs = pstmt.executeQuery();
 			if(rs.next()){
-				result = rs.getInt("cnt");
-				System.out.println("result cnt:"+result);
+				authNo = rs.getInt("authNo");
+				System.out.println("authNo:"+authNo);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		if(result==1)return true;
-		return false;
+		return authNo;	
 	}
 
 	public int memjoin(MemberDto dto) {

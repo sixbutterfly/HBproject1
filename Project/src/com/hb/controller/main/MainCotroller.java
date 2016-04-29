@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 public class MainCotroller extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.getSession().setAttribute("login", "false");
 		request.getRequestDispatcher("main.jsp").forward(request, response);
 		
 	}

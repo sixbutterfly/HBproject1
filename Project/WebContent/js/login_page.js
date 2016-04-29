@@ -14,41 +14,24 @@ $(document).ready(function(){
 			var inputId = $(".login>input").eq(0).val();
 			var inputPw = $(".login>input").eq(1).val();		
 			
-			if((inputId == "") || (inputId =="¾ÆÀÌµğ")){
-				$(".login>input").eq(0).val("¾ÆÀÌµğ ÀÔ·Â");			
+			if((inputId == "") || (inputId =="ì•„ì´ë””")){				
 				$(".login>input").eq(0).focus(function(){
 					$(".login>input").eq(0).val("");
-				    });		
+					$(".login>div").eq(0).html("");
+					$(".login>div").eq(1).html("");
+				    });
+				$(".login>div").eq(0).html("<p>&nbsp;&nbsp; ì•„ì´ë””ë¥¼ ì…ë ¥í•˜ì„¸ìš”</p>");
 			}
-			else if(inputPw == ""){	
-				$(".login>input").eq(1).attr("type", "text");
-				$(".login>input").eq(1).val("ÆĞ½º¿öµå ÀÔ·Â");
+			else if((inputPw == "") || (inputId =="íŒ¨ìŠ¤ì›Œë“œ")){
+				
+				$(".login>input").eq(1).attr("type", "text");				
 				$(".login>input").eq(1).focus(function(){
 					$(".login>input").eq(1).val("");
+					$(".login>div").eq(0).html("");
+					$(".login>div").eq(1).html("");
 				    });
-			}
-			
-			$(".login>input").each(function(idx, item){
-				arr[idx]=$(item).val();
-			});
-			$.ajax({
-				"url":"/Project/login/ajaxlogin.korean",
-				"data":{"id":arr[0],"pw":arr[1]},
-				"method":"POST",
-				"dataType":"json",
-				"error" : function( jqXHR, textStatus, errorThrown ) {
-					//alert(jqXHR+textStatus+errorThrown);
-				},
-				"success":function(data){
-					if(data[0].result){
-						var st = "<div class='user'>"+data[0].id+"´Ô </div>";
-						st +="<div><a href='/Project/login/logout.korean'><span>logout</span></a></div>";
-						$(".login").html(st);	
-						$(".reg").hide();
-					}
-					
-				}
-			});
+				$(".login>div").eq(1).html("<p>&nbsp;&nbsp; íŒ¨ìŠ¤ì›Œë“œë¥¼ ì…ë ¥í•˜ì„¸ìš”</p>");
+			}	
 			
 		});
 });

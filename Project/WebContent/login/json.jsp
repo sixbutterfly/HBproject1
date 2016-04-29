@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 [
 	{
-	"result":<%=(Boolean)request.getAttribute("result") %>
+	"authNo":<%=(Integer)request.getAttribute("authNo") %>
 		,"id":"<%=(String)request.getAttribute("id") %>"
 	}
 ]
