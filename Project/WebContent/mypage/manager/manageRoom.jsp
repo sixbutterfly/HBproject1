@@ -12,7 +12,6 @@
       <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/grid.css"/>
       <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/header.css"/>
       <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav.css"/>
-      <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/subnav0.css"/>
       <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/subnav5.css"/>
       <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/aside2.css"/>
       <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
@@ -90,7 +89,7 @@
       <script type="text/javascript" src="js/menu.js"></script>
       <script type="text/javascript">
         $(document).ready(function () {
-          BtnController.initBtn();
+          PageController.initBtn();
           //탭메뉴 설정
           $(".room .tab_content").hide();
           $(".room .tab_content:first").show();
@@ -101,23 +100,29 @@
             var activeTab = $(this).attr("id");
             $("#" + activeTab + "_content").fadeIn();
           });
+          //학생 리스트 보기
+          $("#room").change(function(){
+        	  var idx = $("#room").val();
+        	  $('.stulist').hide();
+        	  $('.stulist'+idx).show();
+          });
           //학생 배정 추가하기
           $("#add").click(function () {
-            window.open("addstu.korean", "학생 배정", "width=500 height=500");
+            window.open("addstuform.korean", "학생 배정", "width=500 height=500");
           });
           //수정하기
           $("#modify").click(function () {});
           //삭제하기
           $("#del").click(function () {
-			BtnController.delStu();
+			PageController.delStu();
           });
           //학생 삭제 완료
           $("#delok").click(function () {
-			BtnController.delStuOk();
+			PageController.delStuOk();
             $(".stucheck").attr("checked", false);
           });
           $("#cancle").click(function () {
-        	  BtnController.delStuCancle();
+        	  PageController.delStuCancle();
           });
           $("#room").change(function () {
         	  
@@ -126,7 +131,7 @@
           //강사 배정
           //배정하기
           $("#btn2").click(function () {
-            BtnController.assignTch();
+            PageController.assignTch();
           });
           //배정 완료
           $("#btn4").click(function () {
@@ -155,11 +160,11 @@
                 alert("에러났소!");
               }
             });
-            BtnController.assignTchOk();
+            PageController.assignTchOk();
           });
           //배정 취소하기
           $("#btn3").click(function () {
-              BtnController.cancleTch();
+              PageController.cancleTch();
             });
              //배정 취소 완료
           $("#btn5").click(function () {
@@ -190,16 +195,17 @@
                     alert("에러났소!");
                   }
                 });
-              BtnController.cancleTchOk();
+              PageController.cancleTchOk();
             }); 
           
         });
         
         //버튼을 숨기고 보여주는 함수 모음
-      	var BtnController = {
+      	var PageController = {
         //최초 페이지 로딩 시 설정
          "initBtn" : function(){
-        	 	
+        	  $(".stulist").hide();
+        	  $(".stulist1").show();
         	  $(".tchcheck").hide();
         	  $(".stucheck").hide();
               $("#delbtn").hide();
@@ -294,18 +300,16 @@
                     <th>이름</th>
                     <th>배정강의실</th>
                   </tr>
-                  <tr>
                     <%
                     ArrayList<StuDto> slist = (ArrayList<StuDto>)request.getAttribute("slist");
 									for(StuDto bean : slist){
 								%>
+                	<tr class = "stulist<%=bean.getRoomno()%> stulist">
                       <td><%=bean.getStuno()%></td>
                       <td><%=bean.getStuname()%></td>
                       <td><%=bean.getRoomno()%></td>
-
                       <td><input type="checkbox" class="stucheck"/></td>
                     </tr>
-
                   <%
 								}
 							%>

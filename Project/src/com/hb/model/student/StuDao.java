@@ -60,9 +60,6 @@ public class StuDao {
 				bean.setStuname(rs.getString("memname"));
 				bean.setRoomno(rs.getString("roomno"));
 				list.add(bean);
-				System.out.println(rs.getInt("stuno"));
-				System.out.println(rs.getString("memname"));
-				System.out.println(rs.getInt("roomno"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -77,6 +74,17 @@ public class StuDao {
 	}
 		return list;
 	}//selectWaitingList end
+
+	public int insertRoomno(String[] schlist, String[] roomlist) {
+		int result = 0;
+		sql = "";
+		try {
+			pstmt = conn.prepareStatement(sql);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 	
 	
 }//class end
