@@ -88,6 +88,9 @@
       <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
       <script type="text/javascript" src="js/menu.js"></script>
       <script type="text/javascript">
+      <%
+     	 ArrayList<StuDto> slist = (ArrayList<StuDto>)request.getAttribute("slist");
+      %>
         $(document).ready(function () {
           PageController.initBtn();
           //탭메뉴 설정
@@ -110,30 +113,63 @@
           $("#add").click(function () {
             window.open("addstuform.korean", "학생 배정", "width=500 height=500");
           });
-          //수정하기
-          $("#modify").click(function () {});
-          //삭제하기
-          $("#del").click(function () {
+          //학생 배정 수정하기
+          $("#modify").click(function () {
+        	  PageController.modifyStu();
+          });
+          //학생 배정 수정완료
+          $("#modifyok").click(function () {
+        	  PageController.modifyStuOk();
+          });
+          //학생 배정 수정취소
+          $("#modifycancle").click(function () {
+        	  PageController.modifyStuCancle();
+          });
+          //학생 배정 취소하기
+          $("#cancle1").click(function () {
 			PageController.delStu();
           });
-          //학생 삭제 완료
+          //학생 배정 취소 완료
           $("#delok").click(function () {
 			PageController.delStuOk();
-            $(".stucheck").attr("checked", false);
+			var roomno = $("#room").val();
+			var stulist = [];
+			<%
+			for(StuDto bean : slist){
+			%>
+				if($("#checkbox<%=bean.getStuno()%>").is(":checked"))
+					stulist.push(<%=bean.getStuno()%>);
+			<%
+			}
+			%>
+			$.ajax({
+				"url": "canclestu.korean",
+	              "data": {
+	            	  "roomno" : roomno,
+	            	  "stulist" : stulist
+	              },
+	              "success": function (data) {
+	                alert("썩쎄쓰!");
+	                $(".stucheck").attr("checked", false);
+	                location.reload();
+	              },
+	              "error": function () {
+	                alert("에러났소!");
+	              }
+				
+			});
+            
           });
           $("#cancle").click(function () {
         	  PageController.delStuCancle();
           });
-          $("#room").change(function () {
-        	  
-          });
 
           //강사 배정
-          //배정하기
+          //강사 배정하기
           $("#btn2").click(function () {
             PageController.assignTch();
           });
-          //배정 완료
+          //강사 배정 완료
           $("#btn4").click(function () {
             var tchlist = [];
             $('.tchlist').each(function (idx, item) {
@@ -144,7 +180,7 @@
               roomlist[idx] = $('#tch' + idx + ' option:selected').attr("value");
             });
             $.ajax({
-              "url": "assignroom.korean",
+              "url": "addtch.korean",
               "data": {
                 "tchlist": tchlist,
                 "roomlist": roomlist
@@ -162,11 +198,11 @@
             });
             PageController.assignTchOk();
           });
-          //배정 취소하기
+          //강사 배정 취소하기
           $("#btn3").click(function () {
               PageController.cancleTch();
             });
-             //배정 취소 완료
+             //강사 배정 취소 완료
           $("#btn5").click(function () {
               var tchlist = [];
               $('.tchlist').each(function (idx, item) {
@@ -175,10 +211,9 @@
               var checklist = [];
               $('.tchcheck').each(function (idx, item) {
             	 checklist[idx] = $('#tchcheck' + idx).is(":checked");
-            	 console.log(checklist[idx]);
               });
         	  $.ajax({
-                  "url": "delroom.korean",
+                  "url": "cancletch.korean",
                   "data": {
                 	  "tchlist": tchlist,
                       "checklist": checklist
@@ -208,10 +243,30 @@
         	  $(".stulist1").show();
         	  $(".tchcheck").hide();
         	  $(".stucheck").hide();
+        	  $("#modifybtn").hide();
               $("#delbtn").hide();
               $(".roomselect").hide();
               $("#btn4").hide();
               $("#btn5").hide();
+          },
+          //학생 배치 수정
+          "modifyStu" : function(){
+              $("#initbtn").hide();
+              $("#modifybtn").show();
+          },
+          //학생 배치 수정 완료
+          "modifyStuOk" : function(){
+        	    $("#initbtn").show();
+                $("#modifybtn").hide();
+                $("#modifyStuOk").hide();
+                $("#modifyStucancle").hide();
+          },
+          //학생 배치 수정 취소
+          "modifyStuCancle" : function(){
+        	  $("#initbtn").show();
+        	  $("#modifybtn").hide();
+        	  $("#modifyStuOk").hide();
+              $("#modifyStucancle").hide();
           },
          //학생 제거
           "delStu" : function(){
@@ -224,12 +279,14 @@
               $("#initbtn").show();
               $(".stucheck").hide();
               $("#delbtn").hide();
+             
           },
           //학생 제거 취소
           "delStuCancle" : function(){
               $("#initbtn").show();
-              $("#stucheck").hide();
+              $(".stucheck").hide();
               $("#delbtn").hide();
+              $(".stucheck").attr("checked", false);
           },
         //강사 배정
        	 "assignTch": function () {
@@ -301,14 +358,13 @@
                     <th>배정강의실</th>
                   </tr>
                     <%
-                    ArrayList<StuDto> slist = (ArrayList<StuDto>)request.getAttribute("slist");
-									for(StuDto bean : slist){
+					for(StuDto bean : slist){
 								%>
                 	<tr class = "stulist<%=bean.getRoomno()%> stulist">
                       <td><%=bean.getStuno()%></td>
                       <td><%=bean.getStuname()%></td>
                       <td><%=bean.getRoomno()%></td>
-                      <td><input type="checkbox" class="stucheck"/></td>
+                      <td><input type="checkbox" class="stucheck" id = "checkbox<%=bean.getStuno()%>"/></td>
                     </tr>
                   <%
 								}
@@ -317,10 +373,14 @@
                 <div id="initbtn">
                   <button id="add">추가하기</button>
                   <button id="modify">수정하기</button>
-                  <button id="del">삭제하기</button>
+                  <button id="cancle1">취소하기</button>
+                </div>
+                <div id="modifybtn">
+                  <button id="modifyok">수정완료</button>
+                  <button id="modifycancle">취소</button>
                 </div>
                 <div id="delbtn">
-                  <button id="delok">삭제완료</button>
+                  <button id="delok">취소완료</button>
                   <button id="cancle">취소</button>
                 </div>
               </div>

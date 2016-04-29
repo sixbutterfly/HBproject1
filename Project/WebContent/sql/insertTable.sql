@@ -111,7 +111,8 @@ select stuno, member.memname, roomno from student, member where student.memno = 
 select javagrade, webgrade, framerade,stuno,roomno, member.mamname from grade, member where member.memno = (select memno from student);
 
 update register set curNo=4 where curNo is null;
-
+update STUDENT set STUDENT.ROOMNO = 1 where STUDENT.STUNO = 5;
 SELECT student.stuno, student.roomno, member.memname from student, member where STUDENT.MEMNO = MEMBER.MEMNO;
 update teacher set roomno = null where tchno = 1;
+update student set roomno = null where stuno = 5;
 --끝난 실험은 삭제할 것!----------------

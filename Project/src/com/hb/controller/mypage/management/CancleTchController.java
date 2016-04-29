@@ -15,8 +15,9 @@ import com.hb.model.room.RoomDao;
 import com.hb.model.teacher.TeacherDao;
 import com.hb.model.teacher.TeacherDto;
 
-@WebServlet("/delroom.korean")
-public class DelRoomController extends HttpServlet {
+//강사 테이블 배치 취소
+@WebServlet("/cancletch.korean")
+public class CancleTchController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {

@@ -15,8 +15,9 @@ import com.hb.model.room.RoomDao;
 import com.hb.model.teacher.TeacherDao;
 import com.hb.model.teacher.TeacherDto;
 
-@WebServlet("/assignroom.korean")
-public class AssignRoomController extends HttpServlet {
+//강의실에 강사 배치
+@WebServlet("/addtch.korean")
+public class AddTchController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {

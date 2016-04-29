@@ -75,14 +75,35 @@ public class StuDao {
 		return list;
 	}//selectWaitingList end
 
-	public int insertRoomno(String[] schlist, String[] roomlist) {
+	public int insertRoomno(String[] stulist, String roomno) {
 		int result = 0;
-		sql = "";
+		sql = "UPDATE STUDENT SET ROOMNO = ? WHERE STUNO = ?";
 		try {
 			pstmt = conn.prepareStatement(sql);
+			for (int i = 0; i < stulist.length; i++) {
+				pstmt.setString(1, roomno);
+				pstmt.setString(2, stulist[i]);
+				result = pstmt.executeUpdate();
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return result;
+	}
+
+	public int delRoomno(String[] stulist, String roomno) {
+		int result = 0;
+		sql = "update student set roomno = null where stuno = ?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			for (int i = 0; i < stulist.length; i++) {
+				pstmt.setString(1, stulist[i]);
+				result = pstmt.executeUpdate();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		return result;
 	}
 	

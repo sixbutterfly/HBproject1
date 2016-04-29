@@ -14,7 +14,7 @@ import com.hb.model.room.RoomDto;
 import com.hb.model.student.StuDao;
 import com.hb.model.student.StuDto;
 
-//강의실에 학생 배치
+//강의실에 학생 배치 양식
 @WebServlet("/addstuform.korean")
 public class AddStuFormController extends HttpServlet {
 	@Override

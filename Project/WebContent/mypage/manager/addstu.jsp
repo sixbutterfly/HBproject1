@@ -34,12 +34,13 @@
 	              },
 	              "success": function (data) {
 	                alert("썩쎄쓰!");
+	                window.opener.location.reload();
+	                location.reload();
 	              },
 	              "error": function () {
 	                alert("에러났소!");
 	              }
 			});
-			window.close();
 		});
 		$("#cancle").click(function(){
 			window.close();
@@ -50,7 +51,8 @@
 	<h1>수강 대기자 목록</h1>
 	<table>
 		<tr>
-		배치할 강의실 : <select id = "roomlist">
+		<h3>배치할 강의실</h3>
+		<select id = "roomlist"> 
 					<%
 						ArrayList<RoomDto> rlist = (ArrayList<RoomDto>)request.getAttribute("rlist"); 
 						for(RoomDto bean2 : rlist){
@@ -59,7 +61,7 @@
 					<%
 						}
 					%>
-		</select>
+		</select> 강의실
 		</tr>
 		<tr>
 			<th></th><th>학번</th><th>이름</th><th>배정강의실</th>
