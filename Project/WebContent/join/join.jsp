@@ -247,7 +247,7 @@
 		$('#emailselect').change(email);
 		
 		
-		/* $('#submit').click(function(){
+		$('#submit').click(function(){
 			if($('#id').val()==""||$('#id').val()==null){
 				alert("id를 입력하세요!");
 				$('#id').focus();
@@ -272,7 +272,7 @@
 				$('#addrresult2').focus();
 				return false;
 			}else{} 
-		}); */
+		});
 	});
 </script>
 
