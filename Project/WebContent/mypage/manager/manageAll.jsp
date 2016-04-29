@@ -149,7 +149,7 @@
 		%>
 		<div id="detailcon">
 			<div class="no<%=dto.getLevel()%>" style="width : 100%;">
-			<a href="memdetail.do?idx=<%=dto.getMemno()%>">
+			<a href="memdetail.korean?idx=<%=dto.getMemno()%>">
 			<div class="seeall"><%=dto.getMemno()%></div>
 			<div class="seeall"><%=dto.getLevel()%></div>
 			<div class="seeall"><%=dto.getMemname()%></div>

@@ -54,9 +54,15 @@ public class MemberDao {
 			pstmt.setString(8, dto.getGender());
 			pstmt.setString(9, dto.getEmailagree());
 			result = pstmt.executeUpdate();
-		}catch(Exception ex){}finally{
-			pstmt.close();
-			conn.close();
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}finally{
+			try {
+				if(pstmt!=null)pstmt.close();
+				if(conn!=null)conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 			return result;
 	}
@@ -74,11 +80,39 @@ public class MemberDao {
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{
-			rs.close();
-			pstmt.close();
-			conn.close();
+			try {
+				if(rs!=null)rs.close();
+				if(pstmt!=null)pstmt.close();
+				if(conn!=null)conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return list;
+	}
+
+	public MemberDto selectOne(int memno){
+		MemberDto dto= null;
+		String sql = "SELECT MEMNO, AUTHNO, MEMNAME, MEMGENDER, MEMPHONE, MEMTEL, MEMADDRESS, MEMEMAIL, EMAILAGREE, JOINDAY FROM MEMBER WHERE MEMNO=?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memno);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				dto= new MemberDto(rs.getInt("MEMNO"), rs.getInt("AUTHNO"), rs.getString("MEMNAME"),rs.getString("MEMGENDER"),rs.getString("MEMPHONE"), rs.getString("MEMTEL"), rs.getString("MEMADDRESS"), rs.getString("MEMEMAIL"), rs.getString("EMAILAGREE"), rs.getString("JOINDAY"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally{
+			try {
+				if(rs!=null)rs.close();
+				if(pstmt!=null)pstmt.close();
+				if(conn!=null)conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return dto;
 	}
 	
 }

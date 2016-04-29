@@ -1,4 +1,4 @@
-package join;
+package com.hb.controller.join;
 
 import java.io.IOException;
 import java.sql.SQLException;
