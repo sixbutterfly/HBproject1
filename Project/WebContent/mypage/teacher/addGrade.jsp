@@ -1,3 +1,4 @@
+<%@ page import="java.util.ArrayList"%>
 <%@ page import="com.hb.model.grade.GradeDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -32,15 +33,19 @@
 		
 		<!-- content start -->
 		
-		<% GradeDto bean = (GradeDto)request.getAttribute("bean"); %>
+		<% ArrayList<GradeDto> al = (ArrayList<GradeDto>)request.getAttribute("al"); %>
 		
 			<h1>성적 입력</h1>
 			<table border="1">
 				<tr><th>학번</th><th>이름</th><th>강의실</th><th>자바</th><th>웹</th><th>프레임워크</th></tr>
-				<tr><td><%=bean.getStuno() %></td><td><%=bean.getMemname() %></td><td><%=bean.getRoomno() %></td><td><%=bean.getJavagrade() %></td><td><%=bean.getWebgrade() %></td><td><%=bean.getFramegrade() %></td></tr>
+				<%
+					for(int i=0; i<al.size(); i++) {
+				%>
+				<tr><td><% al.get(i).getStuno(); %></td><td><% al.get(i).getMemname();  %></td><td><% al.get(i).getRoomno();  %></td><td><% al.get(i).getJavagrade();  %></td><td><% al.get(i).getWebgrade();  %></td><td><% al.get(i).getFramegrade();  %></td></tr>
+				<% 
+					}
+				%>
 			</table>
-			
-			
 			
 		<!-- content end -->
 		
