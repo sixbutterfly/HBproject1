@@ -14,6 +14,8 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/subnav5.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/aside2.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/CLEditor1_4_5/jquery.cleditor.css"/>
+
 <style type="text/css">
 	.title>p{
 		font-size: 30pt;
@@ -27,30 +29,42 @@
 		border-bottom: 3px solid #ddd;
 		color: #666;
 	}
+	
 	.table{
 		width: 700px;
 		margin: 10px auto;
 	}
 	.table th{
 		background-color: rgba(204,229,255,0.5);
-	}
-	.table tr{
 		text-align: center;
 	}
-	.table tr a{
-		text-decoration: none;
-		color: black;
+	.table tr{
+		height: 30px;
 	}
-	.table tr a:hover{
-		color: #06c;
+	.table input{
+		height: 20px;
+		border: 0px;
 	}
+	
 	.content button{
 		width: 50px;
-		margin: 10px 350px;
+	}
+	.table+button{
+		margin-left: 320px;
+	}
+	.content a{
+		text-decoration: none;
+		color: black;
 	}
 </style>
 <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
 <script type="text/javascript" src="js/menu.js"></script>
+<script type="text/javascript" src="CLEditor1_4_5/jquery.cleditor.min.js" charset="UTF-8"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#editor').cleditor();
+	});//ready end
+</script>
 </head>
 <body>
 	<div class="container_12">
@@ -67,27 +81,17 @@
 				<p>CUSTOMER CENTER</p>
 				<span>공지사항</span>
 			</div>
-			
-			<form action="noticeaddform.korean">
+			<form action="noticeadd.korean">
 				<table class="table">
-					<tr><th>글번호</th><th>제목</th><th>작성일</th><th>작성자</th></tr>
-	
-					<%
-						ArrayList<noticeDto> list = (ArrayList) request.getAttribute("list");
-						for(noticeDto dto : list){
-					%>
-	
-					<tr>
-						<td><%=dto.getNotNo() %></td>
-						<td><a href="noticedetail.korean?notNo=<%=dto.getNotNo() %>"><%=dto.getTitle() %></a></td>
-						<td><%=dto.getNotDate() %></td>
-						<td><%=dto.getName() %></td>
-					</tr>
-					<%} %>
+					<tr><th>제목</th><td colspan="3"><input type="text" name="title"/></td>
+						<th>작성자</th><td><input type="text" name="name"></td></tr>
+					<tr><th colspan="6">내용</th></tr>
+					<tr><td colspan="6"><textarea name="content" id="editor"></textarea></td></tr>
 				</table>
-				<button type="submit">글쓰기</button>
+				<button type="submit">작성</button>
+				<button type="reset">취소</button>
+				<button type="button"><a href="notice.korean">목록</a></button>
 			</form>
-			
 		<!-- content end -->
 		
 		<!-- aside2 -->

@@ -37,16 +37,15 @@
 	.table tr{
 		text-align: center;
 	}
-	.table tr a{
-		text-decoration: none;
-		color: black;
-	}
-	.table tr a:hover{
-		color: #06c;
-	}
 	.content button{
 		width: 50px;
-		margin: 10px 350px;
+	}
+	.table+button{
+		margin-left: 320px;
+	}
+	.content a{
+		text-decoration: none;
+		color: black;
 	}
 </style>
 <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
@@ -68,24 +67,21 @@
 				<span>공지사항</span>
 			</div>
 			
-			<form action="noticeaddform.korean">
+			<%
+				noticeDto dto = (noticeDto) request.getAttribute("dto");
+			%>
+			<form action="notice.korean">
 				<table class="table">
-					<tr><th>글번호</th><th>제목</th><th>작성일</th><th>작성자</th></tr>
-	
-					<%
-						ArrayList<noticeDto> list = (ArrayList) request.getAttribute("list");
-						for(noticeDto dto : list){
-					%>
-	
-					<tr>
-						<td><%=dto.getNotNo() %></td>
-						<td><a href="noticedetail.korean?notNo=<%=dto.getNotNo() %>"><%=dto.getTitle() %></a></td>
-						<td><%=dto.getNotDate() %></td>
-						<td><%=dto.getName() %></td>
+					<tr><th>글번호</th><td><%=dto.getNotNo() %></td>
+						<th>작성일</th><td><%=dto.getNotDate() %></td>
+						<th>작성자</th><td><%=dto.getName() %></td>
 					</tr>
-					<%} %>
+					<tr><th>제목</th><td colspan="5"><%=dto.getTitle() %></td></tr>
+					<tr><th colspan="6">내용</th></tr>
+					<tr><td colspan="6"><%=dto.getContent() %></td></tr>
 				</table>
-				<button type="submit">글쓰기</button>
+				<button type="submit">수정</button>
+				<button type="button"><a href="notice.korean">목록</a></button>
 			</form>
 			
 		<!-- content end -->

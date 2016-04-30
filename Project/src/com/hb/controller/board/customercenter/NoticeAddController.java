@@ -8,20 +8,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.hb.model.notice.noticeDao;
-import com.hb.model.notice.noticeDto;
 
-@WebServlet("/noticedetail.korean")
-public class NoticeDetailController extends HttpServlet {
+@WebServlet("/noticeadd.korean")
+public class NoticeAddController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		int notNo = Integer.parseInt(request.getParameter("notNo"));
+		response.setCharacterEncoding("UTF-8");
+		
+		String title = request.getParameter("title");
+		String name = request.getParameter("name");
+		String content = request.getParameter("content");
 		
 		noticeDao dao = new noticeDao();
-		noticeDto dto = dao.selectOne(notNo);
+		int result = dao.addOne(title,name,content);
 		
-		request.setAttribute("dto", dto);
-		request.getRequestDispatcher("customercenter/noticdetail.jsp").forward(request, response);
+		if(result>0){
+			response.sendRedirect("notice.korean");
+		}else{
+			response.sendRedirect("noticeadd.korean");
+		}
 	}
 
 }
