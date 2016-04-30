@@ -115,4 +115,6 @@ update STUDENT set STUDENT.ROOMNO = 1 where STUDENT.STUNO = 5;
 SELECT student.stuno, student.roomno, member.memname from student, member where STUDENT.MEMNO = MEMBER.MEMNO;
 update teacher set roomno = null where tchno = 1;
 update student set roomno = null where stuno = 5;
+select tchno, memname, roomno from TEACHER, member where teacher.memno = member.memno;
+SELECT STUDENT.STUNO, nvl(STUDENT.ROOMNO,'0'), MEMBER.MEMNAME FROM STUDENT, MEMBER WHERE STUDENT.MEMNO = MEMBER.MEMNO;
 --끝난 실험은 삭제할 것!----------------

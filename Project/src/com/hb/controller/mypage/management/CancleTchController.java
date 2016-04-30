@@ -31,8 +31,7 @@ public class CancleTchController extends HttpServlet {
 		TeacherDao tdao2 = new TeacherDao();
 		ArrayList<TeacherDto> tlist = new ArrayList();
 		tlist = tdao2.selectAll();
-//		req.setAttribute("tlist", tlist);
-//		req.getRequestDispatcher("mypage/json.jsp").forward(req, resp);
+		
 		PrintWriter out = resp.getWriter();
 		for (int i = 0; i < tlist.size(); i++) {
 			out.print(tlist.get(i).getRoomno()+"/");

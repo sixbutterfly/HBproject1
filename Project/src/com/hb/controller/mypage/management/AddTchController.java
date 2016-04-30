@@ -33,12 +33,12 @@ public class AddTchController extends HttpServlet {
 		int result2 = tdao.updateAll(tchlist, roomlist);
 		
 		TeacherDao tdao2 = new TeacherDao();
-		ArrayList<TeacherDto> tlist = new ArrayList();
-		tlist = tdao2.selectAll();
+		ArrayList<TeacherDto> tlist = tdao2.selectAll();
 		
 		PrintWriter out = resp.getWriter();
 		for (int i = 0; i < tlist.size(); i++) {
 			out.print(tlist.get(i).getRoomno());
+			System.out.println(tlist.get(i).getRoomno());
 		}
 	}
 }

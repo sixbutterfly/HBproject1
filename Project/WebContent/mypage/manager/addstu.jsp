@@ -15,6 +15,13 @@
 <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
+		$("#allcheck").click(function(){
+			if($("#allcheck").is(":checked")){
+				$(".eachcheck").prop("checked",true);
+			}else{
+				$(".eachcheck").prop("checked",false);
+			}
+		});
 		$("#submit").click(function(){
 			var roomno = $("#roomlist").val();
 	        var stulist = [];
@@ -38,7 +45,7 @@
 	                location.reload();
 	              },
 	              "error": function () {
-	                alert("에러났소!");
+	                alert("선택된 학생이 없소!");
 	              }
 			});
 		});
@@ -51,7 +58,7 @@
 	<h1>수강 대기자 목록</h1>
 	<table>
 		<tr>
-		<h3>배치할 강의실</h3>
+		배치할 강의실: 
 		<select id = "roomlist"> 
 					<%
 						ArrayList<RoomDto> rlist = (ArrayList<RoomDto>)request.getAttribute("rlist"); 
@@ -64,17 +71,17 @@
 		</select> 강의실
 		</tr>
 		<tr>
-			<th></th><th>학번</th><th>이름</th><th>배정강의실</th>
+			<th><input type = "checkbox" id = "allcheck"></th><th>학번</th><th>이름</th><th>배정강의실</th>
 		</tr>
 			<%
 				int checkidx = 0;
 				for(StuDto bean : slist){
 			%>
 		<tr>
-				<td><input type = "checkbox" id = "checkbox<%=bean.getStuno()%>" class = "checkbox"></td>
+				<td><input type = "checkbox" id = "checkbox<%=bean.getStuno()%>" class = "eachcheck"></td>
 				<td class="stulist"><%=bean.getStuno() %></td>
 				<td><%=bean.getStuname() %></td>
-				<td><%=bean.getRoomno() %></td>
+				<td>없음</td>
 		</tr>
 			<%
 				}

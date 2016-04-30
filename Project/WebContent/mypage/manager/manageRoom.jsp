@@ -16,6 +16,7 @@
       <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/aside2.css"/>
       <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
       <style type="text/css">
+        <!--전부 탭메뉴 구현 css입니다-->
         .content {
           height: 800px;
         }
@@ -89,7 +90,9 @@
       <script type="text/javascript" src="js/menu.js"></script>
       <script type="text/javascript">
       <%
-     	 ArrayList<StuDto> slist = (ArrayList<StuDto>)request.getAttribute("slist");
+     	ArrayList<StuDto> slist = (ArrayList<StuDto>)request.getAttribute("slist");//학생리스트
+     	ArrayList<RoomDto> rlist = (ArrayList<RoomDto>)request.getAttribute("rlist");//강의실리스트
+     	ArrayList<TeacherDto> tlist = (ArrayList<TeacherDto>)request.getAttribute("tlist");//강사리스트
       %>
         $(document).ready(function () {
           PageController.initBtn();
@@ -105,25 +108,11 @@
           });
           //학생 리스트 보기
           $("#room").change(function(){
-        	  var idx = $("#room").val();
-        	  $('.stulist').hide();
-        	  $('.stulist'+idx).show();
+			PageController.viewEachList();
           });
           //학생 배정 추가하기
           $("#add").click(function () {
             window.open("addstuform.korean", "학생 배정", "width=500 height=500");
-          });
-          //학생 배정 수정하기
-          $("#modify").click(function () {
-        	  PageController.modifyStu();
-          });
-          //학생 배정 수정완료
-          $("#modifyok").click(function () {
-        	  PageController.modifyStuOk();
-          });
-          //학생 배정 수정취소
-          $("#modifycancle").click(function () {
-        	  PageController.modifyStuCancle();
           });
           //학생 배정 취소하기
           $("#cancle1").click(function () {
@@ -149,21 +138,28 @@
 	            	  "stulist" : stulist
 	              },
 	              "success": function (data) {
-	                alert("썩쎄쓰!");
-	                $(".stucheck").attr("checked", false);
-	                location.reload();
+					  location.reload();
+	            	  $(".stucheck").attr("checked", false);
+	               	  alert("배정취소!");
 	              },
 	              "error": function () {
-	                alert("에러났소!");
+	            	  alert("선택된 학생이 없소!");
 	              }
 				
 			});
             
           });
-          $("#cancle").click(function () {
+          $("#cancle2").click(function () {
         	  PageController.delStuCancle();
           });
-
+		  //취소할 학생 일괄 선택
+		  $("#allstucheck").click(function(){
+				if($("#allstucheck").is(":checked")){
+					$(".stucheck").prop("checked",true);
+				}else{
+					$(".stucheck").prop("checked",false);
+				}
+		  });
           //강사 배정
           //강사 배정하기
           $("#btn2").click(function () {
@@ -188,9 +184,9 @@
               "success": function (data) {
                 var str = data;
                 $('.roomlist').each(function (idx, item) {
-                 $(item).text(str.charAt(idx));
+                 $(item).text(str.charAt(idx)+"강의실");
                 });
-                alert("썩쎄쓰!");
+                alert("배정완료!");
               },
               "error": function () {
                 alert("에러났소!");
@@ -198,12 +194,16 @@
             });
             PageController.assignTchOk();
           });
+          //강사 배정 완료를 취소
+          $("#btn5").click(function(){
+        	  PageController.assignTchCancle();
+          });
           //강사 배정 취소하기
           $("#btn3").click(function () {
               PageController.cancleTch();
             });
              //강사 배정 취소 완료
-          $("#btn5").click(function () {
+          $("#btn6").click(function () {
               var tchlist = [];
               $('.tchlist').each(function (idx, item) {
                 tchlist[idx] = $(item).text();
@@ -222,9 +222,14 @@
                 	  var str = data;
                     $('.roomlist').each(function (idx, item) {
                     	var convert = str.split("/");
-                        $(item).text(convert[idx]);
+                    	if(convert[idx]=="null"){
+                        	$(item).text("없음");
+                    	}else{
+                        	$(item).text(convert[idx]+"강의실");
+                    	}
                       });
                     alert("썩쎄쓰!");
+                    $(".tchcheck").attr("checked", false);
                   },
                   "error": function () {
                     alert("에러났소!");
@@ -232,8 +237,20 @@
                 });
               PageController.cancleTchOk();
             }); 
-          
+            //강사 배정 취소 완료를 취소
+          $("#btn7").click(function(){
+        	  PageController.cancleTchCancle();
+        	  $(".tchcheck").attr("checked", false);
+          });
+          $("#alltchcheck").click(function(){
+          	if($("#alltchcheck").is(":checked")){
+  				$(".tchcheck").prop("checked",true);
+  			}else{
+  				$(".tchcheck").prop("checked",false);
+  			}
+          });
         });
+        
         
         //버튼을 숨기고 보여주는 함수 모음
       	var PageController = {
@@ -248,26 +265,14 @@
               $(".roomselect").hide();
               $("#btn4").hide();
               $("#btn5").hide();
+              $("#btn6").hide();
+              $("#btn7").hide();
           },
-          //학생 배치 수정
-          "modifyStu" : function(){
-              $("#initbtn").hide();
-              $("#modifybtn").show();
-          },
-          //학생 배치 수정 완료
-          "modifyStuOk" : function(){
-        	    $("#initbtn").show();
-                $("#modifybtn").hide();
-                $("#modifyStuOk").hide();
-                $("#modifyStucancle").hide();
-          },
-          //학생 배치 수정 취소
-          "modifyStuCancle" : function(){
-        	  $("#initbtn").show();
-        	  $("#modifybtn").hide();
-        	  $("#modifyStuOk").hide();
-              $("#modifyStucancle").hide();
-          },
+          "viewEachList" : function(){
+        	  var idx = $("#room").val();
+        	  $('.stulist').hide();
+        	  $('.stulist'+idx).show();
+          },          
          //학생 제거
           "delStu" : function(){
               $("#initbtn").hide();
@@ -293,15 +298,9 @@
             $(".roomlist").hide();
             $(".roomselect").show();
             $("#btn4").show();
+            $("#btn5").show();
             $("#btn2").hide();
             $("#btn3").hide();
-          },
-          //강사 배정 취소
-          "cancleTch" : function(){
-        	  $("#btn2").hide();
-              $("#btn3").hide();
-        	  $("#btn5").show();
-        	  $(".tchcheck").show();
           },
          //강사 배정 완료
           "assignTchOk" : function(){
@@ -310,6 +309,24 @@
               $("#btn2").show();
               $("#btn3").show();
               $("#btn4").hide();
+              $("#btn5").hide();
+          },
+          //강사 배정 완료를 취소
+          "assignTchCancle" : function(){
+              $(".roomlist").show();
+              $(".roomselect").hide();
+              $("#btn2").show();
+              $("#btn3").show();
+              $("#btn4").hide();
+              $("#btn5").hide();
+          },
+          //강사 배정 취소
+          "cancleTch" : function(){
+        	  $("#btn2").hide();
+              $("#btn3").hide();
+        	  $("#btn6").show();
+        	  $("#btn7").show();
+        	  $(".tchcheck").show();
           },
           //강사 배정 취소 ok
           "cancleTchOk" : function(){
@@ -319,7 +336,19 @@
               $("#btn2").show();
               $("#btn3").show();
               $("#btn4").hide();
-              $("#btn5").hide();
+              $("#btn6").hide();
+              $("#btn7").hide();
+          },
+          ////강사 배정 취소를 취소
+          "cancleTchCancle" : function(){
+        	  $(".roomlist").show();
+              $(".roomselect").hide();
+              $(".tchcheck").hide();
+              $("#btn2").show();
+              $("#btn3").show();
+              $("#btn4").hide();
+              $("#btn6").hide();
+              $("#btn7").hide();
           }
         };
       </script>
@@ -347,15 +376,20 @@
               <!-- 학생관리 메뉴 -->
               <div id="tab1_content" class="tab_content">
                 <select id="room">
-                  <option value="1">1강의실</option>
-                  <option value="2">2강의실</option>
-                  <option value="3">3강의실</option>
-                </select>
-                <table>
+                          <%
+									for(RoomDto bean : rlist){
+										%>
+                            <option value="<%=bean.getRoomno()%>"><%=bean.getRoomno() %>강의실</option>
+                          <%
+									}
+								%>
+                        </select>
+                <table class = "stutab">
                   <tr>
                     <th>학번</th>
                     <th>이름</th>
                     <th>배정강의실</th>
+                    <th><input type = "checkbox" id = "allstucheck" class = "stucheck"></th>
                   </tr>
                     <%
 					for(StuDto bean : slist){
@@ -363,7 +397,7 @@
                 	<tr class = "stulist<%=bean.getRoomno()%> stulist">
                       <td><%=bean.getStuno()%></td>
                       <td><%=bean.getStuname()%></td>
-                      <td><%=bean.getRoomno()%></td>
+                      <td class = "sturoomlist"><%=bean.getRoomno()%>강의실</td>
                       <td><input type="checkbox" class="stucheck" id = "checkbox<%=bean.getStuno()%>"/></td>
                     </tr>
                   <%
@@ -371,17 +405,12 @@
 							%>
                 </table>
                 <div id="initbtn">
-                  <button id="add">추가하기</button>
-                  <button id="modify">수정하기</button>
-                  <button id="cancle1">취소하기</button>
-                </div>
-                <div id="modifybtn">
-                  <button id="modifyok">수정완료</button>
-                  <button id="modifycancle">취소</button>
+                  <button id="add">강의실배정</button>
+                  <button id="cancle1">배정취소</button>
                 </div>
                 <div id="delbtn">
                   <button id="delok">취소완료</button>
-                  <button id="cancle">취소</button>
+                  <button id="cancle2">취소</button>
                 </div>
               </div>
               <!-- 강사관리 메뉴 -->
@@ -391,23 +420,34 @@
                     <th>강사번호</th>
                     <th>이름</th>
                     <th>배정강의실</th>
+                    <th><input type = "checkbox" id = "alltchcheck" class = "tchcheck"></th>
                   </tr>
                   <tr>
                     <%
 					int tchidx = 0;
                     int checkidx = 0;
-                    ArrayList<TeacherDto> tlist = (ArrayList<TeacherDto>)request.getAttribute("tlist");
+                    
 									for(TeacherDto bean : tlist){
 								%>
                       <td class="tchlist"><%=bean.getTchno()%></td>
                       <td><%=bean.getTchname()%></td>
-                      <td class="roomlist"><%=bean.getRoomno()%></td>
+                      <td class="roomlist"><%
+                     String roomno = bean.getRoomno();
+                      if(roomno==null){
+                    	  %>
+                   	 		 없음
+                   	  <%
+                      }
+                      else{
+                    	  out.print(roomno+"강의실");
+                     }
+                      %></td>
                       <td class="roomselect">
                         <select id="tch<%=tchidx++%>">
-                          <%ArrayList<RoomDto> rlist = (ArrayList<RoomDto>)request.getAttribute("rlist");
+                          <%
 									for(RoomDto bean2 : rlist){
 										%>
-                            <option value="<%=bean2.getRoomno()%>"><%=bean2.getRoomno() %></option>
+                            <option value="<%=bean2.getRoomno()%>"><%=bean2.getRoomno() %>강의실</option>
                           <%
 									}
 								%>
@@ -423,7 +463,9 @@
                 <button id="btn2">강의실배정</button>
                 <button id="btn3">배정취소</button>
                 <button id="btn4">배정완료</button>
-                <button id="btn5">취소완료</button>
+                <button id="btn5">취소</button>
+                <button id="btn6">배정취소</button>
+                <button id="btn7">취소</button>
               </div>
             </div>
           </div>

@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.hb.model.room.RoomDao;
 import com.hb.model.student.StuDao;
+import com.hb.model.student.StuDto;
 import com.hb.model.teacher.TeacherDao;
 import com.hb.model.teacher.TeacherDto;
 
@@ -31,13 +32,13 @@ public class CancleStuController extends HttpServlet {
 		StuDao sdao = new StuDao();
 		int result = sdao.delRoomno(stulist, roomno);
 		
-		//		// 강사 테이블 업데이트
-//		TeacherDao tdao = new TeacherDao();
-//		int result2 = tdao.removeAll(tchlist, checklist);
-//		
-//		TeacherDao tdao2 = new TeacherDao();
-//		ArrayList<TeacherDto> tlist = new ArrayList();
-//		tlist = tdao2.selectAll();
+		StuDao sdao2 = new StuDao();
+		ArrayList<StuDto> slist = sdao2.selectAll();
+		
+		PrintWriter out = resp.getWriter();
+		for (int i = 0; i < slist.size(); i++) {
+			out.print(slist.get(i).getRoomno()+"/");
+		}
 
 	}
 }

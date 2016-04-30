@@ -23,14 +23,14 @@ public class TeacherDao {
 
 	public ArrayList<TeacherDto> selectAll() {
 		ArrayList<TeacherDto> list = new ArrayList();
-		sql = "select tchno, tchname, roomno from TEACHER";
+		sql = "select tchno, memname, roomno from TEACHER, member where teacher.memno = member.memno";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				TeacherDto bean = new TeacherDto();
 				bean.setTchno(rs.getInt("tchno"));
-				bean.setTchname(rs.getString("tchname"));
+				bean.setTchname(rs.getString("memname"));
 				bean.setRoomno(rs.getString("roomno"));
 				list.add(bean);
 			}
