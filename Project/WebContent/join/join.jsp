@@ -117,14 +117,14 @@
     font-weight:bold;
    }
  #popup{
-    width:400px;
-    height:300px;
-    background:#dddddd;
-    position:absolute;
-    top:10px;
-    left:500px;
-    text-align:center; 
-    border:2px solid #000;
+    width: 350px;
+    height: 180px;
+    background: #DAFCd1;
+    position: absolute;
+    top: 150px;
+    left: 500px;
+    text-align: center;
+    border: 2px solid #000;
     display: none;
    }
 .errmsg{
@@ -145,23 +145,24 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('#overlab').click(function(){
-			$('#popup').show();
 			var id=$('#id').val();
 			$.ajax({
-				url:"overlab.jsp",
+				url:"join/overlab.jsp",
 				data:"id="+id,
 				type:"post",
 				dataType:"xml",
 				success:function(data){
 					var using=$(data).find("result").text();
-					if(using='true'){
+					if(using=='true'){
 						$('#popup>div>span').text("사용중인 아이디입니다");
 					}else{
 						$('#popup>div>span').text("사용 가능한 아이디입니다");
+						$('#overlab').next().text("");
 					}
 				}
 			});
 			
+			$('#popup').show();
 			return false;
 			});
 		$('#popclose').click(function(){
@@ -169,7 +170,7 @@
 			return false;
 		});
 		$('#id').keyup(function(){
-		if($('#id').val().match(/[`~!@#$%^&*-=|\\\'\";:\/?]/gi)){
+		if($('#id').val().match(/[^a-zA-Z0-9_]/g)){
 			alert("특수문자는 사용할 수 없습니다.");
 			$('#id').val("");
 			$('#id').focus();
@@ -294,24 +295,24 @@
 		<img src="join/joinimage/step2.gif"/>
 	</div>
 	<div id="popup">
-		<div style="height: 270px;"><span></span></div>
+		<div style=" height:80px; margin-top:70px;"><span></span></div>
 		<div id="popclose">닫기</div>
 	</div>
-	<form action="memberjoin.do" method="get">
+	<form action="memberjoin.korean" method="get">
 	<div>
-		<p><b><img class="btn" src="join/joinimage/btn_r.gif"> 회원정보입력</b></p>
+		<p><b><img class="btn" src="join/joinimage/btn_r.gif"> 회원정보입력</b><label style="font-size:9pt">*표 필수 입력</label></p>
 		<hr id="hrsub"/>
-		<div class="form"><label>아이디</label></div>
+		<div class="form"><label>아이디*</label></div>
 		<div class="forminput"><input type="text" name="id" class="inputwidth" id="id"/>
-		<button type="submit" id="overlab" name="overlab">중복확인</button><span class="errmsg"></span>
+		<button type="submit" id="overlab" name="overlab">중복확인</button><span class="errmsg"> 영문 및 숫자만 사용 가능합니다</span>
 		</div>
-		<div class="form"><label>비밀번호</label></div>
+		<div class="form"><label>비밀번호*</label></div>
 		<div class="forminput"><input type="password" name="pw" class="inputwidth" id="pw" placeholder="비밀번호"/><span class="errmsg"></span></div>
-		<div class="form"><label>비밀번호확인</label></div>
+		<div class="form"><label>비밀번호확인*</label></div>
 		<div class="forminput"><input type="password" name="pw2" class="inputwidth" id="pw2" placeholder="비밀번호 확인"/><span class="errmsg"></span></div>
-		<div class="form"><label>이름</label></div>
+		<div class="form"><label>이름*</label></div>
 		<div class="forminput"><input type="text" class="inputwidth" id="name" name="name"/></div>
-		<div class="form"><label>성별</label></div>
+		<div class="form"><label>성별*</label></div>
 		<div class="forminput">
 		<input type="radio" name="gender" value="남자" class="radio" id="male">남자
 		<input type="radio" name="gender" value="여자" class="radio" id="female">여자
@@ -342,7 +343,7 @@
 			-<input type="text" name="tel2" class="inputtel" maxlength="4" id="tel2">
 			-<input type="text" name="tel3" class="inputtel" maxlength="4" id="tel3"><span class="errmsg"></span>
 		</div>
-		<div class="form"><label>H.P</label></div>
+		<div class="form"><label>H.P*</label></div>
 		<div class="forminput">
 			<select name="phone">
 				<option value="010">010</option>
@@ -381,11 +382,11 @@
 				<option value="yahoo.co.kr">yahoo.co.kr</option>
 			</select><br/>
 			<label class="emailagree">이메일 수신동의</label>
-			<input type="radio" name="emailagree" value="y" class="radio"><label class="emailagree">예</label>
-			<input type="radio" name="emailagree" value="n" class="radio" checked><label class="emailagree">아니오</label>
+			<input type="radio" name="emailagree" value="yes" class="radio"><label class="emailagree">예</label>
+			<input type="radio" name="emailagree" value="no" class="radio" checked><label class="emailagree">아니오</label>
 			
 		</div>
-		<div class="email"><label>주소</label></div>
+		<div class="email"><label>주소*</label></div>
 		<div class="emailset">
 		<input type="text" id="postnum" class="inputwidth" placeholder="우편번호" name="postnum"/>
 		<input type="button" id="serchaddr" value="우편번호 찾기" onclick="searchAddress()">

@@ -56,13 +56,11 @@ public class RoomDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			for (int i = 0; i < tchlist.length; i++) {
-			System.out.println("½ÇÇà");
 				pstmt.setInt(1, Integer.parseInt(tchlist[i]));
-				pstmt.setInt(2, Integer.parseInt(roomlist[i]));
+				pstmt.setString(2, roomlist[i]);
 				result = pstmt.executeUpdate();
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			try {
@@ -72,7 +70,6 @@ public class RoomDao {
 					pstmt.close();
 				if (conn != null)
 					conn.close();
-				System.out.println("»Ñ??");
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

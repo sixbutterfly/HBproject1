@@ -100,10 +100,7 @@
 		<%@include file="/templet/nav.jsp" %>
 		<!-- aside1 -->
 		<%@include file="/templet/loginForm.jsp" %>
-<<<<<<< HEAD
-=======
 		<%@include file="/templet/subnav2.jsp" %>
->>>>>>> branch '방아름' of https://github.com/sixbutterfly/HBproject1.git
 		
 		<!-- content start -->
 		<div class="title">

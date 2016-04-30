@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>메인 페이지</title>
+<title>학생 성적 입력 페이지</title>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/grid.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/header.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav.css"/>
@@ -16,6 +16,26 @@
 <style type="text/css">
 	.content{
 		height: 800px;
+	}
+	table {
+		border-collapse: collapse;
+		margin-left: 10%;
+	}
+	table th {
+		background-color: rgb(10, 120, 230);
+		color: white;
+	}
+	table tr {
+		border-bottom: 1px solid black;
+		border-top: 1px solid black;
+		height: 50px;
+	}
+	table tr td {
+		width: 100px;
+		text-align: center;
+	}
+	a {
+		color: black;
 	}
 </style>
 <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
@@ -30,25 +50,28 @@
 		<!-- aside1 -->
 		<%@include file="/templet/loginForm.jsp" %>
 		<%@include file="/templet/subnav5.jsp" %>
-		
 		<!-- content start -->
-		
-		<% ArrayList<GradeDto> al = (ArrayList<GradeDto>)request.getAttribute("al"); %>
-		
-			<h1>성적 입력</h1>
-			<table border="1">
+			<h1 align="center">학생 성적 입력 페이지</h1><br/>
+			<table>
 				<tr><th>학번</th><th>이름</th><th>강의실</th><th>자바</th><th>웹</th><th>프레임워크</th></tr>
 				<%
-					for(int i=0; i<al.size(); i++) {
+					ArrayList<GradeDto> al = (ArrayList)request.getAttribute("al");
+					for(GradeDto bean: al) {
 				%>
-				<tr><td><% al.get(i).getStuno(); %></td><td><% al.get(i).getMemname();  %></td><td><% al.get(i).getRoomno();  %></td><td><% al.get(i).getJavagrade();  %></td><td><% al.get(i).getWebgrade();  %></td><td><% al.get(i).getFramegrade();  %></td></tr>
-				<% 
+				<tr>
+					<label for="a"><td><a href="gradeDetail.korean?stuno=<%=bean.getStuno() %>&name=<%=bean.getMemname() %>&roomno=<%=bean.getRoomno() %>&javagrade=<%=bean.getJavagrade() %>&webgrade=<%=bean.getWebgrade() %>&framegrade=<%=bean.getFramegrade() %>" id="a"><%=bean.getStuno() %></a></td>
+					<td><a href="gradeDetail.korean?stuno=<%=bean.getStuno() %>&name=<%=bean.getMemname() %>&roomno=<%=bean.getRoomno() %>&javagrade=<%=bean.getJavagrade() %>&webgrade=<%=bean.getWebgrade() %>&framegrade=<%=bean.getFramegrade() %>"><%=bean.getMemname() %></a></td>
+					<td><a href="gradeDetail.korean?stuno=<%=bean.getStuno() %>&name=<%=bean.getMemname() %>&roomno=<%=bean.getRoomno() %>&javagrade=<%=bean.getJavagrade() %>&webgrade=<%=bean.getWebgrade() %>&framegrade=<%=bean.getFramegrade() %>"><%=bean.getRoomno() %></a></td>
+					<td><a href="gradeDetail.korean?stuno=<%=bean.getStuno() %>&name=<%=bean.getMemname() %>&roomno=<%=bean.getRoomno() %>&javagrade=<%=bean.getJavagrade() %>&webgrade=<%=bean.getWebgrade() %>&framegrade=<%=bean.getFramegrade() %>"><%=bean.getJavagrade() %></a></td>
+					<td><a href="gradeDetail.korean?stuno=<%=bean.getStuno() %>&name=<%=bean.getMemname() %>&roomno=<%=bean.getRoomno() %>&javagrade=<%=bean.getJavagrade() %>&webgrade=<%=bean.getWebgrade() %>&framegrade=<%=bean.getFramegrade() %>"><%=bean.getWebgrade() %></a></td>
+					<td><a href="gradeDetail.korean?stuno=<%=bean.getStuno() %>&name=<%=bean.getMemname() %>&roomno=<%=bean.getRoomno() %>&javagrade=<%=bean.getJavagrade() %>&webgrade=<%=bean.getWebgrade() %>&framegrade=<%=bean.getFramegrade() %>"><%=bean.getFramegrade() %></a></td></label>
+				</tr>
+				<%
 					}
 				%>
 			</table>
 			
 		<!-- content end -->
-		
 		<!-- aside2 -->
 		<%@include file="/templet/aside2.jsp" %>
 		<!-- footer -->

@@ -13,23 +13,24 @@ import com.hb.model.register.registerDao;
 
 @WebServlet("/resisterController.korean")
 public class RegisterController extends HttpServlet {
-   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      doPost(request, response);
-   }
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doPost(request, response);
+	}
 
-   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      
-      String title = request.getParameter("title");
-      String id = (String)request.getSession().getAttribute("id");
-      
-      registerDao dao1 = new registerDao();
-      String name = dao1.getName(id);
-      request.setAttribute("name", name);
-      
-      curriculumDao dao = new curriculumDao();
-      curriculumDto dto = dao.selectOne(title);
-      request.setAttribute("dto", dto);
-      
-      request.getRequestDispatcher("register/registerclassPage.jsp").forward(request, response);
-   }
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String title = request.getParameter("title");
+		String id = (String)request.getSession().getAttribute("id");
+		
+		registerDao dao1 = new registerDao();
+		String name = dao1.getName(id);
+		request.setAttribute("name", name);
+		
+		curriculumDao dao = new curriculumDao();
+		curriculumDto dto = dao.selectOne(title);
+		
+		request.setAttribute("dto", dto);
+		
+		request.getRequestDispatcher("register/registerclassPage.jsp").forward(request, response);
+	}
 }

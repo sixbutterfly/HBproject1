@@ -24,6 +24,7 @@ insert into authority (authNo, departName) values (9, '관리자');
 insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno,MEMGENDER,EMAILAGREE) values (mem_seq.nextval, 'test1', 'korean', '한국인', '우리집', 'korea@korea.com', '000-0000-000', 1,'남자','Y');
 insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno,MEMGENDER,EMAILAGREE) values (mem_seq.nextval, 'test2', 'korean2', '한국인2', '우리집2', 'korea@korea.com2', '000-0000-0002', 1,'남자','N');
 insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno,MEMGENDER,EMAILAGREE) values (mem_seq.nextval, 'test3', 'korean3', '한국인3', '우리집3', 'korea@korea.com3', '000-0000-0003', 1,'남자','N');
+insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno,MEMGENDER,EMAILAGREE) values (mem_seq.nextval, 'test4', 'korean4', '한국인4', '우리집4', 'korea@korea.com4', '000-0000-0004', 1,'남자','Y');
 insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno,MEMGENDER,EMAILAGREE) values (mem_seq.nextval, 'admin', 'admin', 'admin', 'address', 'email', 'phone', 9,'남자','Y');
 
 insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno) values (mem_seq.nextval, 'kimnormal', 'kim', '김일반', '김일반의 집', 'kimnormal@naver.com', '010-2599-8765', 0);
@@ -70,7 +71,6 @@ insert into sturoom (roomno, tchno, curno) values (room_seq.nextval, 2, null);
 insert into sturoom (roomno, tchno, curno) values (room_seq.nextval, 2, null);
 insert into sturoom values (room_seq.nextval, null, null);
 
-
 --커리큘럼 추가 (curNo, curName, curLocation, curDate, curSupply 순)
 insert into curriculum (curno, curname, curlocation, curdate, cursupply) values (cur_seq.nextval, '전자정부프레임워크', '1강의실', '2016-04-01', '20');
 insert into curriculum (curno, curname, curlocation, curdate, cursupply) values (cur_seq.nextval, '전자정부프레임워크', '2강의실', '2016-05-01', '20');
@@ -92,5 +92,14 @@ insert into register (regNo,memNo,name,email,tel) values (reg_seq.nextval,13,'한
 select student.stuno, member.memname, student.roomno, nvl(grade.javagrade, 0) javagrade, nvl(grade.webgrade, 0) webgrade, nvl(grade.framegrade, 0) framegrade from student, member, grad
 e where member.memno=student.memno and student.stuno=grade.stuno order by stuno;
 
+select stuno, memname, roomno from student, member where student.memno = member.memno and roomno is null;
+update sturoom set tchno = 21 where roomno = 2;
 
+select stuno, member.memname, roomno from student, member where student.memno = member.memno;
+select javagrade, webgrade, framerade,stuno,roomno, member.mamname from grade, member where member.memno = (select memno from student);
+
+update register set curNo=4 where curNo is null;
+
+SELECT student.stuno, student.roomno, member.memname from student, member where STUDENT.MEMNO = MEMBER.MEMNO;
+update teacher set roomno = null where tchno = 1;
 --끝난 실험은 삭제할 것!----------------

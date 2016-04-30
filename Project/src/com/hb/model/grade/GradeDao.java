@@ -14,9 +14,6 @@ public class GradeDao {
 	String password="tiger";
 	String sql="";
 	
-	GradeDto bean = new GradeDto();
-	ArrayList<GradeDto> al = new ArrayList<GradeDto>();
-	
 	Connection conn;
 	PreparedStatement pstmt;
 	ResultSet rs;
@@ -33,23 +30,19 @@ public class GradeDao {
 	}
 	
 	public ArrayList<GradeDto> list() {
+		ArrayList<GradeDto> al = new ArrayList<GradeDto>();
 		sql="SELECT STUDENT.STUNO, MEMBER.MEMNAME, STUDENT.ROOMNO, NVL(GRADE.JAVAGRADE, 0) JAVAGRADE , NVL(GRADE.WEBGRADE, 0) WEBGRADE , NVL(GRADE.FRAMEGRADE, 0) FRAMEGRADE FROM STUDENT, MEMBER, GRADE WHERE MEMBER.MEMNO=STUDENT.MEMNO AND STUDENT.STUNO=GRADE.STUNO ORDER BY STUNO";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
+				GradeDto bean = new GradeDto();
 				bean.setStuno(rs.getInt("stuno"));
-				System.out.print("학번 : "+bean.getStuno());
 				bean.setMemname(rs.getString("memname"));
-				System.out.print(", 이름 : "+bean.getMemname());
 				bean.setRoomno(rs.getInt("roomno"));
-				System.out.print(", 강의실 : "+bean.getRoomno());
 				bean.setJavagrade(rs.getString("javagrade"));
-				System.out.print(", 자바 : "+bean.getJavagrade());
 				bean.setWebgrade(rs.getString("webgrade"));
-				System.out.print(", 웹 : "+bean.getWebgrade());
 				bean.setFramegrade(rs.getString("framegrade"));
-				System.out.println(", 프레임워크 : "+bean.getFramegrade());
 				al.add(bean);
 			}
 		} catch (SQLException e) {
@@ -64,5 +57,29 @@ public class GradeDao {
 			}
 		}
 		return al;
+	}
+	
+	public int addGrade(int stuno, String javagrade, String webgrade, String framegrade) {
+		int result=0;
+		sql="UPDATE GRADE SET JAVAGRADE=?, WEBGRADE=?, FRAMEGRADE=? WHERE STUNO=?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, javagrade);
+			pstmt.setString(2, webgrade);
+			pstmt.setString(3, framegrade);
+			pstmt.setInt(4, stuno);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs!=null) rs.close();
+				if (pstmt!=null) pstmt.close();
+				if (conn!=null) conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
 	}
 }
