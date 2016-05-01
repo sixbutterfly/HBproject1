@@ -27,6 +27,7 @@ insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone
 insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno,MEMGENDER,EMAILAGREE) values (mem_seq.nextval, 'test4', 'korean4', 'ï¿½Ñ±ï¿½ï¿½ï¿½4', 'ï¿½ì¸®ï¿½ï¿½4', 'korea@korea.com4', '000-0000-0004', 1,'ï¿½ï¿½ï¿½ï¿½','Y');
 insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno,MEMGENDER,EMAILAGREE) values (mem_seq.nextval, 'admin', 'admin', 'admin', 'address', 'email', 'phone', 9,'ï¿½ï¿½ï¿½ï¿½','Y');
 
+<<<<<<< HEAD
 insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno) values (mem_seq.nextval, 'kimnormal', 'kim', 'ï¿½ï¿½ï¿½Ï¹ï¿½', 'ï¿½ï¿½ï¿½Ï¹ï¿½ï¿½ï¿½ ï¿½ï¿½', 'kimnormal@naver.com', '
 010-2599-8765', 0);
 insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno) values (mem_seq.nextval, 'kimdaeri', 'kim', 'ï¿½ï¿½ë¸®', 'ï¿½ï¿½ë¸®ï¿½ï¿½ ï¿½ï¿½', 'kimdaeri@gmail.com', '01
@@ -39,6 +40,20 @@ insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone
  '010-2468-7852', 4);
 insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno) values (mem_seq.nextval, 'kimgraduate', 'kim', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½', 'kimgraduate@gmail.com
 ', '010-3211-6123', 5);
+=======
+insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno, memtel, emailagree, memgender, joinday) values (mem_seq.nextval, 'kimnormal', 'kim', '±èÀÏ¹Ý', '±èÀÏ¹ÝÀÇ Áý', 'kimnormal@naver.com', '
+010-2599-8765', 0, '02-2345-6789','y','³²ÀÚ','16/01/01');
+insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno, memtel, emailagree, memgender, joinday) values (mem_seq.nextval, 'kimdaeri', 'kim', '±è´ë¸®', '±è´ë¸®ÀÇ Áý', 'kimdaeri@gmail.com', '01
+0-1633-7511', 1, '02-3456-7890','y','¿©ÀÚ','16/02/01');
+insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno, memtel, emailagree, memgender, joinday) values (mem_seq.nextval, 'kimsales', 'kim', '±è¿µ¾÷', '±è¿µ¾÷ÀÇ Áý', 'kimsales@gmail.com', '01
+0-7544-9984', 2, '02-4567-8901','y','³²ÀÚ','16/03/01');
+insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno, memtel, emailagree, memgender, joinday) values (mem_seq.nextval, 'kimteacher', 'kim', '±è¼±»ý', '±è¼±»ýÀÇ Áý', 'kimteacher@gmail.com',
+ '010-1599-7878', 3, '02-5678-9012','y','¿©ÀÚ','16/04/01');
+insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno, memtel, emailagree, memgender, joinday) values (mem_seq.nextval, 'kimstudent', 'kim', '±èÇÐ»ý', '±èÇÐ»ýÀÇ Áý', 'kimstudent@gmail.com',
+ '010-2468-7852', 4, '02-6789-0123','y','³²ÀÚ','16/05/01');
+insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno, memtel, emailagree, memgender, joinday) values (mem_seq.nextval, 'kimgraduate', 'kim', '±èÁ¹¾÷', '±èÁ¹¾÷ÀÇ Áý', 'kimgraduate@gmail.com
+', '010-3211-6123', 5, '02-7890-1234','y','¿©ÀÚ','16/06/01');
+>>>>>>> refs/remotes/origin/ìµœìž¬í˜¸
 
 --ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
 insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno) values (mem_seq.nextval, 'kimnormal', 'kim', 'ï¿½ï¿½ï¿½Ï¹ï¿½', 'ï¿½ï¿½ï¿½Ï¹ï¿½ï¿½ï¿½ ï¿½ï¿½', 'kimnormal@naver.com', '010-2599-8765', 0);
