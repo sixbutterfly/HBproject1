@@ -115,4 +115,25 @@ public class MemberDao {
 		return dto;
 	}
 	
+	public int updateLevel(MemberDto dto) {
+		int result = 0;
+		String sql = "update member set authno=? where memno=?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, dto.getLevel());
+			pstmt.setInt(2, dto.getMemno());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally{
+			try {
+				if(pstmt!=null)pstmt.close();
+				if(conn!=null)conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+	
 }

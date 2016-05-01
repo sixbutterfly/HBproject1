@@ -64,6 +64,10 @@ public class MemberDto {
 		this.emailagree = emailagree;
 		this.joinday = joinday;
 	}
+	public MemberDto(int memno, int level) {
+		this.level = level;
+		this.memno = memno;
+	}
 	public String getId() {
 		return id;
 	}

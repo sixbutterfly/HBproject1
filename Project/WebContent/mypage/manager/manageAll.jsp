@@ -52,54 +52,54 @@
 	$(document).ready(function(){
 		$('#selauth').click(function(){
 			if($('#selauth').val()=="all"){
-				$('.no0').css('display','inline-block');
-				$('.no1').css('display','inline-block');
-				$('.no2').css('display','inline-block');
-				$('.no3').css('display','inline-block');
-				$('.no4').css('display','inline-block');
-				$('.no5').css('display','inline-block');
+				$('.no0').css('display','block');
+				$('.no1').css('display','block');
+				$('.no2').css('display','block');
+				$('.no3').css('display','block');
+				$('.no4').css('display','block');
+				$('.no5').css('display','block');
 			}else if($('#selauth').val()=="guest"){
-				$('.no0').css('display','inline-block');
+				$('.no0').css('display','block');
 				$('.no1').css('display','none');
 				$('.no2').css('display','none');
 				$('.no3').css('display','none');
 				$('.no4').css('display','none');
 				$('.no5').css('display','none');
-			}else if($('#selauth').val()=="student"){
+			}else if($('#selauth').val()=="admin"){
 				$('.no0').css('display','none');
-				$('.no1').css('display','inline-block');
+				$('.no1').css('display','block');
 				$('.no2').css('display','none');
+				$('.no3').css('display','none');
+				$('.no4').css('display','none');
+				$('.no5').css('display','none');
+			}else if($('#selauth').val()=="sale"){
+				$('.no0').css('display','none');
+				$('.no1').css('display','none');
+				$('.no2').css('display','block');
 				$('.no3').css('display','none');
 				$('.no4').css('display','none');
 				$('.no5').css('display','none');
 			}else if($('#selauth').val()=="teacher"){
 				$('.no0').css('display','none');
 				$('.no1').css('display','none');
-				$('.no2').css('display','inline-block');
-				$('.no3').css('display','none');
+				$('.no2').css('display','none');
+				$('.no3').css('display','block');
 				$('.no4').css('display','none');
+				$('.no5').css('display','none');
+			}else if($('#selauth').val()=="student"){
+				$('.no0').css('display','none');
+				$('.no1').css('display','none');
+				$('.no2').css('display','none');
+				$('.no3').css('display','none');
+				$('.no4').css('display','block');
 				$('.no5').css('display','none');
 			}else if($('#selauth').val()=="finish"){
 				$('.no0').css('display','none');
 				$('.no1').css('display','none');
 				$('.no2').css('display','none');
-				$('.no3').css('display','inline-block');
-				$('.no4').css('display','none');
-				$('.no5').css('display','none');
-			}else if($('#selauth').val()=="sale"){
-				$('.no0').css('display','none');
-				$('.no1').css('display','none');
-				$('.no2').css('display','none');
-				$('.no3').css('display','none');
-				$('.no4').css('display','inline-block');
-				$('.no5').css('display','none');
-			}else if($('#selauth').val()=="admin"){
-				$('.no0').css('display','none');
-				$('.no1').css('display','none');
-				$('.no2').css('display','none');
 				$('.no3').css('display','none');
 				$('.no4').css('display','none');
-				$('.no5').css('display','inline-block');
+				$('.no5').css('display','block');
 			}
 		});
 	});
@@ -124,22 +124,22 @@
 		<select id="selauth" name="selauth">
 			<option value="all">전체보기</option>
 			<option value="guest">회원</option>
-			<option value="student">학생</option>
-			<option value="teacher">강사</option>
-			<option value="finish">수료자</option>
-			<option value="sale">영업부</option>
 			<option value="admin">행정부</option>
+			<option value="sale">영업부</option>
+			<option value="teacher">강사</option>
+			<option value="student">학생</option>
+			<option value="finish">수료자</option>
 		</select>
 		<hr/>
 	</div>
 	<div class="detailmenu">
 		<div>회원번호</div>
-			<div>소속</div>
+			<div style="width:8%;">소속</div>
 			<div>이름</div>
 			<div style="width:10%;">성별</div>
 			<div style="width:12.3%;">핸드폰번호</div>
-			<div>메일</div>
-			<div style="font-size: 11pt">메일 수신여부</div>
+			<div style="margin-left:15px;">메일</div>
+			<div style="font-size: 10pt; margin-left:15px;">메일 수신여부</div>
 			<div>가입일</div>
 	</div>
 	
@@ -147,16 +147,27 @@
 		ArrayList<MemberDto> arr = (ArrayList<MemberDto>)request.getAttribute("list");
 				for(MemberDto dto:arr){
 		%>
-		<div id="detailcon">
-			<div class="no<%=dto.getLevel()%>" style="width : 100%;">
+		<div id="detailcon" >
+			<div class="no<%=dto.getLevel()%>">
 			<a href="memdetail.korean?idx=<%=dto.getMemno()%>">
 			<div class="seeall"><%=dto.getMemno()%></div>
-			<div class="seeall"><%=dto.getLevel()%></div>
+			<div class="seeall" style="width:8%;">
+			<% if(dto.getLevel()==0){%>회원
+			<% }else if(dto.getLevel()==1){%>행정부
+			<% }else if(dto.getLevel()==2){%>영업부
+			<% }else if(dto.getLevel()==3){%>강사
+			<% }else if(dto.getLevel()==4){%>학생
+			<% }else if(dto.getLevel()==5){%>수료자
+			<% }%>
+			</div>
 			<div class="seeall"><%=dto.getMemname()%></div>
 			<div class="seeall" style="width:10%;"><%=dto.getMemgender()%></div>
 			<div class="seeall" style="width:12.3%;"><%=dto.getMemphone()%></div>
-			<div class="seeall"><%=dto.getMememail()%></div>
-			<div class="seeall"><%=dto.getEmailagree()%></div>
+			<div class="seeall">
+			<% if(dto.getMememail().equals("@")){%>-
+			<%}else%><%=dto.getMememail()%>
+			</div>
+			<div class="seeall" style="margin-left:35px;"><%=dto.getEmailagree()%></div>
 			<div class="seeall"><%=dto.getJoinday()%></div>
 			</a>
 			</div>

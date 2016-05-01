@@ -275,7 +275,6 @@
 		});
 	});
 </script>
-
 </head>
 <body>
 	<div class="container_12">
@@ -298,7 +297,7 @@
 		<div style=" height:80px; margin-top:70px;"><span></span></div>
 		<div id="popclose">닫기</div>
 	</div>
-	<form action="memberjoin.korean" method="get">
+	<form action="memberjoin.korean" method="post">
 	<div>
 		<p><b><img class="btn" src="join/joinimage/btn_r.gif"> 회원정보입력</b><label style="font-size:9pt">*표 필수 입력</label></p>
 		<hr id="hrsub"/>
