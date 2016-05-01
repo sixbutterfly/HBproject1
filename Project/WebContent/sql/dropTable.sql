@@ -21,6 +21,8 @@ drop table curriculum purge;
 
 drop table authority purge;
 
+drop table notice purge;
+
 purge recyclebin;
 
 -------------------------------------------------------------------------------
@@ -46,5 +48,5 @@ drop SEQUENCE room_seq;
 
 drop SEQUENCE tch_seq;
 
-
+drop SEQUENCE not_seq;
 

@@ -5,7 +5,7 @@
 				<li><a href="init.korean">센터소개</a></li>
 				<li><a href="registerInfo.korean">커리큘럼</a></li>
 				<li><a href="#">취업정보</a></li>
-				<li><a href="#">고객센터</a></li>
+				<li><a href="notice.korean">고객센터</a></li>
 				<li><a href="mypage.korean">마이페이지</a></li>
 			</ul>
 		</div>
@@ -25,13 +25,12 @@
 			</ul>
 			<ul>
 				<li><a href="#">채용 정보</a></li>
-				<li><a href="#">취업 현황</a></li>
 				<li><a href="#">취업 후기</a></li>
 			</ul>
 			<ul>
-				<li><a href="#">공지사항</a></li>
-				<li><a href="#">문의 게시판</a></li>
-				<li><a href="#">수강 후기</a></li>
+				<li><a href="notice.korean">공지사항</a></li>
+				<li><a href="question.korean">문의 게시판</a></li>
+				<li><a href="after.korean">수강 후기</a></li>
 			</ul>
 			<ul></ul>
 		</div>

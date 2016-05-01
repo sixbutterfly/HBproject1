@@ -1,3 +1,6 @@
+<%@page import="com.hb.model.notice.noticeDto"%>
+<%@page import="com.hb.model.register.registerDto"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -34,16 +37,31 @@
 	.table tr{
 		text-align: center;
 	}
-	.table tr a{
+	.content button{
+		width: 50px;
+	}
+	.table+button{
+		margin-left: 320px;
+	}
+	.content a{
 		text-decoration: none;
 		color: black;
-	}
-	.table tr a:hover{
-		color: #06c;
 	}
 </style>
 <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
 <script type="text/javascript" src="js/menu.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.table+button+button').click(function(){
+			if(confirm("게시물을 삭제하시겠습니까?")){
+				alert("삭제가 완료되었습니다.");
+			}else{
+				alert("삭제가 취소되었습니다.");
+				return false;
+			}
+		});
+	});//ready end
+</script>
 </head>
 <body>
 	<div class="container_12">
@@ -53,20 +71,33 @@
 		<%@include file="/templet/nav.jsp" %>
 		<!-- aside1 -->
 		<%@include file="/templet/loginForm.jsp" %>
-		<%@include file="/templet/subnav5.jsp" %>
+		<%@include file="/templet/subnav4.jsp" %>
 		
 		<!-- content start -->
 			<div class="title">
-				<p>MY PAGE</p>
-				<span>수강 신청 목록</span>
+				<p>CUSTOMER CENTER</p>
+				<span>공지사항</span>
 			</div>
-
-			<table class="table">
-				<tr><th>이름</th><th>연락처</th><th>신청과정명</th></tr>
-			</table>
-
-			신청한 과정명 출력
-			<button>수강 취소</button>
+			
+			<%
+				noticeDto dto = (noticeDto) request.getAttribute("dto");
+			%>
+			<form action="noticeeditform.korean">
+				<input type="hidden" name="notNo" value="<%=dto.getNotNo() %>">
+				<table class="table">
+					<tr><th>글번호</th><td><%=dto.getNotNo() %></td>
+						<th>작성일</th><td><%=dto.getNotDate() %></td>
+						<th>작성자</th><td><%=dto.getName() %></td>
+					</tr>
+					<tr><th>제목</th><td colspan="5"><%=dto.getTitle() %></td></tr>
+					<tr><th colspan="6">내용</th></tr>
+					<tr><td colspan="6"><%=dto.getContent() %></td></tr>
+				</table>
+				<button type="submit">수정</button>
+				<button type="button"><a href="noticedelete.korean?notNo=<%=dto.getNotNo() %>">삭제</a></button>
+				<button type="button"><a href="notice.korean">목록</a></button>
+			</form>
+			
 		<!-- content end -->
 		
 		<!-- aside2 -->

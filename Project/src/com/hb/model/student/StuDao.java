@@ -46,7 +46,7 @@ public class StuDao {
 				}
 		}
 		return list;
-	}
+	}//selectAll end
 	
 	public ArrayList<StuDto> selectWaitingList() {
 		ArrayList<StuDto> list = new ArrayList(); 
@@ -71,7 +71,7 @@ public class StuDao {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-	}
+		}
 		return list;
 	}//selectWaitingList end
 
@@ -122,6 +122,26 @@ public class StuDao {
 		
 		return result;
 	}
+	public int addOne(int memNo) {
+		int result = 0;
+		sql = "insert into student (stuNo, memNo, roomNo) values (stu_seq.nextval, "+memNo+", null)";
+		//System.out.println(sql);
+		try {
+			pstmt = conn.prepareStatement(sql);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				if(rs!=null)rs.close();
+				if(pstmt!=null)pstmt.close();
+				if(conn!=null)conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}//addOne end
 	
 	
 }//class end

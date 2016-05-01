@@ -6,7 +6,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.hb.util.DB;
+
 public class GradeDao {
+	
 	String driver="oracle.jdbc.driver.OracleDriver";
 	String url="jdbc:oracle:thin:@localhost:1521:xe";
 	String user="scott";
@@ -16,6 +19,11 @@ public class GradeDao {
 	Connection conn;
 	PreparedStatement pstmt;
 	ResultSet rs;
+	
+	public GradeDao() {
+		conn = DB.getConnection();
+	}
+	
 	public GradeDto list() {
 		sql="select stuno, member.memname, roomno, javagrade, webgrade, framegrade from grade, " +
 			"member where member.memno = (select memno from student)";
