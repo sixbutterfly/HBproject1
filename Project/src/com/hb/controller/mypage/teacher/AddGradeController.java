@@ -1,6 +1,7 @@
 package com.hb.controller.mypage.teacher;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,8 +18,8 @@ public class AddGradeController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		GradeDao dao = new GradeDao();
-		GradeDto bean = dao.list();
-		req.setAttribute("bean", bean);
+		ArrayList<GradeDto> al = dao.list();
+		req.setAttribute("al", al);
 		req.getRequestDispatcher("mypage/teacher/addGrade.jsp").forward(req, resp);
 	}
 }
