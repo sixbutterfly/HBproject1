@@ -50,6 +50,18 @@
 </style>
 <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
 <script type="text/javascript" src="js/menu.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.table+button+button').click(function(){
+			if(confirm("게시물을 삭제하시겠습니까?")){
+				alert("삭제가 완료되었습니다.");
+			}else{
+				alert("삭제가 취소되었습니다.");
+				return false;
+			}
+		});
+	});//ready end
+</script>
 </head>
 <body>
 	<div class="container_12">
@@ -70,7 +82,8 @@
 			<%
 				noticeDto dto = (noticeDto) request.getAttribute("dto");
 			%>
-			<form action="notice.korean">
+			<form action="noticeeditform.korean">
+				<input type="hidden" name="notNo" value="<%=dto.getNotNo() %>">
 				<table class="table">
 					<tr><th>글번호</th><td><%=dto.getNotNo() %></td>
 						<th>작성일</th><td><%=dto.getNotDate() %></td>
@@ -81,6 +94,7 @@
 					<tr><td colspan="6"><%=dto.getContent() %></td></tr>
 				</table>
 				<button type="submit">수정</button>
+				<button type="button"><a href="noticedelete.korean?notNo=<%=dto.getNotNo() %>">삭제</a></button>
 				<button type="button"><a href="notice.korean">목록</a></button>
 			</form>
 			

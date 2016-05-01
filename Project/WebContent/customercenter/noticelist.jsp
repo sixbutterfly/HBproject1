@@ -1,3 +1,4 @@
+<%@page import="com.hb.model.notice.noticeDao"%>
 <%@page import="com.hb.model.notice.noticeDto"%>
 <%@page import="com.hb.model.register.registerDto"%>
 <%@page import="java.util.ArrayList"%>
@@ -44,14 +45,53 @@
 	.table tr a:hover{
 		color: #06c;
 	}
+	form{
+		width: 400px;
+		margin: 10px auto;
+	}
+	form a{
+		text-decoration: none;
+		color: black;
+	}
+	p a{
+		text-decoration: none;
+		color: gray;
+	}
+	p a:hover{
+		color: #06c;
+	}
 	.content button{
 		width: 50px;
-		margin: 10px 350px;
 	}
 </style>
 <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
 <script type="text/javascript" src="js/menu.js"></script>
 </head>
+<%
+	int total = 0;
+	int limit = 0;
+	String sreach = request.getParameter("sreach");
+	String keyword = request.getParameter("keyword");
+	if("".equals(sreach)||sreach==null){
+		sreach="";
+	}if("".equals(keyword)||keyword==null){
+		keyword="";
+	}else{
+		keyword = "where "+keyword+" like '%"+sreach+"%";
+	}
+	sreach=sreach.trim();
+	String p = request.getParameter("page");
+	int pcnt = 10;
+	int pStart = 1;
+	if(p==null||"".equals(p)){
+		p="1";
+	}else{
+		pStart = (Integer.parseInt(p)-1)*pcnt+1;
+	}
+	int pEnd = pStart+(pcnt-1);
+	noticeDao dao = new noticeDao();
+	ArrayList<noticeDto> list =  dao.selectAll(keyword, pStart, pEnd);
+%>			
 <body>
 	<div class="container_12">
 		<!-- header -->
@@ -68,24 +108,47 @@
 				<span>공지사항</span>
 			</div>
 			
-			<form action="noticeaddform.korean">
 				<table class="table">
 					<tr><th>글번호</th><th>제목</th><th>작성일</th><th>작성자</th></tr>
-	
 					<%
-						ArrayList<noticeDto> list = (ArrayList) request.getAttribute("list");
 						for(noticeDto dto : list){
 					%>
-	
 					<tr>
-						<td><%=dto.getNotNo() %></td>
+						<td><%=dto.getRn() %></td>
 						<td><a href="noticedetail.korean?notNo=<%=dto.getNotNo() %>"><%=dto.getTitle() %></a></td>
 						<td><%=dto.getNotDate() %></td>
 						<td><%=dto.getName() %></td>
 					</tr>
 					<%} %>
 				</table>
-				<button type="submit">글쓰기</button>
+			<p align="center">
+			<%
+				int shownum = 5;
+				limit = (total-1)/pcnt+1;
+				int pstart = ((Integer.parseInt(p)-1)/shownum)*shownum+1;
+				if(Integer.parseInt(p)!=1){
+					out.print("<a href=\"notice.korean?file=list&page="+(Integer.parseInt(p)-1)+"\">[이전]</a>");
+				}
+				for(int i = pstart; i<pstart+shownum; i++){ %>
+					<a href="notice.korean?file=list&page=<%=i%>">[<%=i%>]</a>
+			<%
+					if(i==limit){break;}
+				}
+				if(Integer.parseInt(p)<limit){
+					out.print("<a href=\"notice.korean?file=list&page="+(Integer.parseInt(p)+1)+"\">[다음]</a>");
+				}
+			%>
+			</p>
+			
+			<form action="notice.korean">
+				<select name="keyword">
+					<option value="title">제목</option>
+					<option value="content" >내용</option>
+					<option value="name" >글쓴이</option>
+				</select>
+				<input type="text" name="sreach">
+				<button type="submit">검색</button>
+				<button type="button"><a href="noticeaddform.korean">글쓰기</a></button>
 			</form>
 			
 		<!-- content end -->

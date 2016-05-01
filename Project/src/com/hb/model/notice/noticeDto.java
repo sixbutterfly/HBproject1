@@ -5,13 +5,18 @@ import java.util.Date;
 public class noticeDto {
 
 	private int notNo;
+	private int rn;
 	private String title;
 	private String content;
 	private Date notDate;
 	private String name;
+	private int total;
 	
 	public int getNotNo() {
 		return notNo;
+	}
+	public int getRn() {
+		return rn;
 	}
 	public String getTitle() {
 		return title;
@@ -39,5 +44,14 @@ public class noticeDto {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public void setRn(int rn) {
+		this.rn = rn;
+	}
+	public int getTotal() {
+		return total;
+	}
+	public void setTotal(int total) {
+		this.total = total;
 	}
 }

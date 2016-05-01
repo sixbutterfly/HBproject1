@@ -13,7 +13,7 @@ import com.hb.model.register.registerDao;
 import com.hb.model.student.StuDao;
 
 @WebServlet("/finalConfirm.korean")
-public class FinalConfitmController extends HttpServlet {
+public class FinalConfirmController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		

@@ -1,3 +1,4 @@
+<%@page import="com.hb.model.notice.noticeDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -78,15 +79,18 @@
 				<p>CUSTOMER CENTER</p>
 				<span>공지사항</span>
 			</div>
-			
-			<form action="noticeadd.korean">
+			<%
+				noticeDto dto = (noticeDto) request.getAttribute("dto");
+			%>
+			<form action="noticeedit.korean">
+				<input type="hidden" name="notNo" value="<%=dto.getNotNo() %>">
 				<table class="table">
-					<tr><th>제목</th><td colspan="3"><input type="text" name="title"/></td>
-					<th>작성자</th><td><input type="text" name="name"></td></tr>
+					<tr><th>제목</th><td colspan="3"><input type="text" name="title" value="<%=dto.getTitle() %>"/></td>
+					<th>작성자</th><td><input type="text" name="name" value="<%=dto.getName() %>" readonly="readonly"></td></tr>
 					<tr><th colspan="6">내용</th></tr>
-					<tr><td colspan="6"><textarea name="content" id="editor">내용을 입력하세요</textarea></td></tr>
+					<tr><td colspan="6"><textarea name="content" id="editor"><%=dto.getContent() %></textarea></td></tr>
 				</table>
-				<button type="submit">작성</button>
+				<button type="submit">수정</button>
 				<button type="reset">취소</button>
 				<button type="button"><a href="notice.korean">목록</a></button>
 			</form>

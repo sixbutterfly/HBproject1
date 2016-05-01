@@ -9,27 +9,23 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.hb.model.notice.noticeDao;
 
-@WebServlet("/noticeadd.korean")
-public class NoticeAddController extends HttpServlet {
+@WebServlet("/noticeedit.korean")
+public class NoticeEditController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setCharacterEncoding("UTF-8");
-		
+		int notNo = Integer.parseInt(request.getParameter("notNo"));
 		String title = request.getParameter("title");
-		String name = request.getParameter("name");
 		String content = request.getParameter("content");
-		System.out.println(title);
-		System.out.println(name);
-		System.out.println(content);
+		//System.out.println(notNo+title+content);
 		
-//		noticeDao dao = new noticeDao();
-//		int result = dao.addOne(title,name,content);
-//		
-//		if(result>0){
-//			response.sendRedirect("notice.korean");
-//		}else{
-//			response.sendRedirect("noticeadd.korean");
-//		}
+		noticeDao dao = new noticeDao();
+		int result = dao.updateOne(notNo,title,content);
+		
+		if(result>0){
+			response.sendRedirect("notice.korean");
+		}else{
+			response.sendRedirect("noticeeditform.korean?notNo="+notNo );
+		}
 	}
 
 }
