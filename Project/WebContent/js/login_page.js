@@ -14,21 +14,20 @@ $(document).ready(function(){
 			var inputId = $(".login>input").eq(0).val();
 			var inputPw = $(".login>input").eq(1).val();		
 			
-			if((inputId == "") || (inputId =="ì•„ì´ë””")){					
+			if((inputId == "") || (inputId =="¾ÆÀÌµð")){
+				$(".login>input").eq(0).val("¾ÆÀÌµð ÀÔ·Â");			
 				$(".login>input").eq(0).focus(function(){
 					$(".login>input").eq(0).val("");
-					$(".login>input").eq(0)
 				    });		
 			}
 			else if(inputPw == ""){	
 				$(".login>input").eq(1).attr("type", "text");
-				$(".login>input").eq(1).val("íŒ¨ìŠ¤ì›Œë“œ ìž…ë ¥");
+				$(".login>input").eq(1).val("ÆÐ½º¿öµå ÀÔ·Â");
 				$(".login>input").eq(1).focus(function(){
 					$(".login>input").eq(1).val("");
 				    });
 			}
 			
-					
 			$(".login>input").each(function(idx, item){
 				arr[idx]=$(item).val();
 			});
@@ -42,7 +41,7 @@ $(document).ready(function(){
 				},
 				"success":function(data){
 					if(data[0].result){
-						var st = "<div class='user'>"+data[0].id+"ë‹˜ </div>";
+						var st = "<div class='user'>"+data[0].id+"´Ô </div>";
 						st +="<div><a href='/Project/login/logout.korean'><span>logout</span></a></div>";
 						$(".login").html(st);	
 						$(".reg").hide();
@@ -50,5 +49,6 @@ $(document).ready(function(){
 					
 				}
 			});
+			
 		});
-	});
+});

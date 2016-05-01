@@ -102,4 +102,35 @@ public class TeacherDao {
 		}
 		return result;
 	}
+	
+	public ArrayList<TeacherDto> attdTeacherName() {
+		ArrayList<TeacherDto> list = new ArrayList();
+		sql = "select m.memName from member m, teacher t, stuRoom r where m.memNo = t.memNo and r.stuRoom = ?;";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				TeacherDto bean = new TeacherDto();
+				bean.setTchno(rs.getInt("tchno"));
+				bean.setTchname(rs.getString("tchname"));
+				bean.setRoomno(rs.getInt("roomno"));
+				list.add(bean);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
+
 }
