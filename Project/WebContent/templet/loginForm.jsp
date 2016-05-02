@@ -20,18 +20,21 @@
 				<div class="login">
 					<button>login</button>
 				</div>
+
 				<a class="reg" href="agreejoin.korean">회원가입</a>
+
 					<%
 						}
 					}else{ %>
 			
 				<div class="login">
 					<input type="text" name="id"  value="아이디" />
-					<input type="text" name="pw"  value="패스워드"/>	
+					<input type="text" name="pw"  value="패스워드"/>						
 				</div>
 				<div class="login">
 					<button>login</button>
 				</div>
+
 				<a class="reg" href="agreejoin.korean">회원가입</a>
 				<%} %>
 				

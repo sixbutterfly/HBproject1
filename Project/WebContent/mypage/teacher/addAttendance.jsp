@@ -32,6 +32,16 @@
 		background-color:dda0dd;
 		border: 1px solid black;
 	}
+	
+	#left{
+		float: left;
+		margin-left : 10px;
+	}
+	
+	#right{
+		float:right;
+		margin-right : 30px;
+	}
 </style>
 <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
 <script type="text/javascript" src="js/menu.js"></script>
@@ -48,15 +58,11 @@
 		<%@include file="/templet/loginForm.jsp" %>
 		<%@include file="/templet/subnav5.jsp" %>
 		
-		<!-- content start -->
-			
-				
-		
-				
-		
-			<h1><%=(Calendar.getInstance().MONTH + 1) %>월 출결 입력</h1>
+		<!-- content start -->		
+			<h1> 출결 입력</h1>
 			<div>
-			<p><span id="left"><%=request.getParameter("sdf") %> </span> <span id="right">담당강사 : 정현영 강사님</span></p>
+			<p><span id="left">오늘날짜 </span> <span id="right">담당강사 : <%= request.getParameter("tchName") %> 강사님</span></p>
+			<br/>
 			<p><span id="left">강의실 : 내마음속</span> <span id="right">   출석 : ●   결석 : X    지각 : ▲    조퇴 :  ■ </span></p>
 			</div>
 			<table>
@@ -66,14 +72,14 @@
 					<th>19</th><th>20</th><th>21</th><th>22</th><th>23</th><th>24</th><th>25</th><th>26</th><th>27</th><th>28</th>
 					<th>29</th><th>30</th><th>31</th>
 				</tr>
-				<% 			
-					ArrayList<AttdDto> attdList = (ArrayList<AttdDto>) request.getParameter("attdList");
+				<%-- <% 			
+					ArrayList<AttdDto> attdList = request.getParameter("attdList");
 					for(AttdDto bean : attdList){
 				%>
 			
 				<%		
 					}
-				%>
+				%> --%>
 				
 			</table>
 			
