@@ -18,18 +18,16 @@ public class NoticeAddController extends HttpServlet {
 		String title = request.getParameter("title");
 		String name = request.getParameter("name");
 		String content = request.getParameter("content");
-		System.out.println(title);
-		System.out.println(name);
-		System.out.println(content);
+//		System.out.println(title);
+//		System.out.println(name);
+//		System.out.println(content);
 		
-//		noticeDao dao = new noticeDao();
-//		int result = dao.addOne(title,name,content);
-//		
-//		if(result>0){
-//			response.sendRedirect("notice.korean");
-//		}else{
-//			response.sendRedirect("noticeadd.korean");
-//		}
+		noticeDao dao = new noticeDao();
+		int result = dao.addOne(title,name,content);
+		
+		if(result>0){
+			response.sendRedirect("notice.korean");
+		}
 	}
 
 }

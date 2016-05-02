@@ -21,6 +21,7 @@
 	});
 </script>
 <body>
+	
 	<h1>수강 대기자 목록</h1>
 	<table>
 		<tr>

@@ -17,9 +17,18 @@
       <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/aside2.css"/>
       <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
       <style type="text/css">
-        .content {
-          height: 800px;
-        }
+        .title>p{
+		font-size: 30pt;
+		font-style: oblique;
+		}
+		.title>span{
+			font-size: 15pt;
+		}
+		.title{
+			margin: 20px;
+			border-bottom: 3px solid #ddd;
+			color: #666;
+		}
 
         .room ul.tabs {
           margin: 0;
@@ -273,7 +282,11 @@
 
         <!-- content start -->
         <div class="room">
-          <h1>강의실 관리</h1>
+        
+          <div class="title">
+				<p>MY PAGE</p>
+				<span>강의실 관리</span>
+			</div>
           <div>
             <!-- 탭 메뉴 -->
             <ul class="tabs">

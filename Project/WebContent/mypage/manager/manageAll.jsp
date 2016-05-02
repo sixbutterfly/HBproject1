@@ -14,6 +14,18 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/aside2.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
 <style type="text/css">
+	.title>p{
+		font-size: 30pt;
+		font-style: oblique;
+	}
+	.title>span{
+		font-size: 15pt;
+	}
+	.title{
+		margin: 20px;
+		border-bottom: 3px solid #ddd;
+		color: #666;
+	}
 	#detailcon>div :hover{
 		list-style: none;
 		background-color:pink;
@@ -26,7 +38,7 @@
 	}
 	.detailmenu{
 		width:100%;
-		background-color: #fddad3;
+		background-color: rgba(204,229,255,0.5);
 	}
 	.detailmenu>div{
 		text-align: center;
@@ -74,11 +86,12 @@
 		<%@include file="/templet/loginForm.jsp" %>
 		<%@include file="/templet/subnav5.jsp" %>
 		<!-- content start -->
-	<div>
-		<p>회원 관리</p>
-		<hr/>
-	</div>
-	<div>
+		<div class="title">
+			<p>MY PAGE</p>
+			<span>회원 관리</span>
+		</div>
+				
+		<div>
 		<select id="selauth" name="selauth">
 			<option value="all">전체보기</option>
 			<option value="guest">회원</option>
@@ -97,7 +110,7 @@
 			<div>성별</div>
 			<div>핸드폰번호</div>
 			<div>메일</div>
-			<div style="font-size: 11pt">메일 수신여부</div>
+			<div style="font-size: 11pt">수신동의</div>
 			<div>가입일</div>
 	</div>
 	

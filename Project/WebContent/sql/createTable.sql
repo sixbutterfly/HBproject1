@@ -3,11 +3,11 @@ CREATE TABLE mangement
 	admNo                 NUMBER(5)  NOT NULL ,
 	memNo                 NUMBER(5)  NOT NULL 
 );
----- º¯°æ»çÇ× ------------------------------------------------------------------------
----- Å×ÀÌºí¸í ¼öÁ¤(signUpReady -> register) ¼ö°­´ë±â
----- not null Àû¿ë ÇØÁ¦
----- Å×ÀÌºí¸í ¼öÁ¤(admin -> management, studyCur -> curriculum) ÇàÁ¤ºÎ¿Í Ä¿¸®Å§·³
---ÇÑ±¹ÀÎ µğÁü
+---- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ------------------------------------------------------------------------
+---- ï¿½ï¿½ï¿½Ìºï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(signUpReady -> register) ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+---- not null ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+---- ï¿½ï¿½ï¿½Ìºï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(admin -> management, studyCur -> curriculum) ï¿½ï¿½ï¿½ï¿½ï¿½Î¿ï¿½ Ä¿ï¿½ï¿½Å§ï¿½ï¿½
+--ï¿½Ñ±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 ---------------------------------------------------------------------------------------
 
 
@@ -242,24 +242,53 @@ ALTER TABLE teacher
   ADD ( FOREIGN KEY (memNo) REFERENCES member(memNo));
 
 ---------------------------------------------------------------------------------------------
--- ÄÃ·³ º¯°æ
--- alter table Å×ÀÌºí¸í rename column ÄÃ·³¸í to ¹Ù²ÜÄÃ·³¸í;
--- ÄÃ·³ Ãß°¡
--- alter table Å×ÀÌºí¸í add(ÄÃ·³¸í µ¥ÀÌÅÍÅ¸ÀÔ());
---ÇÑ±¹ÀÎ µğÁü
+-- ï¿½Ã·ï¿½ ï¿½ï¿½ï¿½ï¿½
+-- alter table ï¿½ï¿½ï¿½Ìºï¿½ï¿½ rename column ï¿½Ã·ï¿½ï¿½ï¿½ to ï¿½Ù²ï¿½ï¿½Ã·ï¿½ï¿½ï¿½;
+-- ï¿½Ã·ï¿½ ï¿½ß°ï¿½
+-- alter table ï¿½ï¿½ï¿½Ìºï¿½ï¿½ add(ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¸ï¿½ï¿½());
+--ï¿½Ñ±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 ---------------------------------------------------------------------------------------------
 	ADD ( FOREIGN KEY (memNo) REFERENCES member(memNo) ON DELETE SET NULL);
 
 ---------------------------------------------------------------------------------------------
--- °øÁö»çÇ× °Ô½ÃÆÇ Ãß°¡
+-- ê³µì§€ì‚¬í•­ ê²Œì‹œíŒ
 
 create table notice (
 
-	notNo		NUMBER(5) not null, -- ±Û¹øÈ£
-	Title	varchar2(100)  null,	-- Á¦¸ñ
-	Content	clob  null,	-- ³»¿ë
-	notDate	date  null,	-- ÀÛ¼º³¯Â¥
-	name varchar2(50)  null	-- ÀÛ¼ºÀÚ
+	notNo		NUMBER(5) not null,
+	Title		varchar2(100)  null,
+	Content		clob  null,
+	notDate		date  null,
+	name 		varchar2(50)  null
 );
 ALTER TABLE notice
 	ADD  PRIMARY KEY (notNo);
+	
+-- ë¬¸ì˜ì‚¬í•­ ê²Œì‹œíŒ
+	create table qna(
+		qnaNo		number(5) not null,
+		qnaTitle	varchar2(100) not null,
+		qnaContent	clob null,
+		qnaDate		date null,
+		qnaName		varchar2(50) null
+	);
+	alter table qna add primary key(qnaNo);
+-- ìˆ˜ê°•í›„ê¸° ê²Œì‹œíŒ
+	create table after(
+		aftNo		number(5) not null,
+		aftTitle	varchar2(100) not null,
+		aftContent	clob null,
+		aftDate		date null,
+		aftName		varchar2(50) null
+	);
+	alter table after add primary key(aftNo);
+-- ì±„ìš©ì •ë³´ ê²Œì‹œíŒ
+	create table jobinfo(
+		jobNo		number(5) not null,
+		jobTitle	varchar2(100) not null,
+		jobContent	clob null,
+		jobDate		date null,
+		jobName		varchar2(50) null
+	);
+	alter table jobinfo add primary key(jobNo);
+	

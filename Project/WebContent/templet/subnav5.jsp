@@ -62,9 +62,6 @@
 				<a href="room.do">강의실 관리</a>
 			</div>
 			<div class="manager">
-				<a href="teacher.do">강사 관리</a>
-			</div>
-			<div class="manager">
 				<a href="curriculum.korean">커리큘럼 관리</a>
 			</div>
 		</div>

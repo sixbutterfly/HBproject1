@@ -1,3 +1,4 @@
+<%@page import="java.util.Calendar"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,8 +14,17 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
 
 <style type="text/css">
-	.content{
-		height: 800px;
+	.title>p{
+		font-size: 30pt;
+		font-style: oblique;
+	}
+	.title>span{
+		font-size: 15pt;
+	}
+	.title{
+		margin: 20px;
+		border-bottom: 3px solid #ddd;
+		color: #666;
 	}
 	h1{
 		text-align: center;
@@ -45,10 +55,19 @@
 		<%@include file="/templet/subnav5.jsp" %>
 		
 		<!-- content start -->
-		
-			<h1> 4월 출결 입력</h1>
+		<%
+			Calendar today = Calendar.getInstance();
+			int year = today.get(Calendar.YEAR);
+			int month = today.get(Calendar.MONTH)+1;
+			int date = today.get(Calendar.DATE);
+		%>
+			<div class="title">
+				<p>MY PAGE</p>
+				<span><%=month %>월 출결 입력</span>
+			</div>
+			
 			<div>
-			<p><span>2016년  4월  27일 </span> <span>담당강사 : 정현영 강사님</span></p>
+			<p><span><%=year %>년 <%=month %>월  <%=date %>일 </span><br/> <span>담당강사 : 정현영 강사님</span></p>
 			<p><span>강의실 : 내마음속</span> <span>   출석 : ●   결석 : X    지각 : ▲    조퇴 :  ■ </span></p>
 			</div>
 			<table>

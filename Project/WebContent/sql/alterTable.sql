@@ -1,11 +1,11 @@
---ÇĞ»ı Å×ÀÌºíÀÇ roomno¸¦ ³Î°ª Çã¿ëÀ¸·Î º¯°æ
+--ï¿½Ğ»ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ï¿½ï¿½ roomnoï¿½ï¿½ ï¿½Î°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 alter table student modify roomno null;
 
--- register table column attribute's some changed. (Á¤ÇöÀç)
+-- register table column attribute's some changed. (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
 ALTER TABLE REGISTER MODIFY JOBINFO VARCHAR2(350);
 ALTER TABLE REGISTER MODIFY CONTENT VARCHAR2(200) NULL;
 
---°­»ç°¡ °­ÀÇ½Ç ¹øÈ£¸¦ ÂüÁ¶ ¹ŞÀ½
+--ï¿½ï¿½ï¿½ç°¡ ï¿½ï¿½ï¿½Ç½ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 alter table teacher add (roomno number(5));
 ALTER TABLE teacher
 ADD FOREIGN KEY (roomno) REFERENCES sturoom(roomno);
@@ -14,34 +14,41 @@ alter table register add (curNo number(5));
 ALTER TABLE register
 ADD FOREIGN KEY (curNo) REFERENCES curriculum(curNo);
 
--- stuCur Å×ÀÌºí curriculumÀ¸·Î ÀÌ¸§ º¯°æ
+-- stuCur ï¿½ï¿½ï¿½Ìºï¿½ curriculumï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½
 rename studyCur to curriculum;
 
--- Ä¿¸®Å§·³ Å×ÀÌºí null°ª Çã¿ë
+-- Ä¿ï¿½ï¿½Å§ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ nullï¿½ï¿½ ï¿½ï¿½ï¿½
 alter table curriculum modify(curNo null, tchNo null);
 
--- ÇĞ»ı Å×ÀÌºí ÇàÁ¤ºÎ ¹øÈ£ ÄÃ·³ »èÁ¦
+-- ï¿½Ğ»ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ ï¿½Ã·ï¿½ ï¿½ï¿½ï¿½ï¿½
 alter table student drop column admNo;
 
--- register Å×ÀÌºí submitValue -> file1·Î º¯°æ
+-- register ï¿½ï¿½ï¿½Ìºï¿½ submitValue -> file1ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 alter table register rename column submitValue to file1;
 
--- register Å×ÀÌºí file2ÄÃ·³ Ãß°¡
+-- register ï¿½ï¿½ï¿½Ìºï¿½ file2ï¿½Ã·ï¿½ ï¿½ß°ï¿½
 alter table register add(file2 VARCHAR2(10));
 
--- register Å×ÀÌºí file1, file2, gubun ÄÃ·³ »çÀÌÁî º¯°æ
+-- register ï¿½ï¿½ï¿½Ìºï¿½ file1, file2, gubun ï¿½Ã·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 alter table register modify(file1 VARCHAR2(50));
 alter table register modify(file2 VARCHAR2(50));
 alter table register modify(gubun VARCHAR2(100));
 
-------¸â¹ö Å×ÀÌºí ¼Ó¼º ³Î°ªÀ¸·Î º¯°æ							
+------member í…Œì´ë¸” ë³€ê²½
 ALTER TABLE MEMBER MODIFY (MEMPW VARCHAR2(30) NOT NULL,
 							MEMID VARCHAR2(30) NOT NULL,
 							MEMNAME VARCHAR2(30) NOT NULL,
 							MEMADDRESS VARCHAR2(100) NOT NULL,
 							MEMPHONE VARCHAR2(20) NOT NULL);
-------¸â¹ö Å×ÀÌºí ¼Ó¼º Ãß°¡
+							
 ALTER TABLE MEMBER ADD MEMTEL VARCHAR2(20) NULL;
 ALTER TABLE MEMBER ADD MEMGENDER VARCHAR2(10) NOT NULL;
 ALTER TABLE MEMBER ADD EMAILAGREE VARCHAR2(5) NOT NULL;
 ALTER TABLE MEMBER ADD JOINDAY VARCHAR2(20) NOT NULL;
+
+-- notice í…Œì´ë¸” ì»¬ëŸ¼ ë³€ê²½
+alter table notice add(test clob);
+alter table notice drop column content;
+alter table notice rename column test to content;
+alter table notice modify (name varchar2(50));
+alter table notice modify (title varchar2(100));

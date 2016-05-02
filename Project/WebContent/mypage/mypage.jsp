@@ -14,9 +14,21 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/aside2.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/footer.css" />
 <style type="text/css">
-.eachmenu>.grid2 {
-	<!--display: none;-->
-}
+	.eachmenu>.grid2 {
+		<!--display: none;-->
+	}
+	.title>p{
+		font-size: 30pt;
+		font-style: oblique;
+	}
+	.title>span{
+		font-size: 15pt;
+	}
+	.title{
+		margin: 20px;
+		border-bottom: 3px solid #ddd;
+		color: #666;
+	}
 </style>
 <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
 <script type="text/javascript" src="js/menu.js"></script>
@@ -33,7 +45,12 @@
 		<%@include file="/templet/subnav5.jsp"%>
 		
 		<!-- content start -->
-		컨텐츠
+			<div class="title">
+				<p>MY PAGE</p>
+				<span>원하시는 메뉴를 선택해 주세요.</span>
+			</div>
+			
+			
 		<!-- content end -->
 
 		<!-- aside2 -->

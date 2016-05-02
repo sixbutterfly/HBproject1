@@ -19,8 +19,13 @@ public class NoticeListController extends HttpServlet {
 		
 		noticeDao dao = new noticeDao();
 		ArrayList<noticeDto> list = dao.selectAll();
-		
 		request.setAttribute("list", list);
+		
+		dao = new noticeDao();
+		noticeDto dto = dao.count();
+//		System.out.println(dto);
+		request.setAttribute("cnt", dto);
+		
 		request.getRequestDispatcher("customercenter/noticelist.jsp").forward(request, response);
 	}
 
