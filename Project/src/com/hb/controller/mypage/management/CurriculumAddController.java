@@ -9,16 +9,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.hb.model.sturoom.sturoomDao;
-import com.hb.model.sturoom.sturoomDto;
+import com.hb.model.sturoom.SturoomDao;
+import com.hb.model.sturoom.SturoomDto;
 
 @WebServlet("/curadd.korean")
 public class CurriculumAddController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		sturoomDao dao = new sturoomDao();
-		ArrayList<sturoomDto> list = dao.selectNull();
+		SturoomDao dao = new SturoomDao();
+		ArrayList<SturoomDto> list = dao.selectNull();
 		request.setAttribute("list", list);
 		
 		request.getRequestDispatcher("mypage/manager/manageCurriculumAdd.jsp").forward(request, response);

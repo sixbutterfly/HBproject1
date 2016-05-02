@@ -1,3 +1,4 @@
+<%@page import="com.hb.model.sturoom.SturoomDto"%>
 <%@page import="com.hb.model.room.RoomDto"%>
 <%@page import="com.hb.model.teacher.TeacherDto"%>
 <%@page import="com.hb.model.student.StuDto"%>
@@ -91,7 +92,7 @@
       <script type="text/javascript">
       <%
      	ArrayList<StuDto> slist = (ArrayList<StuDto>)request.getAttribute("slist");//학생리스트
-     	ArrayList<RoomDto> rlist = (ArrayList<RoomDto>)request.getAttribute("rlist");//강의실리스트
+     	ArrayList<SturoomDto> rlist = (ArrayList<SturoomDto>)request.getAttribute("rlist");//강의실리스트
      	ArrayList<TeacherDto> tlist = (ArrayList<TeacherDto>)request.getAttribute("tlist");//강사리스트
       %>
         $(document).ready(function () {
@@ -147,8 +148,8 @@
 	              }
 				
 			});
-            
           });
+        //학생 배정 취소를 취소
           $("#cancle2").click(function () {
         	  PageController.delStuCancle();
           });
@@ -172,7 +173,7 @@
               tchlist[idx] = $(item).text();
             });
             var roomlist = [];
-            $('.roomselect').each(function (idx, item) {
+            $('.selectroom').each(function (idx, item) {
               roomlist[idx] = $('#tch' + idx + ' option:selected').attr("value");
             });
             $.ajax({
@@ -206,11 +207,11 @@
           $("#btn6").click(function () {
               var tchlist = [];
               $('.tchlist').each(function (idx, item) {
-                tchlist[idx] = $(item).text();
+                tchlist.push($(item).text());
               });
               var checklist = [];
               $('.tchcheck').each(function (idx, item) {
-            	 checklist[idx] = $('#tchcheck' + idx).is(":checked");
+            	 checklist.push($('#tchcheck' + idx).is(":checked"));
               });
         	  $.ajax({
                   "url": "cancletch.korean",
@@ -249,8 +250,77 @@
   				$(".tchcheck").prop("checked",false);
   			}
           });
+        //강의실 추가
+        $("#addroom").click(function(){
+        	PageController.addroom();
         });
-        
+     	//강의실 추가 ok
+        $("#addroomok").click(function(){
+        	var newroomno = $("#addroomtxt").val();
+        	if(newroomno==""){
+        		alert("공백은 입력할 수 없습니다");
+        		return false;
+        	}
+        	$.ajax({
+                "url": "addroom.korean",
+                "data": {
+                	"newroomno" : newroomno
+                  },
+                "success": function (data) {
+                  location.reload();
+                  alert(data);
+                },
+                "error": function () {
+                  alert("에러!");
+                }
+              });
+        });
+     	//강의실 추가 취소
+     	 $("#addroomcancle").click(function(){
+        	PageController.addroomcancle();
+        });
+        //강의실 삭제
+ 		$("#delroom").click(function(){
+        	PageController.delroom();
+       	 });
+        //강의실 삭제 ok
+ 		$("#delroomok").click(function(){
+ 			var roomlist = [];
+	         <%
+				for(SturoomDto bean : rlist){
+				%>
+					if($("#roomcheck<%=bean.getRoomNo()%>").is(":checked"))
+						roomlist.push(<%=bean.getRoomNo()%>);
+				<%
+				}
+				%>
+				$.ajax({
+	                "url": "delroom.korean",
+	                "data": {
+	                	"roomlist" : roomlist
+	                  },
+	                "success": function (data) {
+	                location.reload();
+	                  alert(data);
+	                },
+	                "error": function () {
+	                  alert("하나 이상의 강의실을 선택해 주세요!");
+	                }
+	              });
+       	 });
+        //강의실 삭제를 취소
+ 		$("#delroomcancle").click(function(){
+        	PageController.delroomcancle();
+       	 });
+        //강의실 삭제 체크박스 전체 선택
+ 		$("#allroomcheck").click(function(){
+			if($("#allroomcheck").is(":checked")){
+				$(".eachroomcheck").prop("checked",true);
+			}else{
+				$(".eachroomcheck").prop("checked",false);
+			}
+		});
+        });
         
         //버튼을 숨기고 보여주는 함수 모음
       	var PageController = {
@@ -262,11 +332,15 @@
         	  $(".stucheck").hide();
         	  $("#modifybtn").hide();
               $("#delbtn").hide();
-              $(".roomselect").hide();
+              $(".selectroom").hide();
               $("#btn4").hide();
               $("#btn5").hide();
               $("#btn6").hide();
               $("#btn7").hide();
+              $("#addroomform").hide();
+              $("#delroombtn").hide();
+              $(".eachroomcheck").hide();
+              $("#allroomcheck").hide();
           },
           "viewEachList" : function(){
         	  var idx = $("#room").val();
@@ -296,7 +370,7 @@
         //강사 배정
        	 "assignTch": function () {
             $(".roomlist").hide();
-            $(".roomselect").show();
+            $(".selectroom").show();
             $("#btn4").show();
             $("#btn5").show();
             $("#btn2").hide();
@@ -305,7 +379,7 @@
          //강사 배정 완료
           "assignTchOk" : function(){
               $(".roomlist").show();
-              $(".roomselect").hide();
+              $(".selectroom").hide();
               $("#btn2").show();
               $("#btn3").show();
               $("#btn4").hide();
@@ -314,7 +388,7 @@
           //강사 배정 완료를 취소
           "assignTchCancle" : function(){
               $(".roomlist").show();
-              $(".roomselect").hide();
+              $(".selectroom").hide();
               $("#btn2").show();
               $("#btn3").show();
               $("#btn4").hide();
@@ -331,7 +405,7 @@
           //강사 배정 취소 ok
           "cancleTchOk" : function(){
         	  $(".roomlist").show();
-              $(".roomselect").hide();
+              $(".selectroom").hide();
               $(".tchcheck").hide();
               $("#btn2").show();
               $("#btn3").show();
@@ -339,16 +413,42 @@
               $("#btn6").hide();
               $("#btn7").hide();
           },
-          ////강사 배정 취소를 취소
+          //강사 배정 취소를 취소
           "cancleTchCancle" : function(){
         	  $(".roomlist").show();
-              $(".roomselect").hide();
+              $(".selectroom").hide();
               $(".tchcheck").hide();
               $("#btn2").show();
               $("#btn3").show();
               $("#btn4").hide();
               $("#btn6").hide();
               $("#btn7").hide();
+          },
+          //강의실 추가
+          "addroom" : function(){
+        	  $("#roombtn").hide();
+        	  $("#addroomform").show();
+          },
+          //강의실 추가를 취소
+          "addroomcancle" : function(){
+        	  $("#roombtn").show();
+        	  $("#addroomform").hide();
+          },
+          //강의실 삭제
+          "delroom" : function(){
+        	  $(".eachroomcheck").show();
+        	  $("#allroomcheck").show();
+        	  $("#roombtn").hide();
+        	  $("#delroombtn").show();
+          },
+          //강의실 삭제를 취소
+          "delroomcancle" : function(){
+        	  $(".eachroomcheck").hide();
+        	  $("#allroomcheck").hide();
+        	  $("#roombtn").show();
+        	  $("#delroombtn").hide();
+        	  $(".eachroomcheck").attr("checked", false);
+        	  $("#allroomcheck").attr("checked", false);
           }
         };
       </script>
@@ -371,15 +471,16 @@
             <ul class="tabs">
               <li id="tab1" class="active">학생 관리</li>
               <li id="tab2">강사 관리</li>
+              <li id="tab3">강의실 관리</li>
             </ul>
             <div class="tab_container">
               <!-- 학생관리 메뉴 -->
               <div id="tab1_content" class="tab_content">
                 <select id="room">
                           <%
-									for(RoomDto bean : rlist){
+									for(SturoomDto bean : rlist){
 										%>
-                            <option value="<%=bean.getRoomno()%>"><%=bean.getRoomno() %>강의실</option>
+                            <option value="<%=bean.getRoomNo()%>"><%=bean.getRoomNo() %>강의실</option>
                           <%
 									}
 								%>
@@ -432,6 +533,7 @@
                       <td class="tchlist"><%=bean.getTchno()%></td>
                       <td><%=bean.getTchname()%></td>
                       <td class="roomlist"><%
+                      
                      String roomno = bean.getRoomno();
                       if(roomno==null){
                     	  %>
@@ -442,12 +544,12 @@
                     	  out.print(roomno+"강의실");
                      }
                       %></td>
-                      <td class="roomselect">
+                      <td class="selectroom">
                         <select id="tch<%=tchidx++%>">
                           <%
-									for(RoomDto bean2 : rlist){
+									for(SturoomDto bean2 : rlist){
 										%>
-                            <option value="<%=bean2.getRoomno()%>"><%=bean2.getRoomno() %>강의실</option>
+                            <option value="<%=bean2.getRoomNo()%>"><%=bean2.getRoomNo() %>강의실</option>
                           <%
 									}
 								%>
@@ -467,6 +569,41 @@
                 <button id="btn6">배정취소</button>
                 <button id="btn7">취소</button>
               </div>
+               <div id="tab3_content" class="tab_content">
+               		<table>
+               			<tr>
+               				<th>강의실</th>
+               				<th><input type = "checkbox" class = "roomcheck" id = "allroomcheck"></th>
+               			</tr>
+               				<%
+									for(SturoomDto bean : rlist){
+										%>
+               			<tr class = "rlist">
+               				<td >
+                            <%=bean.getRoomNo() %>강의실
+               				</td>
+               				<td>
+               				<input type = "checkbox" class = "eachroomcheck" id = "roomcheck<%=bean.getRoomNo()%>">
+               				</td>
+               			</tr>
+                          <%
+									}
+								%>
+               		</table>
+               		<div id = "addroomform">
+               			추가할 강의실 번호를 입력하세요
+               			<input type = "text" id = "addroomtxt"/>
+               			<div><button id = "addroomok">추가</button><button id = "addroomcancle">취소</button></div>
+               		</div>
+               		<div id = "roombtn">
+               		<button id= "addroom">강의실추가</button>
+               		<button id = "delroom">강의실삭제</button>
+               		</div>
+               		<div id = "delroombtn">
+               			<button id = "delroomok">삭제</button>
+               			<button id = "delroomcancle">취소</button>
+               		</div>
+               </div>
             </div>
           </div>
 

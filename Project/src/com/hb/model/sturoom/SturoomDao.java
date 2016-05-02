@@ -1,36 +1,53 @@
-package com.hb.model.room;
+package com.hb.model.sturoom;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import com.hb.model.teacher.TeacherDto;
 import com.hb.util.DB;
+public class SturoomDao {
 
-public class RoomDao {
 	private Connection conn;
 	private Statement stmt;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
-	String sql;
-
-	public RoomDao() {
+	private String sql;
+	
+	public SturoomDao() {
 		conn = DB.getConnection();
 	}
 
-	public ArrayList selectAll() {
-		ArrayList<RoomDto> list = new ArrayList();
+	public ArrayList<SturoomDto> selectNull() {
+		ArrayList<SturoomDto> list = new ArrayList<>();
+		sql = "SELECT * FROM STUROOM WHERE CURNO IS NULL ORDER BY ROOMNO";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				SturoomDto dto = new SturoomDto();
+				dto.setRoomNo(rs.getInt("roomNo"));
+				dto.setCurNo(rs.getInt("curNo"));
+				dto.setTchNo(rs.getInt("tchNo"));
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}//selectAll end
+	
+	public ArrayList<SturoomDto> selectAll() {
+		ArrayList<SturoomDto> list = new ArrayList<SturoomDto>();
 		sql = "select roomno from sturoom";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				RoomDto bean = new RoomDto();
-				bean.setRoomno(rs.getInt("roomno"));
+				SturoomDto bean = new SturoomDto();
+				bean.setRoomNo(rs.getInt("roomno"));
 				list.add(bean);
 			}
 		} catch (SQLException e) {
@@ -77,5 +94,19 @@ public class RoomDao {
 
 		return result;
 	}
-
+	public int delRoom(String[] roomlist) {
+		int result = 0;
+		sql = "delete from sturoom where roomno = ?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			for (int i = 0; i < roomlist.length; i++) {
+					pstmt.setString(1, roomlist[i]);
+					result = pstmt.executeUpdate();
+				}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return 0;
+		}
+		return result;
+	}
 }

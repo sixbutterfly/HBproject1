@@ -17,25 +17,22 @@ import com.hb.model.teacher.TeacherDao;
 import com.hb.model.teacher.TeacherDto;
 
 //강의실에 학생 배치
-@WebServlet("/addstu.korean")
-public class AddStuController extends HttpServlet {
+@WebServlet("/addroom.korean")
+public class AddRoomController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		String stulist[] = req.getParameterValues("stulist"+"[]");
-		String roomno = req.getParameter("roomno");
+		String newroomno = req.getParameter("newroomno");
 		
 		//학생 테이블 업데이트
 		StuDao sdao = new StuDao();
-		int result = sdao.updateRoomno(stulist, roomno);
-		
-		StuDao sdao2 = new StuDao();
-		ArrayList<StuDto> slist = new ArrayList();
-		slist = sdao2.selectAll();
-		
+		int result = sdao.addRoom(newroomno);
+		resp.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = resp.getWriter();
-		for (int i = 0; i < slist.size(); i++) {
-			out.print(slist.get(i).getRoomno());
+		if(result>0){
+			out.print("추가 성공");
+		}else{
+			out.print("이미 강의실이 존재합니다");
 		}
 	}
 }

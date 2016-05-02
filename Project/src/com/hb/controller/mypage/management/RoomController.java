@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.hb.model.room.RoomDao;
-import com.hb.model.room.RoomDto;
 import com.hb.model.student.StuDao;
 import com.hb.model.student.StuDto;
+import com.hb.model.sturoom.SturoomDao;
+import com.hb.model.sturoom.SturoomDto;
 import com.hb.model.teacher.TeacherDao;
 import com.hb.model.teacher.TeacherDto;
 
@@ -28,8 +28,8 @@ public class RoomController extends HttpServlet {
 		TeacherDao tdao = new TeacherDao();
 		ArrayList<TeacherDto> tlist = tdao.selectAll();
 		
-		RoomDao rdao = new RoomDao();
-		ArrayList<RoomDto> rlist = rdao.selectAll();
+		SturoomDao rdao = new SturoomDao();
+		ArrayList<SturoomDto> rlist = rdao.selectAll();
 		
 		req.setAttribute("slist", slist);
 		req.setAttribute("tlist", tlist);

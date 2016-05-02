@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.hb.model.room.RoomDao;
-import com.hb.model.room.RoomDto;
 import com.hb.model.student.StuDao;
 import com.hb.model.student.StuDto;
+import com.hb.model.sturoom.SturoomDao;
+import com.hb.model.sturoom.SturoomDto;
 
 //강의실에 학생 배치 양식
 @WebServlet("/addstuform.korean")
@@ -24,8 +24,8 @@ public class AddStuFormController extends HttpServlet {
 		StuDao sdao = new StuDao();
 		ArrayList<StuDto> slist = sdao.selectWaitingList();
 		
-		RoomDao rdao = new RoomDao();
-		ArrayList<RoomDto> rlist = rdao.selectAll();
+		SturoomDao rdao = new SturoomDao();
+		ArrayList<SturoomDto> rlist = rdao.selectAll();
 		
 		
 		req.setAttribute("slist", slist);
