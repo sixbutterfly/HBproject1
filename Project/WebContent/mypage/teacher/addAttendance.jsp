@@ -58,12 +58,12 @@
 		<%@include file="/templet/loginForm.jsp" %>
 		<%@include file="/templet/subnav5.jsp" %>
 		
-		<!-- content start -->		
+		<!-- content start -->
 			<h1> 출결 입력</h1>
-			<div>
-			<p><span id="left">오늘날짜 </span> <span id="right">담당강사 : <%= request.getParameter("tchName") %> 강사님</span></p>
+			<div>			
+			<p><span id="left">오늘날짜 </span> <span id="right">담당강사 : <%= request.getAttribute("tchName") %> 강사님</span></p>
 			<br/>
-			<p><span id="left">강의실 : 내마음속</span> <span id="right">   출석 : ●   결석 : X    지각 : ▲    조퇴 :  ■ </span></p>
+			<p><span id="left">강의실 : <%= request.getAttribute("tchName") %>번 강의실</span> <span id="right">   출석 : ●   결석 : X    지각 : ▲    조퇴 :  ■ </span></p>
 			</div>
 			<table>
 				<tr>
@@ -83,6 +83,7 @@
 				
 			</table>
 			
+			<button id="ins">출결입력</button>
 		<!-- content end -->
 		
 		<!-- aside2 -->

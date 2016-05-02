@@ -238,7 +238,7 @@ ALTER TABLE stuRoom
 
 
 
-ALTER TABLE teacher
+
 --ADD ( FOREIGN KEY (memNo) REFERENCES member(memNo));
 
 ---------------------------------------------------------------------------------------------
@@ -248,5 +248,6 @@ ALTER TABLE teacher
 -- alter table 테이블명 add(컬럼명 데이터타입());
 --한국인 디짐
 ---------------------------------------------------------------------------------------------
+ALTER TABLE teacher
 	ADD ( FOREIGN KEY (memNo) REFERENCES member(memNo) ON DELETE SET NULL);
 

@@ -21,17 +21,28 @@ public class AddAttendanceController extends HttpServlet{
 protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 		throws ServletException, IOException {
 	
-	
-		
 	AttdDao attdDao = new AttdDao();
+	String memberId = (String)req.getSession().getAttribute("id");
 	
-	String meberId = (String)req.getSession().getAttribute("id");
-	String tchName = attdDao.tchNameSel(meberId);
+	
+	//날짜
+	
+	
+	//강사이름
+	String tchName = attdDao.selectTchName(memberId);	
+	System.out.println(tchName);
+	
 	req.setAttribute("tchName", tchName);
-	tchName = (String) req.getSession().getAttribute("id");
 	
-	/*ArrayList<AttdDto> attdList = attdDao.attdSelect();	
-	req.setAttribute("attdList", attdList);*/
+	/*//강의실번호
+	int roomNo = attdDao.selectRoomNo(memberId);
+	System.out.println(roomNo);
+	
+	req.setAttribute("roomNo", roomNo);*/
+	
+	//출석리스트
+	/*ArrayList attdList = attdDao.selectAttd(memberId);*/
+	
 	
 	req.getRequestDispatcher("mypage/teacher/addAttendance.jsp").forward(req, resp);
 	

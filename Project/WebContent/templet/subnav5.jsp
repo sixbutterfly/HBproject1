@@ -8,7 +8,7 @@
 <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		var level = <%=(Integer)session.getAttribute("level")%>
+		var level = <%= (Integer)session.getAttribute("level") %>
 	switch (level) {
 		case 0:
 			$(".guest").css("display", "initial");

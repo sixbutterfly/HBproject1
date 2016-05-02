@@ -32,7 +32,7 @@ public class AjaxLoginController extends HttpServlet {
 			request.setAttribute("id", id);
 			request.getRequestDispatcher("/login/json.jsp").forward(request, response);
 		}		
-		
+				
 	}
 
 }

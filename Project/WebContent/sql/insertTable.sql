@@ -59,7 +59,7 @@ insert into sturoom (roomno, tchno, curno) values (3, 2, 3);
 insert into sturoom values (room_seq.nextval, null, 2);
 insert into sturoom values (room_seq.nextval, null, null);
 
-<<<<<<< HEAD
+
 --커리큘럼 추가 (curNo, curName, curLocation, curDate, curSupply 순)
 insert into curriculum (curno, curname, curlocation, curdate, cursupply) values (cur_seq.nextval, '전자정부프레임워크', '1강의실', '2016-04-01', '20');
 insert into curriculum (curno, curname, curlocation, curdate, cursupply) values (cur_seq.nextval, '전자정부프레임워크', '2강의실', '2016-05-01', '20');
@@ -77,6 +77,33 @@ insert into grade (grdno, stuno, roomno, javagrade, webgrade, framegrade) values
 --수강신청자 추가 (regNo,memNo,file1,file2,name,email,tel,gubun,job,jobinfo,time,pay,content,password 순)
 insert into register (regNo,memNo) values (reg_seq.nextval,1);
 
+
+-- 한국인 더미데이터--
+-- member
+select * from member order by memno;
+insert into member values (mem_seq.nextval, 'a', 'a', '학생1', '김일반의 집', 'kimnormal@naver.com', '010-2599-8765', 4);
+insert into member values (mem_seq.nextval, 'a', 'a', '학생2', '김일반의 집', 'kimnormal@naver.com', '010-2599-8765', 4);
+insert into member values (mem_seq.nextval, 'a', 'a', '학생3', '김일반의 집', 'kimnormal@naver.com', '010-2599-8765', 4);
+insert into member values (mem_seq.nextval, 'a', 'a', '학생4', '김일반의 집', 'kimnormal@naver.com', '010-2599-8765', 4);
+insert into member values (mem_seq.nextval, 'a', 'a', '학생5', '김일반의 집', 'kimnormal@naver.com', '010-2599-8765', 4);
+
+insert into member values (mem_seq.nextval, 'b', 'b', '선생1', '김일반의 집', 'kimnormal@naver.com', '010-2599-8765', 3);
+-- teacher
+insert into teacher (tchno, tchname, memno) values (TCH_SEQ.nextval, '김선생', 6);
+-- curriculum
+insert into curriculum (curno, curname, curlocation, curdate, cursupply) values (cur_seq.nextval, '전자정부프레임워크', '1강의실', '2016-04-01', '20');
+-- stuRoom
+insert into sturoom (roomno, tchno, curno) values (1, 1, 1);
+-- student
+insert into student (stuno, memno, roomno) values (stu_seq.nextval, 1, 1);
+insert into student (stuno, memno, roomno) values (stu_seq.nextval, 2, 1);
+insert into student (stuno, memno, roomno) values (stu_seq.nextval, 3, 1);
+insert into student (stuno, memno, roomno) values (stu_seq.nextval, 4, 1);
+insert into student (stuno, memno, roomno) values (stu_seq.nextval, 5, 1);
+
+
+-- 한국인 더미데이터 끝 --
+
 --실험은 여기서 하세요---------------
 select * from studyCur;
 select * from sturoom;
@@ -87,6 +114,14 @@ select curDateS, last_day(curDateS) from studyCur;
 select TEACHER.tchno, TEACHER.tchname, STUROOM.roomno from TEACHER, STUROOM;
 
 update sturoom set tchno = 21 where roomno = 2;
+
+select t.tchName from member m, teacher t where m.memno = t.memno and m.memid='b';
+
+select * from member;
+
+select r.roomNo from stuRoom r, teacher t where 
+r.tchNo = (select t.tchNo from member m, teacher t where m.memno = t.memno and m.memid='b');
+
 --끝난 실험은 삭제할 것!----------------
 
 

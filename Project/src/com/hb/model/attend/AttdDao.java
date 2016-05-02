@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import com.hb.model.curriculum.curriculumDto;
+import com.hb.model.room.RoomDto;
 import com.hb.model.teacher.TeacherDto;
 import com.hb.util.DB;
 
@@ -21,25 +23,21 @@ public class AttdDao {
 			conn = DB.getConnection();
 		}
 		
+		//³¯Â¥
 		
-		
-		public ArrayList<AttdDto> attdSelect() {
-			ArrayList<AttdDto> list = new ArrayList<AttdDto>();
-			sql = "select * from attend";
+		//°­»çÀÌ¸§
+		public String selectTchName(String memberId) {
+			String teacherName = "";			
+			String sql = "select tchName from member, teacher where member.memno = teacher.memno and memid='" +memberId + "'";
 			try {
 				pstmt = conn.prepareStatement(sql);
 				rs = pstmt.executeQuery();
-				while (rs.next()) {
-					AttdDto bean = new AttdDto();
-					bean.setAttdNo(rs.getInt("attdNo"));
-					bean.setStuNo(rs.getInt("stuNo"));
-					bean.setAttdValue(rs.getString("attdValue"));
-					bean.setAttdDate(rs.getDate("attdDate"));
-					list.add(bean);
+				if(rs.next()){
+					teacherName = rs.getString("tchName");
 				}
-			} catch (SQLException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
-			} finally {
+			}finally {
 				try {
 					if (rs != null)
 						rs.close();
@@ -47,27 +45,27 @@ public class AttdDao {
 						pstmt.close();
 					if (conn != null)
 						conn.close();
+					System.out.println("»Ñ??");
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-			}		
-			return list;	
+			}			
+			return teacherName;
 		}
 
-
-
-		public String tchNameSel(String memberId) {
-			
-			sql = "select m.memName from member m, teacher t where m.memNo = t.memNo and m.memId =?";
+		public int selectRoomNo(String memberId) {
+			int roomNumber = 0;			
+			String sql = "select r.roomNo from stuRoom r, teacher t where" +
+					"r.tchNo = (select t.tchNo from member m, teacher t where m.memno = t.memno and m.memid='" +memberId + "')";
 			try {
 				pstmt = conn.prepareStatement(sql);
 				rs = pstmt.executeQuery();
-				if (rs.next()) {
-					memberId = pstmt.setString(1, memId);
+				if(rs.next()){
+					roomNumber = rs.getInt("roomNo");
 				}
-			} catch (SQLException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
-			} finally {
+			}finally {
 				try {
 					if (rs != null)
 						rs.close();
@@ -75,14 +73,34 @@ public class AttdDao {
 						pstmt.close();
 					if (conn != null)
 						conn.close();
+					System.out.println("»Ñ??");
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-			}		
-			return memberId;	
+			}			
+			return roomNumber;
 		}
 
-
-
+		public ArrayList selectAttd() {
+			ArrayList<curriculumDto> list = new ArrayList<>();
+			String sql = "SELECT CURNO, CURNAME, CURDATE, LAST_DAY(CURDATE) AS ENDDATE, CURSUPPLY FROM CURRICULUM ORDER BY CURNO";
+			try {
+				pstmt = conn.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				while(rs.next()){
+					curriculumDto dto = new curriculumDto();
+					dto.setCurNo(rs.getInt("curNo"));
+					dto.setCurName(rs.getString("curName"));
+					dto.setCurDate(rs.getDate("curDate"));
+					dto.setCurDateEnd(rs.getDate("endDate"));
+					dto.setCurSupply(rs.getInt("curSupply"));
+					list.add(dto);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return list;
+		}
+		
 		
 }
