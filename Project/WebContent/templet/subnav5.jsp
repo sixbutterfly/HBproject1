@@ -31,7 +31,7 @@
 
 	<div class="submenu">
 		<div class="common">
-			<a href="editinfo.do">개인 정보 수정</a>
+			<a href="editinfo.korean">개인 정보 수정</a>
 		</div>
 		<div class="eachmenu">
 			<div class="guest">

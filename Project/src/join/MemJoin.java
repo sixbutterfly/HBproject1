@@ -1,6 +1,7 @@
 package join;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -40,12 +41,17 @@ public class MemJoin extends HttpServlet{
 		
 		MemberDao dao = new MemberDao();
 		MemberDto dto = new MemberDto(id, pw, name, gender, tel, tel2, tel3, phone, phone2,phone3, email, email2, emailagree, postnum, addrresult1, addrresult2, authno);
-		int rs = dao.memjoin(dto);
-		if(rs>0){
-			resp.sendRedirect("joinsuccess.korean");
-		}
-		else {
-			resp.sendRedirect("join.korean");
+		int rs;
+		try {
+			rs = dao.memjoin(dto);
+			if(rs>0){
+				resp.sendRedirect("joinsuccess.korean");
+			}
+			else {
+				resp.sendRedirect("join.korean");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 	}
 	@Override

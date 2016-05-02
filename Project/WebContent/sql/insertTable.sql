@@ -27,18 +27,18 @@ insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone
 insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno,MEMGENDER,EMAILAGREE) values (mem_seq.nextval, 'test4', 'korean4', '한국인4', '우리집4', 'korea@korea.com4', '000-0000-0004', 1,'남자','Y');
 insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno,MEMGENDER,EMAILAGREE) values (mem_seq.nextval, 'admin', 'admin', 'admin', 'address', 'email', 'phone', 9,'남자','Y');
 
-insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno) values (mem_seq.nextval, 'kimnormal', 'kim', '김일반', '김일반의 집', 'kimnormal@naver.com', '010-2599-8765', 0);
-insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno) values (mem_seq.nextval, 'kimdaeri', 'kim', '김대리', '김대리의 집', 'kimdaeri@gmail.com', '010-1633-7511', 1);
-insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno) values (mem_seq.nextval, 'kimsales', 'kim', '김영업', '김영업의 집', 'kimsales@gmail.com', '010-7544-9984', 2);
-insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno) values (mem_seq.nextval, 'kimteacher', 'kim', '김선생', '김선생의 집', 'kimteacher@gmail.com', '010-1599-7878', 3);
-insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno) values (mem_seq.nextval, 'kimstudent', 'kim', '김학생', '김학생의 집', 'kimstudent@gmail.com', '010-2468-7852', 4);
-insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno) values (mem_seq.nextval, 'kimgraduate', 'kim', '김졸업', '김졸업의 집', 'kimgraduate@gmail.com', '010-3211-6123', 5);
+insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno, MEMGENDER, EMAILAGREE, memtel, joinday) values (mem_seq.nextval, 'kimnormal', 'kim', '김일반', '김일반의 집', 'kimnormal@naver.com', '010-2599-8765', 0, '남자', 'Y', '02-1566-7897', sysdate);
+insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno, MEMGENDER, EMAILAGREE, memtel, joinday) values (mem_seq.nextval, 'kimdaeri', 'kim', '김대리', '김대리의 집', 'kimdaeri@gmail.com', '010-1633-7511', 1 '여자', 'Y', '031-435-8383', sysdate);
+insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno, MEMGENDER, EMAILAGREE, memtel, joinday) values (mem_seq.nextval, 'kimsales', 'kim', '김영업', '김영업의 집', 'kimsales@gmail.com', '010-7544-9984', 2, '남자', 'N', '02-765-5855', sysdate);
+insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno, MEMGENDER, EMAILAGREE, memtel, joinday) values (mem_seq.nextval, 'kimteacher', 'kim', '김선생', '김선생의 집', 'kimteacher@gmail.com', '010-1599-7878', 3, '여자', 'N', '02-5345-6566', sysdate);
+insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno, MEMGENDER, EMAILAGREE, memtel, joinday) values (mem_seq.nextval, 'kimstudent', 'kim', '김학생', '김학생의 집', 'kimstudent@gmail.com', '010-2468-7852', 4, '여자', 'N', '031-4600-4566', sysdate);
+insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno, MEMGENDER, EMAILAGREE, memtel, joinday) values (mem_seq.nextval, 'kimgraduate', 'kim', '김졸업', '김졸업의 집', 'kimgraduate@gmail.com', '010-3211-6123', 5, '남자', 'Y', '031-847-3834', sysdate);
 
-insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno) values (mem_seq.nextval, 'student1', 'student', '학생1', '학생1의 집', 'student1@naver.com', '010-1616-1265', 4);
-insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno) values (mem_seq.nextval, 'student2', 'student', '학생2', '학생2의 집', 'student2@naver.com', '010-2455-3133', 4);
-insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno) values (mem_seq.nextval, 'student3', 'student', '학생3', '학생3의 집', 'student3@naver.com', '010-3213-4637', 4);
-insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno) values (mem_seq.nextval, 'student4', 'student', '학생4', '학생4의 집', 'student4@naver.com', '010-7676-7221', 4);
-insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno) values (mem_seq.nextval, 'student5', 'student', '학생5', '학생5의 집', 'student5@naver.com', '010-7990-1557', 4);
+insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno, MEMGENDER, EMAILAGREE, memtel, joinday) values (mem_seq.nextval, 'student1', 'student', '학생1', '학생1의 집', 'student1@naver.com', '010-1616-1265', 4, '남자', 'N', '031-6536-4884', sysdate);
+insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno, MEMGENDER, EMAILAGREE, memtel, joinday) values (mem_seq.nextval, 'student2', 'student', '학생2', '학생2의 집', 'student2@naver.com', '010-2455-3133', 4, '여자', 'N', '031-5345-5765', sysdate);
+insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno, MEMGENDER, EMAILAGREE, memtel, joinday) values (mem_seq.nextval, 'student3', 'student', '학생3', '학생3의 집', 'student3@naver.com', '010-3213-4637', 4, '남자', 'Y', '02-4355-8877', sysdate);
+insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno, MEMGENDER, EMAILAGREE, memtel, joinday) values (mem_seq.nextval, 'student4', 'student', '학생4', '학생4의 집', 'student4@naver.com', '010-7676-7221', 4, '남자', 'N', '02-2334-1122', sysdate);
+insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno, MEMGENDER, EMAILAGREE, memtel, joinday) values (mem_seq.nextval, 'student5', 'student', '학생5', '학생5의 집', 'student5@naver.com', '010-7990-1557', 4, '여자', 'Y', '02-5345-1231', sysdate);
 
 --행정부 추가
 insert into management (admno, memno) values (adm_seq.nextval, '1');

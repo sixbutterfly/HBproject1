@@ -18,8 +18,15 @@ public class AddGradeController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		GradeDao dao = new GradeDao();
-		ArrayList<GradeDto> al = dao.list();
-		req.setAttribute("al", al);
-		req.getRequestDispatcher("mypage/teacher/addGrade.jsp").forward(req, resp);
+		
+		String id = (String)req.getSession().getAttribute("id");
+		int roomno = dao.getRoomno(id);
+		if (roomno>0) {
+			ArrayList<GradeDto> al = dao.list(roomno);
+			req.setAttribute("al", al);
+			req.getRequestDispatcher("mypage/teacher/addGrade.jsp").forward(req, resp);
+		} else {
+			req.getRequestDispatcher("mypage/teacher/deniedPage.jsp").forward(req, resp);
+		}
 	}
 }

@@ -67,6 +67,34 @@ public class MemberDao {
 		}
 			return result;
 	}
+	
+	public ArrayList<MemberDto> selectOne(String id) {
+		ArrayList<MemberDto> list = new ArrayList<MemberDto>();
+		String sql="SELECT MEMNO, AUTHNO, MEMNAME, MEMGENDER, MEMPHONE, MEMTEL, MEMADDRESS, MEMEMAIL, EMAILAGREE, JOINDAY FROM MEMBER where memid=?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				int memno = rs.getInt("memno");
+				int level = rs.getInt("authno");
+				String memname = rs.getString("memname");
+				String memgender = rs.getString("memgender");
+				String memphone = rs.getString("memphone");
+				String memtel = rs.getString("memtel");
+				String memaddress = rs.getString("memaddress");
+				String mememail = rs.getString("mememail");
+				String emailagree = rs.getString("emailagree");
+				String joinday = rs.getString("joinday");
+				MemberDto bean = new MemberDto(memno, level, memname, memgender, memphone,
+						memtel, memaddress, mememail, emailagree, joinday);
+				list.add(bean);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 
 	public ArrayList<MemberDto> selectAll() throws SQLException {
 		ArrayList<MemberDto> list = new ArrayList<>();
@@ -129,5 +157,4 @@ public class MemberDao {
 		}
 		return list;
 	}
-	
 }
