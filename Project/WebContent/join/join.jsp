@@ -146,6 +146,9 @@
 	$(document).ready(function(){
 		$('#overlab').click(function(){
 			var id=$('#id').val();
+			if(id==""||id==null){
+						$('#popup>div>span').text("아이디를 입력하세요!");
+			}else{
 			$.ajax({
 				url:"join/overlab.jsp",
 				data:"id="+id,
@@ -161,7 +164,7 @@
 					}
 				}
 			});
-			
+			}
 			$('#popup').show();
 			return false;
 			});
@@ -178,7 +181,7 @@
 			}
 		});
 		
-		$('#pw'&&'#pw2').focus(function(){
+		$('input:gt(3)').focus(function(){
 			if(!($.trim($("#pw").val()).match(/^(?=.*\d)(?=.*[A-z])[A-z0-9]{8,20}$/))){
 				$('#pw').next().text(' 영문 숫자조합의 8~20자리의 비밀번호여야 합니다');
 				$('#pw').focus();
@@ -188,7 +191,7 @@
 					return false;
 	 		}
 		});
-		$('#pw2'&&'#name').focus(function(){
+		$('input:gt(4)').focus(function(){
 			if($('#pw2').val()!=$('#pw').val()){
 				$('#pw2').next().text(' 비밀번호는 동일해야합니다.');
 				$('#pw2').focus();
@@ -271,7 +274,29 @@
 				alert("주소를 입력하세요!");
 				$('#addrresult2').focus();
 				return false;
-			}else{} 
+			}else{
+				return false;
+			} 
+		});
+		
+		$('#submit').click(function(){
+			var id=$('#id').val();
+			$.ajax({
+				url:"join/overlab.jsp",
+				data:"id="+id,
+				type:"post",
+				dataType:"xml",
+				success:function(data){
+					var using=$(data).find("result").text();
+					if(using=='true'){
+						alert('사용중인 아이디입니다!');
+						return false;
+					}else{
+						$('#submit').submit();
+						return false;
+					}
+				}
+			});
 		});
 	});
 </script>

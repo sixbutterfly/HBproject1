@@ -12,7 +12,11 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/subnav1.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
 <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
-<script type="text/javascript" src="js/menu.js"></script>
+<script type="text/javascript" src="js/menu.js">
+	$(document).ready(function(){
+		alert('축하합니다 회원가입 되셨습니다.');
+	});
+</script>
 <style type="text/css">
 hr {
 	width: 100%;
