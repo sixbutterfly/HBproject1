@@ -49,7 +49,7 @@ insert into student (stuno, memno, roomno) values (stu_seq.nextval, 20, 2);
 insert into student values (stu_seq.nextval, 1, 1);
 
 --강사 추가
-insert into teacher (tchno, tchname, memno) values (TCH_SEQ.nextval, '김선생', 19);
+insert into teacher (tchno, tchname, memno) values (TCH_SEQ.nextval, '김선생', 21);
 insert into teacher values (tch_seq.nextval, 2, '한국인');
 
 --강의실 추가 (roomNo,curNo,tchNo 순)
@@ -88,3 +88,5 @@ select TEACHER.tchno, TEACHER.tchname, STUROOM.roomno from TEACHER, STUROOM;
 
 update sturoom set tchno = 21 where roomno = 2;
 --끝난 실험은 삭제할 것!----------------
+
+

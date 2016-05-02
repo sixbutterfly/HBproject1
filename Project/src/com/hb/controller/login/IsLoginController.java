@@ -18,13 +18,22 @@ public class IsLoginController extends HttpServlet {
 		String pw = request.getParameter("pw");
 		
 		MemberDao dao = new MemberDao();
-		int authNo = dao.loginCk(id,pw);
+		int authNo = dao.loginCk(id,pw);		
 		
 		if(authNo==0 || authNo==1 || authNo==2 || authNo==3 || authNo==4 || authNo==5 || authNo==9){
 			request.getSession().setAttribute("login", true);
+			request.getSession().setAttribute("authNo", authNo);
 			request.getSession().setAttribute("id", id);
+			request.getSession().setMaxInactiveInterval(900);
+			
+			request.setAttribute("authNo", authNo);
+			request.setAttribute("id", id);
+			response.sendRedirect("../main.jsp");
 		}
-		response.sendRedirect("../main.jsp");
+		else{
+			request.getSession().setAttribute("login", false);
+			request.getRequestDispatcher("/login/login.jsp").forward(request, response);
+		}
+		
 	}
-
 }

@@ -21,6 +21,8 @@ public class AttdDao {
 			conn = DB.getConnection();
 		}
 		
+		
+		
 		public ArrayList<AttdDto> attdSelect() {
 			ArrayList<AttdDto> list = new ArrayList<AttdDto>();
 			sql = "select * from attend";
@@ -50,5 +52,37 @@ public class AttdDao {
 				}
 			}		
 			return list;	
-		}		
+		}
+
+
+
+		public String tchNameSel(String memberId) {
+			
+			sql = "select m.memName from member m, teacher t where m.memNo = t.memNo and m.memId =?";
+			try {
+				pstmt = conn.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					memberId = pstmt.setString(1, memId);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if (rs != null)
+						rs.close();
+					if (pstmt != null)
+						pstmt.close();
+					if (conn != null)
+						conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}		
+			return memberId;	
+		}
+
+
+
+		
 }

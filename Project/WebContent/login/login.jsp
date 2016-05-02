@@ -54,14 +54,15 @@
 		
 </style>
 </head>
+
 <body>	
 	<div class="container_12">
 		<div class="grid3">&nbsp;</div>
 		<div class="grid6 logo_login">			
-				<a href="main.jsp"><img alt="LOGO" src="<%=request.getContextPath() %>/imgs/logo_main.png"/></a>
+				<a href="../main.jsp"><img alt="LOGO" src="<%=request.getContextPath() %>/imgs/logo_main.png"/></a>
 				<hr/>
 				<br/><br/>
-				<form action="<%=request.getContextPath() %>/login/islogin.korean" method="post">
+			    <form action="<%=request.getContextPath() %>/login/islogin.korean" method="post">
 					<div class="container_12">					
 						<div class="grid3">&nbsp;</div>
 						<div class="grid6 login"><input type="text" name="id"  value="아이디" /><div></div></div>					
@@ -69,16 +70,16 @@
 					</div>							
 					<div class="container_12 ">					
 						<div class="grid3">&nbsp;</div>
-						<div class="grid6 login"><input type="text" name="pw"  value="패스워드" /><div></div></div>					
+						<div class="grid6 login"><input type="text" name="pw"  value="패스워드" /><div>	</div></div>
 						<div class="grid3">&nbsp;</div>
 					</div>
 					<br/><br/>
 					<div class="container_12">					
 						<div class="grid4">&nbsp;</div>
-						<div class="grid5 login"><button>login</button></div>					
+						<div class="grid5 login"><button type="submit">login</button></div>					
 						<div class="grid3">&nbsp;</div>
 					</div>
-				</form>		
+				</form>		 
 				
 				<br/><br/><br/><br/>
 				<hr/>

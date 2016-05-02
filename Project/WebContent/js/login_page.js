@@ -1,37 +1,58 @@
 $(document).ready(function(){
 	
-		$(".login>input").eq(0).click(function(){
-			$(".login>input").eq(0).val("");
-		});
+	var inputId = $(".login>input").eq(0);
+	var inputPw = $(".login>input").eq(1);
+	
+	inputId.val("아이디");
+	inputPw.val("패스워드");
+	
+	if((inputId.val() == "") || (inputId.val() =="아이디")){
+		inputId.focus(function(){
+			inputId.val("");					
+		 });	
 		
-		$(".login>input").eq(1).click(function(){
-			$(".login>input").eq(1).val("");
-		});
+	}
+	
+	if((inputPw.val() == "") || (inputPw.val() =="패스워드")){			
+		inputPw.attr("type", "text");
+		inputPw.val("패스워드");
+		inputPw.focus(function(){
+			inputPw.val("");
+			inputPw.attr("type", "password");
+		});			
+	}
+	
 				
 		$(".login>button").click(function(){
-			var arr =[];
-						
-			var inputId = $(".login>input").eq(0).val();
-			var inputPw = $(".login>input").eq(1).val();		
+			var arr =[];			
 			
-			if((inputId == "") || (inputId =="아이디")){				
-				$(".login>input").eq(0).focus(function(){
-					$(".login>input").eq(0).val("");
+			if((inputId.val() == "") || (inputId.val() =="아이디")){				
+				inputId.val("아이디");
+				inputId.focus(function(){
+					inputId.val("");
 					$(".login>div").eq(0).html("");
 					$(".login>div").eq(1).html("");
 				    });
-				$(".login>div").eq(0).html("<p>&nbsp;&nbsp; 아이디를 입력하세요</p>");
+				$(".login>div").eq(0).html("<p>&nbsp;&nbsp; 아이디를 입력해주세요</p>");
+				return false;
 			}
-			else if((inputPw == "") || (inputId =="패스워드")){
-				
-				$(".login>input").eq(1).attr("type", "text");				
-				$(".login>input").eq(1).focus(function(){
-					$(".login>input").eq(1).val("");
+			else if((inputPw.val() == "") || (inputPw.val() =="패스워드")){
+				inputPw.attr("type", "text");
+				inputPw.val("패스워드");
+				inputPw.focus(function(){
+					inputPw.val("");
+					inputPw.attr("type", "password");
 					$(".login>div").eq(0).html("");
 					$(".login>div").eq(1).html("");
 				    });
-				$(".login>div").eq(1).html("<p>&nbsp;&nbsp; 패스워드를 입력하세요</p>");
-			}	
+				$(".login>div").eq(1).html("<p>&nbsp;&nbsp; 패스워드를 입력해주세요</p>");
+				return false;
+			}
 			
+			/*else{				
+				$(".login>div").eq(1).html("<p>&nbsp;&nbsp; 등록되지 않은 계정입니다.</p>");
+				//return false;
+			}*/
+		
 		});
 });

@@ -1,40 +1,53 @@
 
 $(document).ready(function(){
+	
+		var inputId = $(".login>input").eq(0);
+		var inputPw = $(".login>input").eq(1);
+	
+		inputId.val("아이디");
+		inputPw.val("패스워드");		
 		
-		$(".login>input").eq(0).click(function(){
-			$(".login>input").eq(0).val("");
-		});
+		if((inputId.val() == "") || (inputId.val() =="아이디")){
+			inputId.focus(function(){
+				inputId.val("");					
+			 });	
+			
+		}
 		
-		$(".login>input").eq(1).click(function(){
-			$(".login>input").eq(1).val("");
-		});
+		if((inputPw.val() == "") || (inputPw.val() =="패스워드")){			
+			inputPw.attr("type", "text");
+			inputPw.val("패스워드");
+			inputPw.focus(function(){
+				inputPw.val("");
+				inputPw.attr("type", "password");
+			});			
+		}
+		
 				
 		$(".login>button").click(function(){
 			var arr =[];
-						
-			var inputId = $(".login>input").eq(0).val();
-			var inputPw = $(".login>input").eq(1).val();		
 			
-			if((inputId == "") || (inputId =="아이디")){					
-				$(".login>input").eq(0).focus(function(){
-					$(".login>input").eq(0).val("");
-					$(".login>input").eq(0)
-				    });		
+			if((inputId.val() == "") || (inputId.val() =="아이디")){	
+				inputId.val("아이디 입력");		
+				inputId.focus(function(){
+					inputId.val("");					
+				 });					
 			}
-			else if(inputPw == ""){	
-				$(".login>input").eq(1).attr("type", "text");
-				$(".login>input").eq(1).val("패스워드 입력");
-				$(".login>input").eq(1).focus(function(){
-					$(".login>input").eq(1).val("");
-				    });
-			}			
+			else if((inputPw.val() == "") || (inputPw.val() =="패스워드")){			
+				inputPw.attr("type", "text");
+				inputPw.val("패스워드 입력");
+				inputPw.focus(function(){
+					inputPw.val("");
+					inputPw.attr("type", "password");
+				});				
+			}
 					
 			$(".login>input").each(function(idx, item){
 				arr[idx]=$(item).val();
 			});
 			$.ajax({
 				"url":"/Project/login/ajaxlogin.korean",
-				"data":{"id":arr[0],"pw":arr[1], "loginok" : false},
+				"data":{"id":arr[0],"pw":arr[1]},
 				"method":"POST",
 				"dataType":"json",
 				"error" : function( jqXHR, textStatus, errorThrown ) {

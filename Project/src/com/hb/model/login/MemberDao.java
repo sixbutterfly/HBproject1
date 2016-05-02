@@ -20,8 +20,8 @@ public class MemberDao {
 
 	public int loginCk(String id, String pw) {
 		System.out.println("login id:"+id+",pw:"+pw);
-		String sql = "select m.authNo as authNo from member m, authority a where m.authNo = a.authNo and memId = ? and memPw=?";
-		int authNo = 0;
+		String sql = "select m.authNo as authNo from member m, authority a where m.memId = ? and m.memPw=? and m.authNo = a.authNo";
+		int authNo = -1;
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);

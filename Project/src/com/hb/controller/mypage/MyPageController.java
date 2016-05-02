@@ -18,13 +18,13 @@ public class MyPageController extends HttpServlet{
 		/*Integer authNo = (Integer)req.getSession().getAttribute("authNo");
 		int auth = authNo.intValue(); */
 				
-		String login = (String)req.getSession().getAttribute("login");
+		Boolean login = (Boolean)req.getSession().getAttribute("login");
 		System.out.println(login);
-		/*if(login.equals("false")){
+		if(login==false){
 			resp.sendRedirect("login/login.jsp");
 		}
 		else{
 			req.getRequestDispatcher("mypage/mypage.jsp").forward(req, resp);
-		}*/
+		}
 	}
 }

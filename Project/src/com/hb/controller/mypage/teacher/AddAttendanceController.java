@@ -21,20 +21,18 @@ public class AddAttendanceController extends HttpServlet{
 protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 		throws ServletException, IOException {
 	
-	Date curDate = new Date();	     
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일");
-    System.out.println("현재날짜 : "+ sdf.format(curDate));
-    req.setAttribute("sdf", sdf);
-    
-    TeacherDao tchDao = new TeacherDao();
-    tchDao.selectAll();
+	
 		
 	AttdDao attdDao = new AttdDao();
-	ArrayList<AttdDto> attdList = attdDao.attdSelect();
 	
+	String meberId = (String)req.getSession().getAttribute("id");
+	String tchName = attdDao.tchNameSel(meberId);
+	req.setAttribute("tchName", tchName);
+	tchName = (String) req.getSession().getAttribute("id");
 	
+	/*ArrayList<AttdDto> attdList = attdDao.attdSelect();	
+	req.setAttribute("attdList", attdList);*/
 	
-	req.setAttribute("attdList", attdList);
 	req.getRequestDispatcher("mypage/teacher/addAttendance.jsp").forward(req, resp);
 	
 	
