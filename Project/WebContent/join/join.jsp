@@ -1,4 +1,4 @@
-<%@page import="com.hb.model.login.MemberDto"%>
+<%@page import="com.hb.model.member.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -171,7 +171,7 @@
 		});
 		$('#id').keyup(function(){
 		if($('#id').val().match(/[^a-zA-Z0-9_]/g)){
-			alert("특수문자는 사용할 수 없습니다.");
+			alert("특수문자 및 한글은 사용할 수 없습니다.");
 			$('#id').val("");
 			$('#id').focus();
 			return false;
@@ -427,7 +427,7 @@
 <div>
 	<div class="button">
 		<button class="subbtn" type="submit" id="submit">확인</button>
-		<button class="subbtn" type="reset">취소</button>
+		<button class="subbtn" type="reset" onclick="history.back();">취소</button>
 	</div>
 	</form>
 </div>

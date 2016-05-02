@@ -1,4 +1,4 @@
-package com.hb.model.login;
+package com.hb.model.member;
 
 public class MemberDto {
 	private String id;

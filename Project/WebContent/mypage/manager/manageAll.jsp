@@ -1,4 +1,4 @@
-<%@page import="com.hb.model.login.MemberDto"%>
+<%@page import="com.hb.model.member.MemberDto"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -27,11 +27,17 @@
 	.detailmenu{
 		width:100%;
 		background-color: #fddad3;
+		margin-top: 34px;
 	}
 	.detailmenu>div{
 		text-align: center;
 		width: 11.8%;
 		display: inline-block;
+	}
+	.subtitle{
+		font-size: 25pt;
+		margin-bottom: 10px;
+   	 	margin-left: 20px;
 	}
 	#detailcon>div>a{
 		text-decoration: none;
@@ -43,6 +49,20 @@
 		width: 11.8%;
 		display: inline-block;
 		text-decoration: none;
+	}
+	#selauth{
+		float:right;
+		margin-top: 4px;
+   		margin-bottom: 6px;
+   		margin-right: 18px;
+	}
+	hr {
+	width: 100%;
+	background-color: silver;
+	height: 2px;
+	border: none;
+}
+	.hrefcolor{
 	}
 	
 </style>
@@ -102,11 +122,12 @@
 				$('.no5').css('display','block');
 			}
 		});
+		
 	});
 
 </script>
 </head>
-<body>
+<body vlink="black" alink="black" link="black">
 	<div class="container_12">
 		<!-- header -->
 		<%@include file="/templet/header.jsp" %>
@@ -117,7 +138,7 @@
 		<%@include file="/templet/subnav5.jsp" %>
 		<!-- content start -->
 	<div>
-		<p>회원 관리</p>
+		<p class="subtitle"><b>회원 관리</b></p>
 		<hr/>
 	</div>
 	<div>
@@ -130,7 +151,6 @@
 			<option value="student">학생</option>
 			<option value="finish">수료자</option>
 		</select>
-		<hr/>
 	</div>
 	<div class="detailmenu">
 		<div>회원번호</div>
@@ -149,7 +169,7 @@
 		%>
 		<div id="detailcon" >
 			<div class="no<%=dto.getLevel()%>">
-			<a href="memdetail.korean?idx=<%=dto.getMemno()%>">
+			<a href="memdetail.korean?idx=<%=dto.getMemno()%>" >
 			<div class="seeall"><%=dto.getMemno()%></div>
 			<div class="seeall" style="width:8%;">
 			<% if(dto.getLevel()==0){%>회원
@@ -167,7 +187,11 @@
 			<% if(dto.getMememail().equals("@")){%>-
 			<%}else%><%=dto.getMememail()%>
 			</div>
-			<div class="seeall" style="margin-left:35px;"><%=dto.getEmailagree()%></div>
+			<div class="seeall" style="margin-left:35px;">
+			<% if(dto.getEmailagree().equals("y")){%><label style="color:blue;">동의</label>
+			<%}else{%><label style="color: red;">거부</label>
+			<%} %>
+			</div>
 			<div class="seeall"><%=dto.getJoinday()%></div>
 			</a>
 			</div>

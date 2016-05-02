@@ -1,4 +1,4 @@
-package com.hb.model.login;
+package com.hb.model.member;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -69,7 +69,7 @@ public class MemberDao {
 
 	public ArrayList<MemberDto> selectAll() throws SQLException {
 		ArrayList<MemberDto> list = new ArrayList<>();
-		String sql ="SELECT MEMNO, AUTHNO, MEMNAME, MEMGENDER, MEMPHONE, MEMTEL, MEMADDRESS, MEMEMAIL, EMAILAGREE, JOINDAY FROM MEMBER";
+		String sql ="SELECT MEMNO, AUTHNO, MEMNAME, MEMGENDER, MEMPHONE, MEMTEL, MEMADDRESS, MEMEMAIL, EMAILAGREE, JOINDAY FROM MEMBER ORDER BY AUTHNO ASC";
 		try{
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
