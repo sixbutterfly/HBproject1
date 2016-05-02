@@ -53,7 +53,7 @@
 				<a href="waitinlist.korean">수강 대기자</a>
 			</div>
 			<div class="manager">
-				<a href="allmember.do">회원관리</a>
+				<a href="manageall.korean">회원관리</a>
 			</div>
 			<div class="manager">
 				<a href="finallist.korean">수강 최종 승인</a>

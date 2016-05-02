@@ -42,6 +42,18 @@
 </style>
 <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
 <script type="text/javascript" src="js/menu.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#cur button').eq(0).click(function(){
+			if(confirm("수강신청을 승인하시겠습니까?")){
+				alert("승인이 완료되었습니다.");
+			}else{
+				alert("승인이 취소되었습니다.");
+				return false;
+			}
+		});
+	});
+</script>
 </head>
 <body>
 	<div class="container_12">
@@ -65,6 +77,7 @@
 			%>
 			
 			<form action="finalConfirm.korean">
+			<input type="hidden" name="memNo" value="<%=dto.getMemNo() %>"/>
 			<div id="cur">
 				<ul>
 					<li>신청 과정 : <%=cdto.getCurName() %></li>

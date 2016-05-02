@@ -23,14 +23,14 @@ public class TeacherDao {
 
 	public ArrayList<TeacherDto> selectAll() {
 		ArrayList<TeacherDto> list = new ArrayList();
-		sql = "select tchno, tchname, roomno from TEACHER";
+		sql = "SELECT TCHNO, MEMNAME, ROOMNO FROM TEACHER, MEMBER WHERE TEACHER.MEMNO = MEMBER.MEMNO";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				TeacherDto bean = new TeacherDto();
 				bean.setTchno(rs.getInt("tchno"));
-				bean.setTchname(rs.getString("tchname"));
+				bean.setTchname(rs.getString("memname"));
 				bean.setRoomno(rs.getString("roomno"));
 				list.add(bean);
 			}
@@ -53,7 +53,7 @@ public class TeacherDao {
 
 	public int updateAll(String[] tchlist, String[] roomlist) {
 		int result = 0;
-		sql = "update teacher set roomno = ? where tchno = ?";
+		sql = "UPDATE TEACHER SET ROOMNO = ? WHERE TCHNO = ?";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			for (int i = 0; i < tchlist.length; i++) {
@@ -79,7 +79,7 @@ public class TeacherDao {
 
 	public int removeAll(String[] tchlist, String[] checklist) {
 		int result = 0;
-		sql = "update teacher set roomno = null where tchno = ?";
+		sql = "UPDATE TEACHER SET ROOMNO = NULL WHERE TCHNO = ?";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			for (int i = 0; i < tchlist.length; i++) {

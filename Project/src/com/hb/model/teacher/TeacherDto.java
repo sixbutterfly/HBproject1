@@ -37,6 +37,4 @@ public class TeacherDto {
 	public void setTchname(String tchname) {
 		this.tchname = tchname;
 	}
-
-	
 }

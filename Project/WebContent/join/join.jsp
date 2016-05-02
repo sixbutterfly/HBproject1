@@ -1,4 +1,4 @@
-<%@page import="com.hb.model.login.MemberDto"%>
+<%@ page import="com.hb.model.member.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -12,111 +12,111 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/subnav1.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
 <style type="text/css">
-	div>p{
+	div>p {
 		font-size: 15px;
 	}
 	hr {
-	width: 100%;
-	background-color: silver;
-	height: 2px;
-	border: none;
-}
-	button{
-	width: 50px;
+		width: 100%;
+		background-color: silver;
+		height: 2px;
+		border: none;
 	}
-	select{
+	button {
+		width: 50px;
+	}
+	select {
 		width: 80px;
 		margin-left: 13px;
 	}
-	label{
+	label {
 		margin-left: 13px;
 	}
-	.form{
-	height: 36px;
-	text-align: left;
-	width:150px;
-	background-color: silver;
-	display: inline-block;
-	vertical-align: middle;
-	border-bottom: white solid 1px;
-}
-	.form>p{
+	.form {
+		height: 36px;
+		text-align: left;
+		width:150px;
+		background-color: silver;
+		display: inline-block;
+		vertical-align: middle;
+		border-bottom: white solid 1px;
+	}
+	.form>p {
 		font-size: 13px;
 	}
-	.forminput{
-	height: 36px;
-	width:80%;
-	background-color: #eeeeee;
-	display: inline-block;
-	vertical-align: middle;
-	border-bottom: white solid 1px;
+	.forminput {
+		height: 36px;
+		width:80%;
+		background-color: #eeeeee;
+		display: inline-block;
+		vertical-align: middle;
+		border-bottom: white solid 1px;
 	}
-	input{
+	input {
 		height: 15px;
 		margin-left: 10px;
 	}
-#hrsub{
-	width: 100%;
-	background-color: silver;
-	height: 1px;
-	border: none;
-}
-.email{
-	height: 55px;
-	text-align: left;
-	width:150px;
-	background-color: silver;
-	display: inline-block;
-	vertical-align: middle;
-	border-bottom: white solid 1px;
-}
-.emailset{
-	height: 55px;
-	width:80%;
-	background-color: #eeeeee;
-	display: inline-block;
-	vertical-align: middle;
-	border-bottom: white solid 1px;
-}
-.button{
-	text-align: center;
-	margin-top: 20px;
-}
-.btn{
-	width: 8px;
-	height: 12px;
-}
-.inputwidth{
-	width: 140px;
-}
-.inputtel{
-	width: 60px;
-}
-.subbtn{
-	margin-right: 20px;
-}
-#overlab{
-	width:65px;
-}
-#serchaddr{
-	width:95px;
-	height: 22px;
-}
-#addrresult1{
+	#hrsub {
+		width: 100%;
+		background-color: silver;
+		height: 1px;
+		border: none;
+	}
+	.email {
+		height: 55px;
+		text-align: left;
+		width:150px;
+		background-color: silver;
+		display: inline-block;
+		vertical-align: middle;
+		border-bottom: white solid 1px;
+	}
+	.emailset {
+		height: 55px;
+		width:80%;
+		background-color: #eeeeee;
+		display: inline-block;
+		vertical-align: middle;
+		border-bottom: white solid 1px;
+	}
+	.button {
+		text-align: center;
+		margin-top: 20px;
+	}
+	.btn {
+		width: 8px;
+		height: 12px;
+	}
+	.inputwidth {
+		width: 140px;
+	}
+	.inputtel {
+		width: 60px;
+	}
+	.subbtn {
+		margin-right: 20px;
+	}
+	#overlab {
+		width:65px;
+	}
+	#serchaddr{
+		width:95px;
+		height: 22px;
+	}
+#addrresult1 {
 	width:230px;
 }
-#addrresult2{
+#addrresult2 {
 	width:230px;
 }
-#emailtype{
+#emailtype {
 }
-#close{
+#close {
     width:50px;
     margin-bottom:50px;
     cursor:pointer;
     font-weight:bold;
    }
- #popup{
+ #popup {
     width: 350px;
     height: 180px;
     background: #DAFCd1;
@@ -127,14 +127,14 @@
     border: 2px solid #000;
     display: none;
    }
-.errmsg{
+.errmsg {
 	font-size: 9pt;
 	color: red;
 }
-.emailagree{
+.emailagree {
 	font-size: 10pt;
 }
-.radio{
+.radio {
 	margin-top: 10px;
 }
 
@@ -171,7 +171,7 @@
 		});
 		$('#id').keyup(function(){
 		if($('#id').val().match(/[^a-zA-Z0-9_]/g)){
-			alert("특수문자는 사용할 수 없습니다.");
+			alert("특수문자 및 한글은 사용할 수 없습니다.");
 			$('#id').val("");
 			$('#id').focus();
 			return false;
@@ -271,11 +271,10 @@
 				alert("주소를 입력하세요!");
 				$('#addrresult2').focus();
 				return false;
-			}else{}
+			}else{} 
 		});
 	});
 </script>
-
 </head>
 <body>
 	<div class="container_12">
@@ -298,7 +297,7 @@
 		<div style=" height:80px; margin-top:70px;"><span></span></div>
 		<div id="popclose">닫기</div>
 	</div>
-	<form action="memberjoin.korean" method="get">
+	<form action="memberjoin.korean" method="post">
 	<div>
 		<p><b><img class="btn" src="join/joinimage/btn_r.gif"> 회원정보입력</b><label style="font-size:9pt">*표 필수 입력</label></p>
 		<hr id="hrsub"/>
@@ -382,8 +381,8 @@
 				<option value="yahoo.co.kr">yahoo.co.kr</option>
 			</select><br/>
 			<label class="emailagree">이메일 수신동의</label>
-			<input type="radio" name="emailagree" value="yes" class="radio"><label class="emailagree">예</label>
-			<input type="radio" name="emailagree" value="no" class="radio" checked><label class="emailagree">아니오</label>
+			<input type="radio" name="emailagree" value="y" class="radio"><label class="emailagree">예</label>
+			<input type="radio" name="emailagree" value="n" class="radio" checked><label class="emailagree">아니오</label>
 			
 		</div>
 		<div class="email"><label>주소*</label></div>
@@ -428,7 +427,7 @@
 <div>
 	<div class="button">
 		<button class="subbtn" type="submit" id="submit">확인</button>
-		<button class="subbtn" type="reset">취소</button>
+		<button class="subbtn" type="reset" onclick="history.back();">취소</button>
 	</div>
 	</form>
 </div>

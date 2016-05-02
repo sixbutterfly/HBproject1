@@ -14,10 +14,10 @@ $(document).ready(function(){
 			var inputId = $(".login>input").eq(0).val();
 			var inputPw = $(".login>input").eq(1).val();		
 			
-			if((inputId == "") || (inputId =="아이디")){
-				$(".login>input").eq(0).val("아이디 입력");			
+			if((inputId == "") || (inputId =="아이디")){					
 				$(".login>input").eq(0).focus(function(){
 					$(".login>input").eq(0).val("");
+					$(".login>input").eq(0)
 				    });		
 			}
 			else if(inputPw == ""){	

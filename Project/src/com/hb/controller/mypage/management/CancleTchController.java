@@ -15,8 +15,9 @@ import com.hb.model.room.RoomDao;
 import com.hb.model.teacher.TeacherDao;
 import com.hb.model.teacher.TeacherDto;
 
-@WebServlet("/delroom.korean")
-public class DelRoomController extends HttpServlet {
+//강사 테이블 배치 취소
+@WebServlet("/cancletch.korean")
+public class CancleTchController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -30,8 +31,7 @@ public class DelRoomController extends HttpServlet {
 		TeacherDao tdao2 = new TeacherDao();
 		ArrayList<TeacherDto> tlist = new ArrayList();
 		tlist = tdao2.selectAll();
-//		req.setAttribute("tlist", tlist);
-//		req.getRequestDispatcher("mypage/json.jsp").forward(req, resp);
+		
 		PrintWriter out = resp.getWriter();
 		for (int i = 0; i < tlist.size(); i++) {
 			out.print(tlist.get(i).getRoomno()+"/");

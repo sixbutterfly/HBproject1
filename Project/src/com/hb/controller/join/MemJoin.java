@@ -1,4 +1,4 @@
-package join;
+package com.hb.controller.join;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.hb.model.login.MemberDao;
-import com.hb.model.login.MemberDto;
+import com.hb.model.member.MemberDao;
+import com.hb.model.member.MemberDto;
 
 @WebServlet("/memberjoin.korean")
 public class MemJoin extends HttpServlet{
@@ -41,7 +41,7 @@ public class MemJoin extends HttpServlet{
 		
 		MemberDao dao = new MemberDao();
 		MemberDto dto = new MemberDto(id, pw, name, gender, tel, tel2, tel3, phone, phone2,phone3, email, email2, emailagree, postnum, addrresult1, addrresult2, authno);
-		int rs;
+		int rs = 0;
 		try {
 			rs = dao.memjoin(dto);
 			if(rs>0){
@@ -57,6 +57,7 @@ public class MemJoin extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
 		doGet(req, resp);
 	}
 }

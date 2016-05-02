@@ -7,7 +7,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.hb.util.DB;
+
 public class GradeDao {
+	
 	String driver="oracle.jdbc.driver.OracleDriver";
 	String url="jdbc:oracle:thin:@localhost:1521:xe";
 	String user="scott";
@@ -19,14 +22,7 @@ public class GradeDao {
 	ResultSet rs;
 	
 	public GradeDao() {
-		try {
-			Class.forName(driver);
-			conn = DriverManager.getConnection(url, user, password);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
+		conn = DB.getConnection();
 	}
 	
 	public ArrayList<GradeDto> list(int roomno) {

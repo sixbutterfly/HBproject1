@@ -55,7 +55,7 @@ button{
 <script type="text/javascript" src="js/menu.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		$('button').click(function(){
+		$('#joinagree').click(function(){
 			var agr1 = $('#agree1').is(':checked');
 			var agr2 = $('#agree2').is(':checked');
 			  if(agr1==true && agr2==true) {
@@ -322,8 +322,8 @@ button{
 <div class="subbutton">
 	<form id="link" >
 	<div class="button">
-	<button type="submit">확인</button>
-	<button type="reset">취소</button>
+	<button type="submit" id="joinagree">확인</button>
+	<button type="reset" onclick="history.back();">취소</button>
 	</div>
 	</form>
 </div>
