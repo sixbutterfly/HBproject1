@@ -4,12 +4,6 @@
 <%@page import="com.hb.util.DB"%>
 <%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<script type="text/javascript">
 <%
 String id=request.getParameter("id");
 Connection conn=DB.getConnection();
@@ -20,13 +14,12 @@ ResultSet rs=pstmt.executeQuery();
 boolean result=false;
 if(rs.next()){
 	result=true;
-}else{
+}else {
 	result=false;
 }
 rs.close();
 pstmt.close();
 conn.close();
-
 response.setContentType("text/xml;charset=utf-8");
 PrintWriter pw=response.getWriter();
 pw.print("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");

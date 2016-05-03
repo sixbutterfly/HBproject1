@@ -1,4 +1,4 @@
-package com.hb.board.job;
+package com.hb.board.controller.job;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.hb.model.jobafter.jobafterDao;
 import com.hb.model.jobafter.jobafterDto;
 
-@WebServlet("/jobafterdetail.korean")
-public class JobafterDetailController extends HttpServlet {
+@WebServlet("/jobaftereditform.korean")
+public class JobafterEditFormController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int jafNo = Integer.parseInt(request.getParameter("jafNo"));
@@ -20,7 +20,6 @@ public class JobafterDetailController extends HttpServlet {
 		jobafterDto dto = dao.selectOne(jafNo);
 		
 		request.setAttribute("dto", dto);
-		request.getRequestDispatcher("jobinfo/jobafterdetail.jsp").forward(request, response);
+		request.getRequestDispatcher("jobinfo/jobafteredit.jsp").forward(request, response);
 	}
-
 }

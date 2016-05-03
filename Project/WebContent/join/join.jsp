@@ -146,6 +146,9 @@
 	$(document).ready(function(){
 		$('#overlab').click(function(){
 			var id=$('#id').val();
+			if(id==""||id==null){
+						$('#popup>div>span').text("아이디를 입력하세요!");
+			}else{
 			$.ajax({
 				url:"join/overlab.jsp",
 				data:"id="+id,
@@ -161,7 +164,7 @@
 					}
 				}
 			});
-			
+			}
 			$('#popup').show();
 			return false;
 			});
@@ -171,14 +174,14 @@
 		});
 		$('#id').keyup(function(){
 		if($('#id').val().match(/[^a-zA-Z0-9_]/g)){
-			alert("특수문자는 사용할 수 없습니다.");
+			alert("특수문자 및 한글은 사용할 수 없습니다.");
 			$('#id').val("");
 			$('#id').focus();
 			return false;
 			}
 		});
 		
-		$('#pw'&&'#pw2').focus(function(){
+		$('input:gt(3)').focus(function(){
 			if(!($.trim($("#pw").val()).match(/^(?=.*\d)(?=.*[A-z])[A-z0-9]{8,20}$/))){
 				$('#pw').next().text(' 영문 숫자조합의 8~20자리의 비밀번호여야 합니다');
 				$('#pw').focus();
@@ -188,7 +191,7 @@
 					return false;
 	 		}
 		});
-		$('#pw2'&&'#name').focus(function(){
+		$('input:gt(4)').focus(function(){
 			if($('#pw2').val()!=$('#pw').val()){
 				$('#pw2').next().text(' 비밀번호는 동일해야합니다.');
 				$('#pw2').focus();
@@ -271,11 +274,32 @@
 				alert("주소를 입력하세요!");
 				$('#addrresult2').focus();
 				return false;
-			}else{}
+			}else{
+				return false;
+			} 
+		});
+		
+		$('#submit').click(function(){
+			var id=$('#id').val();
+			$.ajax({
+				url:"join/overlab.jsp",
+				data:"id="+id,
+				type:"post",
+				dataType:"xml",
+				success:function(data){
+					var using=$(data).find("result").text();
+					if(using=='true'){
+						alert('사용중인 아이디입니다!');
+						return false;
+					}else{
+						$('#submit').submit();
+						return false;
+					}
+				}
+			});
 		});
 	});
 </script>
-
 </head>
 <body>
 	<div class="container_12">
@@ -298,7 +322,7 @@
 		<div style=" height:80px; margin-top:70px;"><span></span></div>
 		<div id="popclose">닫기</div>
 	</div>
-	<form action="memberjoin.korean" method="get">
+	<form action="memberjoin.korean" method="post">
 	<div>
 		<p><b><img class="btn" src="join/joinimage/btn_r.gif"> 회원정보입력</b><label style="font-size:9pt">*표 필수 입력</label></p>
 		<hr id="hrsub"/>
@@ -382,8 +406,8 @@
 				<option value="yahoo.co.kr">yahoo.co.kr</option>
 			</select><br/>
 			<label class="emailagree">이메일 수신동의</label>
-			<input type="radio" name="emailagree" value="yes" class="radio"><label class="emailagree">예</label>
-			<input type="radio" name="emailagree" value="no" class="radio" checked><label class="emailagree">아니오</label>
+			<input type="radio" name="emailagree" value="y" class="radio"><label class="emailagree">예</label>
+			<input type="radio" name="emailagree" value="n" class="radio" checked><label class="emailagree">아니오</label>
 			
 		</div>
 		<div class="email"><label>주소*</label></div>
@@ -428,7 +452,7 @@
 <div>
 	<div class="button">
 		<button class="subbtn" type="submit" id="submit">확인</button>
-		<button class="subbtn" type="reset">취소</button>
+		<button class="subbtn" type="reset" onclick="history.back();">취소</button>
 	</div>
 	</form>
 </div>

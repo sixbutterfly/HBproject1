@@ -1,8 +1,6 @@
-package com.hb.board.job;
+package com.hb.board.controller.job;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,22 +9,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.hb.model.job.jobDao;
 import com.hb.model.job.jobDto;
-import com.hb.model.notice.noticeDto;
 
-@WebServlet("/job.korean")
-public class JobListController extends HttpServlet {
+@WebServlet("/jobeditform.korean")
+public class JobEditFormController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int jobNo = Integer.parseInt(request.getParameter("jobNo"));
 		
 		jobDao dao = new jobDao();
-		ArrayList<jobDto> list = dao.selectAll();
-		request.setAttribute("list", list);
+		jobDto dto = dao.selectOne(jobNo);
 		
-		dao = new jobDao();
-		jobDto dto = dao.count();
-		request.setAttribute("cnt", dto);
-		
-		request.getRequestDispatcher("jobinfo/jobinfo.jsp").forward(request, response);
+		request.setAttribute("dto", dto);
+		request.getRequestDispatcher("jobinfo/jobedit.jsp").forward(request, response);
 	}
-
 }

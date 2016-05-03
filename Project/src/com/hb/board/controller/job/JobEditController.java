@@ -1,4 +1,4 @@
-package com.hb.board.job;
+package com.hb.board.controller.job;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -9,16 +9,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.hb.model.job.jobDao;
 
-@WebServlet("/jobadd.korean")
-public class JobAddController extends HttpServlet {
+@WebServlet("/jobedit.korean")
+public class JobEditController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String Title = request.getParameter("title");
-		String Name = request.getParameter("name");
-		String Content = request.getParameter("content");
+		int jobNo = Integer.parseInt(request.getParameter("jobNo"));
+		String jobTitle = request.getParameter("title");
+		String jobContent = request.getParameter("content");
 		
 		jobDao dao = new jobDao();
-		int result = dao.addOne(Title, Name, Content);
+		int result = dao.updateOne(jobNo, jobTitle, jobContent);
 		
 		if(result>0){
 			response.sendRedirect("job.korean");

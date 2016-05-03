@@ -1,4 +1,4 @@
-package com.hb.board.job;
+package com.hb.board.controller.job;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -9,16 +9,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.hb.model.jobafter.jobafterDao;
 
-@WebServlet("/jobafteredit.korean")
-public class JobafterEditController extends HttpServlet {
+@WebServlet("/jobafteradd.korean")
+public class JobafterAddController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int jafNo = Integer.parseInt(request.getParameter("jafNo"));
-		String jafTitle = request.getParameter("title");
-		String jafContent = request.getParameter("content");
+		String title = request.getParameter("title");
+		String name = request.getParameter("name");
+		String content = request.getParameter("content");
 		
 		jobafterDao dao = new jobafterDao();
-		int result = dao.updateOne(jafNo, jafTitle, jafContent);
+		int result = dao.addOne(title, name, content);
 		
 		if(result>0){
 			response.sendRedirect("jobafter.korean");

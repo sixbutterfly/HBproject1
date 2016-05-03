@@ -1,4 +1,4 @@
-package com.hb.board.job;
+package com.hb.board.controller.job;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
