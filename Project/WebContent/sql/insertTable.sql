@@ -21,12 +21,6 @@ insert into authority (authNo, departName) values (5, '수료자');
 insert into authority (authNo, departName) values (9, '관리자');
 
 --회원 추가
-insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno,MEMGENDER,EMAILAGREE) values (mem_seq.nextval, 'test1', 'korean', '한국인', '우리집', 'korea@korea.com', '000-0000-000', 1,'남자','Y');
-insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno,MEMGENDER,EMAILAGREE) values (mem_seq.nextval, 'test2', 'korean2', '한국인2', '우리집2', 'korea@korea.com2', '000-0000-0002', 1,'남자','N');
-insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno,MEMGENDER,EMAILAGREE) values (mem_seq.nextval, 'test3', 'korean3', '한국인3', '우리집3', 'korea@korea.com3', '000-0000-0003', 1,'남자','N');
-insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno,MEMGENDER,EMAILAGREE) values (mem_seq.nextval, 'test4', 'korean4', '한국인4', '우리집4', 'korea@korea.com4', '000-0000-0004', 1,'남자','Y');
-insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno,MEMGENDER,EMAILAGREE) values (mem_seq.nextval, 'admin', 'admin', 'admin', 'address', 'email', 'phone', 9,'남자','Y');
-
 insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno, memtel, emailagree, memgender, joinday) values (mem_seq.nextval, 'kimnormal', 'kim', '김일반', '김일반의 집', 'kimnormal@naver.com', '
 010-2599-8765', 0, '02-2345-6789','y','남자','16/01/01');
 insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno, memtel, emailagree, memgender, joinday) values (mem_seq.nextval, 'kimdaeri', 'kim', '김대리', '김대리의 집', 'kimdaeri@gmail.com', '01
@@ -41,8 +35,8 @@ insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone
 ', '010-3211-6123', 5, '02-7890-1234','y','여자','16/06/01');
 
 --행정부 추가
-insert into management (admno, memno) values (adm_seq.nextval, '1');
-=======
+insert into management (mngno, memno) values (adm_seq.nextval, '1');
+
 insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno,MEMGENDER,EMAILAGREE) values (mem_seq.nextval, 'kimnormal', 'kim', '김일반', '김일반의 집', 'kimnormal@naver.com', '
 010-2599-8765', 0,'남자','N');
 insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno,MEMGENDER,EMAILAGREE) values (mem_seq.nextval, 'kimdaeri', 'kim', '김대리', '김대리의 집', 'kimdaeri@gmail.com', '01
@@ -56,8 +50,6 @@ insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone
 insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno,MEMGENDER,EMAILAGREE) values (mem_seq.nextval, 'kimgraduate', 'kim', '김졸업', '김졸업의 집', 'kimgraduate@gmail.com
 ', '010-3211-6123', 5,'남자','Y');
 
---행정부 추가 (admNo,admName,memNo 순)
-insert into admin values (adm_seq.nextval, 'admin', '1');
 
 --학생 추가 (stuNo,memNo,roomNo 순)
 insert into student values (stu_seq.nextval, 1, 1);
