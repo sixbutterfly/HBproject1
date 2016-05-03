@@ -250,7 +250,7 @@
 		$('#emailselect').change(email);
 		
 		
-		$('#submit').click(function(){
+		$('button:eq(2)').click(function(){
 			if($('#id').val()==""||$('#id').val()==null){
 				alert("id를 입력하세요!");
 				$('#id').focus();
@@ -279,7 +279,7 @@
 			} 
 		});
 		
-		$('#submit').click(function(){
+		$('button:eq(2)').click(function(){
 			var id=$('#id').val();
 			$.ajax({
 				url:"join/overlab.jsp",
@@ -292,12 +292,12 @@
 						alert('사용중인 아이디입니다!');
 						return false;
 					}else{
-						$('#submit').submit();
+						$('form').submit();
 						return false;
 					}
 				}
 			});
-		});
+		}); 
 	});
 </script>
 </head>
@@ -451,7 +451,7 @@
 	</div>
 <div>
 	<div class="button">
-		<button class="subbtn" type="submit" id="submit">확인</button>
+		<button class="subbtn" type="submit">확인</button>
 		<button class="subbtn" type="reset" onclick="history.back();">취소</button>
 	</div>
 	</form>
