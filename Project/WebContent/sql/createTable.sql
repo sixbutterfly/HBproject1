@@ -250,4 +250,12 @@ ALTER TABLE stuRoom
 ---------------------------------------------------------------------------------------------
 ALTER TABLE teacher
 	ADD ( FOREIGN KEY (memNo) REFERENCES member(memNo) ON DELETE SET NULL);
-
+	
+	
+-- 한국인 attendValue 테이블 추가
+CREATE TABLE attendValue
+(
+	atvNo                NUMBER(4)  NOT NULL ,	
+	attdValue             VARCHAR2(10)  NULL ,
+	attdDate              DATE  NULL 
+);

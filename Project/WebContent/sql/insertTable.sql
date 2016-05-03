@@ -101,6 +101,7 @@ insert into student (stuno, memno, roomno) values (stu_seq.nextval, 3, 1);
 insert into student (stuno, memno, roomno) values (stu_seq.nextval, 4, 1);
 insert into student (stuno, memno, roomno) values (stu_seq.nextval, 5, 1);
 
+--insert into attendValue values (atv_seq.nextval, '2016-05-01', '출석');
 
 -- 한국인 더미데이터 끝 --
 
