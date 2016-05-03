@@ -1,4 +1,4 @@
-package com.hb.model.job;
+package com.hb.model.jobafter;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,29 +8,29 @@ import java.util.ArrayList;
 
 import com.hb.util.DB;
 
-public class jobDao {
+public class jobafterDao {
 
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 	
-	public jobDao() {
+	public jobafterDao() {
 		conn = DB.getConnection();
 	}
-	
-	public ArrayList<jobDto> selectAll() {
-		ArrayList<jobDto> list = new ArrayList<>();
-		String sql = "select * from jobinfo";
+
+	public ArrayList<jobafterDto> selectAll() {
+		ArrayList<jobafterDto> list = new ArrayList<>();
+		String sql = "select * from jobafter";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()){
-				jobDto dto = new jobDto();
-				dto.setJobNo(rs.getInt("jobNo"));
-				dto.setJobTitle(rs.getString("jobTitle"));
-				dto.setJobDate(rs.getDate("jobDate"));
-				dto.setJobName(rs.getString("jobName"));
-				dto.setJobContent(rs.getString("jobContent"));
+				jobafterDto dto = new jobafterDto();
+				dto.setJafNo(rs.getInt("jafNo"));
+				dto.setJafTitle(rs.getString("jafTitle"));
+				dto.setJafDate(rs.getDate("jafDate"));
+				dto.setJafName(rs.getString("jafName"));
+				dto.setJafContent(rs.getString("jafContent"));
 				list.add(dto);
 			}
 		} catch (SQLException e) {
@@ -45,9 +45,9 @@ public class jobDao {
 		return list;
 	}//selectAll end
 
-	public jobDto count() {
-		jobDto dto = new jobDto();
-		String sql = "select count(*) as cnt from jobinfo";
+	public jobafterDto count() {
+		jobafterDto dto = new jobafterDto();
+		String sql = "select count(*) as cnt from jobafter";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -66,22 +66,22 @@ public class jobDao {
 		return dto;
 	}//count end
 	
-	public ArrayList<jobDto> selectAll(String keyword, int pStart, int pEnd) {
-		ArrayList<jobDto> list = new ArrayList<>();
-		String subsql = "select jobNo, jobTitle, jobContent, jobDate, jobName from jobinfo "+keyword+" order by jobNo desc";
-		String sql = "select * from (select rownum as rn, jobNo, jobTitle, jobContent, jobDate, jobName from ("+subsql+")) where rn between "+pStart+" and "+pEnd;
+	public ArrayList<jobafterDto> selectAll(String keyword, int pStart, int pEnd) {
+		ArrayList<jobafterDto> list = new ArrayList<>();
+		String subsql = "select jafNo, jafTitle, jafContent, jafDate, jafName from jobafter "+keyword+" order by jafNo desc";
+		String sql = "select * from (select rownum as rn, jafNo, jafTitle, jafContent, jafDate, jafName from ("+subsql+")) where rn between "+pStart+" and "+pEnd;
 		//System.out.println(sql);
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()){
-				jobDto dto = new jobDto();
+				jobafterDto dto = new jobafterDto();
 				dto.setRn(rs.getInt("rn"));
-				dto.setJobNo(rs.getInt("jobNo"));
-				dto.setJobTitle(rs.getString("jobTitle"));
-				dto.setJobContent(rs.getString("jobContent"));
-				dto.setJobDate(rs.getDate("jobDate"));
-				dto.setJobName(rs.getString("jobName"));
+				dto.setJafNo(rs.getInt("jafNo"));
+				dto.setJafTitle(rs.getString("jafTitle"));
+				dto.setJafContent(rs.getString("jafContent"));
+				dto.setJafDate(rs.getDate("jafDate"));
+				dto.setJafName(rs.getString("jafName"));
 				list.add(dto);
 			}
 		} catch (SQLException e) {
@@ -98,7 +98,7 @@ public class jobDao {
 
 	public int addOne(String title, String name, String content) {
 		int result = 0;
-		String sql = "insert into jobinfo (jobNo, jobTitle, jobDate, jobName, jobContent) values (job_seq.nextval,?,sysdate,?,?)";
+		String sql = "insert into jobafter (jafNo, jafTitle, jafDate, jafName, jafContent) values (jaf_seq.nextval,?,sysdate,?,?)";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, title);
@@ -120,18 +120,18 @@ public class jobDao {
 		return result;
 	}//addOne end
 
-	public jobDto selectOne(int jobNo) {
-		jobDto dto = new jobDto();
-		String sql = "select * from jobinfo where jobNo="+jobNo;
+	public jobafterDto selectOne(int jafNo) {
+		jobafterDto dto = new jobafterDto();
+		String sql = "select * from jobafter where jafNo="+jafNo;
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			if(rs.next()){
-				dto.setJobNo(rs.getInt("jobNo"));
-				dto.setJobTitle(rs.getString("jobTitle"));
-				dto.setJobDate(rs.getDate("jobDate"));
-				dto.setJobName(rs.getString("jobName"));
-				dto.setJobContent(rs.getString("jobContent"));
+				dto.setJafNo(rs.getInt("jafNo"));
+				dto.setJafTitle(rs.getString("jafTitle"));
+				dto.setJafDate(rs.getDate("jafDate"));
+				dto.setJafName(rs.getString("jafName"));
+				dto.setJafContent(rs.getString("jafContent"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -144,9 +144,9 @@ public class jobDao {
 		return dto;
 	}//selectOne end
 
-	public int updateOne(int jobNo, String jobTitle, String jobContent) {
+	public int updateOne(int jafNo, String jafTitle, String jafContent) {
 		int result = 0;
-		String sql = "update jobinfo set jobDate=sysdate, jobTitle='"+jobTitle+"', jobContent='"+jobContent+"' where jobNo="+jobNo;
+		String sql = "update jobafter set jafDate=sysdate, jafTitle='"+jafTitle+"', jafContent='"+jafContent+"' where jafNo="+jafNo;
 		try {
 			pstmt = conn.prepareStatement(sql);
 			result = pstmt.executeUpdate();
@@ -161,9 +161,9 @@ public class jobDao {
 		return result;
 	}//updateOne end
 
-	public int deleteOne(int jobNo) {
+	public int deleteOne(int jafNo) {
 		int result = 0;
-		String sql = "delete from jobinfo where jobNo="+jobNo;
+		String sql = "delete from jobafter where jafNo="+jafNo;
 		try {
 			pstmt = conn.prepareStatement(sql);
 			result = pstmt.executeUpdate();
@@ -177,5 +177,4 @@ public class jobDao {
 		}
 		return result;
 	}//deleteOne end
-	
 }

@@ -97,7 +97,7 @@ public class afterdao {
 	
 	public ArrayList<afterdto> selectAll(String keyword, int pStart, int pEnd) {
 		ArrayList<afterdto> list = new ArrayList<>();
-		String subsql = "select aftNo, aftTitle, aftContent, aftDate, aftName from after"+keyword+" order by aftNo desc";
+		String subsql = "select aftNo, aftTitle, aftContent, aftDate, aftName from after "+keyword+" order by aftNo desc";
 		String sql = "select * from (select rownum as rn, aftNo, aftTitle, aftContent, aftDate, aftName from ("+subsql+")) where rn between "+pStart+" and "+pEnd;
 		//System.out.println(sql);
 		try {

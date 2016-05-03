@@ -291,4 +291,13 @@ ALTER TABLE notice
 		jobName		varchar2(50) null
 	);
 	alter table jobinfo add primary key(jobNo);
+-- 취업후기 게시판
+	create table jobafter(
+		jafNo		number(5) not null,
+		jafTitle	varchar2(100) not null,
+		jafContent	clob null,
+		jafDate		date null,
+		jafName		varchar2(50) null
+	);
+	alter table jobafter add primary key(jafNo);
 	

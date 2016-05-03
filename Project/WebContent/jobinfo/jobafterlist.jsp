@@ -1,3 +1,5 @@
+<%@page import="com.hb.model.jobafter.jobafterDto"%>
+<%@page import="com.hb.model.jobafter.jobafterDao"%>
 <%@page import="com.hb.model.job.jobDto"%>
 <%@page import="com.hb.model.job.jobDao"%>
 <%@page import="com.hb.model.notice.noticeDao"%>
@@ -100,8 +102,8 @@
 	}
 	//sreach=sreach.trim();
 	
-	jobDao dao = new jobDao();
-	ArrayList<jobDto> list =  dao.selectAll(keyword, pStart, pEnd);
+	jobafterDao dao = new jobafterDao();
+	ArrayList<jobafterDto> list =  dao.selectAll(keyword, pStart, pEnd);
 %>			
 <body>
 	<div class="container_12">
@@ -116,53 +118,53 @@
 		<!-- content start -->
 			<div class="title">
 				<p>EMPLOYMENT</p>
-				<span>채용 정보</span>
+				<span>취업 후기</span>
 			</div>
 			
 				<table class="table">
 					<tr><th>글번호</th><th>제목</th><th>작성일</th><th>작성자</th></tr>
 					<%
-						for(jobDto dto : list){
+						for(jobafterDto dto : list){
 					%>
 					<tr>
 						<td><%=dto.getRn() %></td>
-						<td><a href="jobdetail.korean?jobNo=<%=dto.getJobNo() %>"><%=dto.getJobTitle() %></a></td>
-						<td><%=dto.getJobDate() %></td>
-						<td><%=dto.getJobName() %></td>
+						<td><a href="jobafterdetail.korean?jafNo=<%=dto.getJafNo() %>"><%=dto.getJafTitle() %></a></td>
+						<td><%=dto.getJafDate() %></td>
+						<td><%=dto.getJafName() %></td>
 					</tr>
 					<%} %>
 				</table>
 			<p align="center">
 			<%
-				jobDto dto2 = (jobDto)request.getAttribute("cnt");
+				jobafterDto dto2 = (jobafterDto)request.getAttribute("dto");
 				total = dto2.getTotal();
 				//System.out.println(total);
 				int shownum = 5;
 				limit = (total-1)/pcnt+1;
 				int pstart = ((Integer.parseInt(p)-1)/shownum)*shownum+1;
 				if(Integer.parseInt(p)!=1){
-					out.print("<a href=\"job.korean?file=list&page="+(Integer.parseInt(p)-1)+"\">[이전]</a>");
+					out.print("<a href=\"jobafter.korean?file=list&page="+(Integer.parseInt(p)-1)+"\">[이전]</a>");
 				}
 				for(int i = pstart; i<pstart+shownum; i++){ %>
-					<a href="job.korean?file=list&page=<%=i%>">[<%=i%>]</a>
+					<a href="jobafter.korean?file=list&page=<%=i%>">[<%=i%>]</a>
 			<%
 					if(i==limit){break;}
 				}
 				if(Integer.parseInt(p)<limit){
-					out.print("<a href=\"job.korean?file=list&page="+(Integer.parseInt(p)+1)+"\">[다음]</a>");
+					out.print("<a href=\"jobafter.korean?file=list&page="+(Integer.parseInt(p)+1)+"\">[다음]</a>");
 				}
 			%>
 			</p>
 			
-			<form action="job.korean">
+			<form action="jobafter.korean">
 				<select name="keyword">
-					<option value="jobTitle">제목</option>
-					<option value="jobContent" >내용</option>
-					<option value="jobName" >글쓴이</option>
+					<option value="jafTitle">제목</option>
+					<option value="jafContent" >내용</option>
+					<option value="jafName" >글쓴이</option>
 				</select>
 				<input type="text" name="sreach">
 				<button type="submit">검색</button>
-				<button type="button"><a href="jobaddform.korean">글쓰기</a></button>
+				<button type="button"><a href="jobafteraddform.korean">글쓰기</a></button>
 			</form>
 			
 		<!-- content end -->

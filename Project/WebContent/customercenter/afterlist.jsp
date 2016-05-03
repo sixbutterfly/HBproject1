@@ -151,13 +151,13 @@
 			
 			<form action="after.korean">
 				<select name="keyword">
-					<option value="title">제목</option>
-					<option value="content" >내용</option>
-					<option value="name" >글쓴이</option>
+					<option value="aftTitle">제목</option>
+					<option value="aftContent" >내용</option>
+					<option value="aftName" >글쓴이</option>
 				</select>
-				<input type="afttext" name="sreach">
-				<button type="aftsubmit">검색</button>
-				<button type="aftbutton"><a href="afteraddform.korean">글쓰기</a></button>
+				<input type="text" name="sreach">
+				<button type="submit">검색</button>
+				<button type="button"><a href="afteraddform.korean">글쓰기</a></button>
 			</form>
 			
 		<!-- content end -->

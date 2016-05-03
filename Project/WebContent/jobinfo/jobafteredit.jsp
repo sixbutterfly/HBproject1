@@ -1,13 +1,13 @@
+<%@page import="com.hb.model.jobafter.jobafterDto"%>
 <%@page import="com.hb.model.job.jobDto"%>
 <%@page import="com.hb.model.notice.noticeDto"%>
-<%@page import="com.hb.model.register.registerDto"%>
-<%@page import="java.util.ArrayList"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>메인 페이지</title>
+<title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/grid.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/header.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav.css"/>
@@ -15,6 +15,7 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/subnav5.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/aside2.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/CLEditor1_4_5/jquery.cleditor.css"/>
 <style type="text/css">
 	.title>p{
 		font-size: 30pt;
@@ -28,16 +29,23 @@
 		border-bottom: 3px solid #ddd;
 		color: #666;
 	}
+	
 	.table{
 		width: 700px;
 		margin: 10px auto;
 	}
 	.table th{
 		background-color: rgba(204,229,255,0.5);
-	}
-	.table tr{
 		text-align: center;
 	}
+	.table tr{
+		height: 30px;
+	}
+	.table input{
+		height: 20px;
+		border: 0px;
+	}
+	
 	.content button{
 		width: 50px;
 	}
@@ -51,16 +59,10 @@
 </style>
 <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
 <script type="text/javascript" src="js/menu.js"></script>
+<script type="text/javascript" src="CLEditor1_4_5/jquery.cleditor.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		$('.table+button+button').click(function(){
-			if(confirm("게시물을 삭제하시겠습니까?")){
-				alert("삭제가 완료되었습니다.");
-			}else{
-				alert("삭제가 취소되었습니다.");
-				return false;
-			}
-		});
+		$('#editor').cleditor();
 	});//ready end
 </script>
 </head>
@@ -77,25 +79,22 @@
 		<!-- content start -->
 			<div class="title">
 				<p>EMPLOYMENT</p>
-				<span>채용 정보</span>
+				<span>취업 후기</span>
 			</div>
-			
 			<%
-				jobDto dto = (jobDto) request.getAttribute("dto");
+				jobafterDto dto = (jobafterDto) request.getAttribute("dto");
 			%>
-			<form action="jobeditform.korean">
-				<input type="hidden" name="jobNo" value="<%=dto.getJobNo() %>">
+			<form action="jobafteredit.korean">
+				<input type="hidden" name="jafNo" value="<%=dto.getJafNo() %>">
 				<table class="table">
-					<tr><th>작성일</th><td><%=dto.getJobDate() %></td>
-						<th>작성자</th><td><%=dto.getJobName() %></td>
-					</tr>
-					<tr><th>제목</th><td colspan="4"><%=dto.getJobTitle() %></td></tr>
-					<tr><th colspan="5">내용</th></tr>
-					<tr><td colspan="5"><%=dto.getJobContent() %></td></tr>
+					<tr><th>제목</th><td colspan="3"><input type="text" name="title" value="<%=dto.getJafTitle() %>"/></td>
+					<th>작성자</th><td><input type="text" name="name" value="<%=dto.getJafName() %>" readonly="readonly"></td></tr>
+					<tr><th colspan="6">내용</th></tr>
+					<tr><td colspan="6"><textarea name="content" id="editor"><%=dto.getJafContent() %></textarea></td></tr>
 				</table>
 				<button type="submit">수정</button>
-				<button type="button"><a href="jobdelete.korean?jobNo=<%=dto.getJobNo() %>">삭제</a></button>
-				<button type="button"><a href="job.korean">목록</a></button>
+				<button type="reset">취소</button>
+				<button type="button"><a href="jobafter.korean">목록</a></button>
 			</form>
 			
 		<!-- content end -->

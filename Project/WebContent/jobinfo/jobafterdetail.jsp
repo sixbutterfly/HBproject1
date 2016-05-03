@@ -1,3 +1,4 @@
+<%@page import="com.hb.model.jobafter.jobafterDto"%>
 <%@page import="com.hb.model.job.jobDto"%>
 <%@page import="com.hb.model.notice.noticeDto"%>
 <%@page import="com.hb.model.register.registerDto"%>
@@ -77,25 +78,25 @@
 		<!-- content start -->
 			<div class="title">
 				<p>EMPLOYMENT</p>
-				<span>채용 정보</span>
+				<span>취업 후기</span>
 			</div>
 			
 			<%
-				jobDto dto = (jobDto) request.getAttribute("dto");
+				jobafterDto dto = (jobafterDto) request.getAttribute("dto");
 			%>
-			<form action="jobeditform.korean">
-				<input type="hidden" name="jobNo" value="<%=dto.getJobNo() %>">
+			<form action="jobaftereditform.korean">
+				<input type="hidden" name="jafNo" value="<%=dto.getJafNo() %>">
 				<table class="table">
-					<tr><th>작성일</th><td><%=dto.getJobDate() %></td>
-						<th>작성자</th><td><%=dto.getJobName() %></td>
+					<tr><th>작성일</th><td><%=dto.getJafDate() %></td>
+						<th>작성자</th><td><%=dto.getJafName()%></td>
 					</tr>
-					<tr><th>제목</th><td colspan="4"><%=dto.getJobTitle() %></td></tr>
+					<tr><th>제목</th><td colspan="4"><%=dto.getJafTitle() %></td></tr>
 					<tr><th colspan="5">내용</th></tr>
-					<tr><td colspan="5"><%=dto.getJobContent() %></td></tr>
+					<tr><td colspan="5"><%=dto.getJafContent() %></td></tr>
 				</table>
 				<button type="submit">수정</button>
-				<button type="button"><a href="jobdelete.korean?jobNo=<%=dto.getJobNo() %>">삭제</a></button>
-				<button type="button"><a href="job.korean">목록</a></button>
+				<button type="button"><a href="jobafterdelete.korean?jafNo=<%=dto.getJafNo() %>">삭제</a></button>
+				<button type="button"><a href="jobafter.korean">목록</a></button>
 			</form>
 			
 		<!-- content end -->
