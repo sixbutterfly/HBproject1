@@ -15,7 +15,7 @@ import com.hb.model.member.MemberDto;
 
 
 @WebServlet("/manageall.korean")
-public class Manage extends HttpServlet{
+public class ManageAll extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -27,7 +27,6 @@ public class Manage extends HttpServlet{
 			e.printStackTrace();
 		}
 		req.setAttribute("list", list);
-		
 		req.getRequestDispatcher("mypage/manager/manageAll.jsp").forward(req, resp);
 	}
 }

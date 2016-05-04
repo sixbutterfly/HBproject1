@@ -14,7 +14,7 @@ ResultSet rs=pstmt.executeQuery();
 boolean result=false;
 if(rs.next()){
 	result=true;
-}else{
+}else {
 	result=false;
 }
 rs.close();

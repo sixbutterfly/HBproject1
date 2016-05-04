@@ -14,18 +14,16 @@ import com.hb.model.member.MemberDto;
 public class ManageLevel extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
-		System.out.println(Integer.parseInt(req.getParameter("chlevel")));
-		System.out.println(Integer.parseInt(req.getParameter("idx")));
+		int memno = Integer.parseInt(req.getParameter("num"));
 		int level = Integer.parseInt(req.getParameter("chlevel"));
-		int memno = Integer.parseInt(req.getParameter("idx"));
 		MemberDao dao = new MemberDao();
 		MemberDto dto = new MemberDto(memno, level);
 		int result = dao.updateLevel(dto);
 		
 		if(result>0){
-			req.getRequestDispatcher("/menageAll.korean").forward(req, resp);
+			resp.sendRedirect("manageall.korean");
 		}else{
-			req.getRequestDispatcher("/mypage.korean").forward(req, resp);
+			resp.sendRedirect("mypage.korean");
 		}
 	}
 
@@ -33,14 +31,3 @@ public class ManageLevel extends HttpServlet {
 		doGet(req, resp);
 	}
 }
-
-
-
-
-
-
-
-
-
-
-

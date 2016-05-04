@@ -154,5 +154,4 @@ public class MemberDao {
 		}
 		return result;
 	}//updateOne end
-	
 }

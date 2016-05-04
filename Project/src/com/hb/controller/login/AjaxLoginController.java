@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.hb.model.member.MemberDao;
 
-
 @WebServlet("/login/ajaxlogin.korean")
 public class AjaxLoginController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
