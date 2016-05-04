@@ -1,6 +1,6 @@
 package com.hb.model.sturoom;
 
-public class sturoomDto {
+public class SturoomDto {
 
 	private int roomNo;
 	private int curNo;

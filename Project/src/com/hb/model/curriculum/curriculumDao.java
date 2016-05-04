@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
-import com.hb.model.sturoom.sturoomDao;
+import com.hb.model.sturoom.SturoomDao;
 import com.hb.util.DB;
 
 public class curriculumDao {

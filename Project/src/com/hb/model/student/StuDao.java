@@ -23,7 +23,7 @@ public class StuDao {
 
 	public ArrayList selectAll() {
 		ArrayList<StuDto> list = new ArrayList<StuDto>();
-		sql = "SELECT STUDENT.STUNO, STUDENT.ROOMNO, MEMBER.MEMNAME FROM STUDENT, MEMBER WHERE STUDENT.MEMNO = MEMBER.MEMNO";
+		sql = "SELECT STUDENT.STUNO, STUDENT.ROOMNO, MEMBER.MEMNAME FROM STUDENT, MEMBER WHERE STUDENT.MEMNO = MEMBER.MEMNO order by STUDENT.STUNO";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -50,7 +50,7 @@ public class StuDao {
 	
 	public ArrayList<StuDto> selectWaitingList() {
 		ArrayList<StuDto> list = new ArrayList(); 
-		sql = "select stuno, memname, roomno from student, member where student.memno = member.memno and roomno is null";
+		sql = "select stuno, memname, roomno from student, member where student.memno = member.memno and roomno is null order by STUDENT.STUNO";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -75,7 +75,7 @@ public class StuDao {
 		return list;
 	}//selectWaitingList end
 
-	public int insertRoomno(String[] stulist, String roomno) {
+	public int updateRoomno(String[] stulist, String roomno) {
 		int result = 0;
 		sql = "UPDATE STUDENT SET ROOMNO = ? WHERE STUNO = ?";
 		try {
@@ -142,6 +142,19 @@ public class StuDao {
 		}
 		return result;
 	}//addOne end
+
+	public int addRoom(String newroomno) {
+		int result = 0;
+		sql = "insert into sturoom (roomno, tchno, curno) values (?, null, null)";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1,newroomno);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 	
 	
 }//class end

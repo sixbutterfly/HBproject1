@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.hb.model.room.RoomDao;
 import com.hb.model.student.StuDao;
 import com.hb.model.student.StuDto;
 import com.hb.model.teacher.TeacherDao;

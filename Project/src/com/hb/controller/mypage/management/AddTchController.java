@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.hb.model.room.RoomDao;
+import com.hb.model.sturoom.SturoomDao;
 import com.hb.model.teacher.TeacherDao;
 import com.hb.model.teacher.TeacherDto;
 
@@ -26,7 +26,7 @@ public class AddTchController extends HttpServlet {
 		String roomlist[] = req.getParameterValues("roomlist"+"[]");
 		
 		//강의실 테이블 업데이트
-		RoomDao rdao = new RoomDao();
+		SturoomDao rdao = new SturoomDao();
 		int result1 = rdao.updateAll(tchlist, roomlist);
 		//강사 테이블 업데이트
 		TeacherDao tdao = new TeacherDao();

@@ -102,7 +102,6 @@ public class TeacherDao {
 		}
 		return result;
 	}
-	
 	public ArrayList<TeacherDto> attdTeacherName() {
 		ArrayList<TeacherDto> list = new ArrayList();
 		sql = "select m.memName from member m, teacher t, stuRoom r where m.memNo = t.memNo and r.stuRoom = ?;";

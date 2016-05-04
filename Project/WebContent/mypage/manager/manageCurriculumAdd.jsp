@@ -1,4 +1,4 @@
-<%@page import="com.hb.model.sturoom.sturoomDto"%>
+<%@page import="com.hb.model.sturoom.SturoomDto"%>
 <%@page import="com.hb.model.curriculum.curriculumDto"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -7,13 +7,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>메인 페이지</title>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/grid.css"/>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/header.css"/>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav.css"/>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/loginForm.css"/>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/subnav5.css"/>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/aside2.css"/>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/grid.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/header.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/nav.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/loginForm.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/subnav5.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/aside2.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/footer.css"/>
 <style type="text/css">
 	.title>p{
 		font-size: 30pt;
@@ -72,8 +72,8 @@ $(document).ready(function(){
 			</div>
 			
 			<%
-				ArrayList<sturoomDto> list = (ArrayList)request.getAttribute("list");
-			%>
+							ArrayList<SturoomDto> list = (ArrayList)request.getAttribute("list");
+						%>
 			
 			<form action="addcurriculum.korean">
 			<div id="cur">
@@ -82,8 +82,8 @@ $(document).ready(function(){
 					<li>교육 시작날짜 : <input type="date" name="curDate"/></li>
 					<li>교육 장소 : <select name="curLocation">
 									<%
-										for(sturoomDto bean : list){
-											if(bean.getCurNo()==0){
+										for(SturoomDto bean : list){
+																		if(bean.getCurNo()==0){
 									%>
 										<option value="<%=bean.getRoomNo() %>강의실"><%=bean.getRoomNo() %>강의실</option>
 									<%		}
