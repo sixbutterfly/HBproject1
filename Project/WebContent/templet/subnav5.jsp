@@ -9,6 +9,7 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		var level = <%= (Integer)session.getAttribute("level") %>;
+		console.log(level);
 	switch (level) {
 		case 0:
 			$(".guest").css("display", "initial");

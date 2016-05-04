@@ -1,3 +1,35 @@
+-------------------------------------------------------------------------------
+-- 시퀀스 삭제 --
+
+drop SEQUENCE mng_seq;
+
+drop SEQUENCE attd_seq;	
+
+drop SEQUENCE grd_seq;
+
+drop SEQUENCE mem_seq;
+
+drop SEQUENCE reg_seq;
+
+drop SEQUENCE sal_seq;
+
+drop SEQUENCE stu_seq;
+
+drop SEQUENCE cur_seq;
+
+drop SEQUENCE room_seq;
+
+drop SEQUENCE tch_seq;
+
+drop SEQUENCE not_seq;
+drop SEQUENCE qna_seq;
+drop SEQUENCE aft_seq;
+drop SEQUENCE job_seq;
+drop SEQUENCE jaf_seq;
+
+-------------------------------------------------------------------------------
+-- 시퀀스 생성 --
+
 CREATE SEQUENCE mng_seq start with 1 increment by 1 maxvalue 1000;
 
 CREATE SEQUENCE attd_seq start with 1 increment by 1 maxvalue 1000;	

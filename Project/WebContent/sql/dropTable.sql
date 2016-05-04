@@ -24,37 +24,16 @@ drop table management CASCADE CONSTRAINT purge;
 
 drop table after CASCADE CONSTRAINT purge;
 
-
--- studyCur 테이블이 curriculum으로 바뀜.
 drop table curriculum CASCADE CONSTRAINT purge;
 
 drop table authority CASCADE CONSTRAINT purge;
 
+drop table jobinfo CASCADE CONSTRAINT purge;
+
+drop table jobafter CASCADE CONSTRAINT purge;
+
 drop table notice CASCADE CONSTRAINT purge;
 
 purge recyclebin;
--------------------------------------------------------------------------------
--- 시퀀스 삭제 --
 
-drop SEQUENCE adm_seq;
-
-drop SEQUENCE attd_seq;	
-
-drop SEQUENCE grd_seq;
-
-drop SEQUENCE mem_seq;
-
-drop SEQUENCE reg_seq;
-
-drop SEQUENCE sal_seq;
-
-drop SEQUENCE stu_seq;
-
-drop SEQUENCE cur_seq;
-
-drop SEQUENCE room_seq;
-
-drop SEQUENCE tch_seq;
-
-drop SEQUENCE not_seq;
 
