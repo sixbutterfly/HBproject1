@@ -74,9 +74,9 @@ ALTER TABLE ATTEND ADD attdValue29 VARCHAR2(10) NULL;
 ALTER TABLE ATTEND ADD attdValue30 VARCHAR2(10) NULL;
 ALTER TABLE ATTEND ADD attdValue31 VARCHAR2(10) NULL;
 
-ALTER TABLE member DROP COLUMN joinDate;
+--삭제ALTER TABLE member DROP COLUMN joinDate;
 
-ALTER TABLE teacher ADD tchName VARCHAR2(30) NULL;
+--삭제ALTER TABLE teacher ADD tchName VARCHAR2(30) NULL;
 
 ALTER TABLE ATTEND DROP COLUMN attdValue1;
 ALTER TABLE ATTEND DROP COLUMN attdValue2;
@@ -111,14 +111,27 @@ ALTER TABLE ATTEND DROP COLUMN attdValue30;
 ALTER TABLE ATTEND DROP COLUMN attdValue31;
 ALTER TABLE ATTEND DROP COLUMN attdDate;
 
-ALTER TABLE ATTEND ADD attdDate date NULL;
+--한국인삭제ALTER TABLE ATTEND ADD attdDate date NULL;
 
-ALTER TABLE ATTEND ADD atvNo number(4) NULL;
+--한국인삭제ALTER TABLE ATTEND ADD atvNo number(4) NULL;
 
-ALTER TABLE ATTEND DROP COLUMN atvno;
+--한국인삭제ALTER TABLE ATTEND DROP COLUMN atvno;
 -- notice 테이블 컬럼 변경
 alter table notice add(test clob);
 alter table notice drop column content;
 alter table notice rename column test to content;
 alter table notice modify (name varchar2(50));
 alter table notice modify (title varchar2(100));
+
+--한국인 테이블 참조 변경 attend에서 stuNo를 참조 받는게 아닌 student에서 attdNo를 참조하도록
+alter table attend drop column stuNo;
+ALTER TABLE student ADD attdNo number(5) NULL;
+ALTER TABLE student
+	ADD ( FOREIGN KEY (attdNo) REFERENCES attend(attdNo) ON DELETE SET NULL);
+	
+select * from student;
+
+select * from attend;
+
+update student set attdNo = 1 where stuNo = 11;
+

@@ -22,7 +22,6 @@ public class MainCotroller extends HttpServlet {
 			request.getSession().setAttribute("login", false);
 			++start;
 		}
-		request.getRequestDispatcher("main.jsp").forward(request, response);		
 		
 		noticeDao dao = new noticeDao();
 		ArrayList<noticeDto> list = dao.selectList();

@@ -28,7 +28,7 @@ public class IsLoginController extends HttpServlet {
 			
 			request.setAttribute("level", authNo);
 			request.setAttribute("id", id);
-			response.sendRedirect("../main.jsp");
+			response.sendRedirect("../index.korean");
 		}
 		else{
 			request.getSession().setAttribute("login", false);

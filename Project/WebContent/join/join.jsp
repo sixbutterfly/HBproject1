@@ -451,7 +451,7 @@
 	</div>
 <div>
 	<div class="button">
-		<button class="subbtn" type="submit" id="submit">확인</button>
+		<button class="subbtn" type="submit">확인</button>
 		<button class="subbtn" type="reset" onclick="history.back();">취소</button>
 	</div>
 	</form>

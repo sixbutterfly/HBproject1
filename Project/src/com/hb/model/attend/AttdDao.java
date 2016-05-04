@@ -87,7 +87,7 @@ public class AttdDao {
 							+ " nvl(attdvalue23,'-'), nvl(attdvalue24,'-'), nvl(attdvalue25,'-'), nvl(attdvalue26,'-'), nvl(attdvalue27,'-'), nvl(attdvalue28,'-'), nvl(attdvalue29,'-'), nvl(attdvalue30,'-'), nvl(attdvalue31,'-')" 
 							+ " from attend a," 
 							+ " (" 
-						    + " select memName, stuNo from member m, student s where m.memNo = s.memNo" 
+						    + " select memName from member m, student s where m.memNo = s.memNo" 
 						    + " and s.roomNo = (select r.roomNo from stuRoom r where " 
 						    + "	 r.tchNo = (select t.tchNo from member m, teacher t where m.memno = t.memno and m.memid='" +memberId  + "'))" 
 						    + "	 ) s " 
@@ -160,7 +160,7 @@ public class AttdDao {
 			return stuName;
 		}
 
-		public String insertAttdValue(String attdDate, String attdVal, String attdNo, String tchId) {
+		/*public String updateAttdValue(String attdDate, String attdVal, String attdNo, String tchId) {
 			String sql = "update attend  into attend"
 							+ " (attdNo, stuNo, attdValue1, attdValue2, attdValue3, attdValue4, attdValue5, attdValue6, attdValue7, attdValue8,"
 							+ " attdValue9, attdValue10, attdValue11, attdValue12, attdValue13, attdValue14, attdValue15, attdValue16, attdValue17, attdValue18," 
@@ -180,7 +180,7 @@ public class AttdDao {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		}
+		}*/
 		
 		public ArrayList<AttdDto> selectStuAttd(String memberId) {
 			ArrayList<AttdDto> list = new ArrayList<AttdDto>();

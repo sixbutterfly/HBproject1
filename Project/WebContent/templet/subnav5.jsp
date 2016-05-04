@@ -8,7 +8,8 @@
 <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		var level = <%= (Integer)session.getAttribute("level") %>;
+		<%-- var level = <%= (Integer)session.getAttribute("level") %>; --%>
+		var level = 9;
 	switch (level) {
 		case 0:
 			$(".guest").css("display", "initial");
@@ -24,6 +25,9 @@
 			break;
 		case 4:
 			$(".student").css("display", "initial");
+			break;
+		case 9:
+			$(".eachmenu>.menu").css("display", "initial");
 			break;
 		}
 	});

@@ -14,6 +14,6 @@ public class LoginOutController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getSession().invalidate();
 		request.getSession().setAttribute("login", false);
-		response.sendRedirect("../main.jsp");	
+		response.sendRedirect("../index.korean");	
 	}
 }
