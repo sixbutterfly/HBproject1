@@ -1,3 +1,4 @@
+<%@ page import="com.hb.model.grade.GradeDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -7,13 +8,22 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/grid.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/header.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav.css"/>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/subnav0.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/loginForm.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/subnav5.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/aside2.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
 <style type="text/css">
-	.content{
-		height: 800px;
+	.title>p{
+		font-size: 30pt;
+		font-style: oblique;
+	}
+	.title>span{
+		font-size: 15pt;
+	}
+	.title{
+		margin: 20px;
+		border-bottom: 3px solid #ddd;
+		color: #666;
 	}
 </style>
 <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
@@ -30,11 +40,20 @@
 		<%@include file="/templet/subnav5.jsp" %>
 		
 		<!-- content start -->
-			<h1>성적 입력</h1>
-			<table>
+		
+		<% GradeDto bean = (GradeDto)request.getAttribute("bean"); %>
+		
+			<div class="title">
+				<p>MY PAGE</p>
+				<span>성적 입력</span>
+			</div>
+			<table border="1">
 				<tr><th>학번</th><th>이름</th><th>강의실</th><th>자바</th><th>웹</th><th>프레임워크</th></tr>
+				<tr><td><%=bean.getStuno() %></td><td><%=bean.getMemname() %></td><td><%=bean.getRoomno() %></td><td><%=bean.getJavagrade() %></td><td><%=bean.getWebgrade() %></td><td><%=bean.getFramegrade() %></td></tr>
 			</table>
-			이름을 클릭하면 입력 페이지로 이동
+			
+			
+			
 		<!-- content end -->
 		
 		<!-- aside2 -->

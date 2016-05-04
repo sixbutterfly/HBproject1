@@ -12,13 +12,13 @@ public class TeacherDto {
 	
 	private int tchno;
 	private String tchname;
-	private int roomno;
+	private String roomno;
 	
-	public int getRoomno() {
+	public String getRoomno() {
 		return roomno;
 	}
 
-	public void setRoomno(int roomno) {
+	public void setRoomno(String roomno) {
 		this.roomno = roomno;
 	}
 

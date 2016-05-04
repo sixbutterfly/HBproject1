@@ -7,6 +7,8 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/grid.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/header.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/loginForm.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/subnav1.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
 <style type="text/css">
 div>p {
@@ -53,11 +55,11 @@ button{
 <script type="text/javascript" src="js/menu.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		$('button').click(function(){
+		$('#joinagree').click(function(){
 			var agr1 = $('#agree1').is(':checked');
 			var agr2 = $('#agree2').is(':checked');
 			  if(agr1==true && agr2==true) {
-				  $('#link').attr("action","join.do").submit();
+				  $('#link').attr("action","join.korean").submit();
 			  }
 			  else {
 				  if(!$('#agree1').is(':checked')){
@@ -80,7 +82,8 @@ button{
 		<!-- nav -->
 		<%@include file="/templet/nav.jsp" %>
 		<!-- aside1 -->
-		<%@include file="/templet/subnav0.jsp" %>
+		<%@include file="/templet/loginForm.jsp" %>
+		<%@include file="/templet/subnav1.jsp" %>
 	<div>
 		<p>회원가입동의</p>
 		<hr />
@@ -319,8 +322,8 @@ button{
 <div class="subbutton">
 	<form id="link" >
 	<div class="button">
-	<button type="submit">확인</button>
-	<button type="reset">취소</button>
+	<button type="submit" id="joinagree">확인</button>
+	<button type="reset" onclick="history.back();">취소</button>
 	</div>
 	</form>
 </div>

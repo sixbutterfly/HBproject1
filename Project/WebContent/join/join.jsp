@@ -1,4 +1,4 @@
-<%@page import="com.hb.model.login.MemberDto"%>
+<%@page import="com.hb.model.member.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -8,6 +8,8 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/grid.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/header.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/loginForm.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/subnav1.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
 <style type="text/css">
 	div>p{
@@ -115,14 +117,14 @@
     font-weight:bold;
    }
  #popup{
-    width:400px;
-    height:300px;
-    background:#dddddd;
-    position:absolute;
-    top:10px;
-    left:500px;
-    text-align:center; 
-    border:2px solid #000;
+    width: 350px;
+    height: 180px;
+    background: #DAFCd1;
+    position: absolute;
+    top: 150px;
+    left: 500px;
+    text-align: center;
+    border: 2px solid #000;
     display: none;
    }
 .errmsg{
@@ -143,23 +145,27 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('#overlab').click(function(){
-			$('#popup').show();
 			var id=$('#id').val();
+			if(id==""||id==null){
+						$('#popup>div>span').text("아이디를 입력하세요!");
+			}else{
 			$.ajax({
-				url:"overlab.jsp",
+				url:"join/overlab.jsp",
 				data:"id="+id,
 				type:"post",
 				dataType:"xml",
 				success:function(data){
 					var using=$(data).find("result").text();
-					if(using='true'){
+					if(using=='true'){
 						$('#popup>div>span').text("사용중인 아이디입니다");
 					}else{
 						$('#popup>div>span').text("사용 가능한 아이디입니다");
+						$('#overlab').next().text("");
 					}
 				}
 			});
-			
+			}
+			$('#popup').show();
 			return false;
 			});
 		$('#popclose').click(function(){
@@ -167,15 +173,15 @@
 			return false;
 		});
 		$('#id').keyup(function(){
-		if($('#id').val().match(/[`~!@#$%^&*-=|\\\'\";:\/?]/gi)){
-			alert("특수문자는 사용할 수 없습니다.");
+		if($('#id').val().match(/[^a-zA-Z0-9_]/g)){
+			alert("특수문자 및 한글은 사용할 수 없습니다.");
 			$('#id').val("");
 			$('#id').focus();
 			return false;
 			}
 		});
 		
-		$('#pw'&&'#pw2').focus(function(){
+		$('input:gt(3)').focus(function(){
 			if(!($.trim($("#pw").val()).match(/^(?=.*\d)(?=.*[A-z])[A-z0-9]{8,20}$/))){
 				$('#pw').next().text(' 영문 숫자조합의 8~20자리의 비밀번호여야 합니다');
 				$('#pw').focus();
@@ -185,7 +191,7 @@
 					return false;
 	 		}
 		});
-		$('#pw2'&&'#name').focus(function(){
+		$('input:gt(4)').focus(function(){
 			if($('#pw2').val()!=$('#pw').val()){
 				$('#pw2').next().text(' 비밀번호는 동일해야합니다.');
 				$('#pw2').focus();
@@ -244,7 +250,7 @@
 		$('#emailselect').change(email);
 		
 		
-		$('#submit').click(function(){
+		$('button:eq(2)').click(function(){
 			if($('#id').val()==""||$('#id').val()==null){
 				alert("id를 입력하세요!");
 				$('#id').focus();
@@ -268,11 +274,32 @@
 				alert("주소를 입력하세요!");
 				$('#addrresult2').focus();
 				return false;
-			}else{}
+			}else{
+				return false;
+			} 
 		});
+		
+		$('button:eq(2)').click(function(){
+			var id=$('#id').val();
+			$.ajax({
+				url:"join/overlab.jsp",
+				data:"id="+id,
+				type:"post",
+				dataType:"xml",
+				success:function(data){
+					var using=$(data).find("result").text();
+					if(using=='true'){
+						alert('사용중인 아이디입니다!');
+						return false;
+					}else{
+						$('form').submit();
+						return false;
+					}
+				}
+			});
+		}); 
 	});
 </script>
-
 </head>
 <body>
 	<div class="container_12">
@@ -281,7 +308,8 @@
 		<!-- nav -->
 		<%@include file="/templet/nav.jsp" %>
 		<!-- aside1 -->
-		<%@include file="/templet/subnav0.jsp" %>
+		<%@include file="/templet/loginForm.jsp" %>
+		<%@include file="/templet/subnav1.jsp" %>
 		
 	<div>
 		<p>회원가입</p>
@@ -291,24 +319,24 @@
 		<img src="join/joinimage/step2.gif"/>
 	</div>
 	<div id="popup">
-		<div style="height: 270px;"><span></span></div>
+		<div style=" height:80px; margin-top:70px;"><span></span></div>
 		<div id="popclose">닫기</div>
 	</div>
-	<form action="memberjoin.do" method="get">
+	<form action="memberjoin.korean" method="post">
 	<div>
-		<p><b><img class="btn" src="join/joinimage/btn_r.gif"> 회원정보입력</b></p>
+		<p><b><img class="btn" src="join/joinimage/btn_r.gif"> 회원정보입력</b><label style="font-size:9pt">*표 필수 입력</label></p>
 		<hr id="hrsub"/>
-		<div class="form"><label>아이디</label></div>
+		<div class="form"><label>아이디*</label></div>
 		<div class="forminput"><input type="text" name="id" class="inputwidth" id="id"/>
-		<button type="submit" id="overlab" name="overlab">중복확인</button><span class="errmsg"></span>
+		<button type="submit" id="overlab" name="overlab">중복확인</button><span class="errmsg"> 영문 및 숫자만 사용 가능합니다</span>
 		</div>
-		<div class="form"><label>비밀번호</label></div>
+		<div class="form"><label>비밀번호*</label></div>
 		<div class="forminput"><input type="password" name="pw" class="inputwidth" id="pw" placeholder="비밀번호"/><span class="errmsg"></span></div>
-		<div class="form"><label>비밀번호확인</label></div>
+		<div class="form"><label>비밀번호확인*</label></div>
 		<div class="forminput"><input type="password" name="pw2" class="inputwidth" id="pw2" placeholder="비밀번호 확인"/><span class="errmsg"></span></div>
-		<div class="form"><label>이름</label></div>
+		<div class="form"><label>이름*</label></div>
 		<div class="forminput"><input type="text" class="inputwidth" id="name" name="name"/></div>
-		<div class="form"><label>성별</label></div>
+		<div class="form"><label>성별*</label></div>
 		<div class="forminput">
 		<input type="radio" name="gender" value="남자" class="radio" id="male">남자
 		<input type="radio" name="gender" value="여자" class="radio" id="female">여자
@@ -339,7 +367,7 @@
 			-<input type="text" name="tel2" class="inputtel" maxlength="4" id="tel2">
 			-<input type="text" name="tel3" class="inputtel" maxlength="4" id="tel3"><span class="errmsg"></span>
 		</div>
-		<div class="form"><label>H.P</label></div>
+		<div class="form"><label>H.P*</label></div>
 		<div class="forminput">
 			<select name="phone">
 				<option value="010">010</option>
@@ -382,7 +410,7 @@
 			<input type="radio" name="emailagree" value="n" class="radio" checked><label class="emailagree">아니오</label>
 			
 		</div>
-		<div class="email"><label>주소</label></div>
+		<div class="email"><label>주소*</label></div>
 		<div class="emailset">
 		<input type="text" id="postnum" class="inputwidth" placeholder="우편번호" name="postnum"/>
 		<input type="button" id="serchaddr" value="우편번호 찾기" onclick="searchAddress()">
@@ -424,7 +452,7 @@
 <div>
 	<div class="button">
 		<button class="subbtn" type="submit" id="submit">확인</button>
-		<button class="subbtn" type="reset">취소</button>
+		<button class="subbtn" type="reset" onclick="history.back();">취소</button>
 	</div>
 	</form>
 </div>

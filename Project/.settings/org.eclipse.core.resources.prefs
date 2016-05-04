@@ -1,4 +1,13 @@
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=refs/remotes/origin/\u00ED\u0095\u009C\u00EA\u00B5\u00AD\u00EC\u009D\u00B8
 eclipse.preferences.version=1
 encoding//WebContent/js/login.js=UTF-8
 encoding//WebContent/js/login_page.js=UTF-8
 encoding//WebContent/login/login.jsp=UTF-8
+encoding//WebContent/sql/alterTable.sql=UTF-8
+encoding//WebContent/sql/insertTable.sql=UTF-8
+encoding//src/com/hb/controller/board/customercenter=UTF-8
+encoding//src/com/hb/controller/board/customercenter/NoticeAddFormController.java=UTF-8
+encoding//src/com/hb/controller/board/customercenter/NoticeListController.java=UTF-8
+encoding//src/com/hb/controller/mypage/management/CurriculumAddController.java=UTF-8

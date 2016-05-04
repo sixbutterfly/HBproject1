@@ -20,7 +20,9 @@
 				<div class="login">
 					<button>login</button>
 				</div>
-				<a class="reg">회원가입</a>
+
+				<a class="reg" href="agreejoin.korean">회원가입</a>
+
 					<%
 						}
 					}else{ %>
@@ -32,8 +34,10 @@
 				<div class="login">
 					<button>login</button>
 				</div>
-				<a class="reg">회원가입</a>
-				<%} %>				
-			</div>			
-			<div class="clear"></div>
 
+				<a class="reg" href="agreejoin.korean">회원가입</a>
+				<%} %>
+				
+			</div>
+			
+			<div class="clear"></div>

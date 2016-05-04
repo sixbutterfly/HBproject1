@@ -1,4 +1,4 @@
-<%@page import="com.hb.model.sturoom.sturoomDto"%>
+<%@page import="com.hb.model.sturoom.SturoomDto"%>
 <%@page import="com.hb.model.curriculum.curriculumDto"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -10,18 +10,19 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/grid.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/header.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/nav.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/loginForm.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/subnav5.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/aside2.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/footer.css"/>
 <style type="text/css">
-	.content>div>p{
+	.title>p{
 		font-size: 30pt;
 		font-style: oblique;
 	}
-	.content>div>span{
+	.title>span{
 		font-size: 15pt;
 	}
-	.content>div{
+	.title{
 		margin: 20px;
 		border-bottom: 3px solid #ddd;
 		color: #666;
@@ -41,6 +42,26 @@
 </style>
 <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
 <script type="text/javascript" src="js/menu.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#cur button').eq(0).click(function(){
+			if(confirm("정보를 수정하시겠습니까?")){
+				alert("수정을 완료하였습니다.");
+			}else{
+				alert("수정을 취소하였습니다.");
+				return false;
+			}
+		});
+		$('#cur button').eq(1).click(function(){
+			if(confirm("삭제한 정보는 복구할 수 업습니다.\n정말로 삭제하시겠습니까?")){
+				alert("삭제를 완료하였습니다.");
+			}else{
+				alert("삭제를 취소하였습니다.");
+				return false;
+			}
+		});
+	});//ready end
+</script>
 </head>
 <body>
 	<div class="container_12">
@@ -49,30 +70,31 @@
 		<!-- nav -->
 		<%@include file="/templet/nav.jsp" %>
 		<!-- aside1 -->
+		<%@include file="/templet/loginForm.jsp" %>
 		<%@include file="/templet/subnav5.jsp" %>
 		
 		<!-- content start -->
-			<div>
+			<div class="title">
 				<p>MY PAGE</p>
 				<span>커리큘럼 수정</span>
 			</div>
 			
 			<%
 							curriculumDto dto = (curriculumDto)request.getAttribute("dto");
-								ArrayList<sturoomDto> list = (ArrayList)request.getAttribute("list");
+												ArrayList<SturoomDto> list = (ArrayList)request.getAttribute("list");
 						%>
 			
 			<form action="curedit.korean">
 			<div id="cur">
-				<input type="hidden" name="curNo" value="<%=dto.getCurNo() %>"/>
+				<input type="hidden" name="curNo" value="<%=dto.getCurNo()%>"/>
 				<ul>
-					<li>커리큘럼 명 : <%=dto.getCurName() %></li>
-					<li>교육 시작날짜 : <input type="date" name="curDate" value="<%=dto.getCurDate() %>"/></li>
+					<li>커리큘럼 명 : <%=dto.getCurName()%></li>
+					<li>교육 시작날짜 : <input type="date" name="curDate" value="<%=dto.getCurDate()%>"/></li>
 					<li>교육 장소 : <select name="curLocation">
-										<option value="<%=dto.getCurLocation() %>" selected="selected"><%=dto.getCurLocation() %></option>
+										<option value="<%=dto.getCurLocation()%>" selected="selected"><%=dto.getCurLocation()%></option>
 									<%
-										for(sturoomDto bean : list){
-											if(bean.getCurNo()==0){
+										for(SturoomDto bean : list){
+																		if(bean.getCurNo()==0){
 									%>
 										<option value="<%=bean.getRoomNo() %>강의실"><%=bean.getRoomNo() %>강의실</option>
 									<%		}

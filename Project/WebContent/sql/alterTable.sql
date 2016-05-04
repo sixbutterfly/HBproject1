@@ -1,40 +1,46 @@
--- register table column attribute's some changed. (¡§«ˆ¿Á)
+-- register table column attribute's some changed. (Ï†ïÌòÑÏû¨)
 ALTER TABLE REGISTER MODIFY JOBINFO VARCHAR2(350);
 ALTER TABLE REGISTER MODIFY CONTENT VARCHAR2(200) NULL;
 
---∞≠ªÁ∞° ∞≠¿«Ω« π¯»£∏¶ ¬¸¡∂ πﬁ¿Ω
+--Í∞ïÏÇ¨Í∞Ä Í∞ïÏùòÏã§ Î≤àÌò∏Î•º Ï∞∏Ï°∞ Î∞õÏùå
 alter table teacher add (roomno number(5));
 ALTER TABLE teacher
 ADD FOREIGN KEY (roomno) REFERENCES sturoom(roomno);
 
--- stuCur ≈◊¿Ã∫Ì curriculum¿∏∑Œ ¿Ã∏ß ∫Ø∞Ê
+-- stuCur ÌÖåÏù¥Î∏î curriculumÏúºÎ°ú Ïù¥Î¶Ñ Î≥ÄÍ≤Ω
 rename studyCur to curriculum;
 
--- ƒø∏Æ≈ß∑≥ ≈◊¿Ã∫Ì null∞™ «„øÎ
+-- Ïª§Î¶¨ÌÅòÎüº ÌÖåÏù¥Î∏î nullÍ∞í ÌóàÏö©
 alter table curriculum modify(curNo null, tchNo null);
 
--- «–ª˝ ≈◊¿Ã∫Ì «‡¡§∫Œ π¯»£ ƒ√∑≥ ªË¡¶
+-- ÌïôÏÉù ÌÖåÏù¥Î∏î ÌñâÏ†ïÎ∂Ä Î≤àÌò∏ Ïª¨Îüº ÏÇ≠Ï†ú
 alter table student drop column admNo;
 
--- register ≈◊¿Ã∫Ì submitValue -> file1∑Œ ∫Ø∞Ê
+-- register ÌÖåÏù¥Î∏î submitValue -> file1Î°ú Î≥ÄÍ≤Ω
 alter table register rename column submitValue to file1;
 
--- register ≈◊¿Ã∫Ì file2ƒ√∑≥ √ﬂ∞°
+-- register ÌÖåÏù¥Î∏î file2Ïª¨Îüº Ï∂îÍ∞Ä
 alter table register add(file2 VARCHAR2(10));
 
+-- register ÔøΩÔøΩÔøΩÃ∫ÔøΩ file1, file2, gubun ÔøΩ√∑ÔøΩ ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ ÔøΩÔøΩÔøΩÔøΩ
+alter table register modify(file1 VARCHAR2(50));
+alter table register modify(file2 VARCHAR2(50));
+alter table register modify(gubun VARCHAR2(100));
+
+------member ÌÖåÏù¥Î∏î Î≥ÄÍ≤Ω
 ALTER TABLE MEMBER MODIFY (MEMPW VARCHAR2(30) NOT NULL,
 							MEMID VARCHAR2(30) NOT NULL,
 							MEMNAME VARCHAR2(30) NOT NULL,
 							MEMADDRESS VARCHAR2(100) NOT NULL,
 							MEMPHONE VARCHAR2(20) NOT NULL);
-------∏‚πˆ ≈◊¿Ã∫Ì º”º∫ ≥Œ∞™¿∏∑Œ ∫Ø∞Ê							
+------Î©§Î≤Ñ ÌÖåÏù¥Î∏î ÏÜçÏÑ± ÎÑêÍ∞íÏúºÎ°ú Î≥ÄÍ≤Ω							
 ALTER TABLE MEMBER ADD MEMTEL VARCHAR2(20) NULL;
-ALTER TABLE MEMBER ADD MEMGENDER VARCHAR2(10) NOT NULL;
+ALTER TABLE MEMBER ADD MEMGENDER VARCHAR2(20) NOT NULL;
 ALTER TABLE MEMBER ADD EMAILAGREE VARCHAR2(5) NOT NULL;
-------∏‚πˆ ≈◊¿Ã∫Ì º”º∫ √ﬂ∞°
+ALTER TABLE MEMBER ADD JOINDAY VARCHAR2(20) NOT NULL;
 
 
--- ATTEND table column attribute's æ∆¡÷ ∏π¿Ã changed. («—±π¿Œ)
+-- ATTEND table column attribute's ÏïÑÏ£º ÎßéÏù¥ changed. (ÌïúÍµ≠Ïù∏)
 ALTER TABLE ATTEND DROP COLUMN attdValue;
 ALTER TABLE ATTEND ADD attdValue1 VARCHAR2(10) NULL;
 ALTER TABLE ATTEND ADD attdValue2 VARCHAR2(10) NULL;
@@ -72,8 +78,6 @@ ALTER TABLE member DROP COLUMN joinDate;
 
 ALTER TABLE teacher ADD tchName VARCHAR2(30) NULL;
 
-select * from attend
-
 ALTER TABLE ATTEND DROP COLUMN attdValue1;
 ALTER TABLE ATTEND DROP COLUMN attdValue2;
 ALTER TABLE ATTEND DROP COLUMN attdValue3;
@@ -108,38 +112,13 @@ ALTER TABLE ATTEND DROP COLUMN attdValue31;
 ALTER TABLE ATTEND DROP COLUMN attdDate;
 
 ALTER TABLE ATTEND ADD attdDate date NULL;
-select * from attend;
 
 ALTER TABLE ATTEND ADD atvNo number(4) NULL;
 
-drop table attendValue;
-
-select * from attend;
-
 ALTER TABLE ATTEND DROP COLUMN atvno;
-
-select * from attend;
-
-
-select attdNo, memName, attdDate, nvl(attdvalue1,'-'), attdvalue2, attdvalue3, attdvalue4, attdvalue5, attdvalue6, attdvalue7, attdvalue8, attdvalue9, 
-
-attdvalue10, attdvalue11, attdvalue12, attdvalue13, attdvalue14, attdvalue15, attdvalue16, attdvalue17, attdvalue18, attdvalue19, attdvalue20, 
-
-attdvalue21, attdvalue22,
-attdvalue23, attdvalue24, attdvalue25, attdvalue26, attdvalue27, attdvalue28, attdvalue29, attdvalue30, attdvalue31
-from attend a, 
-(
-select memName, stuNo from member m, student s where m.memNo = s.memNo
-and s.roomNo = (select r.roomNo from stuRoom r where 
-r.tchNo = (select t.tchNo from member m, teacher t where m.memno = t.memno and m.memid='b'))
-) s
- where a.stuNo = s.stuNo;
- 
- select attdNo, memName, nvl(attdvalue1,'-'), nvl(attdvalue2,'-'), nvl(attdvalue3,'-'), nvl(attdvalue4,'-'), nvl(attdvalue5,'-'), nvl(attdvalue6,'-'), nvl(attdvalue7,'-'), nvl(attdvalue8,'-'), nvl(attdvalue9,'-'), nvl(attdvalue10,'-'),
-						 nvl(attdvalue11,'-'), nvl(attdvalue12,'-'), nvl(attdvalue13,'-'), nvl(attdvalue14,'-'), nvl(attdvalue15,'-'), nvl(attdvalue16,'-'), nvl(attdvalue17,'-'), nvl(attdvalue18,'-'), nvl(attdvalue19,'-'), nvl(attdvalue20,'-'), nvl(attdvalue21,'-'), nvl(attdvalue22,'-'),
-							 nvl(attdvalue23,'-'), nvl(attdvalue24,'-'), nvl(attdvalue25,'-'), nvl(attdvalue26,'-'), nvl(attdvalue27,'-'), nvl(attdvalue28,'-'), nvl(attdvalue29,'-'), nvl(attdvalue30,'-'), nvl(attdvalue31,'-')
-						 from attend a,	(select memName, stuNo from member m, student s where m.memNo = s.memNo and m.memid='a') s 
-						     where a.stuNo = s.stuNo;
-
-select memName from attend a,	(select memName, stuNo from member m, student s where m.memNo = s.memNo and m.memid='a') s 
-						     where a.stuNo = s.stuNo;
+-- notice ÌÖåÏù¥Î∏î Ïª¨Îüº Î≥ÄÍ≤Ω
+alter table notice add(test clob);
+alter table notice drop column content;
+alter table notice rename column test to content;
+alter table notice modify (name varchar2(50));
+alter table notice modify (title varchar2(100));

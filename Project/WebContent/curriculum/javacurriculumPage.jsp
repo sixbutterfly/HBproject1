@@ -9,22 +9,14 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/grid.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/header.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav.css"/>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/bxslider.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/loginForm.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/subnav5.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/aside2.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
 
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-1.12.2.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/menu.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery.bxslider.min.js"></script>
 
-<script type="text/javascript">
-	$(document).ready(function(){
-		$('.bxslider').bxSlider({
-		  'auto':true,
-		  'controls':false,
-		  'slideWidth':1500,
-		  });
-	}); //ready end
-</script>
 <style>
 	.table1 {
 		float: right;
@@ -91,7 +83,8 @@
 		<!-- nav -->
 		<%@include file="/templet/nav.jsp" %>
 		<!-- aside1 -->
-		<%@include file="/templet/aside1.jsp" %>
+		<%@include file="/templet/loginForm.jsp" %>
+		<%@include file="/templet/subnav2.jsp" %>
 		
 		<!-- content start -->
 		<br/>

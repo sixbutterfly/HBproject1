@@ -1,97 +1,159 @@
---ÀÚÀ¯·Ó°Ô Ãß°¡ÇØÁÖ¼¼¿ä!-----------
--- º¯°æ µÈ »çÇ×
--- authority(±ÇÇÑ) Ãß°¡
--- studyCur Ãß°¡
--- curNo : Ä¿¸®Å§·³ ¹øÈ£, curName : Ä¿¸®¹Ä·³ ÀÌ¸§, curLocation : ±³À°Àå¼Ò, curDateS : ±³À°½ÃÀÛ³¯Â¥, curDateE : ±³À° Á¾·á³¯Â¥, curSupply : ±³À°ÀÎ¿ø
--- °­ÀÇ½Ç Å×ÀÌºíÀÇ roomno´Â ½ÃÄö½º°¡ ¾Æ´Ñ ÀÏ¹İ °ªÀ» »ç¿ë ÇÒ °Í, curno¿Í tchno ³Î°ª Çã¿ëµÇ°Ô º¯°æ
--- register Ãß°¡/¹æ¾Æ¸§
+--ììœ ë¡­ê²Œ ì¶”ê°€í•´ì£¼ì„¸ìš”!-----------
+-- ë³€ê²½ ëœ ì‚¬í•­
+-- authority(ê¶Œí•œ) ì¶”ê°€
+-- studyCur ì¶”ê°€
+-- curNo : ì»¤ë¦¬í˜ëŸ¼ ë²ˆí˜¸, curName : ì»¤ë¦¬ë®¬ëŸ¼ ì´ë¦„, curLocation : êµìœ¡ì¥ì†Œ, curDateS : êµìœ¡ì‹œì‘ë‚ ì§œ, curDateE : êµìœ¡ ì¢…ë£Œë‚ ì§œ, curSupply : êµìœ¡ì¸ì›
+-- ê°•ì˜ì‹¤ í…Œì´ë¸”ì˜ roomnoëŠ” ì‹œí€€ìŠ¤ê°€ ì•„ë‹Œ ì¼ë°˜ ê°’ì„ ì‚¬ìš© í•  ê²ƒ, curnoì™€ tchno ë„ê°’ í—ˆìš©ë˜ê²Œ ë³€ê²½
+-- register ì¶”ê°€/ë°©ì•„ë¦„
 
 ----------------------------------------
--- º¯°æÇØ¾ß ÇÒ »çÇ×
--- ¸â¹ö Å×ÀÌºí¿¡ °¡ÀÔÀÏ ÄÃ·³ Ãß°¡ÇÏ´Â°Ô ÁÁÀ»µí
--- ÇàÁ¤ºÎ ÄÃ·³¸í º¯°æ(management)
+-- ë³€ê²½í•´ì•¼ í•  ì‚¬í•­
+-- ë©¤ë²„ í…Œì´ë¸”ì— ê°€ì…ì¼ ì»¬ëŸ¼ ì¶”ê°€í•˜ëŠ”ê²Œ ì¢‹ì„ë“¯
+-- í–‰ì •ë¶€ ì»¬ëŸ¼ëª… ë³€ê²½(management)
 ------------------------------------------
+insert into authority (authNo, departName) values (0, 'ì¼ë°˜ìœ ì €');
+insert into authority (authNo, departName) values (1, 'í–‰ì •ë¶€');
+insert into authority (authNo, departName) values (2, 'ì˜ì—…ë¶€');
+insert into authority (authNo, departName) values (3, 'ê°•ì‚¬');
+insert into authority (authNo, departName) values (4, 'í•™ìƒ');
+insert into authority (authNo, departName) values (5, 'ìˆ˜ë£Œì');
+insert into authority (authNo, departName) values (9, 'ê´€ë¦¬ì');
 
-insert into authority (authNo, departName) values (0, 'ÀÏ¹İÀ¯Àú');
-insert into authority (authNo, departName) values (1, 'ÇàÁ¤ºÎ');
-insert into authority (authNo, departName) values (2, '¿µ¾÷ºÎ');
-insert into authority (authNo, departName) values (3, '°­»ç');
-insert into authority (authNo, departName) values (4, 'ÇĞ»ı');
-insert into authority (authNo, departName) values (5, '¼ö·áÀÚ');
-insert into authority (authNo, departName) values (9, '°ü¸®ÀÚ');
-
---È¸¿ø Ãß°¡
-insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno) values (mem_seq.nextval, 1, 'korean', 'ÇÑ±¹ÀÎ', '¿ì¸®Áı', 'korea@korea.com', '000-0000-000', 1);
-insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno) values (mem_seq.nextval, 1, 'korean2', 'ÇÑ±¹ÀÎ2', '¿ì¸®Áı2', 'korea@korea.com2', '000-0000-0002', 1);
+--íšŒì› ì¶”ê°€
+insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno) values (mem_seq.nextval, 1, 'korean', 'í•œêµ­ì¸', 'ìš°ë¦¬ì§‘', 'korea@korea.com', '000-0000-000', 1);
+insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno) values (mem_seq.nextval, 1, 'korean2', 'í•œêµ­ì¸2', 'ìš°ë¦¬ì§‘2', 'korea@korea.com2', '000-0000-0002', 1);
 insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno) values (mem_seq.nextval, 'admin', 'admin', 'admin', 'address', 'email', 'phone', 9);
 
-insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno) values (mem_seq.nextval, 'kimnormal', 'kim', '±èÀÏ¹İ', '±èÀÏ¹İÀÇ Áı', 'kimnormal@naver.com', '
+insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno) values (mem_seq.nextval, 'kimnormal', 'kim', 'ê¹€ì¼ë°˜', 'ê¹€ì¼ë°˜ì˜ ì§‘', 'kimnormal@naver.com', '
 010-2599-8765', 0);
-insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno) values (mem_seq.nextval, 'kimdaeri', 'kim', '±è´ë¸®', '±è´ë¸®ÀÇ Áı', 'kimdaeri@gmail.com', '01
+insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno) values (mem_seq.nextval, 'kimdaeri', 'kim', 'ê¹€ëŒ€ë¦¬', 'ê¹€ëŒ€ë¦¬ì˜ ì§‘', 'kimdaeri@gmail.com', '01
 0-1633-7511', 1);
-insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno) values (mem_seq.nextval, 'kimsales', 'kim', '±è¿µ¾÷', '±è¿µ¾÷ÀÇ Áı', 'kimsales@gmail.com', '01
+insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno) values (mem_seq.nextval, 'kimsales', 'kim', 'ê¹€ì˜ì—…', 'ê¹€ì˜ì—…ì˜ ì§‘', 'kimsales@gmail.com', '01
 0-7544-9984', 2);
-insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno) values (mem_seq.nextval, 'kimteacher', 'kim', '±è¼±»ı', '±è¼±»ıÀÇ Áı', 'kimteacher@gmail.com',
+insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno) values (mem_seq.nextval, 'kimteacher', 'kim', 'ê¹€ì„ ìƒ', 'ê¹€ì„ ìƒì˜ ì§‘', 'kimteacher@gmail.com',
  '010-1599-7878', 3);
-insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno) values (mem_seq.nextval, 'kimstudent', 'kim', '±èÇĞ»ı', '±èÇĞ»ıÀÇ Áı', 'kimstudent@gmail.com',
+insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno) values (mem_seq.nextval, 'kimstudent', 'kim', 'ê¹€í•™ìƒ', 'ê¹€í•™ìƒì˜ ì§‘', 'kimstudent@gmail.com',
  '010-2468-7852', 4);
-insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno) values (mem_seq.nextval, 'kimgraduate', 'kim', '±èÁ¹¾÷', '±èÁ¹¾÷ÀÇ Áı', 'kimgraduate@gmail.com
+insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno) values (mem_seq.nextval, 'kimgraduate', 'kim', 'ê¹€ì¡¸ì—…', 'ê¹€ì¡¸ì—…ì˜ ì§‘', 'kimgraduate@gmail.com
 ', '010-3211-6123', 5);
-insert into member values (mem_seq.nextval, 1, 'korean', 'ÇÑ±¹ÀÎ', '¿ì¸®Áı', 'korea@korea.com', '000-0000-000', 1);
-insert into member values (mem_seq.nextval, 1, 'korean2', 'ÇÑ±¹ÀÎ2', '¿ì¸®Áı2', 'korea@korea.com2', '000-0000-0002', 1);
+insert into member values (mem_seq.nextval, 1, 'korean', 'í•œêµ­ì¸', 'ìš°ë¦¬ì§‘', 'korea@korea.com', '000-0000-000', 1);
+insert into member values (mem_seq.nextval, 1, 'korean2', 'í•œêµ­ì¸2', 'ìš°ë¦¬ì§‘2', 'korea@korea.com2', '000-0000-0002', 1);
 insert into member values (mem_seq.nextval, 'admin', 'admin', 'admin', 'address', 'email', 'phone', 9);
+--ê¶Œí•œ í…Œì´ë¸”
+insert into authority (authNo, departName) values (0, 'ì¼ë°˜ìœ ì €');
+insert into authority (authNo, departName) values (1, 'í–‰ì •ë¶€');
+insert into authority (authNo, departName) values (2, 'ì˜ì—…ë¶€');
+insert into authority (authNo, departName) values (3, 'ê°•ì‚¬');
+insert into authority (authNo, departName) values (4, 'í•™ìƒ');
+insert into authority (authNo, departName) values (5, 'ìˆ˜ë£Œì');
+insert into authority (authNo, departName) values (9, 'ê´€ë¦¬ì');
 
---ÇàÁ¤ºÎ Ãß°¡ (admNo,admName,memNo ¼ø)
+insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno, memtel, emailagree, memgender, joinday) values (mem_seq.nextval, 'kimnormal', 'kim', 'ï¿½ï¿½ï¿½Ï¹ï¿½', 'ï¿½ï¿½ï¿½Ï¹ï¿½ï¿½ï¿½ ï¿½ï¿½', 'kimnormal@naver.com', '
+010-2599-8765', 0, '02-2345-6789','y','ï¿½ï¿½ï¿½ï¿½','16/01/01');
+insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno, memtel, emailagree, memgender, joinday) values (mem_seq.nextval, 'kimdaeri', 'kim', 'ï¿½ï¿½ë¸®', 'ï¿½ï¿½ë¸®ï¿½ï¿½ ï¿½ï¿½', 'kimdaeri@gmail.com', '01
+0-1633-7511', 1, '02-3456-7890','y','ï¿½ï¿½ï¿½ï¿½','16/02/01');
+insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno, memtel, emailagree, memgender, joinday) values (mem_seq.nextval, 'kimsales', 'kim', 'ï¿½è¿µï¿½ï¿½', 'ï¿½è¿µï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½', 'kimsales@gmail.com', '01
+0-7544-9984', 2, '02-4567-8901','y','ï¿½ï¿½ï¿½ï¿½','16/03/01');
+insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno, memtel, emailagree, memgender, joinday) values (mem_seq.nextval, 'kimteacher', 'kim', 'ï¿½è¼±ï¿½ï¿½', 'ï¿½è¼±ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½', 'kimteacher@gmail.com',
+ '010-1599-7878', 3, '02-5678-9012','y','ï¿½ï¿½ï¿½ï¿½','16/04/01');
+insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno, memtel, emailagree, memgender, joinday) values (mem_seq.nextval, 'kimstudent', 'kim', 'ï¿½ï¿½ï¿½Ğ»ï¿½', 'ï¿½ï¿½ï¿½Ğ»ï¿½ï¿½ï¿½ ï¿½ï¿½', 'kimstudent@gmail.com',
+ '010-2468-7852', 4, '02-6789-0123','y','ï¿½ï¿½ï¿½ï¿½','16/05/01');
+insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno, memtel, emailagree, memgender, joinday) values (mem_seq.nextval, 'kimgraduate', 'kim', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½', 'kimgraduate@gmail.com
+', '010-3211-6123', 5, '02-7890-1234','y','ï¿½ï¿½ï¿½ï¿½','16/06/01');
+
+insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno,MEMGENDER,EMAILAGREE) values (mem_seq.nextval, 'kimnormal', 'kim', 'ï¿½ï¿½ï¿½Ï¹ï¿½', 'ï¿½ï¿½ï¿½Ï¹ï¿½ï¿½ï¿½ ï¿½ï¿½', 'kimnormal@naver.com', '
+010-2599-8765', 0,'ï¿½ï¿½ï¿½ï¿½','N');
+insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno,MEMGENDER,EMAILAGREE) values (mem_seq.nextval, 'kimdaeri', 'kim', 'ï¿½ï¿½ë¸®', 'ï¿½ï¿½ë¸®ï¿½ï¿½ ï¿½ï¿½', 'kimdaeri@gmail.com', '01
+0-1633-7511', 1,'ï¿½ï¿½ï¿½ï¿½','Y');
+insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno,MEMGENDER,EMAILAGREE) values (mem_seq.nextval, 'kimsales', 'kim', 'ï¿½è¿µï¿½ï¿½', 'ï¿½è¿µï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½', 'kimsales@gmail.com', '01
+0-7544-9984', 2,'ï¿½ï¿½ï¿½ï¿½','Y');
+insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno,MEMGENDER,EMAILAGREE) values (mem_seq.nextval, 'kimteacher', 'kim', 'ï¿½è¼±ï¿½ï¿½', 'ï¿½è¼±ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½', 'kimteacher@gmail.com',
+ '010-1599-7878', 3,'ï¿½ï¿½ï¿½ï¿½','N');
+insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno,MEMGENDER,EMAILAGREE) values (mem_seq.nextval, 'kimstudent', 'kim', 'ï¿½ï¿½ï¿½Ğ»ï¿½', 'ï¿½ï¿½ï¿½Ğ»ï¿½ï¿½ï¿½ ï¿½ï¿½', 'kimstudent@gmail.com',
+ '010-2468-7852', 4,'ï¿½ï¿½ï¿½ï¿½','N');
+insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno,MEMGENDER,EMAILAGREE) values (mem_seq.nextval, 'kimgraduate', 'kim', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½', 'kimgraduate@gmail.com
+', '010-3211-6123', 5,'ï¿½ï¿½ï¿½ï¿½','Y');
+>>>>>>> branch 'ìµœì¬í˜¸' of https://github.com/sixbutterfly/HBproject1.git
+
+--í–‰ì •ë¶€ ì¶”ê°€
+insert into management (mngno, memno) values (adm_seq.nextval, '1');
+insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno,MEMGENDER,EMAILAGREE) values (mem_seq.nextval, 'kimnormal', 'kim', 'ê¹€ì¼ë°˜', 'ê¹€ì¼ë°˜ì˜ ì§‘', 'kimnormal@naver.com', '
+010-2599-8765', 0,'ë‚¨ì','N');
+insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno,MEMGENDER,EMAILAGREE) values (mem_seq.nextval, 'kimdaeri', 'kim', 'ê¹€ëŒ€ë¦¬', 'ê¹€ëŒ€ë¦¬ì˜ ì§‘', 'kimdaeri@gmail.com', '01
+0-1633-7511', 1,'ë‚¨ì','Y');
+insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno,MEMGENDER,EMAILAGREE) values (mem_seq.nextval, 'kimsales', 'kim', 'ê¹€ì˜ì—…', 'ê¹€ì˜ì—…ì˜ ì§‘', 'kimsales@gmail.com', '01
+0-7544-9984', 2,'ë‚¨ì','Y');
+insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno,MEMGENDER,EMAILAGREE) values (mem_seq.nextval, 'kimteacher', 'kim', 'ê¹€ì„ ìƒ', 'ê¹€ì„ ìƒì˜ ì§‘', 'kimteacher@gmail.com',
+ '010-1599-7878', 3,'ë‚¨ì','N');
+insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno,MEMGENDER,EMAILAGREE) values (mem_seq.nextval, 'kimstudent', 'kim', 'ê¹€í•™ìƒ', 'ê¹€í•™ìƒì˜ ì§‘', 'kimstudent@gmail.com',
+ '010-2468-7852', 4,'ë‚¨ì','N');
+insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno,MEMGENDER,EMAILAGREE) values (mem_seq.nextval, 'kimgraduate', 'kim', 'ê¹€ì¡¸ì—…', 'ê¹€ì¡¸ì—…ì˜ ì§‘', 'kimgraduate@gmail.com
+', '010-3211-6123', 5,'ë‚¨ì','Y');
+
+--í–‰ì •ë¶€ ì¶”ê°€ (admNo,admName,memNo ìˆœ)
 insert into admin values (adm_seq.nextval, 'admin', '1');
 
---ÇĞ»ı Ãß°¡ (stuNo,memNo,roomNo ¼ø)
+--í•™ìƒ ì¶”ê°€ (stuNo,memNo,roomNo ìˆœ)
 insert into student (stuno, memno, roomno) values (stu_seq.nextval, 20, 2);
+insert into admin values (adm_seq.nextval, 'admin', '1');
+
+
+--í•™ìƒ ì¶”ê°€ (stuNo,memNo,roomNo ìˆœ)
 insert into student values (stu_seq.nextval, 1, 1);
+insert into student (stuno, memno, roomno) values (stu_seq.nextval, 2, 2);
 
---°­»ç Ãß°¡
-insert into teacher (tchno, tchname, memno) values (TCH_SEQ.nextval, '±è¼±»ı', 21);
-insert into teacher values (tch_seq.nextval, 2, 'ÇÑ±¹ÀÎ');
+--ê°•ì‚¬ ì¶”ê°€
+insert into teacher (tchno, tchname, memno) values (TCH_SEQ.nextval, 'ê¹€ì„ ìƒ', 21);
+insert into teacher values (tch_seq.nextval, 2, 'í•œêµ­ì¸');
+insert into teacher (tchno, tchname, memno) values (TCH_SEQ.nextval, 'ê¹€ì„ ìƒ', 19);
+insert into teacher values (tch_seq.nextval,'í•œêµ­ì¸',1);
 
---°­ÀÇ½Ç Ãß°¡ (roomNo,curNo,tchNo ¼ø)
+--ê°•ì˜ì‹¤ ì¶”ê°€ (roomNo,curNo,tchNo ìˆœ)
+<<<<<<< HEAD
+insert into sturoom (roomno, tchno, curno) values (room_seq.nextval, 2, null);
+insert into sturoom (roomno, tchno, curno) values (room_seq.nextval, 2, null);
+insert into sturoom (roomno, tchno, curno) values (room_seq.nextval, 2, null);
+insert into sturoom values (room_seq.nextval, null, null);
+
+--ê°•ì˜ì‹¤ ì¶”ê°€ (roomNo,curNo,tchNo ìˆœ)
 insert into sturoom (roomno, tchno, curno) values (1, 2, 1);
 insert into sturoom (roomno, tchno, curno) values (2, 2, 2);
 insert into sturoom (roomno, tchno, curno) values (3, 2, 3);
 insert into sturoom values (room_seq.nextval, null, 2);
 insert into sturoom values (room_seq.nextval, null, null);
+insert into sturoom (roomno, tchno, curno) values (room_seq.nextval, null, null);
 
 
---Ä¿¸®Å§·³ Ãß°¡ (curNo, curName, curLocation, curDate, curSupply ¼ø)
-insert into curriculum (curno, curname, curlocation, curdate, cursupply) values (cur_seq.nextval, 'ÀüÀÚÁ¤ºÎÇÁ·¹ÀÓ¿öÅ©', '1°­ÀÇ½Ç', '2016-04-01', '20');
-insert into curriculum (curno, curname, curlocation, curdate, cursupply) values (cur_seq.nextval, 'ÀüÀÚÁ¤ºÎÇÁ·¹ÀÓ¿öÅ©', '2°­ÀÇ½Ç', '2016-05-01', '20');
-insert into curriculum (curno, curname, curlocation, curdate, cursupply) values (cur_seq.nextval, 'ÀüÀÚÁ¤ºÎÇÁ·¹ÀÓ¿öÅ©', '3°­ÀÇ½Ç', '2016-06-01', '20');
-insert into curriculum values (cur_seq.nextval, 'ÀüÀÚÁ¤ºÎÇÁ·¹ÀÓ¿öÅ©', '1°­ÀÇ½Ç', '2016/04/01',20);
-insert into curriculum values (cur_seq.nextval, 'ÇÑ±¹ÀÎÇÁ·¹ÀÓ¿öÅ©', '2°­ÀÇ½Ç', '2016/04/01',20);
-insert into curriculum values (cur_seq.nextval, 'ÀÚ¹Ù°³¹ßÀÚ°úÁ¤', '3°­ÀÇ½Ç', '2016/05/01',20);
+--ì»¤ë¦¬í˜ëŸ¼ ì¶”ê°€ (curNo, curName, curLocation, curDate, curSupply ìˆœ)
+insert into curriculum (curno, curname, curlocation, curdate, cursupply) values (cur_seq.nextval, 'ì „ìì •ë¶€í”„ë ˆì„ì›Œí¬', '1ê°•ì˜ì‹¤', '2016/04/01',20);
+insert into curriculum (curno, curname, curlocation, curdate, cursupply) values (cur_seq.nextval, 'í•œêµ­ì¸í”„ë ˆì„ì›Œí¬', '2ê°•ì˜ì‹¤', '2016/04/01',20);
+insert into curriculum (curno, curname, curlocation, curdate, cursupply) values (cur_seq.nextval, 'ìë°”ê°œë°œìê³¼ì •', '3ê°•ì˜ì‹¤', '2016/05/01',20);
 
---¿µ¾÷ºÎ Ãß°¡
+--ì˜ì—…ë¶€ ì¶”ê°€
 insert into sales (salesno, memno) values (sal_seq.nextval, 18);
 
---¼ºÀû Ãß°¡
+--ì„±ì  ì¶”ê°€
 insert into grade (grdno, stuno, roomno, javagrade, webgrade, framegrade) values (grd_seq.nextval, 4, 2, 90, 85, 65);
 
---¼ö°­½ÅÃ»ÀÚ Ãß°¡ (regNo,memNo,file1,file2,name,email,tel,gubun,job,jobinfo,time,pay,content,password ¼ø)
+--ìˆ˜ê°•ì‹ ì²­ì ì¶”ê°€ (regNo,memNo,file1,file2,name,email,tel,gubun,job,jobinfo,time,pay,content,password ìˆœ)
 insert into register (regNo,memNo) values (reg_seq.nextval,1);
+insert into register (regNo,memNo,name,email,tel) values (reg_seq.nextval,13,'í•œêµ­ì¸','korea@korea.com','000-0000-000');
 
 
--- ÇÑ±¹ÀÎ ´õ¹Ìµ¥ÀÌÅÍ--
+-- í•œêµ­ì¸ ë”ë¯¸ë°ì´í„°--
 -- member
 select * from member order by memno;
-insert into member values (mem_seq.nextval, 'a', 'a', 'ÇĞ»ı1', '±èÀÏ¹İÀÇ Áı', 'kimnormal@naver.com', '010-2599-8765', 4);
-insert into member values (mem_seq.nextval, 'a', 'a', 'ÇĞ»ı2', '±èÀÏ¹İÀÇ Áı', 'kimnormal@naver.com', '010-2599-8765', 4);
-insert into member values (mem_seq.nextval, 'a', 'a', 'ÇĞ»ı3', '±èÀÏ¹İÀÇ Áı', 'kimnormal@naver.com', '010-2599-8765', 4);
-insert into member values (mem_seq.nextval, 'a', 'a', 'ÇĞ»ı4', '±èÀÏ¹İÀÇ Áı', 'kimnormal@naver.com', '010-2599-8765', 4);
-insert into member values (mem_seq.nextval, 'a', 'a', 'ÇĞ»ı5', '±èÀÏ¹İÀÇ Áı', 'kimnormal@naver.com', '010-2599-8765', 4);
+insert into member values (mem_seq.nextval, 'a', 'a', 'í•™ìƒ1', 'ê¹€ì¼ë°˜ì˜ ì§‘', 'kimnormal@naver.com', '010-2599-8765', 4);
+insert into member values (mem_seq.nextval, 'a', 'a', 'í•™ìƒ2', 'ê¹€ì¼ë°˜ì˜ ì§‘', 'kimnormal@naver.com', '010-2599-8765', 4);
+insert into member values (mem_seq.nextval, 'a', 'a', 'í•™ìƒ3', 'ê¹€ì¼ë°˜ì˜ ì§‘', 'kimnormal@naver.com', '010-2599-8765', 4);
+insert into member values (mem_seq.nextval, 'a', 'a', 'í•™ìƒ4', 'ê¹€ì¼ë°˜ì˜ ì§‘', 'kimnormal@naver.com', '010-2599-8765', 4);
+insert into member values (mem_seq.nextval, 'a', 'a', 'í•™ìƒ5', 'ê¹€ì¼ë°˜ì˜ ì§‘', 'kimnormal@naver.com', '010-2599-8765', 4);
 
-insert into member values (mem_seq.nextval, 'b', 'b', '¼±»ı1', '±èÀÏ¹İÀÇ Áı', 'kimnormal@naver.com', '010-2599-8765', 3);
+insert into member values (mem_seq.nextval, 'b', 'b', 'ì„ ìƒ1', 'ê¹€ì¼ë°˜ì˜ ì§‘', 'kimnormal@naver.com', '010-2599-8765', 3);
 -- teacher
-insert into teacher (tchno, tchname, memno) values (TCH_SEQ.nextval, '±è¼±»ı', 6);
+insert into teacher (tchno, tchname, memno) values (TCH_SEQ.nextval, 'ê¹€ì„ ìƒ', 6);
 -- curriculum
-insert into curriculum (curno, curname, curlocation, curdate, cursupply) values (cur_seq.nextval, 'ÀüÀÚÁ¤ºÎÇÁ·¹ÀÓ¿öÅ©', '1°­ÀÇ½Ç', '2016-04-01', '20');
+insert into curriculum (curno, curname, curlocation, curdate, cursupply) values (cur_seq.nextval, 'ì „ìì •ë¶€í”„ë ˆì„ì›Œí¬', '1ê°•ì˜ì‹¤', '2016-04-01', '20');
 -- stuRoom
 insert into sturoom (roomno, tchno, curno) values (1, 1, 1);
 -- student
@@ -101,28 +163,40 @@ insert into student (stuno, memno, roomno) values (stu_seq.nextval, 3, 1);
 insert into student (stuno, memno, roomno) values (stu_seq.nextval, 4, 1);
 insert into student (stuno, memno, roomno) values (stu_seq.nextval, 5, 1);
 
---insert into attendValue values (atv_seq.nextval, '2016-05-01', 'Ãâ¼®');
+--insert into attendValue values (atv_seq.nextval, '2016-05-01', 'ì¶œì„');
 
--- ÇÑ±¹ÀÎ ´õ¹Ìµ¥ÀÌÅÍ ³¡ --
+-- í•œêµ­ì¸ ë”ë¯¸ë°ì´í„° ë --
 
---½ÇÇèÀº ¿©±â¼­ ÇÏ¼¼¿ä---------------
+--ì‹¤í—˜ì€ ì—¬ê¸°ì„œ í•˜ì„¸ìš”---------------
 select * from studyCur;
+--ì‹¤í—˜ì€ ì—¬ê¸°ì„œ í•˜ì„¸ìš”---------------
+select * from curriculum;
 select * from sturoom;
 select * from register;
 select * from student;
 select * from member;
+select * from management;
+select * from sales;
+select * from teacher;
 select curDateS, last_day(curDateS) from studyCur;
 select TEACHER.tchno, TEACHER.tchname, STUROOM.roomno from TEACHER, STUROOM;
-
+select * from register where file1 is not null and file2 is not null;
+SELECT MEMNO, AUTHNO, MEMNAME, MEMGENDER, MEMPHONE, MEMTEL, MEMADDRESS, MEMEMAIL, EMAILAGREE, JOINDAY, MEMPW FROM MEMBER WHERE MEMID='korean4';
 update sturoom set tchno = 21 where roomno = 2;
 
 select t.tchName from member m, teacher t where m.memno = t.memno and m.memid='b';
 
 select * from member;
+update register set curNo=4 where curNo is null;
+
+SELECT student.stuno, student.roomno, member.memname from student, member where STUDENT.MEMNO = MEMBER.MEMNO;
+update teacher set roomno = null where tchno = 1;
 
 select r.roomNo from stuRoom r, teacher t where 
 r.tchNo = (select t.tchNo from member m, teacher t where m.memno = t.memno and m.memid='b');
 
---³¡³­ ½ÇÇèÀº »èÁ¦ÇÒ °Í!----------------
-
-
+--ëë‚œ ì‹¤í—˜ì€ ì‚­ì œí•  ê²ƒ!----------------
+delete from member where memno is not null;
+delete from REGISTER where memno is null;
+delete from student where memno is null;
+--ëë‚œ ì‹¤í—˜ì€ ì‚­ì œí•  ê²ƒ!----------------

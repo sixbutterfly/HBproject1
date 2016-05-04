@@ -1,5 +1,0 @@
-[
-	{
-	"tlist":<%=request.getAttribute("tlist") %>"
-	}
-]

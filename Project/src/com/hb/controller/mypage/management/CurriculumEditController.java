@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.hb.model.curriculum.curriculumDao;
 import com.hb.model.curriculum.curriculumDto;
-import com.hb.model.sturoom.sturoomDao;
+import com.hb.model.sturoom.SturoomDao;
 
 @WebServlet("/curedit.korean")
 public class CurriculumEditController extends HttpServlet {

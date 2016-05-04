@@ -3,13 +3,6 @@ CREATE TABLE mangement
 	admNo                 NUMBER(5)  NOT NULL ,
 	memNo                 NUMBER(5)  NOT NULL 
 );
----- 변경사항 ------------------------------------------------------------------------
----- 테이블명 수정(signUpReady -> register) 수강대기
----- not null 적용 해제
----- 테이블명 수정(admin -> management, studyCur -> curriculum) 행정부와 커리큘럼
---한국인 디짐
----- ----------------------------------------------------------------------------------
-
 
 CREATE TABLE attend
 (
@@ -238,24 +231,57 @@ ALTER TABLE stuRoom
 
 
 
-
---ADD ( FOREIGN KEY (memNo) REFERENCES member(memNo));
-
----------------------------------------------------------------------------------------------
--- 컬럼 변경
--- alter table 테이블명 rename column 컬럼명 to 바꿀컬럼명;
--- 컬럼 추가
--- alter table 테이블명 add(컬럼명 데이터타입());
---한국인 디짐
----------------------------------------------------------------------------------------------
 ALTER TABLE teacher
+  ADD ( FOREIGN KEY (memNo) REFERENCES member(memNo));
 	ADD ( FOREIGN KEY (memNo) REFERENCES member(memNo) ON DELETE SET NULL);
-	
-	
--- 한국인 attendValue 테이블 추가
-CREATE TABLE attendValue
-(
-	atvNo                NUMBER(4)  NOT NULL ,	
-	attdValue             VARCHAR2(10)  NULL ,
-	attdDate              DATE  NULL 
+
+---------------------------------------------------------------------------------------------
+-- 공지사항 게시판
+
+create table notice (
+
+	notNo		NUMBER(5) not null,
+	Title		varchar2(100)  null,
+	Content		clob  null,
+	notDate		date  null,
+	name 		varchar2(50)  null
 );
+ALTER TABLE notice
+	ADD  PRIMARY KEY (notNo);
+	
+-- 문의사항 게시판
+	create table qna(
+		qnaNo		number(5) not null,
+		qnaTitle	varchar2(100) not null,
+		qnaContent	clob null,
+		qnaDate		date null,
+		qnaName		varchar2(50) null
+	);
+	alter table qna add primary key(qnaNo);
+-- 수강후기 게시판
+	create table after(
+		aftNo		number(5) not null,
+		aftTitle	varchar2(100) not null,
+		aftContent	clob null,
+		aftDate		date null,
+		aftName		varchar2(50) null
+	);
+	alter table after add primary key(aftNo);
+-- 채용정보 게시판
+	create table jobinfo(
+		jobNo		number(5) not null,
+		jobTitle	varchar2(100) not null,
+		jobContent	clob null,
+		jobDate		date null,
+		jobName		varchar2(50) null
+	);
+	alter table jobinfo add primary key(jobNo);
+-- 취업후기 게시판
+	create table jobafter(
+		jafNo		number(5) not null,
+		jafTitle	varchar2(100) not null,
+		jafContent	clob null,
+		jafDate		date null,
+		jafName		varchar2(50) null
+	);
+	alter table jobafter add primary key(jafNo);

@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.hb.model.curriculum.curriculumDao;
 import com.hb.model.curriculum.curriculumDto;
-import com.hb.model.sturoom.sturoomDao;
-import com.hb.model.sturoom.sturoomDto;
+import com.hb.model.sturoom.SturoomDao;
+import com.hb.model.sturoom.SturoomDto;
 
 @WebServlet("/curdetail.korean")
 public class CurriculumDetailController extends HttpServlet {
@@ -24,8 +24,8 @@ public class CurriculumDetailController extends HttpServlet {
 		curriculumDto dto = dao.selectOne(curNo);
 		request.setAttribute("dto", dto);
 		
-		sturoomDao dao2 = new sturoomDao();
-		ArrayList<sturoomDto> list = dao2.selectNull();
+		SturoomDao dao2 = new SturoomDao();
+		ArrayList<SturoomDto> list = dao2.selectNull();
 		request.setAttribute("list", list);
 		
 		request.getRequestDispatcher("mypage/manager/manageCurriculumDetail.jsp").forward(request, response);

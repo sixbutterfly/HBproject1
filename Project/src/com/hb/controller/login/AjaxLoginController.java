@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.hb.model.login.MemberDao;
+import com.hb.model.member.MemberDao;
 
 @WebServlet("/login/ajaxlogin.korean")
 public class AjaxLoginController extends HttpServlet {
@@ -34,7 +34,10 @@ public class AjaxLoginController extends HttpServlet {
 		}		
 		request.getRequestDispatcher("/login/json.jsp").forward(request, response);		
 	}
+
 }
+
+
 
 
 
