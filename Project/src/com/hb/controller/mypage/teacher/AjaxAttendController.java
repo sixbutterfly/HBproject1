@@ -17,18 +17,14 @@ public class AjaxAttendController extends HttpServlet {
 		//String id = request.getParameter("id");
 		//String pw = request.getParameter("pw");
 		String attdDate = request.getParameter("attdDate");
-		System.out.println(attdDate);
 		String attdStatus = request.getParameter("attdStatus");
-		System.out.println(attdStatus);
 		String attdNo = request.getParameter("attdNo");
-		System.out.println(attdNo);
 		String tchId = (String) request.getSession().getAttribute("id");
-		System.out.println(tchId);
 		
-		//AttdDao dao = new AttdDao();
+		AttdDao dao = new AttdDao();
 		
 		//attdNo: 시퀀스, stuNo: 메소드(memName구하는거 참조), attdValue1: 메소드(attdDate, attdVal 전달받은거 이용해서) , attdDate
-		//String attdValue = dao.insertAttdValue(attdDate, attdStatus, attdNo, tchId);
+		String attdValue = dao.updateAttdValue(attdDate, attdStatus, attdNo, tchId);
 		
 		//MemberDao dao = new MemberDao();
 		//int authNo = dao.loginCk(id,pw);

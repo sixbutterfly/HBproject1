@@ -24,7 +24,7 @@ public class IsLoginController extends HttpServlet {
 			request.getSession().setAttribute("login", true);
 			request.getSession().setAttribute("level", authNo);
 			request.getSession().setAttribute("id", id);
-			request.getSession().setMaxInactiveInterval(900);
+			//request.getSession().setMaxInactiveInterval(900);
 			
 			request.setAttribute("level", authNo);
 			request.setAttribute("id", id);

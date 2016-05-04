@@ -175,9 +175,9 @@ ALTER TABLE teacher
 	ADD  PRIMARY KEY (tchNo);
 
 
-
-ALTER TABLE attend
-	ADD ( FOREIGN KEY (stuNo) REFERENCES student(stuNo) ON DELETE SET NULL);
+--한국인 테이블 참조 변경 attend에서 stuNo를 참조 받는게 아닌 student에서 attdNo를 참조하도록
+--ALTER TABLE attend
+--	ADD ( FOREIGN KEY (stuNo) REFERENCES student(stuNo) ON DELETE SET NULL);
 
 
 

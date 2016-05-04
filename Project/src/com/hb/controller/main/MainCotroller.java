@@ -16,10 +16,12 @@ import com.hb.model.notice.noticeDto;
 
 @WebServlet("/index.korean")
 public class MainCotroller extends HttpServlet {
-
+	int start;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		request.getSession().setAttribute("login", false);
+		if(start == 0){
+			request.getSession().setAttribute("login", false);
+			++start;
+		}
 		
 		noticeDao dao = new noticeDao();
 		ArrayList<noticeDto> list = dao.selectList();

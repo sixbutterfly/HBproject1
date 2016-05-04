@@ -200,3 +200,31 @@ delete from member where memno is not null;
 delete from REGISTER where memno is null;
 delete from student where memno is null;
 --끝난 실험은 삭제할 것!----------------
+
+-- 더미데이터 한국인 시작 --
+insert into attend ('attdNo', 'attdValue1', 'attdValue2', 'attdValue3', 'attdValue4', 'attdValue5', 'attdValue6', 'attdValue7', 'attdValue8', 'attdValue9',
+'attdValue10', 'attdValue11', 'attdValue12', 'attdValue13', 'attdValue14', 'attdValue15', 'attdValue16', 'attdValue17', 'attdValue18', 'attdValue19',
+'attdValue20', 'attdValue21', 'attdValue22', 'attdValue23', 'attdValue24', 'attdValue25', 'attdValue26', 'attdValue27', 'attdValue28', 'attdValue29',
+'attdValue30', 'attdValue31', 'attdDate') 
+
+insert into attend (attdNo) values (1);
+insert into attend (attdNo) values (2);
+insert into attend (attdNo) values (3);
+insert into attend (attdNo) values (4);
+insert into attend (attdNo) values (5);
+insert into attend (attdNo) values (6);
+insert into attend (attdNo) values (7);
+insert into attend (attdNo) values (8);
+insert into attend (attdNo) values (9);
+insert into attend (attdNo) values (10);
+insert into attend (attdNo) values (11);
+insert into attend (attdNo) values (12);
+insert into attend (attdNo) values (13);
+insert into attend (attdNo) values (14);
+insert into attend (attdNo) values (15);
+insert into attend (attdNo) values (16);
+insert into attend (attdNo) values (17);
+insert into attend (attdNo) values (18);
+insert into attend (attdNo) values (19);
+insert into attend (attdNo) values (20);
+-- 한국인 더미데이터  끝 ---
