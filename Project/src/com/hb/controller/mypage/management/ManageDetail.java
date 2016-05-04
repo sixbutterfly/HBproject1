@@ -1,9 +1,8 @@
-package management;
+package com.hb.controller.mypage.management;
 
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,21 +12,23 @@ import javax.servlet.http.HttpServletResponse;
 import com.hb.model.member.MemberDao;
 import com.hb.model.member.MemberDto;
 
-
-@WebServlet("/manageall.korean")
-public class Manage extends HttpServlet{
+@WebServlet("/memdetail.korean")
+public class ManageDetail extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		int memno = Integer.parseInt(req.getParameter("idx"));
 		MemberDao dao = new MemberDao();
-		ArrayList<MemberDto> list = null;
-		try {
-			list = dao.selectAll();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		req.setAttribute("list", list);
+		MemberDto dto = dao.selectOne(memno);
 		
-		req.getRequestDispatcher("mypage/manager/manageAll.jsp").forward(req, resp);
+		req.setAttribute("dto", dto);
+		req.getRequestDispatcher("mypage/manager/manageDetail.jsp").forward(req, resp);
 	}
 }
+
+
+
+
+
+
+

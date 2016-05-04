@@ -14,6 +14,5 @@ public class MainCotroller extends HttpServlet {
 
 		request.getSession().setAttribute("login", false);
 		request.getRequestDispatcher("main.jsp").forward(request, response);		
-
 	}
 }

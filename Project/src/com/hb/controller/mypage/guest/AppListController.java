@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.hb.model.member.MemberDao;
-import com.hb.model.member.MemberDto;
 
 @WebServlet("/applist.do")
 public class AppListController extends HttpServlet{

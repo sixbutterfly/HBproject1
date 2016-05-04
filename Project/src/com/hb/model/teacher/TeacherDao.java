@@ -113,7 +113,7 @@ public class TeacherDao {
 				TeacherDto bean = new TeacherDto();
 				bean.setTchno(rs.getInt("tchno"));
 				bean.setTchname(rs.getString("tchname"));
-				bean.setRoomno(rs.getInt("roomno"));
+				bean.setRoomno(rs.getString("roomno"));
 				list.add(bean);
 			}
 		} catch (SQLException e) {

@@ -1,54 +1,40 @@
---占싻삼옙 占쏙옙占싱븝옙占쏙옙 roomno占쏙옙 占싸곤옙 占쏙옙占쏙옙占쏙옙占� 占쏙옙占쏙옙
-alter table student modify roomno null;
-
--- register table column attribute's some changed. (占쏙옙占쏙옙占쏙옙)
+-- register table column attribute's some changed. (정현재)
 ALTER TABLE REGISTER MODIFY JOBINFO VARCHAR2(350);
 ALTER TABLE REGISTER MODIFY CONTENT VARCHAR2(200) NULL;
 
---占쏙옙占썹가 占쏙옙占실쏙옙 占쏙옙호占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙
+--강사가 강의실 번호를 참조 받음
 alter table teacher add (roomno number(5));
 ALTER TABLE teacher
 ADD FOREIGN KEY (roomno) REFERENCES sturoom(roomno);
 
-alter table register add (curNo number(5));
-ALTER TABLE register
-ADD FOREIGN KEY (curNo) REFERENCES curriculum(curNo);
-
--- stuCur 占쏙옙占싱븝옙 curriculum占쏙옙占쏙옙 占싱몌옙 占쏙옙占쏙옙
+-- stuCur 테이블 curriculum으로 이름 변경
 rename studyCur to curriculum;
 
--- 커占쏙옙큘占쏙옙 占쏙옙占싱븝옙 null占쏙옙 占쏙옙占�
+-- 커리큘럼 테이블 null값 허용
 alter table curriculum modify(curNo null, tchNo null);
 
--- 占싻삼옙 占쏙옙占싱븝옙 占쏙옙占쏙옙占쏙옙 占쏙옙호 占시뤄옙 占쏙옙占쏙옙
+-- 학생 테이블 행정부 번호 컬럼 삭제
 alter table student drop column admNo;
 
--- register 占쏙옙占싱븝옙 submitValue -> file1占쏙옙 占쏙옙占쏙옙
+-- register 테이블 submitValue -> file1로 변경
 alter table register rename column submitValue to file1;
 
--- register 占쏙옙占싱븝옙 file2占시뤄옙 占쌩곤옙
+-- register 테이블 file2컬럼 추가
 alter table register add(file2 VARCHAR2(10));
 
--- register 占쏙옙占싱븝옙 file1, file2, gubun 占시뤄옙 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙
-alter table register modify(file1 VARCHAR2(50));
-alter table register modify(file2 VARCHAR2(50));
-alter table register modify(gubun VARCHAR2(100));
-
-------占쏙옙占� 占쏙옙占싱븝옙 占쌈쇽옙 占싸곤옙占쏙옙占쏙옙 占쏙옙占쏙옙							
 ALTER TABLE MEMBER MODIFY (MEMPW VARCHAR2(30) NOT NULL,
 							MEMID VARCHAR2(30) NOT NULL,
 							MEMNAME VARCHAR2(30) NOT NULL,
-							MEMADDRESS VARCHAR2(300) NOT NULL,
+							MEMADDRESS VARCHAR2(100) NOT NULL,
 							MEMPHONE VARCHAR2(20) NOT NULL);
-------占쏙옙占� 占쏙옙占싱븝옙 占쌈쇽옙 占쌩곤옙
+------멤버 테이블 속성 널값으로 변경							
 ALTER TABLE MEMBER ADD MEMTEL VARCHAR2(20) NULL;
-ALTER TABLE MEMBER ADD MEMGENDER VARCHAR2(20) NOT NULL;
+ALTER TABLE MEMBER ADD MEMGENDER VARCHAR2(10) NOT NULL;
 ALTER TABLE MEMBER ADD EMAILAGREE VARCHAR2(5) NOT NULL;
-ALTER TABLE MEMBER ADD JOINDAY VARCHAR2(20) NOT NULL;
-------占쏙옙占� 占쏙옙占싱븝옙 占쌈쇽옙 占쌩곤옙
+------멤버 테이블 속성 추가
 
 
--- ATTEND table column attribute's 占쏙옙占쏙옙 占쏙옙占쏙옙 changed. (占싼깍옙占쏙옙)
+-- ATTEND table column attribute's 아주 많이 changed. (한국인)
 ALTER TABLE ATTEND DROP COLUMN attdValue;
 ALTER TABLE ATTEND ADD attdValue1 VARCHAR2(10) NULL;
 ALTER TABLE ATTEND ADD attdValue2 VARCHAR2(10) NULL;
@@ -82,3 +68,45 @@ ALTER TABLE ATTEND ADD attdValue29 VARCHAR2(10) NULL;
 ALTER TABLE ATTEND ADD attdValue30 VARCHAR2(10) NULL;
 ALTER TABLE ATTEND ADD attdValue31 VARCHAR2(10) NULL;
 
+ALTER TABLE member DROP COLUMN joinDate;
+
+ALTER TABLE teacher ADD tchName VARCHAR2(30) NULL;
+
+ALTER TABLE ATTEND DROP COLUMN attdValue1;
+ALTER TABLE ATTEND DROP COLUMN attdValue2;
+ALTER TABLE ATTEND DROP COLUMN attdValue3;
+ALTER TABLE ATTEND DROP COLUMN attdValue4;
+ALTER TABLE ATTEND DROP COLUMN attdValue5;
+ALTER TABLE ATTEND DROP COLUMN attdValue6;
+ALTER TABLE ATTEND DROP COLUMN attdValue7;
+ALTER TABLE ATTEND DROP COLUMN attdValue8;
+ALTER TABLE ATTEND DROP COLUMN attdValue9;
+ALTER TABLE ATTEND DROP COLUMN attdValue10;
+ALTER TABLE ATTEND DROP COLUMN attdValue11;
+ALTER TABLE ATTEND DROP COLUMN attdValue12;
+ALTER TABLE ATTEND DROP COLUMN attdValue13;
+ALTER TABLE ATTEND DROP COLUMN attdValue14;
+ALTER TABLE ATTEND DROP COLUMN attdValue15;
+ALTER TABLE ATTEND DROP COLUMN attdValue16;
+ALTER TABLE ATTEND DROP COLUMN attdValue17;
+ALTER TABLE ATTEND DROP COLUMN attdValue18;
+ALTER TABLE ATTEND DROP COLUMN attdValue19;
+ALTER TABLE ATTEND DROP COLUMN attdValue20;
+ALTER TABLE ATTEND DROP COLUMN attdValue21;
+ALTER TABLE ATTEND DROP COLUMN attdValue22;
+ALTER TABLE ATTEND DROP COLUMN attdValue23;
+ALTER TABLE ATTEND DROP COLUMN attdValue24;
+ALTER TABLE ATTEND DROP COLUMN attdValue25;
+ALTER TABLE ATTEND DROP COLUMN attdValue26;
+ALTER TABLE ATTEND DROP COLUMN attdValue27;
+ALTER TABLE ATTEND DROP COLUMN attdValue28;
+ALTER TABLE ATTEND DROP COLUMN attdValue29;
+ALTER TABLE ATTEND DROP COLUMN attdValue30;
+ALTER TABLE ATTEND DROP COLUMN attdValue31;
+ALTER TABLE ATTEND DROP COLUMN attdDate;
+
+ALTER TABLE ATTEND ADD attdDate date NULL;
+
+ALTER TABLE ATTEND ADD atvNo number(4) NULL;
+
+ALTER TABLE ATTEND DROP COLUMN atvno;

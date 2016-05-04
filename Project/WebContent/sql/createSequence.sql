@@ -18,6 +18,4 @@ CREATE SEQUENCE room_seq;
 
 CREATE SEQUENCE tch_seq;
 
-----------------------------------------------------------------
--- 공지사항 시퀸스 추가
 CREATE SEQUENCE not_seq;

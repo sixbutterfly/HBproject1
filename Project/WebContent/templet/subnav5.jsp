@@ -8,22 +8,23 @@
 <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		var level = <%=(Integer)session.getAttribute("level")%>
+		 var level = <%= (Integer)session.getAttribute("level")%>;
+		 console.log(level);
 	switch (level) {
 		case 0:
 			$(".guest").css("display", "initial");
 			break;
-		case 4:
-			$(".student").css("display", "initial");
-			break;
-		case 3:
-			$(".teacher").css("display", "initial");
+		case 1:
+			$(".manager").css("display", "initial");
 			break;
 		case 2:
 			$(".sales").css("display", "initial");
 			break;
-		case 1:
-			$(".manager").css("display", "initial");
+		case 3:
+			$(".teacher").css("display", "initial");
+			break;
+		case 4:
+			$(".student").css("display", "initial");
 			break;
 		}
 	});
@@ -53,12 +54,9 @@
 			<div class="sales menu">
 				<a href="waitinlist.korean">수강 대기자</a>
 			</div>
-
 			<div class="manager menu">
 				<a href="allmember.do">회원관리</a>
-
 			</div>
-
 			<div class="manager menu">
 				<a href="finallist.do">수강 최종 승인</a>
 			</div>

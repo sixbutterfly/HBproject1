@@ -16,25 +16,33 @@ import com.hb.model.attend.AttdDto;
 import com.hb.model.teacher.TeacherDao;
 
 @WebServlet("/addatt.do")
-public class AddAttendanceController extends HttpServlet{
-@Override
-protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-		throws ServletException, IOException {
-	
-	
+public class AddAttendanceController extends HttpServlet {
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+
+		AttdDao attdDao = new AttdDao();
+		AttdDto attdDto = new AttdDto();
+		String memberId = (String) req.getSession().getAttribute("id");
 		
-	AttdDao attdDao = new AttdDao();
-	
-	String meberId = (String)req.getSession().getAttribute("id");
-	String tchName = attdDao.tchNameSel(meberId);
-	req.setAttribute("tchName", tchName);
-	tchName = (String) req.getSession().getAttribute("id");
-	
-	/*ArrayList<AttdDto> attdList = attdDao.attdSelect();	
-	req.setAttribute("attdList", attdList);*/
-	
-	req.getRequestDispatcher("mypage/teacher/addAttendance.jsp").forward(req, resp);
-	
-	
-}
+		//날짜
+		//Date attdDate = attdDao.selectAttendDate();
+
+		// 강사이름
+		String tchName = attdDao.selectTchName(memberId);
+		req.setAttribute("tchName", tchName);
+		System.out.println(tchName);
+
+		// 강의실번호
+		int roomNo = attdDao.selectRoomNo(memberId);
+		req.setAttribute("roomNo", roomNo);
+		System.out.println(roomNo);
+
+		// 출석리스트
+		ArrayList<AttdDto> attdList = attdDao.selectAttdList(memberId);
+		req.setAttribute("attdList", attdList);
+
+		req.getRequestDispatcher("mypage/teacher/addAttendance.jsp").forward(req, resp);
+
+	}
 }

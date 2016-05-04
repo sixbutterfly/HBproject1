@@ -25,19 +25,6 @@ public class GradeDao {
 		conn = DB.getConnection();
 	}
 	
-	public GradeDto list() {
-		sql="select stuno, member.memname, roomno, javagrade, webgrade, framegrade from grade, " +
-			"member where member.memno = (select memno from student)";
-		try {
-			Class.forName(driver);
-			conn = DriverManager.getConnection(url, user, password);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-	}
-	
 	public ArrayList<GradeDto> list() {
 		ArrayList<GradeDto> al = new ArrayList<GradeDto>();
 		sql="SELECT STUDENT.STUNO, MEMBER.MEMNAME, STUDENT.ROOMNO, NVL(GRADE.JAVAGRADE, 0) JAVAGRADE , NVL(GRADE.WEBGRADE, 0) WEBGRADE , NVL(GRADE.FRAMEGRADE, 0) FRAMEGRADE FROM STUDENT, MEMBER, GRADE WHERE MEMBER.MEMNO=STUDENT.MEMNO AND STUDENT.STUNO=GRADE.STUNO ORDER BY STUNO";

@@ -1,4 +1,4 @@
-package management;
+package com.hb.controller.mypage.management;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.hb.model.login.MemberDao;
-import com.hb.model.login.MemberDto;
+import com.hb.model.member.MemberDao;
+import com.hb.model.member.MemberDto;
 
 @WebServlet("/managelevel.korean")
 public class ManageLevel extends HttpServlet {
