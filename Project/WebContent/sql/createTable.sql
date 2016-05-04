@@ -3,13 +3,6 @@ CREATE TABLE mangement
 	admNo                 NUMBER(5)  NOT NULL ,
 	memNo                 NUMBER(5)  NOT NULL 
 );
----- ë³€ê²½ì‚¬í•­ ------------------------------------------------------------------------
----- í…Œì´ë¸”ëª… ìˆ˜ì •(signUpReady -> register) ìˆ˜ê°•ëŒ€ê¸°
----- not null ì ìš© í•´ì œ
----- í…Œì´ë¸”ëª… ìˆ˜ì •(admin -> management, studyCur -> curriculum) í–‰ì •ë¶€ì™€ ì»¤ë¦¬í˜ëŸ¼
---í•œêµ­ì¸ ë””ì§
----- ----------------------------------------------------------------------------------
-
 
 CREATE TABLE attend
 (
@@ -238,16 +231,57 @@ ALTER TABLE stuRoom
 
 
 
-
---ADD ( FOREIGN KEY (memNo) REFERENCES member(memNo));
-
----------------------------------------------------------------------------------------------
--- ì»¬ëŸ¼ ë³€ê²½
--- alter table í…Œì´ë¸”ëª… rename column ì»¬ëŸ¼ëª… to ë°”ê¿€ì»¬ëŸ¼ëª…;
--- ì»¬ëŸ¼ ì¶”ê°€
--- alter table í…Œì´ë¸”ëª… add(ì»¬ëŸ¼ëª… ë°ì´í„°íƒ€ì…());
---í•œêµ­ì¸ ë””ì§
----------------------------------------------------------------------------------------------
 ALTER TABLE teacher
+  ADD ( FOREIGN KEY (memNo) REFERENCES member(memNo));
 	ADD ( FOREIGN KEY (memNo) REFERENCES member(memNo) ON DELETE SET NULL);
+
+---------------------------------------------------------------------------------------------
+-- °øÁö»çÇ× °Ô½ÃÆÇ
+
+create table notice (
+
+	notNo		NUMBER(5) not null,
+	Title		varchar2(100)  null,
+	Content		clob  null,
+	notDate		date  null,
+	name 		varchar2(50)  null
+);
+ALTER TABLE notice
+	ADD  PRIMARY KEY (notNo);
 	
+-- ¹®ÀÇ»çÇ× °Ô½ÃÆÇ
+	create table qna(
+		qnaNo		number(5) not null,
+		qnaTitle	varchar2(100) not null,
+		qnaContent	clob null,
+		qnaDate		date null,
+		qnaName		varchar2(50) null
+	);
+	alter table qna add primary key(qnaNo);
+-- ¼ö°­ÈÄ±â °Ô½ÃÆÇ
+	create table after(
+		aftNo		number(5) not null,
+		aftTitle	varchar2(100) not null,
+		aftContent	clob null,
+		aftDate		date null,
+		aftName		varchar2(50) null
+	);
+	alter table after add primary key(aftNo);
+-- Ã¤¿ëÁ¤º¸ °Ô½ÃÆÇ
+	create table jobinfo(
+		jobNo		number(5) not null,
+		jobTitle	varchar2(100) not null,
+		jobContent	clob null,
+		jobDate		date null,
+		jobName		varchar2(50) null
+	);
+	alter table jobinfo add primary key(jobNo);
+-- Ãë¾÷ÈÄ±â °Ô½ÃÆÇ
+	create table jobafter(
+		jafNo		number(5) not null,
+		jafTitle	varchar2(100) not null,
+		jafContent	clob null,
+		jafDate		date null,
+		jafName		varchar2(50) null
+	);
+	alter table jobafter add primary key(jafNo);

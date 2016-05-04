@@ -14,31 +14,43 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/aside2.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
 <style type="text/css">
+	.title>p{
+		font-size: 30pt;
+		font-style: oblique;
+	}
+	.title>span{
+		font-size: 15pt;
+	}
+	.title{
+		margin: 20px;
+		border-bottom: 3px solid #ddd;
+		color: #666;
+	}
 	#detailcon>div :hover{
 		list-style: none;
-		background-color:pink;
+		color: pink;
 	}
 	.content{
 		height: 800px;
 	}
-	span{
-		margin-left: 43px;
-	}
 	.detailmenu{
-		width:100%;
-		background-color: #fddad3;
+		background-color: rgba(204,229,255,0.5);
 		margin-top: 34px;
+		font-size: 13pt;
+		border-bottom: 2px solid #ddd;
 	}
 	.detailmenu>div{
 		text-align: center;
 		width: 11.8%;
 		display: inline-block;
+		margin: 2px auto;
 	}
 	.subtitle{
 		font-size: 25pt;
 		margin-bottom: 10px;
    	 	margin-left: 20px;
 	}
+
 	#detailcon>div>a{
 		text-decoration: none;
 	}
@@ -52,19 +64,12 @@
 	}
 	#selauth{
 		float:right;
-		margin-top: 4px;
+		margin-top: 18px;
    		margin-bottom: 6px;
    		margin-right: 18px;
+   		display: block;
 	}
-	hr {
-	width: 100%;
-	background-color: silver;
-	height: 2px;
-	border: none;
-}
-	.hrefcolor{
-	}
-	
+
 </style>
 <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
 <script type="text/javascript" src="js/menu.js"></script>
@@ -137,10 +142,12 @@
 		<%@include file="/templet/loginForm.jsp" %>
 		<%@include file="/templet/subnav5.jsp" %>
 		<!-- content start -->
-	<div>
-		<p class="subtitle"><b>회원 관리</b></p>
-		<hr/>
-	</div>
+
+		<div class="title">
+			<p>MY PAGE</p>
+			<span>회원 관리</span>
+		</div>
+				
 	<div>
 		<select id="selauth" name="selauth">
 			<option value="all">전체보기</option>
@@ -152,15 +159,16 @@
 			<option value="finish">수료자</option>
 		</select>
 	</div>
+	
 	<div class="detailmenu">
-		<div>회원번호</div>
-			<div style="width:8%;">소속</div>
-			<div>이름</div>
-			<div style="width:10%;">성별</div>
-			<div style="width:12.3%;">핸드폰번호</div>
-			<div style="margin-left:15px;">메일</div>
-			<div style="font-size: 10pt; margin-left:15px;">메일 수신여부</div>
-			<div>가입일</div>
+	<!-- 	<div>회원번호</div>	-->
+		<div style="width: 80px;">소속</div>
+		<div>이름</div>
+		<div style="width: 80px;">성별</div>
+		<div>핸드폰번호</div>
+		<div style="width: 130px;">메일</div>
+		<div style="width: 80px;">수신여부</div>
+		<div>가입일</div>
 	</div>
 	
 	<%
@@ -170,8 +178,8 @@
 		<div id="detailcon" >
 			<div class="no<%=dto.getLevel()%>">
 			<a href="memdetail.korean?idx=<%=dto.getMemno()%>" >
-			<div class="seeall"><%=dto.getMemno()%></div>
-			<div class="seeall" style="width:8%;">
+		<!--	<div class="seeall"><%//=dto.getMemno()%></div>-->
+			<div class="seeall" style="width: 80px;">
 			<% if(dto.getLevel()==0){%>회원
 			<% }else if(dto.getLevel()==1){%>행정부
 			<% }else if(dto.getLevel()==2){%>영업부
@@ -179,15 +187,15 @@
 			<% }else if(dto.getLevel()==4){%>학생
 			<% }else if(dto.getLevel()==5){%>수료자
 			<% }%>
-			</div>
+			</div> 
 			<div class="seeall"><%=dto.getMemname()%></div>
-			<div class="seeall" style="width:10%;"><%=dto.getMemgender()%></div>
-			<div class="seeall" style="width:12.3%;"><%=dto.getMemphone()%></div>
-			<div class="seeall">
+			<div class="seeall" style="width: 80px;"><%=dto.getMemgender()%></div>
+			<div class="seeall"><%=dto.getMemphone()%></div>
+			<div class="seeall" style="width: 130px; overflow: hidden; margin-top: 5px;">
 			<% if(dto.getMememail().equals("@")){%>-
 			<%}else%><%=dto.getMememail()%>
 			</div>
-			<div class="seeall" style="margin-left:35px;">
+			<div class="seeall" style="width: 80px;">
 			<% if(dto.getEmailagree().equals("y")){%><label style="color:blue;">동의</label>
 			<%}else{%><label style="color: red;">거부</label>
 			<%} %>

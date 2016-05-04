@@ -3,8 +3,8 @@
 
 		<div class="submenu">
 			<div class="eachmenu">
-				<a href="init.korean">채용정보</a>
-				<a href="year.korean">취업후기</a>	
+				<a href="job.korean">채용정보</a>
+				<a href="jobafter.korean">취업후기</a>	
 			</div>
 		</div>
 	</div>

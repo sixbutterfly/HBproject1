@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import com.hb.util.DB;
 
 public class MemberDao {
+
 	private Connection conn;
 	private Statement stmt;
 	private PreparedStatement pstmt;

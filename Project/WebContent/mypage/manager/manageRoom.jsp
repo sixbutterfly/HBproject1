@@ -20,7 +20,6 @@
         .content {
           height: 800px;
         }
-
         .room ul.tabs {
           margin: 0;
           padding: 0;
@@ -33,7 +32,6 @@
           font-family: "dotum";
           font-size: 12px;
         }
-
         .room ul.tabs li {
           float: left;
           text-align: center;
@@ -48,12 +46,10 @@
           overflow: hidden;
           position: relative;
         }
-
         .room ul.tabs li.active {
           background: #FFFFFF;
           border-bottom: 1px solid #FFFFFF;
         }
-
         .room .tab_container {
           border: 1px solid #eee;
           border-top: none;
@@ -62,29 +58,24 @@
           width: 248px;
           background: #FFFFFF;
         }
-
         .room .tab_content {
           padding: 5px;
           font-size: 12px;
           display: none;
         }
-
         .room .tab_container .tab_content ul {
           width: 100%;
           margin: 0;
           padding: 0;
         }
-
         .room .tab_container .tab_content ul li {
           padding: 5px;
           list-style: none;
         }
-
         #container {
           width: 249px;
           margin: 0 auto;
         }
-
       </style>
       <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
       <script type="text/javascript" src="js/menu.js"></script>

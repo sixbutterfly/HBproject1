@@ -1,4 +1,4 @@
-<%@ page import="com.hb.model.curriculum.curriculumDto"%>
+<%@page import="com.hb.model.curriculum.curriculumDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -32,7 +32,6 @@
 		}
 		$('input[name="jobinfo"]').val(result);
 	}
-	
 	// 전화번호 입력란에 숫자 0-9 이외의 값이 입력되면 바로 삭제하는 기능
 	$(document).on("keyup", "#tel2", function() {
 		$(this).val($(this).val().replace(/[^0-9]/gi, ""));
@@ -56,7 +55,6 @@
 				}
 			});
 		});
-		
 		$('#submit').click(function(){
 			jobinfo();
 			if(!$('#agreed').is(':checked')){

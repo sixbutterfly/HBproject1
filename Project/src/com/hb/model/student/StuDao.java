@@ -60,6 +60,9 @@ public class StuDao {
 				bean.setStuname(rs.getString("memname"));
 				bean.setRoomno(rs.getString("roomno"));
 				list.add(bean);
+				System.out.println(rs.getInt("stuno"));
+				System.out.println(rs.getString("memname"));
+				System.out.println(rs.getInt("roomno"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -156,33 +159,5 @@ public class StuDao {
 		return result;
 	}
 	
-	public String selectGrade(String id) {
-		String result="";
-		sql = "SELECT MEMBER.MEMNO, MEMNAME, STUDENT.ROOMNO, JAVAGRADE, WEBGRADE, FRAMEGRADE FROM MEMBER, GRADE, STUDENT WHERE GRADE.STUNO=STUDENT.STUNO AND MEMBER.MEMNO=STUDENT.MEMNO AND MEMID=?";
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, id);
-			rs = pstmt.executeQuery();
-			while(rs.next()){
-				result += rs.getInt("memno");
-				result += " "+rs.getString("memname");
-				result += " "+rs.getInt("roomno");
-				result += " "+rs.getInt("javagrade");
-				result += " "+rs.getInt("webgrade");
-				result += " "+rs.getInt("framegrade");
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally{
-			try {
-				if(rs!=null)rs.close();
-				if(pstmt!=null)pstmt.close();
-				if(conn!=null)conn.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return result;
-	}
 	
 }//class end

@@ -33,7 +33,7 @@
 
 	<div class="submenu">
 		<div class="common">
-			<a href="editinfo.korean">개인 정보 수정</a>
+			<a href="editinfo.do">개인 정보 수정</a>
 		</div>
 		<div class = "eachmenu">
 			<div class="guest menu">
@@ -62,9 +62,6 @@
 			</div>
 			<div class="manager menu">
 				<a href="room.korean">강의실 관리</a>
-			</div>
-			<div class="manager menu">
-				<a href="teacher.korean">강사 관리</a>
 			</div>
 			<div class="manager menu">
 				<a href="curriculum.korean">커리큘럼 관리</a>

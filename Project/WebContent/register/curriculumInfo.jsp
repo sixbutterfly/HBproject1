@@ -72,6 +72,7 @@
 		<!-- nav -->
 		<%@include file="/templet/nav.jsp" %>
 		<!-- aside1 -->
+<<<<<<< HEAD
 		<%@include file="/templet/loginForm.jsp" %>
 		<%@include file="/templet/subnav2.jsp" %>
 		
