@@ -232,9 +232,9 @@ ALTER TABLE stuRoom
 
 
 ALTER TABLE teacher
-  ADD ( FOREIGN KEY (memNo) REFERENCES member(memNo));
 	ADD ( FOREIGN KEY (memNo) REFERENCES member(memNo) ON DELETE SET NULL);
 
+	
 ---------------------------------------------------------------------------------------------
 -- 공지사항 게시판
 

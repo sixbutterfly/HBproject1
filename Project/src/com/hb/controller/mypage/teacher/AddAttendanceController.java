@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.hb.model.attend.AttdDao;
 import com.hb.model.attend.AttdDto;
 
-@WebServlet("/addatt.do")
+@WebServlet("/addatt.korean")
 public class AddAttendanceController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
