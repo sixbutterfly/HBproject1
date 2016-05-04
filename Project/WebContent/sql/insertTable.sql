@@ -228,3 +228,21 @@ insert into attend (attdNo) values (18);
 insert into attend (attdNo) values (19);
 insert into attend (attdNo) values (20);
 -- 한국인 더미데이터  끝 ---
+
+
+update attend set attdValue+'' = ? where attdNo = ?
+
+select * from attend;
+
+update attend set attdValue2 = '결석' where attdNo = 2;
+update attend set attdValue2 = '' where attdNo = 2;
+
+"update attend set attdValue"+ day + " = '" + attdStatus + "' where attdNo" 
+				+	" in (" + attdNo1 + "," + attdNo2 + "," +  attdNo3 + "," + attdNo4 + "," + attdNo5 + ")";
+				
+update attend set attdValue3 = '조퇴' where attdNo = 2;
+				 
+
+
+						     
+						     

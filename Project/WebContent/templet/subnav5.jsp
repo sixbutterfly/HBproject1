@@ -9,7 +9,7 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		<%-- var level = <%= (Integer)session.getAttribute("level") %>; --%>
-		var level = 9;
+		var level = 3;
 	switch (level) {
 		case 0:
 			$(".guest").css("display", "initial");

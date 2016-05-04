@@ -82,17 +82,16 @@ public class AttdDao {
 		
 		public ArrayList<AttdDto> selectAttdList(String memberId) {
 			ArrayList<AttdDto> list = new ArrayList<AttdDto>();
-			String sql = "select attdNo, memName, nvl(attdvalue1,'-'), nvl(attdvalue2,'-'), nvl(attdvalue3,'-'), nvl(attdvalue4,'-'), nvl(attdvalue5,'-'), nvl(attdvalue6,'-'), nvl(attdvalue7,'-'), nvl(attdvalue8,'-'), nvl(attdvalue9,'-'), nvl(attdvalue10,'-')," 
+			String sql = "select a.attdNo, memName, nvl(attdvalue1,'-'), nvl(attdvalue2,'-'), nvl(attdvalue3,'-'), nvl(attdvalue4,'-'), nvl(attdvalue5,'-'), nvl(attdvalue6,'-'), nvl(attdvalue7,'-'), nvl(attdvalue8,'-'), nvl(attdvalue9,'-'), nvl(attdvalue10,'-')," 
 							+ " nvl(attdvalue11,'-'), nvl(attdvalue12,'-'), nvl(attdvalue13,'-'), nvl(attdvalue14,'-'), nvl(attdvalue15,'-'), nvl(attdvalue16,'-'), nvl(attdvalue17,'-'), nvl(attdvalue18,'-'), nvl(attdvalue19,'-'), nvl(attdvalue20,'-'), nvl(attdvalue21,'-'), nvl(attdvalue22,'-')," 
 							+ " nvl(attdvalue23,'-'), nvl(attdvalue24,'-'), nvl(attdvalue25,'-'), nvl(attdvalue26,'-'), nvl(attdvalue27,'-'), nvl(attdvalue28,'-'), nvl(attdvalue29,'-'), nvl(attdvalue30,'-'), nvl(attdvalue31,'-')" 
 							+ " from attend a," 
 							+ " (" 
-						    + " select memName from member m, student s where m.memNo = s.memNo" 
+						    + " select memName, attdNo from member m, student s where m.memNo = s.memNo" 
 						    + " and s.roomNo = (select r.roomNo from stuRoom r where " 
 						    + "	 r.tchNo = (select t.tchNo from member m, teacher t where m.memno = t.memno and m.memid='" +memberId  + "'))" 
 						    + "	 ) s " 
 						    + " where a.attdNo = s.attdNo";		
-			
 			try {
 				pstmt = conn.prepareStatement(sql);
 				rs = pstmt.executeQuery();
@@ -160,27 +159,18 @@ public class AttdDao {
 			return stuName;
 		}
 
-		/*public String updateAttdValue(String attdDate, String attdVal, String attdNo, String tchId) {
-			String sql = "update attend  into attend"
-							+ " (attdNo, stuNo, attdValue1, attdValue2, attdValue3, attdValue4, attdValue5, attdValue6, attdValue7, attdValue8,"
-							+ " attdValue9, attdValue10, attdValue11, attdValue12, attdValue13, attdValue14, attdValue15, attdValue16, attdValue17, attdValue18," 
-							+ " attdValue19, attdValue20, attdValue21, attdValue22, attdValue23,  attdValue24,  attdValue25,  attdValue26, attdValue27," 
-							+ " attdValue28,  attdValue29,  attdValue30,  attdValue31, attdDate)"
-							+ " values (attd_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";				
-						"(select a.attdVal from attend a, student s where a.stuNo = s.stuNo"
-						+ "and a.attdVal = '" + attdVal + "' and a.stuNo='" + attdNo + "' and attdDate = '" + attdDate + "'"
-						+ " and a.stuNo ="
-						+ " (select s.stuNo from student s, stuRoom r where s.roomNo = r.roomNo and r.tchNo="
-						+ " (select t.tchNo from teacher t, member m where t.memNo = m.memNo and and m.memid= '" + tchId + "')))";						
+		public String updateAttdValue(int day, String attdStatus, int attdNo) {
+			String sql = "update attend set attdValue"+ day + " = '" + attdStatus + "' where attdNo = " + attdNo;
+			System.out.println(sql);
+			String attdValue = "";
 			try {
 				pstmt = conn.prepareStatement(sql);
-				pstmt.executeUpdate();
-				pstmt.setInt()
-				
+				pstmt.executeUpdate();				
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		}*/
+			return attdValue;
+		}
 		
 		public ArrayList<AttdDto> selectStuAttd(String memberId) {
 			ArrayList<AttdDto> list = new ArrayList<AttdDto>();

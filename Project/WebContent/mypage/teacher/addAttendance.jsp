@@ -108,12 +108,12 @@
 					<th>19</th><th>20</th><th>21</th><th>22</th><th>23</th><th>24</th><th>25</th><th>26</th><th>27</th><th>28</th>
 					<th>29</th><th>30</th><th>31</th>
 				</tr>
-				<%	
+				 <%	
 					ArrayList<AttdDto> attdList = (ArrayList<AttdDto>)request.getAttribute("attdList");
 					for(AttdDto bean : attdList){
 				%>
 					<tr class="attendBody">
-						<td><input type="checkbox" name="attdNo" value="<%= bean.getAttdNo() %>"/><%= bean.getAttdNo() %></td>
+						<td><input type="checkbox" name="attdNo<%= bean.getAttdNo() %>" value="<%= bean.getAttdNo() %>"/><%= bean.getAttdNo() %></td>
 						<td><%= bean.getMemName() %></td>
 						<td><input type="text" name="val1" value="<%= bean.getAttdValue1() %>" size="1" maxlength="1" readonly="readonly"/></td>
 						<td><input type="text" name="val2" value="<%= bean.getAttdValue2() %>" size="1" maxlength="1" readonly="readonly"/></td>

@@ -18,13 +18,22 @@ public class AjaxAttendController extends HttpServlet {
 		//String pw = request.getParameter("pw");
 		String attdDate = request.getParameter("attdDate");
 		String attdStatus = request.getParameter("attdStatus");
-		String attdNo = request.getParameter("attdNo");
-		String tchId = (String) request.getSession().getAttribute("id");
+		int attdNo = Integer.parseInt(request.getParameter("attdNo"));
 		
+		int day = Integer.parseInt(attdDate.substring(8, 10));
+		System.out.println(day);
 		AttdDao dao = new AttdDao();
 		
-		//attdNo: 시퀀스, stuNo: 메소드(memName구하는거 참조), attdValue1: 메소드(attdDate, attdVal 전달받은거 이용해서) , attdDate
-		String attdValue = dao.updateAttdValue(attdDate, attdStatus, attdNo, tchId);
+		String attdValue = dao.updateAttdValue(day, attdStatus, attdNo);
+		
+		/*if((attdValue == "출석") || (attdValue == "결석") || (attdValue == "지각") || (attdValue == "조퇴") || (attdValue == "미등록")){
+			
+			if(attdValue == "출석"){
+				
+			}
+			
+			request.getRequestDispatcher("/attend/jsonAttd.jsp").forward(request, response);
+		}*/
 		
 		//MemberDao dao = new MemberDao();
 		//int authNo = dao.loginCk(id,pw);
