@@ -59,7 +59,6 @@ $(document).ready(function(){
 						st +="<div><a href='/Project/login/logout.korean'><span>logout</span></a></div>";
 						$(".login").html(st);							
 					}
-					
 				}
 			});
 		});

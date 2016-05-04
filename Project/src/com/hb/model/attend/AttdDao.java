@@ -91,7 +91,7 @@ public class AttdDao {
 						    + " and s.roomNo = (select r.roomNo from stuRoom r where " 
 						    + "	 r.tchNo = (select t.tchNo from member m, teacher t where m.memno = t.memno and m.memid='" +memberId  + "'))" 
 						    + "	 ) s " 
-						    + " where a.stuNo = s.stuNo";		
+						    + " where a.attdNo = s.attdNo";		
 			
 			try {
 				pstmt = conn.prepareStatement(sql);
@@ -160,8 +160,8 @@ public class AttdDao {
 			return stuName;
 		}
 
-		/*public String insertAttdValue(String attdDate, String attdVal, String attdNo, String tchId) {
-			String sql = "insert into attend"
+		public String insertAttdValue(String attdDate, String attdVal, String attdNo, String tchId) {
+			String sql = "update attend  into attend"
 							+ " (attdNo, stuNo, attdValue1, attdValue2, attdValue3, attdValue4, attdValue5, attdValue6, attdValue7, attdValue8,"
 							+ " attdValue9, attdValue10, attdValue11, attdValue12, attdValue13, attdValue14, attdValue15, attdValue16, attdValue17, attdValue18," 
 							+ " attdValue19, attdValue20, attdValue21, attdValue22, attdValue23,  attdValue24,  attdValue25,  attdValue26, attdValue27," 
@@ -175,11 +175,12 @@ public class AttdDao {
 			try {
 				pstmt = conn.prepareStatement(sql);
 				pstmt.executeUpdate();
+				pstmt.setInt()
 				
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		}*/
+		}
 		
 		public ArrayList<AttdDto> selectStuAttd(String memberId) {
 			ArrayList<AttdDto> list = new ArrayList<AttdDto>();

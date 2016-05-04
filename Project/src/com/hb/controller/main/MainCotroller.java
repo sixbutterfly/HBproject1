@@ -9,10 +9,13 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/index.korean")
 public class MainCotroller extends HttpServlet {
-
+	int start;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getSession().setAttribute("login", false);
-		request.getRequestDispatcher("main.jsp").forward(request, response);
 		
+		if(start == 0){
+			request.getSession().setAttribute("login", false);
+			++start;
+		}
+		request.getRequestDispatcher("main.jsp").forward(request, response);		
 	}
 }

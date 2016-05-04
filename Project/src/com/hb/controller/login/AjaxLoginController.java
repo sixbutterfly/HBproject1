@@ -20,21 +20,20 @@ public class AjaxLoginController extends HttpServlet {
 		MemberDao dao = new MemberDao();
 		int authNo = dao.loginCk(id,pw);
 		
-		System.out.println(authNo);
+		//System.out.println(authNo);
 		
 		if(authNo==0 || authNo==1 || authNo==2 || authNo==3 || authNo==4 || authNo==5 || authNo==9){
 			request.getSession().setAttribute("login", true);
 			request.getSession().setAttribute("level", authNo);
 			request.getSession().setAttribute("id", id);
-			request.getSession().setMaxInactiveInterval(900);
+			//request.getSession().setMaxInactiveInterval(900);
 		
 			request.setAttribute("level", authNo);
 			request.setAttribute("id", id);
-			request.getRequestDispatcher("/login/json.jsp").forward(request, response);
+			
 		}		
-				
+		request.getRequestDispatcher("/login/json.jsp").forward(request, response);		
 	}
-
 }
 
 

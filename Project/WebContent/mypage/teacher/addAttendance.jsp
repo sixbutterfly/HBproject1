@@ -45,17 +45,17 @@
 		height: 30px;
 	}
 	
-	#left{
+	.left{
 		float: left;
 		margin-left : 10px;
 	}
 	
-	#right{
+	.right{
 		float:right;
 		margin-right : 30px;
 	}
 	
-	#right>input{
+	.right>input{
 		margin-left: 10px;
 	}
 	
@@ -82,9 +82,16 @@
 		<!-- content start -->
 			<h1> 출결 입력</h1>
 			<div>			
-			<p><span id="left"><input type="date" name="attdDate" value="<%=new SimpleDateFormat("yyyy-MM-dd").format(new Date()) %>"/> </span> <span id="right">담당강사 : <%= request.getAttribute("tchName") %> 강사님</span></p>
+			<p><span class="left"><input type="date" name="attdDate" value="<%=new SimpleDateFormat("yyyy-MM-dd").format(new Date()) %>"/> </span> <span class="right">담당강사 : <%= request.getAttribute("tchName") %> 강사님</span></p>
 			<br/><br/>
-			<p><span id="left">강의실 : <%= request.getAttribute("roomNo") %>번 강의실</span> <span id="right"> <input type="radio"  name="attdStatus" value="출석" checked>●출석  <input type="radio"  name="attdStatus" value="결석 " >X결석   <input type="radio"  name="attdStatus" value="지각">▲지각 <input type="radio"  name="attdStatus" value="조퇴">■조퇴  <input type="radio"  name="attdStatus" value="미등록">-미등록 </span></p>
+			<p><span class="left">강의실 : <%= request.getAttribute("roomNo") %>번 강의실</span>			
+			<span class="right"><select name="attdStatus">
+					  <option value="출석">● 출석</option>
+					  <option value="결석">X 결석</option>
+					  <option value="지각">▲ 지각</option>
+					  <option value="조퇴">■ 조퇴</option>
+					  <option value="미등록">- 미등록</option>
+			</select></span></p>
 			</div>
 			<table>
 				<tr class="attendHeader">
@@ -98,39 +105,39 @@
 					for(AttdDto bean : attdList){
 				%>
 					<tr class="attendBody">
-						<td><input type="checkbox" name="attdNo"/><%= bean.getAttdNo() %></td>
+						<td><input type="checkbox" name="attdNo" value="<%= bean.getAttdNo() %>"/><%= bean.getAttdNo() %></td>
 						<td><%= bean.getMemName() %></td>
-						<td><input type="text" name="val1" value="<%= bean.getAttdValue1() %>" size="1" maxlength="1"/></td>
-						<td><input type="text" name="val2" value="<%= bean.getAttdValue2() %>" size="1" maxlength="1"/></td>
-						<td><input type="text" name="val3" value="<%= bean.getAttdValue3() %>" size="1" maxlength="1"/></td>
-						<td><input type="text" name="val4" value="<%= bean.getAttdValue4() %>" size="1" maxlength="1"/></td>
-						<td><input type="text" name="val5" value="<%= bean.getAttdValue5() %>" size="1" maxlength="1"/></td>
-						<td><input type="text" name="val6" value="<%= bean.getAttdValue6() %>" size="1" maxlength="1"/></td>
-						<td><input type="text" name="val7" value="<%= bean.getAttdValue7() %>" size="1" maxlength="1"/></td>
-						<td><input type="text" name="val8" value="<%= bean.getAttdValue8() %>" size="1" maxlength="1"/></td>
-						<td><input type="text" name="val9" value="<%= bean.getAttdValue9() %>" size="1" maxlength="1"/></td>
-						<td><input type="text" name="val10" value="<%= bean.getAttdValue10() %>" size="1" maxlength="1"/></td>
-						<td><input type="text" name="val11" value="<%= bean.getAttdValue11() %>" size="1" maxlength="1"/></td>
-						<td><input type="text" name="val12" value="<%= bean.getAttdValue12() %>" size="1" maxlength="1"/></td>
-						<td><input type="text" name="val13" value="<%= bean.getAttdValue13() %>" size="1" maxlength="1"/></td>
-						<td><input type="text" name="val14" value="<%= bean.getAttdValue14() %>" size="1" maxlength="1"/></td>
-						<td><input type="text" name="val15" value="<%= bean.getAttdValue15() %>" size="1" maxlength="1"/></td>
-						<td><input type="text" name="val16" value="<%= bean.getAttdValue16() %>" size="1" maxlength="1"/></td>
-						<td><input type="text" name="val17" value="<%= bean.getAttdValue17() %>" size="1" maxlength="1"/></td>
-						<td><input type="text" name="val18" value="<%= bean.getAttdValue18() %>" size="1" maxlength="1"/></td>
-						<td><input type="text" name="val19" value="<%= bean.getAttdValue19() %>" size="1" maxlength="1"/></td>
-						<td><input type="text" name="val20" value="<%= bean.getAttdValue20() %>" size="1" maxlength="1"/></td>
-						<td><input type="text" name="val21" value="<%= bean.getAttdValue21() %>" size="1" maxlength="1"/></td>
-						<td><input type="text" name="val22" value="<%= bean.getAttdValue22() %>" size="1" maxlength="1"/></td>
-						<td><input type="text" name="val23" value="<%= bean.getAttdValue23() %>" size="1" maxlength="1"/></td>
-						<td><input type="text" name="val24" value="<%= bean.getAttdValue24() %>" size="1" maxlength="1"/></td>
-						<td><input type="text" name="val25" value="<%= bean.getAttdValue25() %>" size="1" maxlength="1"/></td>
-						<td><input type="text" name="val26" value="<%= bean.getAttdValue26() %>" size="1" maxlength="1"/></td>
-						<td><input type="text" name="val27" value="<%= bean.getAttdValue27() %>" size="1" maxlength="1"/></td>
-						<td><input type="text" name="val28" value="<%= bean.getAttdValue28() %>" size="1" maxlength="1"/></td>
-						<td><input type="text" name="val29" value="<%= bean.getAttdValue29() %>" size="1" maxlength="1"/></td>
-						<td><input type="text" name="val30" value="<%= bean.getAttdValue30() %>" size="1" maxlength="1"/></td>
-						<td><input type="text" name="val31" value="<%= bean.getAttdValue31() %>" size="1" maxlength="1"/></td>										
+						<td><input type="text" name="val1" value="<%= bean.getAttdValue1() %>" size="1" maxlength="1" readonly="readonly"/></td>
+						<td><input type="text" name="val2" value="<%= bean.getAttdValue2() %>" size="1" maxlength="1" readonly="readonly"/></td>
+						<td><input type="text" name="val3" value="<%= bean.getAttdValue3() %>" size="1" maxlength="1" readonly="readonly"/></td>
+						<td><input type="text" name="val4" value="<%= bean.getAttdValue4() %>" size="1" maxlength="1" readonly="readonly"/></td>
+						<td><input type="text" name="val5" value="<%= bean.getAttdValue5() %>" size="1" maxlength="1" readonly="readonly"/></td>
+						<td><input type="text" name="val6" value="<%= bean.getAttdValue6() %>" size="1" maxlength="1" readonly="readonly"/></td>
+						<td><input type="text" name="val7" value="<%= bean.getAttdValue7() %>" size="1" maxlength="1" readonly="readonly"/></td>
+						<td><input type="text" name="val8" value="<%= bean.getAttdValue8() %>" size="1" maxlength="1" readonly="readonly"/></td>
+						<td><input type="text" name="val9" value="<%= bean.getAttdValue9() %>" size="1" maxlength="1" readonly="readonly"/></td>
+						<td><input type="text" name="val10" value="<%= bean.getAttdValue10() %>" size="1" maxlength="1" readonly="readonly"/></td>
+						<td><input type="text" name="val11" value="<%= bean.getAttdValue11() %>" size="1" maxlength="1" readonly="readonly"/></td>
+						<td><input type="text" name="val12" value="<%= bean.getAttdValue12() %>" size="1" maxlength="1" readonly="readonly"/></td>
+						<td><input type="text" name="val13" value="<%= bean.getAttdValue13() %>" size="1" maxlength="1" readonly="readonly"/></td>
+						<td><input type="text" name="val14" value="<%= bean.getAttdValue14() %>" size="1" maxlength="1" readonly="readonly"/></td>
+						<td><input type="text" name="val15" value="<%= bean.getAttdValue15() %>" size="1" maxlength="1" readonly="readonly"/></td>
+						<td><input type="text" name="val16" value="<%= bean.getAttdValue16() %>" size="1" maxlength="1" readonly="readonly"/></td>
+						<td><input type="text" name="val17" value="<%= bean.getAttdValue17() %>" size="1" maxlength="1" readonly="readonly"/></td>
+						<td><input type="text" name="val18" value="<%= bean.getAttdValue18() %>" size="1" maxlength="1" readonly="readonly"/></td>
+						<td><input type="text" name="val19" value="<%= bean.getAttdValue19() %>" size="1" maxlength="1" readonly="readonly"/></td>
+						<td><input type="text" name="val20" value="<%= bean.getAttdValue20() %>" size="1" maxlength="1" readonly="readonly"/></td>
+						<td><input type="text" name="val21" value="<%= bean.getAttdValue21() %>" size="1" maxlength="1" readonly="readonly"/></td>
+						<td><input type="text" name="val22" value="<%= bean.getAttdValue22() %>" size="1" maxlength="1" readonly="readonly"/></td>
+						<td><input type="text" name="val23" value="<%= bean.getAttdValue23() %>" size="1" maxlength="1" readonly="readonly"/></td>
+						<td><input type="text" name="val24" value="<%= bean.getAttdValue24() %>" size="1" maxlength="1" readonly="readonly"/></td>
+						<td><input type="text" name="val25" value="<%= bean.getAttdValue25() %>" size="1" maxlength="1" readonly="readonly"/></td>
+						<td><input type="text" name="val26" value="<%= bean.getAttdValue26() %>" size="1" maxlength="1" readonly="readonly"/></td>
+						<td><input type="text" name="val27" value="<%= bean.getAttdValue27() %>" size="1" maxlength="1" readonly="readonly"/></td>
+						<td><input type="text" name="val28" value="<%= bean.getAttdValue28() %>" size="1" maxlength="1" readonly="readonly"/></td>
+						<td><input type="text" name="val29" value="<%= bean.getAttdValue29() %>" size="1" maxlength="1" readonly="readonly"/></td>
+						<td><input type="text" name="val30" value="<%= bean.getAttdValue30() %>" size="1" maxlength="1" readonly="readonly"/></td>
+						<td><input type="text" name="val31" value="<%= bean.getAttdValue31() %>" size="1" maxlength="1" readonly="readonly"/></td>										
 					</tr>
 				<%		
 					}
@@ -138,7 +145,7 @@
 								
 			</table>
 			<div class="btnPage">
-			<button id="left">←</button><button id="ins">입력</button><button id="right">→</button>
+			<button class="left">←</button><button id="ins">입력</button><button class="right">→</button>
 			</div>
 		<!-- content end -->
 		
