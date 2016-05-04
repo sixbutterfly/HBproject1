@@ -25,6 +25,7 @@ public class AjaxAttendController extends HttpServlet {
 		
 		//attdNo: 시퀀스, stuNo: 메소드(memName구하는거 참조), attdValue1: 메소드(attdDate, attdVal 전달받은거 이용해서) , attdDate
 		String attdValue = dao.insertAttdValue(attdDate, attdStatus, attdNo, tchId);
+		String attdValue = dao.insertAttdValue(attdDate, attdStatus, attdNo, tchId);
 		
 		//MemberDao dao = new MemberDao();
 		//int authNo = dao.loginCk(id,pw);
