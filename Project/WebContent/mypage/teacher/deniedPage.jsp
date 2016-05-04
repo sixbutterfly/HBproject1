@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>메인 페이지</title>
+<title>성적 입력 페이지</title>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/grid.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/header.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav.css"/>
@@ -28,24 +28,10 @@
 		<!-- aside1 -->
 		<%@include file="/templet/loginForm.jsp" %>
 		<%@include file="/templet/subnav5.jsp" %>
-		
 		<!-- content start -->
-		<%
-			String memno = (String)request.getAttribute("memno");
-			String name = (String)request.getAttribute("name");
-			String roomno = (String)request.getAttribute("roomno");
-			String javagrade = (String)request.getAttribute("javagrade");
-			String webgrade = (String)request.getAttribute("webgrade");
-			String framegrade = (String)request.getAttribute("framegrade");
-		%>
-			<h1><%=name %>님의 성적 조회 페이지</h1>
-			<table border="1">
-				<tr><th>학번</th><th>이름</th><th>강의실</th><th>자바</th><th>웹</th><th>프레임워크</th></tr>
-				<tr><td><%=memno %></td><td><%=name %></td><td><%=roomno %></td><td><%=javagrade %></td><td><%=webgrade %></td><td><%=framegrade %></td></tr>
-			</table>
-			
+			<h2>connection denied</h2>
+			you got no correct authnumber..
 		<!-- content end -->
-		
 		<!-- aside2 -->
 		<%@include file="/templet/aside2.jsp" %>
 		<!-- footer -->

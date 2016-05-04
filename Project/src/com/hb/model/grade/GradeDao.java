@@ -25,11 +25,15 @@ public class GradeDao {
 		conn = DB.getConnection();
 	}
 	
-	public ArrayList<GradeDto> list() {
+	public ArrayList<GradeDto> list(int roomno) {
 		ArrayList<GradeDto> al = new ArrayList<GradeDto>();
-		sql="SELECT STUDENT.STUNO, MEMBER.MEMNAME, STUDENT.ROOMNO, NVL(GRADE.JAVAGRADE, 0) JAVAGRADE , NVL(GRADE.WEBGRADE, 0) WEBGRADE , NVL(GRADE.FRAMEGRADE, 0) FRAMEGRADE FROM STUDENT, MEMBER, GRADE WHERE MEMBER.MEMNO=STUDENT.MEMNO AND STUDENT.STUNO=GRADE.STUNO ORDER BY STUNO";
+		sql="SELECT STUDENT.STUNO, MEMBER.MEMNAME, STUDENT.ROOMNO, NVL(GRADE.JAVAGRADE, 0) JAVAGRADE, " +
+			"NVL(GRADE.WEBGRADE, 0) WEBGRADE , NVL(GRADE.FRAMEGRADE, 0) FRAMEGRADE FROM STUDENT, " +
+			"MEMBER, GRADE WHERE MEMBER.MEMNO=STUDENT.MEMNO AND STUDENT.STUNO=GRADE.STUNO " +
+			"AND STUDENT.ROOMNO=? ORDER BY STUNO";
 		try {
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, roomno);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				GradeDto bean = new GradeDto();
@@ -41,7 +45,7 @@ public class GradeDao {
 				bean.setFramegrade(rs.getString("framegrade"));
 				al.add(bean);
 			}
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			try {
@@ -77,5 +81,23 @@ public class GradeDao {
 			}
 		}
 		return result;
+	}
+	
+	public int getRoomno(String id) {
+		int roomno=0;
+		sql="SELECT MEMID, MEMBER.MEMNO, MEMBER.MEMNAME, STUROOM.ROOMNO, TEACHER.TCHNO " +
+			"FROM STUROOM, TEACHER, MEMBER WHERE TEACHER.TCHNO=STUROOM.TCHNO " +
+			"AND MEMBER.MEMNO=TEACHER.MEMNO AND MEMID=?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				roomno = rs.getInt("roomno");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return roomno;
 	}
 }

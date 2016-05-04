@@ -20,7 +20,7 @@ public class registerDao {
 	
 	public ArrayList<registerDto> selectNull() {
 		ArrayList<registerDto> list = new ArrayList<>();
-		String sql = "select memNo, name, tel, email, file1, file2 from register where file1 is null and file2 is null";
+		String sql = "SELECT MEMNO, NAME, TEL, EMAIL, FILE1, FILE2 FROM REGISTER WHERE FILE1 IS NULL AND FILE2 IS NULL";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -50,7 +50,7 @@ public class registerDao {
 
 	private int getMemNo(String name) {
 		int memNo = 0;
-		String sql = "select memNo from member where memName='"+name+"'";
+		String sql = "SELECT MEMNO FROM MEMBER WHERE MEMNAME='"+name+"'";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -128,7 +128,7 @@ public class registerDao {
 	public int registerClass(int curNo, String name, String email, String tel,String gubun, String job, String jobinfo, String time, String pay,String content, String password, String file1, String file2) {
 		int result = 0;
 		String sql = "INSERT INTO REGISTER (REGNO, MEMNO, NAME, EMAIL, TEL, GUBUN, JOB, JOBINFO, TIME, PAY, CONTENT, PASSWORD, FILE1, FILE2, CURNO) VALUES " +
-					"(REG_SEQ.NEXTVAL, (select memNo from member where memName='"+name+"'), '"+name+"', '"+email+"', '"+tel+"', '"+gubun+"', '"+job+"', '"+jobinfo+"', '"+time+"', '"+pay+"', '"+content+"', '"+password+"', '"+file1+"', '"+file2+"',"+curNo+")";
+					"(REG_SEQ.NEXTVAL, (SELECT MEMNO FROM MEMBER WHERE MEMNAME='"+name+"'), '"+name+"', '"+email+"', '"+tel+"', '"+gubun+"', '"+job+"', '"+jobinfo+"', '"+time+"', '"+pay+"', '"+content+"', '"+password+"', '"+file1+"', '"+file2+"',"+curNo+")";
 //		System.out.println(sql);
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -148,7 +148,7 @@ public class registerDao {
 
 	public ArrayList<registerDto> selectFinal() {
 		ArrayList<registerDto> list = new ArrayList<>();
-		String sql = "select * from register where file1 is not null and file2 is not null";
+		String sql = "SELECT * FROM REGISTER WHERE FILE1 IS NOT NULL AND FILE2 IS NOT NULL";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -178,7 +178,7 @@ public class registerDao {
 
 	public registerDto seletOne(int memNo) {
 		registerDto dto = new registerDto();
-		String sql = "select * from register where memNo="+memNo;
+		String sql = "SELECT * FROM REGISTER WHERE MEMNO="+memNo;
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -215,8 +215,8 @@ public class registerDao {
 
 	public int deleteOne(int memNo) {
 		int result = 0;
-		String sql = "delete from register where memNo="+memNo;
-		String sql2 = "insert into grade (grdNo, stuNo ) values (grd_seq.nextval, (select stuNo from student where memNo="+memNo+"))";
+		String sql = "DELETE FROM REGISTER WHERE MEMNO="+memNo;
+		String sql2 = "INSERT INTO GRADE (GRDNO, STUNO ) VALUES (GRD_SEQ.NEXTVAL, (SELECT STUNO FROM STUDENT WHERE MEMNO="+memNo+"))";
 		System.out.println(sql2);
 		try {
 			conn.setAutoCommit(false);
@@ -241,5 +241,4 @@ public class registerDao {
 		}
 		return result;
 	}//deleteOne end
-
 }

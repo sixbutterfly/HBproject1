@@ -39,7 +39,7 @@ public class MemberDao {
 	}
 
 	public int memjoin(MemberDto dto) throws SQLException {
-		String sql = "INSERT INTO MEMBER VALUES (MEM_SEQ.NEXTVAL,?,?,?,?,?,?,0,?,?,?,SYSDATE)";
+		String sql = "INSERT INTO MEMBER (MEMNO, MEMPW, MEMID, MEMNAME, MEMADDRESS, MEMEMAIL, MEMPHONE, AUTHNO, MEMTEL, MEMGENDER, EMAILAGREE, JOINDAY) VALUES (MEM_SEQ.NEXTVAL,?,?,?,?,?,?,0,?,?,?,SYSDATE)";
 		int result = 0;
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -68,7 +68,7 @@ public class MemberDao {
 
 	public ArrayList<MemberDto> selectAll() throws SQLException {
 		ArrayList<MemberDto> list = new ArrayList<>();
-		String sql ="SELECT MEMNO, AUTHNO, MEMNAME, MEMGENDER, MEMPHONE, MEMTEL, MEMADDRESS, MEMEMAIL, EMAILAGREE, JOINDAY FROM MEMBER";
+		String sql ="SELECT MEMNO, AUTHNO, MEMNAME, MEMGENDER, MEMPHONE, MEMTEL, MEMADDRESS, MEMEMAIL, EMAILAGREE, JOINDAY FROM MEMBER ORDER BY AUTHNO ASC";
 		try{
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -89,6 +89,27 @@ public class MemberDao {
 		}
 		return list;
 	}
+	
+	public int updateLevel(MemberDto dto) {
+		int result = 0;
+		String sql = "UPDATE MEMBER SET AUTHNO=? WHERE MEMNO=?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, dto.getLevel());
+			pstmt.setInt(2, dto.getMemno());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally{
+			try {
+				if(pstmt!=null)pstmt.close();
+				if(conn!=null)conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}//updateLevel end
 
 	public MemberDto selectOne(int memno){
 		MemberDto dto= null;
@@ -114,13 +135,43 @@ public class MemberDao {
 		return dto;
 	}
 	
-	public int updateLevel(MemberDto dto) {
-		int result = 0;
-		String sql = "update member set authno=? where memno=?";
+	public MemberDto selectOne2(String id){
+		MemberDto dto= null;
+		String sql = "SELECT MEMNO, AUTHNO, MEMNAME, MEMGENDER, MEMPHONE, MEMTEL, MEMADDRESS, MEMEMAIL, EMAILAGREE, JOINDAY, MEMPW FROM MEMBER WHERE MEMID=?";
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, dto.getLevel());
-			pstmt.setInt(2, dto.getMemno());
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				dto = new MemberDto(rs.getInt("MEMNO"), rs.getInt("AUTHNO"), rs.getString("MEMNAME"),rs.getString("MEMGENDER"),rs.getString("MEMPHONE"), rs.getString("MEMTEL"), rs.getString("MEMADDRESS"), rs.getString("MEMEMAIL"), rs.getString("EMAILAGREE"), rs.getString("JOINDAY"));
+				dto.setPw(rs.getString("MEMPW"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally{
+			try {
+				if(rs!=null)rs.close();
+				if(pstmt!=null)pstmt.close();
+				if(conn!=null)conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return dto;
+	}
+	
+	public int updateInfo(int memno, String tel, String phone, String address, String email, String emailagree, String pw) {
+		int result = 0;
+		String sql = "UPDATE MEMBER SET MEMTEL=?, MEMPHONE=?, MEMADDRESS=?, MEMEMAIL=?, EMAILAGREE=?, MEMPW=? WHERE MEMNO=?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, tel);
+			pstmt.setString(2, phone);
+			pstmt.setString(3, address);
+			pstmt.setString(4, email);
+			pstmt.setString(5, emailagree);
+			pstmt.setString(6, pw);
+			pstmt.setInt(7, memno);
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -134,24 +185,25 @@ public class MemberDao {
 		}
 		return result;
 	}
+	
+	 public int updateOne(int memNo) {
+		   int result = 0;
+		   String sql = "update member set authNo=4 where memNo="+memNo;
+		   //System.out.println(sql);
+		   try {
+		      pstmt = conn.prepareStatement(sql);
+		      result = pstmt.executeUpdate();
+		   } catch (SQLException e) {
+		      e.printStackTrace();
+		   }finally{
+		      try {
+		         if(pstmt!=null){pstmt.close();}
+		         if(conn!=null){conn.close();}
+		      } catch (Exception e2) {
+		         e2.printStackTrace();
+		      }
+		   }
+		   return result;
+		}//updateOne end
 
-	public int updateOne(int memNo) {
-		int result = 0;
-		String sql = "update member set authNo=4 where memNo="+memNo;
-		//System.out.println(sql);
-		try {
-			pstmt = conn.prepareStatement(sql);
-			result = pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally{
-			try {
-				if(pstmt!=null){pstmt.close();}
-				if(conn!=null){conn.close();}
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
-		}
-		return result;
-	}//updateOne end
 }

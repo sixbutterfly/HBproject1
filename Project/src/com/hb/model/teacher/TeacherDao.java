@@ -23,7 +23,7 @@ public class TeacherDao {
 
 	public ArrayList<TeacherDto> selectAll() {
 		ArrayList<TeacherDto> list = new ArrayList();
-		sql = "select tchno, memname, roomno from TEACHER, member where teacher.memno = member.memno";
+		sql = "SELECT TCHNO, MEMNAME, ROOMNO FROM TEACHER, MEMBER WHERE TEACHER.MEMNO = MEMBER.MEMNO";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -53,7 +53,7 @@ public class TeacherDao {
 
 	public int updateAll(String[] tchlist, String[] roomlist) {
 		int result = 0;
-		sql = "update teacher set roomno = ? where tchno = ?";
+		sql = "UPDATE TEACHER SET ROOMNO = ? WHERE TCHNO = ?";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			for (int i = 0; i < tchlist.length; i++) {
@@ -79,7 +79,7 @@ public class TeacherDao {
 
 	public int removeAll(String[] tchlist, String[] checklist) {
 		int result = 0;
-		sql = "update teacher set roomno = null where tchno = ?";
+		sql = "UPDATE TEACHER SET ROOMNO = NULL WHERE TCHNO = ?";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			for (int i = 0; i < tchlist.length; i++) {
