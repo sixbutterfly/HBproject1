@@ -24,6 +24,7 @@ drop table management CASCADE CONSTRAINT purge;
 
 drop table after CASCADE CONSTRAINT purge;
 
+
 -- studyCur 테이블이 curriculum으로 바뀜.
 drop table curriculum CASCADE CONSTRAINT purge;
 

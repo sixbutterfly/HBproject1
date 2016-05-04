@@ -1,44 +1,8 @@
--- register table column attribute's some changed. (정현재)
-ALTER TABLE REGISTER MODIFY JOBINFO VARCHAR2(350);
-ALTER TABLE REGISTER MODIFY CONTENT VARCHAR2(200) NULL;
-
---강사가 강의실 번호를 참조 받음
-alter table teacher add (roomno number(5));
-ALTER TABLE teacher
-ADD FOREIGN KEY (roomno) REFERENCES sturoom(roomno);
-
--- stuCur 테이블 curriculum으로 이름 변경
-rename studyCur to curriculum;
-
--- 커리큘럼 테이블 null값 허용
-alter table curriculum modify(curNo null, tchNo null);
-
--- 학생 테이블 행정부 번호 컬럼 삭제
-alter table student drop column admNo;
-
--- register 테이블 submitValue -> file1로 변경
-alter table register rename column submitValue to file1;
-
--- register 테이블 file2컬럼 추가
-alter table register add(file2 VARCHAR2(10));
-
--- register ���̺� file1, file2, gubun �÷� ������ ����
-alter table register modify(file1 VARCHAR2(50));
-alter table register modify(file2 VARCHAR2(50));
-alter table register modify(gubun VARCHAR2(100));
-
-------member 테이블 변경
-ALTER TABLE MEMBER MODIFY (MEMPW VARCHAR2(30) NOT NULL,
-							MEMID VARCHAR2(30) NOT NULL,
-							MEMNAME VARCHAR2(30) NOT NULL,
-							MEMADDRESS VARCHAR2(100) NOT NULL,
-							MEMPHONE VARCHAR2(20) NOT NULL);
 ------멤버 테이블 속성 널값으로 변경							
 ALTER TABLE MEMBER ADD MEMTEL VARCHAR2(20) NULL;
 ALTER TABLE MEMBER ADD MEMGENDER VARCHAR2(20) NOT NULL;
 ALTER TABLE MEMBER ADD EMAILAGREE VARCHAR2(5) NOT NULL;
 ALTER TABLE MEMBER ADD JOINDAY VARCHAR2(20) NOT NULL;
-
 
 -- ATTEND table column attribute's 아주 많이 changed. (한국인)
 ALTER TABLE ATTEND DROP COLUMN attdValue;
@@ -74,9 +38,9 @@ ALTER TABLE ATTEND ADD attdValue29 VARCHAR2(10) NULL;
 ALTER TABLE ATTEND ADD attdValue30 VARCHAR2(10) NULL;
 ALTER TABLE ATTEND ADD attdValue31 VARCHAR2(10) NULL;
 
---삭제ALTER TABLE member DROP COLUMN joinDate;
+--삭제
 
---삭제ALTER TABLE teacher ADD tchName VARCHAR2(30) NULL;
+--삭제
 
 ALTER TABLE ATTEND DROP COLUMN attdValue1;
 ALTER TABLE ATTEND DROP COLUMN attdValue2;
@@ -129,9 +93,9 @@ ALTER TABLE student ADD attdNo number(5) NULL;
 ALTER TABLE student
 	ADD ( FOREIGN KEY (attdNo) REFERENCES attend(attdNo) ON DELETE SET NULL);
 	
-select * from student;
-
-select * from attend;
 
 update student set attdNo = 1 where stuNo = 11;
+
+ALTER TABLE member DROP COLUMN joinDate;
+ALTER TABLE teacher ADD tchName VARCHAR2(30) NULL;
 
