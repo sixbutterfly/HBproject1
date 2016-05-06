@@ -1,9 +1,3 @@
-CREATE TABLE management
-(
-	admNo                 NUMBER(5)  NOT NULL ,
-	memNo                 NUMBER(5)  NOT NULL 
-);
-
 CREATE TABLE attend
 (
 	attdNo                NUMBER(5)  NOT NULL ,
