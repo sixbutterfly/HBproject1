@@ -50,7 +50,6 @@ CREATE SEQUENCE room_seq start with 1 increment by 1 maxvalue 1000;
 
 CREATE SEQUENCE tch_seq start with 1 increment by 1 maxvalue 1000;
 
-CREATE SEQUENCE not_seq start with 1 increment by 1 maxvalue 1000;
 ----------------------------------------------------------------
 -- 공지사항 시퀸스
 CREATE SEQUENCE not_seq start with 1 increment by 1 maxvalue 1000;

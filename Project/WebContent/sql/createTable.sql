@@ -183,13 +183,16 @@ CREATE TABLE teacher
 (
 	tchNo                 NUMBER(5)  NOT NULL ,
 	memNo                 NUMBER(5) NOT NULL,
-	roomNo                NUMBER(5) NULL
+	roomNo            NUMBER(5) NULL
 );
 
 
 ALTER TABLE teacher
 	ADD  PRIMARY KEY (tchNo);
-
+	
+ALTER TABLE teacher
+	ADD ( FOREIGN KEY (roomNo) REFERENCES sturoom(roomNo) ON DELETE SET NULL);
+	
 ALTER TABLE grade
 	ADD ( FOREIGN KEY (roomNo) REFERENCES sturoom(roomNo) ON DELETE SET NULL);
 
@@ -232,10 +235,8 @@ ALTER TABLE stuRoom
 	ADD ( FOREIGN KEY (tchNo) REFERENCES teacher(tchNo) ON DELETE SET NULL);
 
 
-
 ALTER TABLE stuRoom
 	ADD ( FOREIGN KEY (curNo) REFERENCES curriculum(curNo) ON DELETE SET NULL);
-
 
 
 ALTER TABLE teacher

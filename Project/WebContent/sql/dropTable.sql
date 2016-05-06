@@ -14,8 +14,6 @@ drop table register CASCADE CONSTRAINT purge;
 
 drop table member CASCADE CONSTRAINT purge;
 
-drop table login CASCADE CONSTRAINT purge;
-
 drop table qna CASCADE CONSTRAINT purge;
 
 drop table management CASCADE CONSTRAINT purge;

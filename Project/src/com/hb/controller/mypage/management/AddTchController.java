@@ -38,7 +38,6 @@ public class AddTchController extends HttpServlet {
 		PrintWriter out = resp.getWriter();
 		for (int i = 0; i < tlist.size(); i++) {
 			out.print(tlist.get(i).getRoomno());
-			System.out.println(tlist.get(i).getRoomno());
 		}
 	}
 }
