@@ -21,7 +21,6 @@ public class MemberDao {
 	}
 
 	public int loginCk(String id, String pw) {
-		System.out.println("login id:"+id+",pw:"+pw);
 		String sql = "select m.authNo as authNo from member m, authority a where m.memId = ? and m.memPw=? and m.authNo = a.authNo";
 		int authNo = -1;
 		try {
@@ -69,7 +68,7 @@ public class MemberDao {
 
 	public ArrayList<MemberDto> selectAll() throws SQLException {
 		ArrayList<MemberDto> list = new ArrayList<>();
-		String sql ="SELECT MEMNO, AUTHNO, MEMNAME, MEMGENDER, MEMPHONE, MEMTEL, MEMADDRESS, MEMEMAIL, EMAILAGREE, JOINDAY FROM MEMBER ORDER BY AUTHNO ASC";
+		String sql ="SELECT MEMNO, AUTHNO, MEMNAME, MEMGENDER, MEMPHONE, MEMTEL, MEMADDRESS, MEMEMAIL, EMAILAGREE, JOINDAY FROM MEMBER ORDER BY MEMNO ASC";
 		try{
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -94,23 +93,172 @@ public class MemberDao {
 	public int updateLevel(MemberDto dto) {
 		int result = 0;
 		String sql = "UPDATE MEMBER SET AUTHNO=? WHERE MEMNO=?";
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, dto.getLevel());
-			pstmt.setInt(2, dto.getMemno());
-			result = pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally{
+		String sql2 = "INSERT INTO STUDENT (STUNO,MEMNO,ROOMNO,ATTDNO) VALUES (STU_SEQ.NEXTVAL, ?, NULL, NULL)";
+		String sql3 = "INSERT INTO TEACHER (TCHNO,MEMNO,ROOMNO) VALUES (TCH_SEQ.NEXTVAL, ?, NULL)";
+		String sql4 = "INSERT INTO SALES (SALESNO,MEMNO) VALUES (SAL_SEQ.NEXTVAL, ?)";
+		String sql5 = "INSERT INTO MANAGEMENT (MNGNO,MEMNO) VALUES (MNG_SEQ.NEXTVAL, ?)";
+		
+		String sql7 = "DELETE FROM MANAGEMENT WHERE MEMNO=?";
+		String sql8 = "DELETE FROM SALES WHERE MEMNO=?";
+		String sql9 = "DELETE FROM TEACHER WHERE MEMNO=?";
+		String sql10 = "DELETE FROM STUDENT WHERE MEMNO=?";
+		if(dto.getLevel()==4){
 			try {
-				if(pstmt!=null)pstmt.close();
-				if(conn!=null)conn.close();
-			} catch (SQLException e) {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, dto.getLevel());
+				pstmt.setInt(2, dto.getMemno());
+				result = pstmt.executeUpdate();
+				
+				pstmt = conn.prepareStatement(sql2);
+				pstmt.setInt(1, dto.getMemno());
+				result = pstmt.executeUpdate();
+				System.out.println(dto.getAuthno());
+				if(dto.getAuthno()==1){
+					pstmt = conn.prepareStatement(sql7);
+					pstmt.setInt(1, dto.getMemno());
+					result = pstmt.executeUpdate();
+				}else if(dto.getAuthno()==2){
+					pstmt = conn.prepareStatement(sql8);
+					pstmt.setInt(1, dto.getMemno());
+					result = pstmt.executeUpdate();
+				}else if(dto.getAuthno()==3){
+					pstmt = conn.prepareStatement(sql9);
+					pstmt.setInt(1, dto.getMemno());
+					result = pstmt.executeUpdate();
+				}else if(dto.getAuthno()==4){
+					pstmt = conn.prepareStatement(sql10);
+					pstmt.setInt(1, dto.getMemno());
+					result = pstmt.executeUpdate();
+				}
+			}catch(Exception e){
 				e.printStackTrace();
+			}finally{
+				try {
+					if(pstmt!=null)pstmt.close();
+					if(conn!=null)conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}else if(dto.getLevel()==3){
+			try{
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, dto.getLevel());
+				pstmt.setInt(2, dto.getMemno());
+				result = pstmt.executeUpdate();
+				
+				pstmt = conn.prepareStatement(sql3);
+				pstmt.setInt(1, dto.getMemno());
+				result = pstmt.executeUpdate();
+				
+				if(dto.getAuthno()==1){
+					pstmt = conn.prepareStatement(sql7);
+					pstmt.setInt(1, dto.getMemno());
+					result = pstmt.executeUpdate();
+				}else if(dto.getAuthno()==2){
+					pstmt = conn.prepareStatement(sql8);
+					pstmt.setInt(1, dto.getMemno());
+					result = pstmt.executeUpdate();
+				}else if(dto.getAuthno()==3){
+					pstmt = conn.prepareStatement(sql9);
+					pstmt.setInt(1, dto.getMemno());
+					result = pstmt.executeUpdate();
+				}else if(dto.getAuthno()==4){
+					pstmt = conn.prepareStatement(sql10);
+					pstmt.setInt(1, dto.getMemno());
+					result = pstmt.executeUpdate();
+				}
+			}catch(Exception e){
+				e.printStackTrace();
+			}finally{
+				try {
+					if(pstmt!=null)pstmt.close();
+					if(conn!=null)conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}else if(dto.getLevel()==2){
+			try{
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, dto.getLevel());
+				pstmt.setInt(2, dto.getMemno());
+				result = pstmt.executeUpdate();
+				
+				pstmt = conn.prepareStatement(sql4);
+				pstmt.setInt(1, dto.getMemno());
+				result = pstmt.executeUpdate();
+				
+				if(dto.getAuthno()==1){
+					pstmt = conn.prepareStatement(sql7);
+					pstmt.setInt(1, dto.getMemno());
+					result = pstmt.executeUpdate();
+				}else if(dto.getAuthno()==2){
+					pstmt = conn.prepareStatement(sql8);
+					pstmt.setInt(1, dto.getMemno());
+					result = pstmt.executeUpdate();
+				}else if(dto.getAuthno()==3){
+					pstmt = conn.prepareStatement(sql9);
+					pstmt.setInt(1, dto.getMemno());
+					result = pstmt.executeUpdate();
+				}else if(dto.getAuthno()==4){
+					pstmt = conn.prepareStatement(sql10);
+					pstmt.setInt(1, dto.getMemno());
+					result = pstmt.executeUpdate();
+				}
+				
+			}catch(Exception e){
+				e.printStackTrace();
+			}finally{
+				try {
+					if(pstmt!=null)pstmt.close();
+					if(conn!=null)conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}else if(dto.getLevel()==1){
+			try{
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, dto.getLevel());
+				pstmt.setInt(2, dto.getMemno());
+				result = pstmt.executeUpdate();
+				
+				pstmt = conn.prepareStatement(sql5);
+				pstmt.setInt(1, dto.getMemno());
+				result = pstmt.executeUpdate();
+				
+				if(dto.getAuthno()==1){
+					pstmt = conn.prepareStatement(sql7);
+					pstmt.setInt(1, dto.getMemno());
+					result = pstmt.executeUpdate();
+				}else if(dto.getAuthno()==2){
+					pstmt = conn.prepareStatement(sql8);
+					pstmt.setInt(1, dto.getMemno());
+					result = pstmt.executeUpdate();
+				}else if(dto.getAuthno()==3){
+					pstmt = conn.prepareStatement(sql9);
+					pstmt.setInt(1, dto.getMemno());
+					result = pstmt.executeUpdate();
+				}else if(dto.getAuthno()==4){
+					pstmt = conn.prepareStatement(sql10);
+					pstmt.setInt(1, dto.getMemno());
+					result = pstmt.executeUpdate();
+				}
+				
+			}catch(Exception e){
+				e.printStackTrace();
+			}finally{
+				try {
+					if(pstmt!=null)pstmt.close();
+					if(conn!=null)conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 		return result;
-	}//updateLevel end
+	}
 
 	public MemberDto selectOne(int memno){
 		MemberDto dto= null;

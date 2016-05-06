@@ -97,6 +97,7 @@
 			<div class="conarray">
 			<div class="infor">회원 번호 : <%=dto.getMemno()%></div>
 			<input type="hidden" name="num" value="<%=dto.getMemno()%>">
+			<input type="hidden" name="level" value="<%=dto.getLevel()%>"/>
 			<div class="infor">회원등급 : <% if(dto.getLevel()==0){%>회원
 			<% }else if(dto.getLevel()==1){%>행정부
 			<% }else if(dto.getLevel()==2){%>영업부
