@@ -48,12 +48,11 @@ public class EditInfoController extends HttpServlet {
 			StringTokenizer st2 = new StringTokenizer(memtel, "-");
 			while (st2.hasMoreElements()) {
 				tel1 = (String) st2.nextElement();
-				if (tel2=="" || tel2==null || tel3=="" || tel3==null) {
-					tel2="0000";
-					tel3="0000";
-				}else{
-				tel2 = (String) st2.nextElement();
-				tel3 = (String) st2.nextElement();
+				if (st2.hasMoreElements()) {
+					tel2 = (String) st2.nextElement();
+					if (st2.hasMoreElements()) {
+						tel3 = (String) st2.nextElement();
+					}
 				}
 			}
 			
