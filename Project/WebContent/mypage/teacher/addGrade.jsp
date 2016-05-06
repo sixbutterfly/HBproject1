@@ -51,7 +51,7 @@
 		<%@include file="/templet/loginForm.jsp" %>
 		<%@include file="/templet/subnav5.jsp" %>
 		<!-- content start -->
-			<h1 align="center">학생 성적 입력 페이지</h1><br/>
+			<h1 align="center">성적 입력 페이지</h1><br/>
 			<table>
 				<tr><th>학번</th><th>이름</th><th>강의실</th><th>자바</th><th>웹</th><th>프레임워크</th></tr>
 				<%
@@ -59,18 +59,17 @@
 					for(GradeDto bean: al) {
 				%>
 				<tr>
-					<label for="a"><td><a href="gradeDetail.korean?stuno=<%=bean.getStuno() %>&name=<%=bean.getMemname() %>&roomno=<%=bean.getRoomno() %>&javagrade=<%=bean.getJavagrade() %>&webgrade=<%=bean.getWebgrade() %>&framegrade=<%=bean.getFramegrade() %>" id="a"><%=bean.getStuno() %></a></td>
+					<td><a href="gradeDetail.korean?stuno=<%=bean.getStuno() %>&name=<%=bean.getMemname() %>&roomno=<%=bean.getRoomno() %>&javagrade=<%=bean.getJavagrade() %>&webgrade=<%=bean.getWebgrade() %>&framegrade=<%=bean.getFramegrade() %>"><%=bean.getStuno() %></a></td>
 					<td><a href="gradeDetail.korean?stuno=<%=bean.getStuno() %>&name=<%=bean.getMemname() %>&roomno=<%=bean.getRoomno() %>&javagrade=<%=bean.getJavagrade() %>&webgrade=<%=bean.getWebgrade() %>&framegrade=<%=bean.getFramegrade() %>"><%=bean.getMemname() %></a></td>
 					<td><a href="gradeDetail.korean?stuno=<%=bean.getStuno() %>&name=<%=bean.getMemname() %>&roomno=<%=bean.getRoomno() %>&javagrade=<%=bean.getJavagrade() %>&webgrade=<%=bean.getWebgrade() %>&framegrade=<%=bean.getFramegrade() %>"><%=bean.getRoomno() %></a></td>
 					<td><a href="gradeDetail.korean?stuno=<%=bean.getStuno() %>&name=<%=bean.getMemname() %>&roomno=<%=bean.getRoomno() %>&javagrade=<%=bean.getJavagrade() %>&webgrade=<%=bean.getWebgrade() %>&framegrade=<%=bean.getFramegrade() %>"><%=bean.getJavagrade() %></a></td>
 					<td><a href="gradeDetail.korean?stuno=<%=bean.getStuno() %>&name=<%=bean.getMemname() %>&roomno=<%=bean.getRoomno() %>&javagrade=<%=bean.getJavagrade() %>&webgrade=<%=bean.getWebgrade() %>&framegrade=<%=bean.getFramegrade() %>"><%=bean.getWebgrade() %></a></td>
-					<td><a href="gradeDetail.korean?stuno=<%=bean.getStuno() %>&name=<%=bean.getMemname() %>&roomno=<%=bean.getRoomno() %>&javagrade=<%=bean.getJavagrade() %>&webgrade=<%=bean.getWebgrade() %>&framegrade=<%=bean.getFramegrade() %>"><%=bean.getFramegrade() %></a></td></label>
+					<td><a href="gradeDetail.korean?stuno=<%=bean.getStuno() %>&name=<%=bean.getMemname() %>&roomno=<%=bean.getRoomno() %>&javagrade=<%=bean.getJavagrade() %>&webgrade=<%=bean.getWebgrade() %>&framegrade=<%=bean.getFramegrade() %>"><%=bean.getFramegrade() %></a></td>
 				</tr>
 				<%
 					}
 				%>
 			</table>
-			
 		<!-- content end -->
 		<!-- aside2 -->
 		<%@include file="/templet/aside2.jsp" %>

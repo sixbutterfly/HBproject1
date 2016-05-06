@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/applist.do")
+@WebServlet("/applist.korean")
 public class AppListController extends HttpServlet{
 	
 	@Override

@@ -33,24 +33,21 @@ $(document).ready(function(){
 		$('.attendBody>:lt(17):gt(1)').css('display', '');	
 	});
 	
-	$("#ins").click(function(){
-		var arr =[];		
-	
-			$('.attendBody>:lt(31):gt(1)').each(function(idx, item){
+	$("#ins").click(function(){	
+		/*	$('.attendBody>:lt(31):gt(1)').each(function(idx, item){
 				arr[idx]=$(item).val();
-			});
+			});*/
 			$.ajax({
 				"url":"/Project/login/ajaxAttend.korean",
-				"data":{"attdDate":arr[0],"attdStatus":arr[1],"attdNo":arr[2],"tchId":arr[3]},
+				"data":{"attdDate":$('.left:eq(0)>input').val(), "attdStatus":$('.right:eq(1)>select').val(), "attdNo":$('.attendBody>:eq(0)>input').val()},
 				"method":"POST",
 				"dataType":"json",
 				"error" : function( jqXHR, textStatus, errorThrown ) {
 					//alert(jqXHR+textStatus+errorThrown);
-				}
-				/*
+				},				
 				"success":function(data){			
 					
-				}*/			
+				}	
 			});		
 			
 		});

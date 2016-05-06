@@ -8,8 +8,8 @@
 <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		 var level = <%= (Integer)session.getAttribute("level")%>;
-		 
+		var level = <%= (Integer)session.getAttribute("level") %>;
+		console.log(level);
 	switch (level) {
 		case 0:
 			$(".guest").css("display", "initial");
@@ -25,6 +25,9 @@
 			break;
 		case 4:
 			$(".student").css("display", "initial");
+			break;
+		case 9:
+			$(".eachmenu>.menu").css("display", "initial");
 			break;
 		}
 	});
@@ -62,9 +65,6 @@
 			</div>
 			<div class="manager menu">
 				<a href="room.korean">강의실 관리</a>
-			</div>
-			<div class="manager menu">
-				<a href="teacher.korean">강사 관리</a>
 			</div>
 			<div class="manager menu">
 				<a href="curriculum.korean">커리큘럼 관리</a>

@@ -28,6 +28,9 @@ public class MemberDto {
 	private String mememail;
 	private String joinday;
 	
+	public MemberDto() {
+	}
+	
 	public MemberDto(String id, String pw, String name, String gender,
 			String tel, String tel2, String tel3, String phone,
 			String phone2, String phone3, String email, String email2,
@@ -67,6 +70,11 @@ public class MemberDto {
 	public MemberDto(int memno, int level) {
 		this.level = level;
 		this.memno = memno;
+	}
+	public MemberDto(int memno, int level, int beforelevel) {
+		this.level = level;
+		this.memno = memno;
+		this.authno = beforelevel;
 	}
 	public String getId() {
 		return id;

@@ -48,36 +48,6 @@ public class registerDao {
 		return list;
 	}
 
-	private int getMemNo(String name) {
-		int memNo = 0;
-		String sql = "select memNo from member where memName='"+name+"'";
-		try {
-			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			if(rs.next()){
-				memNo = rs.getInt("memNo");
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return memNo;
-	}
-	
-	public int registerClass(String name, String email, String tel,String gubun, String job, String jobinfo, String time, String pay,String content, String password, String file1, String file2) {
-		int result = 0;
-		int memNo = getMemNo(name);
-		String sql = "INSERT INTO REGISTER (REGNO, MEMNO, NAME, EMAIL, TEL, GUBUN, JOB, JOBINFO, TIME, PAY, CONTENT, PASSWORD, FILE1, FILE2) VALUES " +
-					"(REG_SEQ.NEXTVAL, "+memNo+", '"+name+"', '"+email+"', '"+tel+"', '"+gubun+"', '"+job+"', '"+jobinfo+"', '"+time+"', '"+pay+"', '"+content+"', '"+password+"', '"+file1+"', '"+file2+"')";
-		try {
-			pstmt = conn.prepareStatement(sql);
-			//System.out.println(sql);
-			result = pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return result;
-	}
-
 //	private int getMemNo() {
 //		int memNo = 0;
 //		String sql = "select memNo from member where memId='"+id+"'";

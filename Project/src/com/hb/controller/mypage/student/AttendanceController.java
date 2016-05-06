@@ -13,7 +13,7 @@ import com.hb.model.attend.AttdDao;
 import com.hb.model.attend.AttdDto;
 
 //출결 보기
-@WebServlet("/viewatt.do")
+@WebServlet("/viewatt.korean")
 public class AttendanceController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)

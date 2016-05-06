@@ -1,9 +1,7 @@
 package com.hb.controller.mypage.teacher;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,9 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.hb.model.attend.AttdDao;
 import com.hb.model.attend.AttdDto;
-import com.hb.model.teacher.TeacherDao;
 
-@WebServlet("/addatt.do")
+@WebServlet("/addatt.korean")
 public class AddAttendanceController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -43,6 +40,5 @@ public class AddAttendanceController extends HttpServlet {
 		req.setAttribute("attdList", attdList);
 
 		req.getRequestDispatcher("mypage/teacher/addAttendance.jsp").forward(req, resp);
-
 	}
 }

@@ -16,8 +16,9 @@ public class ManageLevel extends HttpServlet {
 		req.setCharacterEncoding("utf-8");
 		int memno = Integer.parseInt(req.getParameter("num"));
 		int level = Integer.parseInt(req.getParameter("chlevel"));
+		int beforelevel = Integer.parseInt(req.getParameter("level"));
 		MemberDao dao = new MemberDao();
-		MemberDto dto = new MemberDto(memno, level);
+		MemberDto dto = new MemberDto(memno, level,beforelevel);
 		int result = dao.updateLevel(dto);
 		
 		if(result>0){

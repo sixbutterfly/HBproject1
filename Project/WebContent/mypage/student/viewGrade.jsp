@@ -30,9 +30,18 @@
 		<%@include file="/templet/subnav5.jsp" %>
 		
 		<!-- content start -->
-			<h1>ㅇㅇㅇ님 성적</h1>
-			<table>
+		<%
+			String memno = (String)request.getAttribute("memno");
+			String name = (String)request.getAttribute("name");
+			String roomno = (String)request.getAttribute("roomno");
+			String javagrade = (String)request.getAttribute("javagrade");
+			String webgrade = (String)request.getAttribute("webgrade");
+			String framegrade = (String)request.getAttribute("framegrade");
+		%>
+			<h1><%=name %>님의 성적 조회 페이지</h1>
+			<table border="1">
 				<tr><th>학번</th><th>이름</th><th>강의실</th><th>자바</th><th>웹</th><th>프레임워크</th></tr>
+				<tr><td><%=memno %></td><td><%=name %></td><td><%=roomno %></td><td><%=javagrade %></td><td><%=webgrade %></td><td><%=framegrade %></td></tr>
 			</table>
 			
 		<!-- content end -->

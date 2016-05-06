@@ -16,8 +16,17 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
 
 <style type="text/css">
-	.content{
-		height: 800px;
+	.title>p{
+		font-size: 30pt;
+		font-style: oblique;
+	}
+	.title>span{
+		font-size: 15pt;
+	}
+	.title{
+		margin: 20px;
+		border-bottom: 3px solid #ddd;
+		color: #666;
 	}
 	h1{
 		text-align: center;
