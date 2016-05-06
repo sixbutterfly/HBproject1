@@ -189,6 +189,10 @@ CREATE TABLE teacher
 
 ALTER TABLE teacher
 	ADD  PRIMARY KEY (tchNo);
+	
+ALTER TABLE teacher add CONSTRAINT teacher_FK FOREIGN KEY (roomNo) REFERENCES sturoom(roomNo) ON DELETE SET NULL;
+
+alter table teacher add foreign key(컬럼명) references 참조테이블(참조컬럼명);
 
 ALTER TABLE grade
 	ADD ( FOREIGN KEY (roomNo) REFERENCES sturoom(roomNo) ON DELETE SET NULL);
@@ -232,10 +236,8 @@ ALTER TABLE stuRoom
 	ADD ( FOREIGN KEY (tchNo) REFERENCES teacher(tchNo) ON DELETE SET NULL);
 
 
-
 ALTER TABLE stuRoom
 	ADD ( FOREIGN KEY (curNo) REFERENCES curriculum(curNo) ON DELETE SET NULL);
-
 
 
 ALTER TABLE teacher
