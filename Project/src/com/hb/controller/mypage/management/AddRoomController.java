@@ -32,7 +32,7 @@ public class AddRoomController extends HttpServlet {
 		if(result>0){
 			out.print("추가 성공");
 		}else{
-			out.print("이미 강의실이 존재합니다");
+			out.print("추가 실패");
 		}
 	}
 }

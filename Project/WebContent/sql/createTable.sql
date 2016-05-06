@@ -1,17 +1,17 @@
-CREATE TABLE management
-(
-	admNo                 NUMBER(5)  NOT NULL ,
-	memNo                 NUMBER(5)  NOT NULL 
-);
-
+-- 한국인 attend 테이블 수정 : stuNo 추가
 CREATE TABLE attend
 (
 	attdNo                NUMBER(5)  NOT NULL ,
+	stuNo					Number(5) null,
 	attdDate              DATE  NULL 
 );
 
 ALTER TABLE attend
 	ADD  PRIMARY KEY (attdNo);
+
+-- 한국인 attend, student 테이블 간의 참조 수정
+ALTER TABLE attend
+	ADD ( FOREIGN KEY (stuno) REFERENCES student(stuno) ON DELETE SET NULL);
 
 ALTER TABLE ATTEND ADD attdValue1 VARCHAR2(10) NULL;
 ALTER TABLE ATTEND ADD attdValue2 VARCHAR2(10) NULL;
@@ -156,13 +156,12 @@ ALTER TABLE sales
 	ADD  PRIMARY KEY (salesNo);
 
 
-
+ -- 한국인 student 테이블 수정 attdNo컬럼 삭제
 CREATE TABLE student
 (
 	stuNo                 NUMBER(10)  NOT NULL ,
 	memNo                 NUMBER(5)  NULL ,
 	roomNo                NUMBER(5)  NULL, 
-	attdNo                NUMBER(5) NULL 
 );
 
 ALTER TABLE student
@@ -189,13 +188,16 @@ CREATE TABLE teacher
 (
 	tchNo                 NUMBER(5)  NOT NULL ,
 	memNo                 NUMBER(5) NOT NULL,
-	roomNo                NUMBER(5) NULL
+	roomNo            NUMBER(5) NULL
 );
 
 
 ALTER TABLE teacher
 	ADD  PRIMARY KEY (tchNo);
-
+	
+ALTER TABLE teacher
+	ADD ( FOREIGN KEY (roomNo) REFERENCES sturoom(roomNo) ON DELETE SET NULL);
+	
 ALTER TABLE grade
 	ADD ( FOREIGN KEY (roomNo) REFERENCES sturoom(roomNo) ON DELETE SET NULL);
 
@@ -238,10 +240,8 @@ ALTER TABLE stuRoom
 	ADD ( FOREIGN KEY (tchNo) REFERENCES teacher(tchNo) ON DELETE SET NULL);
 
 
-
 ALTER TABLE stuRoom
 	ADD ( FOREIGN KEY (curNo) REFERENCES curriculum(curNo) ON DELETE SET NULL);
-
 
 
 ALTER TABLE teacher

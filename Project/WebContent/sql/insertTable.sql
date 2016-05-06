@@ -25,19 +25,7 @@ insert into MEMBER values(mem_seq.nextval, 'a1111111', 'korean11', '한국인11'
 --행정부
 insert into MANAGEMENT values(mng_seq.nextval, 2);
 
-insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno,MEMGENDER,EMAILAGREE) values (mem_seq.nextval, 'kimnormal', 'kim', '���Ϲ�', '���Ϲ��� ��', 'kimnormal@naver.com', '
-010-2599-8765', 0,'����','N');
-insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno,MEMGENDER,EMAILAGREE) values (mem_seq.nextval, 'kimdaeri', 'kim', '��븮', '��븮�� ��', 'kimdaeri@gmail.com', '01
-0-1633-7511', 1,'����','Y');
-insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno,MEMGENDER,EMAILAGREE) values (mem_seq.nextval, 'kimsales', 'kim', '�迵��', '�迵���� ��', 'kimsales@gmail.com', '01
-0-7544-9984', 2,'����','Y');
-insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno,MEMGENDER,EMAILAGREE) values (mem_seq.nextval, 'kimteacher', 'kim', '�輱��', '�輱���� ��', 'kimteacher@gmail.com',
- '010-1599-7878', 3,'����','N');
-insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno,MEMGENDER,EMAILAGREE) values (mem_seq.nextval, 'kimstudent', 'kim', '���л�', '���л��� ��', 'kimstudent@gmail.com',
- '010-2468-7852', 4,'����','N');
-insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno,MEMGENDER,EMAILAGREE) values (mem_seq.nextval, 'kimgraduate', 'kim', '������', '�������� ��', 'kimgraduate@gmail.com
-', '010-3211-6123', 5,'����','Y');
->>>>>>> branch '최재호' of https://github.com/sixbutterfly/HBproject1.git
+
 
 --행정부 추가
 insert into management (mngno, memno) values (adm_seq.nextval, '1');
@@ -73,7 +61,6 @@ insert into teacher (tchno, tchname, memno) values (TCH_SEQ.nextval, '김선생'
 insert into teacher values (tch_seq.nextval,'한국인',1);
 
 --강의실 추가 (roomNo,curNo,tchNo 순)
-<<<<<<< HEAD
 insert into sturoom (roomno, tchno, curno) values (room_seq.nextval, 2, null);
 insert into sturoom (roomno, tchno, curno) values (room_seq.nextval, 2, null);
 insert into sturoom (roomno, tchno, curno) values (room_seq.nextval, 2, null);
@@ -207,6 +194,17 @@ update attend set attdValue2 = '' where attdNo = 2;
 update attend set attdValue3 = '조퇴' where attdNo = 2;
 				 
 
-select * from member;
+select a.attdNo, memName, nvl(attdvalue1,'-'), nvl(attdvalue2,'-'), nvl(attdvalue3,'-'), nvl(attdvalue4,'-'), nvl(attdvalue5,'-'), nvl(attdvalue6,'-'), nvl(attdvalue7,'-'), nvl(attdvalue8,'-'), nvl(attdvalue9,'-'), nvl(attdvalue10,'-'),
+							 nvl(attdvalue11,'-'), nvl(attdvalue12,'-'), nvl(attdvalue13,'-'), nvl(attdvalue14,'-'), nvl(attdvalue15,'-'), nvl(attdvalue16,'-'), nvl(attdvalue17,'-'), nvl(attdvalue18,'-'), nvl(attdvalue19,'-'), nvl(attdvalue20,'-'), nvl(attdvalue21,'-'), nvl(attdvalue22,'-'),
+							 nvl(attdvalue23,'-'), nvl(attdvalue24,'-'), nvl(attdvalue25,'-'), nvl(attdvalue26,'-'), nvl(attdvalue27,'-'), nvl(attdvalue28,'-'), nvl(attdvalue29,'-'), nvl(attdvalue30,'-'), nvl(attdvalue31,'-')
+							 from attend a,
+							 (
+						     select memName, attdNo from member m, student s where m.memNo = s.memNo
+						     and s.roomNo = (select r.roomNo from stuRoom r where 
+						    	 r.tchNo = (select t.tchNo from member m, teacher t where m.memno = t.memno and m.memid=' +korean3  + '))
+						     ) s 
+						     where a.attdNo = s.attdNo;
 						     
 
+select * from student;
+select * from teacher;

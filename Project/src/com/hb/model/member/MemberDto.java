@@ -71,6 +71,11 @@ public class MemberDto {
 		this.level = level;
 		this.memno = memno;
 	}
+	public MemberDto(int memno, int level, int beforelevel) {
+		this.level = level;
+		this.memno = memno;
+		this.authno = beforelevel;
+	}
 	public String getId() {
 		return id;
 	}

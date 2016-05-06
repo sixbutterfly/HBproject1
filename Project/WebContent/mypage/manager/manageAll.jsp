@@ -62,7 +62,8 @@
 	height: 2px;
 	border: none;
 }
-	.hrefcolor{
+	.no9{
+	display:none;
 	}
 	
 </style>

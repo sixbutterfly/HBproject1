@@ -27,12 +27,12 @@ public class AttdDao {
 		//강사이름
 		public String selectTchName(String memberId) {
 			String teacherName = "";			
-			String sql = "select tchName from member, teacher where member.memno = teacher.memno and memid='" +memberId + "'";
+			String sql = "select memName from member, teacher where member.memno = teacher.memno and memid='" +memberId + "'";
 			try {
 				pstmt = conn.prepareStatement(sql);
 				rs = pstmt.executeQuery();
 				if(rs.next()){
-					teacherName = rs.getString("tchName");
+					teacherName = rs.getString("memName");
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -145,7 +145,7 @@ public class AttdDao {
 							+ " (" 
 						    + " select memName, stuNo from member m, student s where m.memNo = s.memNo and m.memid='" +memberId  + "'" 
 						    + "	 ) s " 
-						    + " where a.stuNo = s.stuNo";
+						    + " where a.attdNo = s.attdNo";
 			
 			try {
 				pstmt = conn.prepareStatement(sql);
