@@ -61,12 +61,27 @@
 				return false;
 			}
 		});
+		
 		if($('#emailchk').val()=="@"){
 			$('#emailchk').next().text("-");
 		}else if($('#emailchk').val().match(/^@(.+)$/)){
 			$('#emailchk').next().text("-");
 		}else{
 			$('#emailchk').next().text($('#emailchk').val());
+		}
+		
+		if($('#level').val()==0){
+			$('select>option:eq(0)').css('display','none');
+		}else if($('#level').val()==1){
+			$('select>option:eq(1)').css('display','none');
+		}else if($('#level').val()==2){
+			$('select>option:eq(2)').css('display','none');
+		}else if($('#level').val()==3){
+			$('select>option:eq(3)').css('display','none');
+		}else if($('#level').val()==4){
+			$('select>option:eq(4)').css('display','none');
+		}else if($('#level').val()==5){
+			$('select>option:eq(5)').css('display','none');
 		}
 	});
 </script>
@@ -96,8 +111,8 @@
 			<div  style="background-color: rgba(214, 255, 231, 0.61);">
 			<div class="conarray">
 			<div class="infor">회원 번호 : <%=dto.getMemno()%></div>
-			<input type="hidden" name="num" value="<%=dto.getMemno()%>">
-			<input type="hidden" name="level" value="<%=dto.getLevel()%>"/>
+			<input type="hidden" name="num" value="<%=dto.getMemno()%>"/>
+			<input type="hidden" name="level" value="<%=dto.getLevel()%>" id="level"/>
 			<div class="infor">회원등급 : <% if(dto.getLevel()==0){%>회원
 			<% }else if(dto.getLevel()==1){%>행정부
 			<% }else if(dto.getLevel()==2){%>영업부
@@ -106,11 +121,11 @@
 			<% }else if(dto.getLevel()==5){%>수료자
 			<% }%>
 			<select name="chlevel">
-				<option value="0">회원</option>
-				<option value="1">행정부</option>
-				<option value="2">영업부</option>
-				<option value="3">강사</option>
-				<option value="4">학생</option>
+				<option value="0" id="mem">회원</option>
+				<option value="1" id="manage">행정부</option>
+				<option value="2" id="sales">영업부</option>
+				<option value="3" id="teacher">강사</option>
+				<option value="4" id="student">학생</option>
 				<option value="5">수료자</option>
 			</select></div>
 			<div class="infor">성별 : <%=dto.getMemgender()%></div>
