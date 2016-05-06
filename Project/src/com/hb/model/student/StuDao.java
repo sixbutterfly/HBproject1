@@ -60,9 +60,6 @@ public class StuDao {
 				bean.setStuname(rs.getString("memname"));
 				bean.setRoomno(rs.getString("roomno"));
 				list.add(bean);
-				System.out.println(rs.getInt("stuno"));
-				System.out.println(rs.getString("memname"));
-				System.out.println(rs.getInt("roomno"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
