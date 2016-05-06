@@ -12,8 +12,6 @@ drop table teacher CASCADE CONSTRAINT purge;
 
 drop table register CASCADE CONSTRAINT purge;
 
-drop table admin CASCADE CONSTRAINT purge;
-
 drop table member CASCADE CONSTRAINT purge;
 
 drop table login CASCADE CONSTRAINT purge;
