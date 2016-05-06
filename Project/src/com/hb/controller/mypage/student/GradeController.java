@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/viewgrade.do")
+@WebServlet("/viewgrade.korean")
 public class GradeController extends HttpServlet{
 @Override
 protected void doGet(HttpServletRequest req, HttpServletResponse resp)

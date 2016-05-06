@@ -20,7 +20,7 @@ public class AjaxLoginController extends HttpServlet {
 		MemberDao dao = new MemberDao();
 		int authNo = dao.loginCk(id,pw);
 		
-		//System.out.println(authNo);
+		System.out.println(authNo);
 		
 		if(authNo==0 || authNo==1 || authNo==2 || authNo==3 || authNo==4 || authNo==5 || authNo==9){
 			request.getSession().setAttribute("login", true);

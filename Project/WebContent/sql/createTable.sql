@@ -1,4 +1,4 @@
-CREATE TABLE mangement
+CREATE TABLE management
 (
 	admNo                 NUMBER(5)  NOT NULL ,
 	memNo                 NUMBER(5)  NOT NULL 
@@ -7,29 +7,52 @@ CREATE TABLE mangement
 CREATE TABLE attend
 (
 	attdNo                NUMBER(5)  NOT NULL ,
-	stuNo                 NUMBER(10)  NULL ,
-	attdValue             VARCHAR2(10)  NULL ,
 	attdDate              DATE  NULL 
 );
-
-
 
 ALTER TABLE attend
 	ADD  PRIMARY KEY (attdNo);
 
-
+ALTER TABLE ATTEND ADD attdValue1 VARCHAR2(10) NULL;
+ALTER TABLE ATTEND ADD attdValue2 VARCHAR2(10) NULL;
+ALTER TABLE ATTEND ADD attdValue3 VARCHAR2(10) NULL;
+ALTER TABLE ATTEND ADD attdValue4 VARCHAR2(10) NULL;
+ALTER TABLE ATTEND ADD attdValue5 VARCHAR2(10) NULL;
+ALTER TABLE ATTEND ADD attdValue6 VARCHAR2(10) NULL;
+ALTER TABLE ATTEND ADD attdValue7 VARCHAR2(10) NULL;
+ALTER TABLE ATTEND ADD attdValue8 VARCHAR2(10) NULL;
+ALTER TABLE ATTEND ADD attdValue9 VARCHAR2(10) NULL;
+ALTER TABLE ATTEND ADD attdValue10 VARCHAR2(10) NULL;
+ALTER TABLE ATTEND ADD attdValue11 VARCHAR2(10) NULL;
+ALTER TABLE ATTEND ADD attdValue12 VARCHAR2(10) NULL;
+ALTER TABLE ATTEND ADD attdValue13 VARCHAR2(10) NULL;
+ALTER TABLE ATTEND ADD attdValue14 VARCHAR2(10) NULL;
+ALTER TABLE ATTEND ADD attdValue15 VARCHAR2(10) NULL;
+ALTER TABLE ATTEND ADD attdValue16 VARCHAR2(10) NULL;
+ALTER TABLE ATTEND ADD attdValue17 VARCHAR2(10) NULL;
+ALTER TABLE ATTEND ADD attdValue18 VARCHAR2(10) NULL;
+ALTER TABLE ATTEND ADD attdValue19 VARCHAR2(10) NULL;
+ALTER TABLE ATTEND ADD attdValue20 VARCHAR2(10) NULL;
+ALTER TABLE ATTEND ADD attdValue21 VARCHAR2(10) NULL;
+ALTER TABLE ATTEND ADD attdValue22 VARCHAR2(10) NULL;
+ALTER TABLE ATTEND ADD attdValue23 VARCHAR2(10) NULL;
+ALTER TABLE ATTEND ADD attdValue24 VARCHAR2(10) NULL;
+ALTER TABLE ATTEND ADD attdValue25 VARCHAR2(10) NULL;
+ALTER TABLE ATTEND ADD attdValue26 VARCHAR2(10) NULL;
+ALTER TABLE ATTEND ADD attdValue27 VARCHAR2(10) NULL;
+ALTER TABLE ATTEND ADD attdValue28 VARCHAR2(10) NULL;
+ALTER TABLE ATTEND ADD attdValue29 VARCHAR2(10) NULL;
+ALTER TABLE ATTEND ADD attdValue30 VARCHAR2(10) NULL;
+ALTER TABLE ATTEND ADD attdValue31 VARCHAR2(10) NULL;
 
 CREATE TABLE authority
 (
 	authNo                NUMBER(2)  NOT NULL ,
-	departName            VARCHAR2(30)  NULL 
+	departName            VARCHAR2(30) NOT NULL 
 );
-
-
 
 ALTER TABLE authority
 	ADD  PRIMARY KEY (authNo);
-
 
 
 CREATE TABLE curriculum
@@ -81,40 +104,39 @@ ALTER TABLE management
 CREATE TABLE member
 (
 	memNo                 NUMBER(5)  NOT NULL ,
-	memPw                 VARCHAR2(30)  NULL ,
-	memId                 VARCHAR2(30)  NULL ,
-	memName               VARCHAR2(30)  NULL ,
-	memAddress            VARCHAR2(100)  NULL ,
-	memEmail              VARCHAR2(100)  NULL ,
-	memPhone              VARCHAR2(20)  NULL ,
-	joinDate              DATE  NULL ,
-	authNo                NUMBER(2)  NULL 
+	memPw                 VARCHAR2(30) NOT NULL ,
+	memId                 VARCHAR2(30) NOT NULL ,
+	memName               VARCHAR2(30) NOT NULL ,
+	memAddress            VARCHAR2(100) NOT NULL ,
+	memEmail              VARCHAR2(100) NOT NULL ,
+	memPhone              VARCHAR2(20) NOT NULL ,
+	MEMTEL                VARCHAR2(20) NULL,
+	MEMGENDER             VARCHAR2(20) NOT NULL,
+	EMAILAGREE            VARCHAR2(5) NOT NULL,
+	joinDay               VARCHAR2(20) NOT NULL ,
+	authNo                NUMBER(2) NOT NULL 
 );
-
-
 
 ALTER TABLE member
 	ADD  PRIMARY KEY (memNo);
-
-
 
 CREATE TABLE register
 (
 	regNo                 NUMBER(5)  NOT NULL ,
 	memNo                 NUMBER(5)  NULL ,
-	submitValue           VARCHAR2(10)  NULL ,
+	file1           VARCHAR2(50)  NULL ,
+	file2           VARCHAR2(50)  NULL ,
 	name                  VARCHAR2(30)  NULL ,
 	email                 VARCHAR2(50)  NULL ,
 	tel                   VARCHAR2(20)  NULL ,
-	gubun                 VARCHAR2(20)  NULL ,
+	gubun                 VARCHAR2(100)  NULL ,
 	job                   VARCHAR2(30)  NULL ,
-	jobinfo               VARCHAR2(300)  NULL ,
+	jobinfo               VARCHAR2(350)  NULL ,
 	time                  VARCHAR2(20)  NULL ,
 	pay                   VARCHAR2(20)  NULL ,
-	content               VARCHAR2(80)  NULL ,
+	content               VARCHAR2(200)  NULL ,
 	password              VARCHAR2(30)  NULL 
 );
-
 
 
 ALTER TABLE register
@@ -139,15 +161,15 @@ CREATE TABLE student
 (
 	stuNo                 NUMBER(10)  NOT NULL ,
 	memNo                 NUMBER(5)  NULL ,
-	roomNo                NUMBER(5)  NULL 
+	roomNo                NUMBER(5)  NULL, 
+	attdNo                NUMBER(5) NULL 
 );
-
-
 
 ALTER TABLE student
 	ADD  PRIMARY KEY (stuNo);
 
-
+ALTER TABLE student
+	ADD ( FOREIGN KEY (attdNo) REFERENCES attend(attdNo) ON DELETE SET NULL);
 
 CREATE TABLE stuRoom
 (
@@ -166,25 +188,16 @@ ALTER TABLE stuRoom
 CREATE TABLE teacher
 (
 	tchNo                 NUMBER(5)  NOT NULL ,
-	memNo                 NUMBER(5)  NULL 
+	memNo                 NUMBER(5) NOT NULL,
+	roomNo                NUMBER(5) NULL
 );
-
 
 
 ALTER TABLE teacher
 	ADD  PRIMARY KEY (tchNo);
 
-
---한국인 테이블 참조 변경 attend에서 stuNo를 참조 받는게 아닌 student에서 attdNo를 참조하도록
---ALTER TABLE attend
---	ADD ( FOREIGN KEY (stuNo) REFERENCES student(stuNo) ON DELETE SET NULL);
-
-
-
 ALTER TABLE grade
-	ADD ( FOREIGN KEY (roomNo) REFERENCES stuRoom(roomNo) ON DELETE SET NULL);
-
-
+	ADD ( FOREIGN KEY (roomNo) REFERENCES sturoom(roomNo) ON DELETE SET NULL);
 
 ALTER TABLE grade
 	ADD ( FOREIGN KEY (stuNo) REFERENCES student(stuNo) ON DELETE SET NULL);
@@ -232,9 +245,9 @@ ALTER TABLE stuRoom
 
 
 ALTER TABLE teacher
-  ADD ( FOREIGN KEY (memNo) REFERENCES member(memNo));
 	ADD ( FOREIGN KEY (memNo) REFERENCES member(memNo) ON DELETE SET NULL);
 
+	
 ---------------------------------------------------------------------------------------------
 -- 공지사항 게시판
 

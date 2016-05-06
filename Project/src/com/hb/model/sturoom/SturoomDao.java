@@ -41,7 +41,7 @@ public class SturoomDao {
 	
 	public ArrayList<SturoomDto> selectAll() {
 		ArrayList<SturoomDto> list = new ArrayList<SturoomDto>();
-		sql = "select roomno from sturoom";
+		sql = "select roomno from sturoom order by roomno";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();

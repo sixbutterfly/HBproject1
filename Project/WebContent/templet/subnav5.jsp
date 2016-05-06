@@ -8,8 +8,8 @@
 <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		<%-- var level = <%= (Integer)session.getAttribute("level") %>; --%>
-		var level = 3;
+		var level = <%= (Integer)session.getAttribute("level") %>;
+		console.log(level);
 	switch (level) {
 		case 0:
 			$(".guest").css("display", "initial");
@@ -36,7 +36,7 @@
 
 	<div class="submenu">
 		<div class="common">
-			<a href="editinfo.do">개인 정보 수정</a>
+			<a href="editinfo.korean">개인 정보 수정</a>
 		</div>
 		<div class = "eachmenu">
 			<div class="guest menu">

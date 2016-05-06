@@ -1,16 +1,4 @@
---자유롭게 추가해주세요!-----------
--- 변경 된 사항
--- authority(권한) 추가
--- studyCur 추가
--- curNo : 커리큘럼 번호, curName : 커리뮬럼 이름, curLocation : 교육장소, curDateS : 교육시작날짜, curDateE : 교육 종료날짜, curSupply : 교육인원
--- 강의실 테이블의 roomno는 시퀀스가 아닌 일반 값을 사용 할 것, curno와 tchno 널값 허용되게 변경
--- register 추가/방아름
-
-----------------------------------------
--- 변경해야 할 사항
--- 멤버 테이블에 가입일 컬럼 추가하는게 좋을듯
--- 행정부 컬럼명 변경(management)
-------------------------------------------
+--권한
 insert into authority (authNo, departName) values (0, '일반유저');
 insert into authority (authNo, departName) values (1, '행정부');
 insert into authority (authNo, departName) values (2, '영업부');
@@ -19,47 +7,23 @@ insert into authority (authNo, departName) values (4, '학생');
 insert into authority (authNo, departName) values (5, '수료자');
 insert into authority (authNo, departName) values (9, '관리자');
 
---회원 추가
-insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno) values (mem_seq.nextval, 1, 'korean', '한국인', '우리집', 'korea@korea.com', '000-0000-000', 1);
-insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno) values (mem_seq.nextval, 1, 'korean2', '한국인2', '우리집2', 'korea@korea.com2', '000-0000-0002', 1);
-insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno) values (mem_seq.nextval, 'admin', 'admin', 'admin', 'address', 'email', 'phone', 9);
+--admin
+insert into MEMBER values(1, 'admin', 'admin', '관리자','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea1@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,9);
+--회원
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'korean1', '한국인1','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea1@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,1);
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'korean2', '한국인2','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea2@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,2);
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'korean3', '한국인3','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea3@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,3);
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'korean4', '한국인4','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea4@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,3);
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'korean5', '한국인5','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea5@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,3);
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'korean6', '한국인6','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea5@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,4);
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'korean7', '한국인7','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea5@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,4);
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'korean8', '한국인8','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea5@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,4);
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'korean9', '한국인9','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea5@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,4);
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'korean10', '한국인10','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea5@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,4);
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'korean11', '한국인11','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea5@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,4);
 
-insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno) values (mem_seq.nextval, 'kimnormal', 'kim', '김일반', '김일반의 집', 'kimnormal@naver.com', '
-010-2599-8765', 0);
-insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno) values (mem_seq.nextval, 'kimdaeri', 'kim', '김대리', '김대리의 집', 'kimdaeri@gmail.com', '01
-0-1633-7511', 1);
-insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno) values (mem_seq.nextval, 'kimsales', 'kim', '김영업', '김영업의 집', 'kimsales@gmail.com', '01
-0-7544-9984', 2);
-insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno) values (mem_seq.nextval, 'kimteacher', 'kim', '김선생', '김선생의 집', 'kimteacher@gmail.com',
- '010-1599-7878', 3);
-insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno) values (mem_seq.nextval, 'kimstudent', 'kim', '김학생', '김학생의 집', 'kimstudent@gmail.com',
- '010-2468-7852', 4);
-insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno) values (mem_seq.nextval, 'kimgraduate', 'kim', '김졸업', '김졸업의 집', 'kimgraduate@gmail.com
-', '010-3211-6123', 5);
-insert into member values (mem_seq.nextval, 1, 'korean', '한국인', '우리집', 'korea@korea.com', '000-0000-000', 1);
-insert into member values (mem_seq.nextval, 1, 'korean2', '한국인2', '우리집2', 'korea@korea.com2', '000-0000-0002', 1);
-insert into member values (mem_seq.nextval, 'admin', 'admin', 'admin', 'address', 'email', 'phone', 9);
---권한 테이블
-insert into authority (authNo, departName) values (0, '일반유저');
-insert into authority (authNo, departName) values (1, '행정부');
-insert into authority (authNo, departName) values (2, '영업부');
-insert into authority (authNo, departName) values (3, '강사');
-insert into authority (authNo, departName) values (4, '학생');
-insert into authority (authNo, departName) values (5, '수료자');
-insert into authority (authNo, departName) values (9, '관리자');
-
-insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno, memtel, emailagree, memgender, joinday) values (mem_seq.nextval, 'kimnormal', 'kim', '���Ϲ�', '���Ϲ��� ��', 'kimnormal@naver.com', '
-010-2599-8765', 0, '02-2345-6789','y','����','16/01/01');
-insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno, memtel, emailagree, memgender, joinday) values (mem_seq.nextval, 'kimdaeri', 'kim', '��븮', '��븮�� ��', 'kimdaeri@gmail.com', '01
-0-1633-7511', 1, '02-3456-7890','y','����','16/02/01');
-insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno, memtel, emailagree, memgender, joinday) values (mem_seq.nextval, 'kimsales', 'kim', '�迵��', '�迵���� ��', 'kimsales@gmail.com', '01
-0-7544-9984', 2, '02-4567-8901','y','����','16/03/01');
-insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno, memtel, emailagree, memgender, joinday) values (mem_seq.nextval, 'kimteacher', 'kim', '�輱��', '�輱���� ��', 'kimteacher@gmail.com',
- '010-1599-7878', 3, '02-5678-9012','y','����','16/04/01');
-insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno, memtel, emailagree, memgender, joinday) values (mem_seq.nextval, 'kimstudent', 'kim', '���л�', '���л��� ��', 'kimstudent@gmail.com',
- '010-2468-7852', 4, '02-6789-0123','y','����','16/05/01');
-insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno, memtel, emailagree, memgender, joinday) values (mem_seq.nextval, 'kimgraduate', 'kim', '������', '�������� ��', 'kimgraduate@gmail.com
-', '010-3211-6123', 5, '02-7890-1234','y','����','16/06/01');
+--행정부
+insert into MANAGEMENT values(mng_seq.nextval, 2);
 
 insert into member (memno, memid, mempw, memname, memaddress, mememail, memphone, authno,MEMGENDER,EMAILAGREE) values (mem_seq.nextval, 'kimnormal', 'kim', '���Ϲ�', '���Ϲ��� ��', 'kimnormal@naver.com', '
 010-2599-8765', 0,'����','N');
@@ -243,6 +207,6 @@ update attend set attdValue2 = '' where attdNo = 2;
 update attend set attdValue3 = '조퇴' where attdNo = 2;
 				 
 
+select * from member;
+						     
 
-						     
-						     
