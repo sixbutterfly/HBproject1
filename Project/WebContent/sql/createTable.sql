@@ -129,14 +129,16 @@ CREATE TABLE register
 	time                  VARCHAR2(20)  NULL ,
 	pay                   VARCHAR2(20)  NULL ,
 	content               VARCHAR2(200)  NULL ,
-	password              VARCHAR2(30)  NULL 
+	password              VARCHAR2(30)  NULL,
+	curNo				  NUMBER(5) NULL
 );
 
 
 ALTER TABLE register
 	ADD  PRIMARY KEY (regNo);
 
-
+ALTER TABLE register
+	ADD ( FOREIGN KEY (curNo) REFERENCES curriculum(curNo) ON DELETE SET NULL);
 
 CREATE TABLE sales
 (
