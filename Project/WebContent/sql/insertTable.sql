@@ -39,3 +39,5 @@ insert into student values(stu_seq.nextval,10,null,null);
 insert into student values(stu_seq.nextval,11,null,null);
 insert into student values(stu_seq.nextval,12,null,null);
 
+select * from member;
+select * from sturoom;

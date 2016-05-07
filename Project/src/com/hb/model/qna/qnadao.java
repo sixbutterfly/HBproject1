@@ -70,7 +70,7 @@ public class qnadao {
 		ArrayList<qnadto> list = new ArrayList<>();
 		String subsql = "select qnaNo, qnaTitle, qnaContent, qnaDate, qnaName from qna "+keyword+" order by qnaNo desc";
 		String sql = "select * from (select rownum as rn, qnaNo, qnaTitle, qnaContent, qnaDate, qnaName from ("+subsql+")) where rn between "+pStart+" and "+pEnd;
-		System.out.println(sql);
+//		System.out.println(sql);
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();

@@ -17,10 +17,13 @@ import com.hb.model.sturoom.SturoomDao;
 public class CurriculumEditController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		String curDate = new String(request.getParameter("curDate").getBytes("8859_1"), "UTF-8");
+		String curLocation = new String(request.getParameter("curLocation").getBytes("8859_1"), "UTF-8");
 		
 		int curNo = Integer.parseInt(request.getParameter("curNo"));
-		String curDate = request.getParameter("curDate");
-		String curLocation = request.getParameter("curLocation");
+//		String curDate = request.getParameter("curDate");
+//		String curLocation = request.getParameter("curLocation");
 		int curSupply = Integer.parseInt(request.getParameter("curSupply"));
 		
 		curriculumDao dao = new curriculumDao();

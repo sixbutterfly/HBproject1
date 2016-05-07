@@ -13,11 +13,16 @@ import com.hb.model.curriculum.curriculumDao;
 public class AddCurriculumnController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String curName = new String(request.getParameter("curName").getBytes("8859_1"), "UTF-8");
+		String curDate = new String(request.getParameter("curDate").getBytes("8859_1"), "UTF-8");
+		String curLocation = new String(request.getParameter("curLocation").getBytes("8859_1"), "UTF-8");
 		
-		String curName = request.getParameter("curName");
-		String curDate = request.getParameter("curDate");
-		String curLocation = request.getParameter("curLocation");
+//		String curName = request.getParameter("curName");
+//		String curDate = request.getParameter("curDate");
+//		String curLocation = request.getParameter("curLocation");
 		int curSupply = Integer.parseInt(request.getParameter("curSupply"));
+
+//		System.out.println(curName+curDate+curLocation+curSupply);
 		
 		curriculumDao dao = new curriculumDao();
 		int result = dao.addOne(curName, curDate, curLocation, curSupply);

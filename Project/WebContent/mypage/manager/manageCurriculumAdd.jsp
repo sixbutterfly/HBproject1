@@ -45,10 +45,13 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	$('#cur button').eq(0).click(function(){
-		if(confirm("커리큘럼을 추가하시겠습니까?")){
-			alert("커리큘럼을 성공적으로 추가하였습니다.");
-		}else{
-			alert("작업을 취소하였습니다.");
+		if($('form input:eq(0)').val()==""||""==$('form input:eq(0)')||$('form input:eq(0)')==null){
+			alert("커리큘럼명을 입력해 주세요");
+			return false;
+		}
+		else if(confirm("커리큘럼을 추가하시겠습니까?")){
+		}
+		else{
 			return false;
 		}
 	});

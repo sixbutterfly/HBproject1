@@ -13,14 +13,18 @@ import com.hb.model.notice.noticeDao;
 public class NoticeAddController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setCharacterEncoding("UTF-8");
 		
-		String title = request.getParameter("title");
-		String name = request.getParameter("name");
-		String content = request.getParameter("content");
-//		System.out.println(title);
-//		System.out.println(name);
-//		System.out.println(content);
+		String title = new String(request.getParameter("title").getBytes("8859_1"), "UTF-8");
+		String name = new String(request.getParameter("name").getBytes("8859_1"), "UTF-8");
+		String content = new String(request.getParameter("content").getBytes("8859_1"), "UTF-8");
+		
+//		String title = request.getParameter("title");
+//		String name = request.getParameter("name");
+//		String content = request.getParameter("content");
+		
+		System.out.println(title);
+		System.out.println(name);
+		System.out.println(content);
 		
 		noticeDao dao = new noticeDao();
 		int result = dao.addOne(title,name,content);
