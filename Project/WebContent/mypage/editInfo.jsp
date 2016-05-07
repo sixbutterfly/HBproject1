@@ -53,11 +53,7 @@
 		});
 		
 		$('#submit').click(function(){
-			if($('#tel2').val()==""||$('#tel2').val()==null||$('#tel3').val()==""||$('#tel3').val()==null){
-				alert("전화번호를 입력하세요!");
-				$('#tel2').focus();
-				return false;
-			}else if($('#phone2').val()==""||$('#phone2').val()==null||$('#phone3').val()==""||$('#phone3').val()==null){
+			if($('#phone2').val()==""||$('#phone2').val()==null||$('#phone3').val()==""||$('#phone3').val()==null){
 				alert("핸드폰번호를 입력하세요!");
 				$('#phone2').focus();
 				return false;
@@ -69,24 +65,26 @@
 				alert("메일 주소를 입력하세요!");
 				$('#addrresult1').focus();
 				return false;
+			}else if($('#pw1').val()==""||$('#email1').val()==null){
+				alert("기존의 비밀번호를 입력하세요!");
+				$('#pw1').focus();
+				return false;
 			}else{} 
 		});
 	});
 	
 	function check1() {
 		if ($('#pw0').val()==$('#pw1').val()) {
-			$('#pw1').next().text('일치합니다.');
+			$('#pw1').next().text('비밀번호가 일치합니다.');
 		} else {
-			$('#pw1').next().text('불일치, 기존의 비밀번호를 입력하세요.');
+			$('#pw1').next().text('비밀번호가 일치하지 않습니다.');
 			$('#pw1').val("");
-			$('#pw1').focus();
 		}
 	}
 	function check2() {
 		if(!($.trim($("#pw").val()).match(/^(?=.*\d)(?=.*[A-z])[A-z0-9]{8,20}$/))){
 			$('#pw').next().text('영문 숫자조합의 8~20자리의 비밀번호여야 합니다');
 			$('#pw').val("");
-			$('#pw').focus();
 	 	}else{
 			$('#pw').next().text('사용 가능합니다');
 	 	}
@@ -95,7 +93,6 @@
 		if($('#pw2').val()!=$('#pw').val()){
 			$('#pw2').next().text('비밀번호는 동일해야합니다.');
 			$('#pw2').val("");
-			$('#pw2').focus();
 		}else if($('#pw').val()==""|| $('#pw').val()==null){
 			$('#pw2').next().text(' ');
 		}else{
@@ -132,7 +129,7 @@
 		<%@include file="/templet/subnav5.jsp" %>
 		
 		<!-- content start -->
-		<h1>개인 정보 수정 페이지</h1>
+		<h1>회원 정보 수정</h1>
 		<form action="updateinfo.korean">
 		<ul>
 			<li>회원 가입일 : <%=joinday %></li>

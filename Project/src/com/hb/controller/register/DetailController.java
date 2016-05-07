@@ -24,7 +24,6 @@ public class DetailController extends HttpServlet {
 		curriculumDto dto = dao.selectOne(title);
 		
 		request.setAttribute("dto", dto);
-		
 		request.getRequestDispatcher("register/javacurriculumPage.jsp").forward(request, response);
 	}
 }

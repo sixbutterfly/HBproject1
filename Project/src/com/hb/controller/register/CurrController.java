@@ -7,10 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.hb.model.curriculum.curriculumDao;
+
 @WebServlet("/registerInfo.korean")
 public class CurrController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		request.getRequestDispatcher("register/curriculumInfo.jsp").forward(request, response);
 	}
 	

@@ -23,7 +23,7 @@ public class TeacherDao {
 
 	public ArrayList<TeacherDto> selectAll() {
 		ArrayList<TeacherDto> list = new ArrayList();
-		sql = "SELECT TCHNO, MEMNAME, ROOMNO FROM TEACHER, MEMBER WHERE TEACHER.MEMNO = MEMBER.MEMNO";
+		sql = "select tchno, memname, roomno from TEACHER, member where teacher.memno = member.memno";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -53,7 +53,7 @@ public class TeacherDao {
 
 	public int updateAll(String[] tchlist, String[] roomlist) {
 		int result = 0;
-		sql = "UPDATE TEACHER SET ROOMNO = ? WHERE TCHNO = ?";
+		sql = "update teacher set roomno = ? where tchno = ?";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			for (int i = 0; i < tchlist.length; i++) {
@@ -79,7 +79,7 @@ public class TeacherDao {
 
 	public int removeAll(String[] tchlist, String[] checklist) {
 		int result = 0;
-		sql = "UPDATE TEACHER SET ROOMNO = NULL WHERE TCHNO = ?";
+		sql = "update teacher set roomno = null where tchno = ?";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			for (int i = 0; i < tchlist.length; i++) {
@@ -101,5 +101,34 @@ public class TeacherDao {
 			}
 		}
 		return result;
+	}
+	public ArrayList<TeacherDto> attdTeacherName() {
+		ArrayList<TeacherDto> list = new ArrayList();
+		sql = "select m.memName from member m, teacher t, stuRoom r where m.memNo = t.memNo and r.stuRoom = ?;";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				TeacherDto bean = new TeacherDto();
+				bean.setTchno(rs.getInt("tchno"));
+				bean.setTchname(rs.getString("tchname"));
+				bean.setRoomno(rs.getString("roomno"));
+				list.add(bean);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
 	}
 }

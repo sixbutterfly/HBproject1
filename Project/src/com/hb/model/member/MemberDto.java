@@ -1,7 +1,6 @@
 package com.hb.model.member;
 
 public class MemberDto {
-	
 	private String id;
 	private String pw;
 	private String name;
@@ -54,7 +53,6 @@ public class MemberDto {
 		this.addrresult1 = addrresult1;
 		this.addrresult2 = addrresult2;
 	}
-	
 	public MemberDto(int memno, int level, String memname, String memgender, String memphone,
 			String memtel, String memaddress, String mememail, String emailagree,
 			String joinday) {
@@ -69,7 +67,15 @@ public class MemberDto {
 		this.emailagree = emailagree;
 		this.joinday = joinday;
 	}
-	
+	public MemberDto(int memno, int level) {
+		this.level = level;
+		this.memno = memno;
+	}
+	public MemberDto(int memno, int level, int beforelevel) {
+		this.level = level;
+		this.memno = memno;
+		this.authno = beforelevel;
+	}
 	public String getId() {
 		return id;
 	}

@@ -48,8 +48,12 @@ public class EditInfoController extends HttpServlet {
 			StringTokenizer st2 = new StringTokenizer(memtel, "-");
 			while (st2.hasMoreElements()) {
 				tel1 = (String) st2.nextElement();
-				tel2 = (String) st2.nextElement();
-				tel3 = (String) st2.nextElement();
+				if (st2.hasMoreElements()) {
+					tel2 = (String) st2.nextElement();
+					if (st2.hasMoreElements()) {
+						tel3 = (String) st2.nextElement();
+					}
+				}
 			}
 			
 			String mememail = (String) dto.getMememail();

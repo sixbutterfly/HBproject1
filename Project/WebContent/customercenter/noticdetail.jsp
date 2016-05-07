@@ -85,13 +85,12 @@
 			<form action="noticeeditform.korean">
 				<input type="hidden" name="notNo" value="<%=dto.getNotNo() %>">
 				<table class="table">
-					<tr><th>글번호</th><td><%=dto.getNotNo() %></td>
-						<th>작성일</th><td><%=dto.getNotDate() %></td>
+					<tr><th>작성일</th><td><%=dto.getNotDate() %></td>
 						<th>작성자</th><td><%=dto.getName() %></td>
 					</tr>
-					<tr><th>제목</th><td colspan="5"><%=dto.getTitle() %></td></tr>
-					<tr><th colspan="6">내용</th></tr>
-					<tr><td colspan="6"><%=dto.getContent() %></td></tr>
+					<tr><th>제목</th><td colspan="4"><%=dto.getTitle() %></td></tr>
+					<tr><th colspan="5">내용</th></tr>
+					<tr><td colspan="5"><%=dto.getContent() %></td></tr>
 				</table>
 				<button type="submit">수정</button>
 				<button type="button"><a href="noticedelete.korean?notNo=<%=dto.getNotNo() %>">삭제</a></button>

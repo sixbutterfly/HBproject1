@@ -1,3 +1,4 @@
+-- 필수는 아니지만 실행하면 화면 보기에 편합니다.
 -- register table
 column email format a10;
 column tel format a14;
@@ -16,15 +17,14 @@ set linesize 250;
 set pagesize 30;
 -- member table
 column memid format a15;
-column memname format a8;
+column memname format a6;
 column mempw format a15;
 column memaddress format a15;
-column mememail format a21;
-column memphone format a13;
-column memtel format a13;
-column memgender format a6;
-column eamilagree format a1;
-column joinday format a8;
+column mememail format a15;
+column memphone format a20;
+column memtel format a20;
+column memgender format a10;
+column joinday format a10;
 -- curriculum table
 column curname format a20;
 column curlocation format a15;

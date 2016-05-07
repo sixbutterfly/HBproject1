@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.hb.model.student.StuDao;
 
-@WebServlet("/viewgrade.do")
+@WebServlet("/viewgrade.korean")
 public class GradeController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)

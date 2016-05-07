@@ -66,21 +66,21 @@
 </style>
 <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
 <script type="text/javascript" src="js/menu.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('form button:eq(1)').click(function(){
+		 
+			// 클릭시 행정부만 접근할수 있도록
+		});//click end
+	});//ready end
+</script>
 </head>
 <%
-	int total = 0;
-	int limit = 0;
 	String sreach = request.getParameter("sreach");
 	String keyword = request.getParameter("keyword");
-	if("".equals(sreach)||sreach==null){
-		sreach="";
-	}if("".equals(keyword)||keyword==null){
-		keyword="";
-	}else{
-		keyword = "where "+keyword+" like '%"+sreach+"%";
-	}
-	sreach=sreach.trim();
 	String p = request.getParameter("page");
+	int total = 0;
+	int limit = 0;
 	int pcnt = 10;
 	int pStart = 1;
 	if(p==null||"".equals(p)){
@@ -89,6 +89,15 @@
 		pStart = (Integer.parseInt(p)-1)*pcnt+1;
 	}
 	int pEnd = pStart+(pcnt-1);
+	if("".equals(sreach)||sreach==null){
+		sreach="";
+	}if("".equals(keyword)||keyword==null){
+		keyword="";
+	}else{
+		keyword = "where "+keyword+" like '%"+sreach+"%'";
+	}
+	//sreach=sreach.trim();
+	
 	noticeDao dao = new noticeDao();
 	ArrayList<noticeDto> list =  dao.selectAll(keyword, pStart, pEnd);
 %>			
@@ -123,6 +132,9 @@
 				</table>
 			<p align="center">
 			<%
+				noticeDto dto2 = (noticeDto)request.getAttribute("cnt");
+				total = dto2.getTotal();
+				//System.out.println(total);
 				int shownum = 5;
 				limit = (total-1)/pcnt+1;
 				int pstart = ((Integer.parseInt(p)-1)/shownum)*shownum+1;

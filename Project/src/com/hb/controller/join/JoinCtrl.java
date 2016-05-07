@@ -16,3 +16,4 @@ public class JoinCtrl extends HttpServlet{
 		req.getRequestDispatcher("/join/join.jsp").forward(req, resp);
 	}
 }
+

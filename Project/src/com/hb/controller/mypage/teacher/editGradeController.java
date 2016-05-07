@@ -22,7 +22,7 @@ public class editGradeController extends HttpServlet {
 		GradeDao dao = new GradeDao();
 		int result = dao.addGrade(stuno, javagrade, webgrade, framegrade);
 		if (result>0) {
-			request.getRequestDispatcher("addgrade.do").forward(request, response);
+			request.getRequestDispatcher("addgrade.korean").forward(request, response);
 		} else {
 		}
 	}

@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.hb.model.login.MemberDao;
+import com.hb.model.member.MemberDao;
 
 @WebServlet("/login/islogin.korean")
 public class IsLoginController extends HttpServlet {
@@ -18,13 +18,22 @@ public class IsLoginController extends HttpServlet {
 		String pw = request.getParameter("pw");
 		
 		MemberDao dao = new MemberDao();
-		boolean result = dao.loginCk(id, pw);
+		int authNo = dao.loginCk(id,pw);		
 		
-		if(result){
+		if(authNo==0 || authNo==1 || authNo==2 || authNo==3 || authNo==4 || authNo==5 || authNo==9){
 			request.getSession().setAttribute("login", true);
+			request.getSession().setAttribute("level", authNo);
 			request.getSession().setAttribute("id", id);
+			//request.getSession().setMaxInactiveInterval(900);
+			
+			request.setAttribute("level", authNo);
+			request.setAttribute("id", id);
+			response.sendRedirect("../index.korean");
 		}
-		response.sendRedirect("../main.jsp");
+		else{
+			request.getSession().setAttribute("login", false);
+			request.getRequestDispatcher("/login/login.jsp").forward(request, response);
+		}
+		
 	}
-
 }

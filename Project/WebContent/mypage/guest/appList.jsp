@@ -1,3 +1,4 @@
+<%@page import="com.hb.model.register.registerDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -56,17 +57,24 @@
 		<%@include file="/templet/subnav5.jsp" %>
 		
 		<!-- content start -->
+		<%
+			registerDto bean = (registerDto)request.getAttribute("bean");
+			String curname = (String)request.getAttribute("curname");
+		%>
 			<div class="title">
 				<p>MY PAGE</p>
 				<span>수강 신청 목록</span>
 			</div>
-
+			<form action="del.korean">
 			<table class="table">
 				<tr><th>이름</th><th>연락처</th><th>신청과정명</th></tr>
+				<tr><td><%=bean.getName() %></td><td><%=bean.getTel() %></td><td><%=curname %></td>
 			</table>
-
+			
+			<input type="hidden" value="<%=bean.getCurNo() %>" name="curno">
 			신청한 과정명 출력
 			<button>수강 취소</button>
+			</form>
 		<!-- content end -->
 		
 		<!-- aside2 -->

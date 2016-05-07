@@ -1,4 +1,4 @@
-<%@page import="com.hb.model.sturoom.sturoomDto"%>
+<%@page import="com.hb.model.sturoom.SturoomDto"%>
 <%@page import="com.hb.model.curriculum.curriculumDto"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -81,20 +81,20 @@
 			
 			<%
 							curriculumDto dto = (curriculumDto)request.getAttribute("dto");
-								ArrayList<sturoomDto> list = (ArrayList)request.getAttribute("list");
+												ArrayList<SturoomDto> list = (ArrayList)request.getAttribute("list");
 						%>
 			
 			<form action="curedit.korean">
 			<div id="cur">
-				<input type="hidden" name="curNo" value="<%=dto.getCurNo() %>"/>
+				<input type="hidden" name="curNo" value="<%=dto.getCurNo()%>"/>
 				<ul>
-					<li>커리큘럼 명 : <%=dto.getCurName() %></li>
-					<li>교육 시작날짜 : <input type="date" name="curDate" value="<%=dto.getCurDate() %>"/></li>
+					<li>커리큘럼 명 : <%=dto.getCurName()%></li>
+					<li>교육 시작날짜 : <input type="date" name="curDate" value="<%=dto.getCurDate()%>"/></li>
 					<li>교육 장소 : <select name="curLocation">
-										<option value="<%=dto.getCurLocation() %>" selected="selected"><%=dto.getCurLocation() %></option>
+										<option value="<%=dto.getCurLocation()%>" selected="selected"><%=dto.getCurLocation()%></option>
 									<%
-										for(sturoomDto bean : list){
-											if(bean.getCurNo()==0){
+										for(SturoomDto bean : list){
+																		if(bean.getCurNo()==0){
 									%>
 										<option value="<%=bean.getRoomNo() %>강의실"><%=bean.getRoomNo() %>강의실</option>
 									<%		}

@@ -20,7 +20,7 @@ public class registerDao {
 	
 	public ArrayList<registerDto> selectNull() {
 		ArrayList<registerDto> list = new ArrayList<>();
-		String sql = "SELECT MEMNO, NAME, TEL, EMAIL, FILE1, FILE2 FROM REGISTER WHERE FILE1 IS NULL AND FILE2 IS NULL";
+		String sql = "select memNo, name, tel, email, file1, file2 from register where file1 is null and file2 is null";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -48,58 +48,53 @@ public class registerDao {
 		return list;
 	}
 
-	private int getMemNo(String name) {
+	public int getMemno(String id) {
 		int memNo = 0;
-		String sql = "SELECT MEMNO FROM MEMBER WHERE MEMNAME='"+name+"'";
+		String sql = "SELECT MEMNO FROM MEMBER WHERE MEMID=?";
 		try {
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			if(rs.next()){
 				memNo = rs.getInt("memNo");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally{
+			try {
+				if(rs!=null){rs.close();}
+				if(pstmt!=null){pstmt.close();}
+				if(conn!=null){conn.close();}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return memNo;
 	}
 	
-	public int registerClass(String name, String email, String tel,String gubun, String job, String jobinfo, String time, String pay,String content, String password, String file1, String file2) {
-		int result = 0;
-		int memNo = getMemNo(name);
-		String sql = "INSERT INTO REGISTER (REGNO, MEMNO, NAME, EMAIL, TEL, GUBUN, JOB, JOBINFO, TIME, PAY, CONTENT, PASSWORD, FILE1, FILE2) VALUES " +
-					"(REG_SEQ.NEXTVAL, "+memNo+", '"+name+"', '"+email+"', '"+tel+"', '"+gubun+"', '"+job+"', '"+jobinfo+"', '"+time+"', '"+pay+"', '"+content+"', '"+password+"', '"+file1+"', '"+file2+"')";
+	public String getCurname(int memno) {
+		String sql="SELECT CURNAME FROM REGISTER, CURRICULUM WHERE REGISTER.CURNO=CURRICULUM.CURNO AND MEMNO=?";
+		String curname="";
 		try {
-			pstmt = conn.prepareStatement(sql);
-			//System.out.println(sql);
-			result = pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return result;
+	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setInt(1, memno);
+	         rs = pstmt.executeQuery();
+	         while (rs.next()) {
+	            curname = rs.getString("CURNAME");
+	         }
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         try {
+	            if (rs!=null) rs.close();
+	            if (pstmt!=null) pstmt.close();
+	            if (conn!=null) conn.close();
+	         } catch (SQLException e) {
+	            e.printStackTrace();
+	         }
+	      }
+		return curname;
 	}
-
-//	private int getMemNo() {
-//		int memNo = 0;
-//		String sql = "select memNo from member where memId='"+id+"'";
-//		try {
-//			pstmt = conn.prepareStatement(sql);
-//			rs = pstmt.executeQuery();
-//			if(rs.next()){
-//				memNo = rs.getInt("memNo");
-//			}
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}finally{
-//			try {
-//				if(rs!=null){rs.close();}
-//				if(pstmt!=null){pstmt.close();}
-//				if(conn!=null){conn.close();}
-//			} catch (SQLException e) {
-//				e.printStackTrace();
-//			}
-//		}
-//		return memNo;
-//	}
 	
 	public String getName(String id) {
 	      String name="";
@@ -128,7 +123,7 @@ public class registerDao {
 	public int registerClass(int curNo, String name, String email, String tel,String gubun, String job, String jobinfo, String time, String pay,String content, String password, String file1, String file2) {
 		int result = 0;
 		String sql = "INSERT INTO REGISTER (REGNO, MEMNO, NAME, EMAIL, TEL, GUBUN, JOB, JOBINFO, TIME, PAY, CONTENT, PASSWORD, FILE1, FILE2, CURNO) VALUES " +
-					"(REG_SEQ.NEXTVAL, (SELECT MEMNO FROM MEMBER WHERE MEMNAME='"+name+"'), '"+name+"', '"+email+"', '"+tel+"', '"+gubun+"', '"+job+"', '"+jobinfo+"', '"+time+"', '"+pay+"', '"+content+"', '"+password+"', '"+file1+"', '"+file2+"',"+curNo+")";
+					"(REG_SEQ.NEXTVAL, (select memNo from member where memName='"+name+"'), '"+name+"', '"+email+"', '"+tel+"', '"+gubun+"', '"+job+"', '"+jobinfo+"', '"+time+"', '"+pay+"', '"+content+"', '"+password+"', '"+file1+"', '"+file2+"',"+curNo+")";
 //		System.out.println(sql);
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -148,7 +143,7 @@ public class registerDao {
 
 	public ArrayList<registerDto> selectFinal() {
 		ArrayList<registerDto> list = new ArrayList<>();
-		String sql = "SELECT * FROM REGISTER WHERE FILE1 IS NOT NULL AND FILE2 IS NOT NULL";
+		String sql = "select * from register where file1 is not null and file2 is not null";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -178,7 +173,7 @@ public class registerDao {
 
 	public registerDto seletOne(int memNo) {
 		registerDto dto = new registerDto();
-		String sql = "SELECT * FROM REGISTER WHERE MEMNO="+memNo;
+		String sql = "select * from register where memNo="+memNo;
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -215,8 +210,8 @@ public class registerDao {
 
 	public int deleteOne(int memNo) {
 		int result = 0;
-		String sql = "DELETE FROM REGISTER WHERE MEMNO="+memNo;
-		String sql2 = "INSERT INTO GRADE (GRDNO, STUNO ) VALUES (GRD_SEQ.NEXTVAL, (SELECT STUNO FROM STUDENT WHERE MEMNO="+memNo+"))";
+		String sql = "delete from register where memNo="+memNo;
+		String sql2 = "insert into grade (grdNo, stuNo ) values (grd_seq.nextval, (select stuNo from student where memNo="+memNo+"))";
 		System.out.println(sql2);
 		try {
 			conn.setAutoCommit(false);
@@ -241,4 +236,51 @@ public class registerDao {
 		}
 		return result;
 	}//deleteOne end
+
+	public int deleteRegister(int curno) {
+		int result = 0;
+		String sql = "DELETE FROM REGISTER WHERE CURNO=?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, curno);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				if(pstmt!=null){pstmt.close();}
+				if(conn!=null){conn.close();}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+
+	public boolean checkRegister(int memno) {
+		boolean result=false;
+		int regno=0;
+		String sql = "select regno from register where memno=?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memno);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				regno = rs.getInt("regno");
+			}
+			if (regno!=0) {
+				result=true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				if(pstmt!=null){pstmt.close();}
+				if(conn!=null){conn.close();}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
 }

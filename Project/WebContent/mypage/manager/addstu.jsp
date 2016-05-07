@@ -1,4 +1,4 @@
-<%@page import="com.hb.model.room.RoomDto"%>
+<%@page import="com.hb.model.sturoom.SturoomDto"%>
 <%@page import="com.hb.model.student.StuDto"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -15,6 +15,7 @@
 <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
+		//체크박스 전체 선택
 		$("#allcheck").click(function(){
 			if($("#allcheck").is(":checked")){
 				$(".eachcheck").prop("checked",true);
@@ -61,10 +62,10 @@
 		배치할 강의실: 
 		<select id = "roomlist"> 
 					<%
-						ArrayList<RoomDto> rlist = (ArrayList<RoomDto>)request.getAttribute("rlist"); 
-						for(RoomDto bean2 : rlist){
+						ArrayList<SturoomDto> rlist = (ArrayList<SturoomDto>)request.getAttribute("rlist"); 
+						for(SturoomDto bean2 : rlist){
 							%>
-						<option value = "<%=bean2.getRoomno()%>"><%=bean2.getRoomno()%></option>
+						<option value = "<%=bean2.getRoomNo()%>"><%=bean2.getRoomNo()%></option>
 					<%
 						}
 					%>

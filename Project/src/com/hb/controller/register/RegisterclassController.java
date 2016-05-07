@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.hb.model.curriculum.curriculumDao;
+import com.hb.model.curriculum.curriculumDto;
 import com.hb.model.register.registerDao;
 
 @WebServlet("/register.korean")
@@ -16,7 +18,10 @@ public class RegisterclassController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
-		int curNo = Integer.parseInt(request.getParameter("curNo"));
+		String curname = request.getParameter("curname");
+		curriculumDao dao2 = new curriculumDao();
+		curriculumDto dto = dao2.selectOne(curname);
+		int curNo = dto.getCurNo();
 		
 		String name = request.getParameter("name");
 		String email1 = request.getParameter("email1");
@@ -47,8 +52,7 @@ public class RegisterclassController extends HttpServlet {
 		if(result>0){
 			request.getRequestDispatcher("register/registerdonePage.jsp").forward(request, response);
 		}else{
-			
+			request.getRequestDispatcher("mypage/teacher/deniedPage.jsp").forward(request, response);
 		}
-		
 	}
 }
