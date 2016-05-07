@@ -459,13 +459,48 @@
           <div>
             <!-- 탭 메뉴 -->
             <ul class="tabs">
-              <li id="tab1" class="active">학생 관리</li>
-              <li id="tab2">강사 관리</li>
-              <li id="tab3">강의실 관리</li>
+              <li id="tab1" class="active">강의실 관리</li>
+              <li id="tab2">학생 관리</li>
+              <li id="tab3">강사 관리</li>
             </ul>
             <div class="tab_container">
+            <div id="tab1_content" class="tab_content">
+               		<table>
+               			<tr>
+               				<th>강의실</th>
+               				<th><input type = "checkbox" class = "roomcheck" id = "allroomcheck"></th>
+               			</tr>
+               				<%
+									for(SturoomDto bean : rlist){
+										%>
+               			<tr class = "rlist">
+               				<td >
+                            <%=bean.getRoomNo() %>강의실
+               				</td>
+               				<td>
+               				<input type = "checkbox" class = "eachroomcheck" id = "roomcheck<%=bean.getRoomNo()%>">
+               				</td>
+               			</tr>
+                          <%
+									}
+								%>
+               		</table>
+               		<div id = "addroomform">
+               			추가할 강의실 번호를 입력하세요
+               			<input type = "text" id = "addroomtxt"/>
+               			<div><button id = "addroomok">추가</button><button id = "addroomcancle">취소</button></div>
+               		</div>
+               		<div id = "roombtn">
+               		<button id= "addroom">강의실추가</button>
+               		<button id = "delroom">강의실삭제</button>
+               		</div>
+               		<div id = "delroombtn">
+               			<button id = "delroomok">삭제</button>
+               			<button id = "delroomcancle">취소</button>
+               		</div>
+               </div>
               <!-- 학생관리 메뉴 -->
-              <div id="tab1_content" class="tab_content">
+              <div id="tab2_content" class="tab_content">
                 <select id="room">
                           <%
 									for(SturoomDto bean : rlist){
@@ -505,7 +540,7 @@
                 </div>
               </div>
               <!-- 강사관리 메뉴 -->
-              <div id="tab2_content" class="tab_content">
+              <div id="tab3_content" class="tab_content">
                 <table>
                   <tr>
                     <th>강사번호</th>
@@ -559,41 +594,7 @@
                 <button id="btn6">배정취소</button>
                 <button id="btn7">취소</button>
               </div>
-               <div id="tab3_content" class="tab_content">
-               		<table>
-               			<tr>
-               				<th>강의실</th>
-               				<th><input type = "checkbox" class = "roomcheck" id = "allroomcheck"></th>
-               			</tr>
-               				<%
-									for(SturoomDto bean : rlist){
-										%>
-               			<tr class = "rlist">
-               				<td >
-                            <%=bean.getRoomNo() %>강의실
-               				</td>
-               				<td>
-               				<input type = "checkbox" class = "eachroomcheck" id = "roomcheck<%=bean.getRoomNo()%>">
-               				</td>
-               			</tr>
-                          <%
-									}
-								%>
-               		</table>
-               		<div id = "addroomform">
-               			추가할 강의실 번호를 입력하세요
-               			<input type = "text" id = "addroomtxt"/>
-               			<div><button id = "addroomok">추가</button><button id = "addroomcancle">취소</button></div>
-               		</div>
-               		<div id = "roombtn">
-               		<button id= "addroom">강의실추가</button>
-               		<button id = "delroom">강의실삭제</button>
-               		</div>
-               		<div id = "delroombtn">
-               			<button id = "delroomok">삭제</button>
-               			<button id = "delroomcancle">취소</button>
-               		</div>
-               </div>
+               
             </div>
           </div>
 
