@@ -45,8 +45,8 @@
 				<br/>
 				<br/>
 				<br/>
-				<a href="detailController.korean">
-					커리큘럼 확인하러 가기
+				<a href="applist.korean">
+					신청내역 확인하러 가기
 				</a>
 			</div>
 		<!-- content end -->

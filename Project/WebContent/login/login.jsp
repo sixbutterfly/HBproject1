@@ -86,7 +86,7 @@
 				<br/>
 				<div class="container_12">					
 					<div class="grid3">&nbsp;</div>
-					<div class="grid6 reg"> <a href="#">회원가입</a>	</div>
+					<div class="grid6 reg"> <a href="agreejoin.korean">회원가입</a>	</div>
 					<div class="grid3">&nbsp;</div>
 				</div>				
 		</div>

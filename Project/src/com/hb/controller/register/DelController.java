@@ -7,23 +7,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.hb.model.curriculum.curriculumDao;
-import com.hb.model.curriculum.curriculumDto;
+import com.hb.model.register.registerDao;
 
-@WebServlet("/detailController.korean")
-public class DetailController extends HttpServlet {
+@WebServlet("/del.korean")
+public class DelController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		
-		String title = request.getParameter("title");
-		curriculumDao dao = new curriculumDao();
-		curriculumDto dto = dao.selectOne(title);
-		
-		request.setAttribute("dto", dto);
-		request.getRequestDispatcher("register/javacurriculumPage.jsp").forward(request, response);
+		int result = 0;
+		int curno = Integer.parseInt(request.getParameter("curno"));
+		registerDao dao = new registerDao();
+		result = dao.deleteRegister(curno);
+		if (result>0) {
+			request.getRequestDispatcher("/mypage/guest/deldone.jsp").forward(request, response);
+		} else {
+			request.getRequestDispatcher("/mypage/teacher/deniedPage.jsp").forward(request, response);
+		}
 	}
 }

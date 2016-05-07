@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.hb.model.member.MemberDao;
+import com.hb.model.member.MemberDto;
 
 @WebServlet("/updateinfo.korean")
 public class UpdateinfoController extends HttpServlet {
@@ -33,6 +34,12 @@ public class UpdateinfoController extends HttpServlet {
 		String email = email1+"@"+email2;
 		String emailagree = request.getParameter("emailagree");
 		String pw = request.getParameter("pw");
+		MemberDao dao2 = new MemberDao();
+		MemberDto bean = dao2.selectOne2((String)request.getSession().getAttribute("id"));
+		String pastpw = bean.getPw();
+		if (pw=="" || pw==null) {
+			pw=pastpw;
+		}
 		MemberDao dao = new MemberDao();
 		int result = dao.updateInfo(memno, tel, phone, address, email, emailagree, pw);
 		if (result>0) {

@@ -16,21 +16,30 @@ public class RegisterController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
-
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String title = request.getParameter("title");
+		String title = "자바(JAVA)개발자 과정";
 		String id = (String)request.getSession().getAttribute("id");
 		
 		registerDao dao1 = new registerDao();
 		String name = dao1.getName(id);
 		request.setAttribute("name", name);
 		
+		registerDao dao2 = new registerDao();
+		int memno = dao2.getMemno(id);
+		registerDao dao3 = new registerDao();
+		boolean result = dao3.checkRegister(memno);
+		
 		curriculumDao dao = new curriculumDao();
 		curriculumDto dto = dao.selectOne(title);
-		
 		request.setAttribute("dto", dto);
 		
-		request.getRequestDispatcher("register/registerclassPage.jsp").forward(request, response);
+		if (id=="" || id==null) {
+			request.getRequestDispatcher("login/login.korean").forward(request, response);
+		} else if(result) {
+			request.getRequestDispatcher("register/registerdonePage.jsp").forward(request, response);
+		} else {
+			request.getRequestDispatcher("register/registerclassPage.jsp").forward(request, response);
+		}
 	}
 }
