@@ -47,8 +47,7 @@ public class RegisterclassController extends HttpServlet {
 		if(result>0){
 			request.getRequestDispatcher("register/registerdonePage.jsp").forward(request, response);
 		}else{
-			
+			request.getRequestDispatcher("mypage/teacher/deniedPage.jsp").forward(request, response);
 		}
-		
 	}
 }

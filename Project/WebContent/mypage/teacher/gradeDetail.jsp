@@ -108,8 +108,8 @@
 		<!-- content start -->
 			<h2><%=request.getAttribute("name") %></h2><br/>
 			<form action="editGrade.korean">
-				<div>학번 : <input type="text" name="stuno" id="stuno" value="<%=request.getAttribute("stuno") %>" readonly="readonly"></div>
-				<div>강의실 : <input type="text" value="<%=request.getAttribute("roomno") %>" readonly="readonly"></div>
+				<div>학번 : <%=request.getAttribute("stuno") %><input type="hidden" name="stuno" value="<%=request.getAttribute("stuno") %>"></div>
+				<div>강의실 : <%=request.getAttribute("roomno") %></div>
 				<div>자바 성적 : <input type="text" name="javagrade" maxlength="3" value="<%=request.getAttribute("javagrade") %>" onkeyup="recheck1();" onblur="check1();"><label></label></div>
 				<div>웹 성적 : <input type="text" name="webgrade" maxlength="3" value="<%=request.getAttribute("webgrade") %>" onkeyup="recheck2();" onblur="check2();"><label></label></div>
 				<div>프레임워크 성적 : <input type="text" name="framegrade" maxlength="3" value="<%=request.getAttribute("framegrade") %>" onkeyup="recheck3();" onblur="check3();"><label></label></div>

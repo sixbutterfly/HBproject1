@@ -21,6 +21,10 @@ column memname format a6;
 column mempw format a15;
 column memaddress format a15;
 column mememail format a15;
+column memphone format a20;
+column memtel format a20;
+column memgender format a10;
+column joinday format a10;
 -- curriculum table
 column curname format a20;
 column curlocation format a15;

@@ -8,7 +8,7 @@ public class DB {
 
 	public static Connection getConnection() {
 		Connection conn = null;
-		String url = "jdbc:oracle:thin:@203.236.209.207:1521:xe";
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
 		String id = "scott";
 		String pw = "tiger";
 		try {

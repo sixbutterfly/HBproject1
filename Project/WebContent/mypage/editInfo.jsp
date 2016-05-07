@@ -65,15 +65,19 @@
 				alert("메일 주소를 입력하세요!");
 				$('#addrresult1').focus();
 				return false;
+			}else if($('#pw1').val()==""||$('#email1').val()==null){
+				alert("기존의 비밀번호를 입력하세요!");
+				$('#pw1').focus();
+				return false;
 			}else{} 
 		});
 	});
 	
 	function check1() {
 		if ($('#pw0').val()==$('#pw1').val()) {
-			$('#pw1').next().text('일치합니다.');
+			$('#pw1').next().text('비밀번호가 일치합니다.');
 		} else {
-			$('#pw1').next().text('불일치, 기존의 비밀번호를 입력하세요.');
+			$('#pw1').next().text('비밀번호가 일치하지 않습니다.');
 			$('#pw1').val("");
 		}
 	}
@@ -125,7 +129,7 @@
 		<%@include file="/templet/subnav5.jsp" %>
 		
 		<!-- content start -->
-		<h1>개인 정보 수정 페이지</h1>
+		<h1>회원 정보 수정</h1>
 		<form action="updateinfo.korean">
 		<ul>
 			<li>회원 가입일 : <%=joinday %></li>

@@ -21,7 +21,11 @@ public class AddGradeController extends HttpServlet{
 		
 		String id = (String)req.getSession().getAttribute("id");
 		int roomno = dao.getRoomno(id);
-		if (roomno>0) {
+		if (id.equals("admin")) {
+			ArrayList<GradeDto> al = dao.list();
+			req.setAttribute("al", al);
+			req.getRequestDispatcher("mypage/teacher/addGrade.jsp").forward(req, resp);
+		} else if (roomno>0) {
 			ArrayList<GradeDto> al = dao.list(roomno);
 			req.setAttribute("al", al);
 			req.getRequestDispatcher("mypage/teacher/addGrade.jsp").forward(req, resp);

@@ -48,28 +48,53 @@ public class registerDao {
 		return list;
 	}
 
-//	private int getMemNo() {
-//		int memNo = 0;
-//		String sql = "select memNo from member where memId='"+id+"'";
-//		try {
-//			pstmt = conn.prepareStatement(sql);
-//			rs = pstmt.executeQuery();
-//			if(rs.next()){
-//				memNo = rs.getInt("memNo");
-//			}
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}finally{
-//			try {
-//				if(rs!=null){rs.close();}
-//				if(pstmt!=null){pstmt.close();}
-//				if(conn!=null){conn.close();}
-//			} catch (SQLException e) {
-//				e.printStackTrace();
-//			}
-//		}
-//		return memNo;
-//	}
+	public int getMemno(String id) {
+		int memNo = 0;
+		String sql = "SELECT MEMNO FROM MEMBER WHERE MEMID=?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				memNo = rs.getInt("memNo");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				if(rs!=null){rs.close();}
+				if(pstmt!=null){pstmt.close();}
+				if(conn!=null){conn.close();}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return memNo;
+	}
+	
+	public String getCurname(int memno) {
+		String sql="SELECT CURNAME FROM REGISTER, CURRICULUM WHERE REGISTER.CURNO=CURRICULUM.CURNO AND MEMNO=?";
+		String curname="";
+		try {
+	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setInt(1, memno);
+	         rs = pstmt.executeQuery();
+	         while (rs.next()) {
+	            curname = rs.getString("CURNAME");
+	         }
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         try {
+	            if (rs!=null) rs.close();
+	            if (pstmt!=null) pstmt.close();
+	            if (conn!=null) conn.close();
+	         } catch (SQLException e) {
+	            e.printStackTrace();
+	         }
+	      }
+		return curname;
+	}
 	
 	public String getName(String id) {
 	      String name="";
@@ -212,4 +237,50 @@ public class registerDao {
 		return result;
 	}//deleteOne end
 
+	public int deleteRegister(int curno) {
+		int result = 0;
+		String sql = "DELETE FROM REGISTER WHERE CURNO=?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, curno);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				if(pstmt!=null){pstmt.close();}
+				if(conn!=null){conn.close();}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+
+	public boolean checkRegister(int memno) {
+		boolean result=false;
+		int regno=0;
+		String sql = "select regno from register where memno=?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memno);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				regno = rs.getInt("regno");
+			}
+			if (regno!=0) {
+				result=true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				if(pstmt!=null){pstmt.close();}
+				if(conn!=null){conn.close();}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
 }

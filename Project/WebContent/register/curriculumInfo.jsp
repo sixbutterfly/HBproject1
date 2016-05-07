@@ -15,6 +15,13 @@
 
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-1.12.2.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/menu.js"></script>
+<script>
+	function checkLogin() {
+		if ($('#checkLogin').val()=='null') {
+			alert("가입해야 커리큘럼 신청이 가능합니다.");
+		}
+	}
+</script>
 <style>
 	.title p{
 		font-size: 30pt;
@@ -72,7 +79,6 @@
 		<!-- nav -->
 		<%@include file="/templet/nav.jsp" %>
 		<!-- aside1 -->
-<<<<<<< HEAD
 		<%@include file="/templet/loginForm.jsp" %>
 		<%@include file="/templet/subnav2.jsp" %>
 		
@@ -112,10 +118,13 @@
 		</table>
 		
 		<div class="register">
-			<a href="resisterController.korean?title=자바(JAVA)개발자 과정">
-				<img src="<%=request.getContextPath() %>/imgs/btn.jpg">
+		<% 
+			String id = (String)request.getSession().getAttribute("id");
+		%>	
+			<a href="resisterController.korean"><input type="hidden" id="checkLogin" value="<%=id %>">
+				<img src="<%=request.getContextPath() %>/imgs/btn.jpg" onclick="checkLogin()">
 			</a>
-			<a href="detailController.korean?title=자바(JAVA)개발자 과정">
+			<a href="detailController.korean">
 				<img src="<%=request.getContextPath() %>/imgs/curriculumdetailBtn.png">
 			</a>
 		</div>
