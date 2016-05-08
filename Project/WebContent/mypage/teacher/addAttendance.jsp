@@ -74,7 +74,7 @@
 </style>
 <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
 <script type="text/javascript" src="js/menu.js"></script>
-<script type="text/javascript" src="/Project/js/attend.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/attend.js" charset="utf-8"></script>
 
 </head>
 <body>
@@ -88,22 +88,38 @@
 		<%@include file="/templet/subnav5.jsp" %>
 		
 		<!-- content start -->
+			
 			<h1> 출결 입력</h1>
 			<div>			
-			<p><span class="left"><input type="date" name="attdDate" value="<%=new SimpleDateFormat("yyyy-MM-dd").format(new Date()) %>"/> </span> <span class="right">담당강사 : <%= request.getAttribute("tchName") %> 강사님</span></p>
-			<br/><br/>
-			<p><span class="left">강의실 : <%= request.getAttribute("roomNo") %>번 강의실</span>			
+			<p><span class="left"><input type="date" name="attdDate" value="<%=new SimpleDateFormat("yyyy-MM-dd").format(new Date()) %>"/> </span>
+			<%
+				int authNo = (Integer)session.getAttribute("level");
+				if(authNo == 3){					
+			%> 
+					<span class="right">담당강사 : <%= request.getAttribute("tchName") %> 강사님</span></p>
+					<br/><br/>
+					<p><span class="left">강의실 : <%= request.getAttribute("roomNo") %>번 강의실</span>
+			<%  }else if(authNo == 9){ %>
+					<span class="right">담당강사 : 
+					<select name="attdStatus">
+					  <option value="●">● 출석</option>					  
+					</select> <%= request.getAttribute("tchName") %> 강사님</span></p>
+			
+					<br/><br/>
+					<p><span class="left">강의실 : <%= request.getAttribute("roomNo") %>번 강의실</span>
+			<%  }%>
+						
 			<span class="right"><select name="attdStatus">
-					  <option value="출석">● 출석</option>
-					  <option value="결석">X 결석</option>
-					  <option value="지각">▲ 지각</option>
-					  <option value="조퇴">■ 조퇴</option>
-					  <option value="미등록">- 미등록</option>
+					  <option value="●">● 출석</option>
+					  <option value="X">X 결석</option>
+					  <option value="▲">▲ 지각</option>
+					  <option value="■">■ 조퇴</option>
+					  <option value="-">- 미등록</option>
 			</select></span></p>
 			</div>
 			<table>
 				<tr class="attendHeader">
-					<th>번호</th><th>이름</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th>
+					<th><input type="checkbox" name="checkAll"/></th><th>이름</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th>
 					<th>9</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th>
 					<th>19</th><th>20</th><th>21</th><th>22</th><th>23</th><th>24</th><th>25</th><th>26</th><th>27</th><th>28</th>
 					<th>29</th><th>30</th><th>31</th>
@@ -113,7 +129,7 @@
 					for(AttdDto bean : attdList){
 				%>
 					<tr class="attendBody">
-						<td><input type="checkbox" name="attdNo<%= bean.getAttdNo() %>" value="<%= bean.getAttdNo() %>"/><%= bean.getAttdNo() %></td>
+						<td><input type="checkbox" name="attdNo" value="<%= bean.getAttdNo() %>"/><%= bean.getAttdNo() %></td>
 						<td><%= bean.getMemName() %></td>
 						<td><input type="text" name="val1" value="<%= bean.getAttdValue1() %>" size="1" maxlength="1" readonly="readonly"/></td>
 						<td><input type="text" name="val2" value="<%= bean.getAttdValue2() %>" size="1" maxlength="1" readonly="readonly"/></td>

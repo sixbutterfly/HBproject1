@@ -21,7 +21,8 @@
 	}
 	
 	.logo_login>img{
-		width : 100%;
+		width : 80%;
+		margin-left:30px;
 	}
 	
 	.reg>a{
@@ -51,6 +52,10 @@
 		color: red;
 		font-weight:bold;
 	}
+	
+	.login>.loginfail{
+		font-size:15px;
+	}
 		
 </style>
 </head>
@@ -59,34 +64,35 @@
 	<div class="container_12">
 		<div class="grid3">&nbsp;</div>
 		<div class="grid6 logo_login">			
-				<a href="../main.jsp"><img alt="LOGO" src="<%=request.getContextPath() %>/imgs/logo_main.png"/></a>
+				<a href="../index.korean"><img alt="LOGO" src="<%=request.getContextPath() %>/imgs/logo_main.png"/></a>
 				<hr/>
 				<br/><br/>
-			    <form action="<%=request.getContextPath() %>/login/islogin.korean" method="post">
+			    <%-- <form action="<%=request.getContextPath() %>/login/islogin.korean" method="post"> --%>
 					<div class="container_12">					
 						<div class="grid3">&nbsp;</div>
-						<div class="grid6 login"><input type="text" name="id"  value="아이디" /><div></div></div>					
+						<div class="grid6 login"><input type="text" name="id" value="아이디"  tabIndex="1"><div><p>&nbsp;&nbsp; 아이디를 입력해주세요</p></div></div>					
 						<div class="grid3">&nbsp;</div>
-					</div>							
+					</div>				
 					<div class="container_12 ">					
 						<div class="grid3">&nbsp;</div>
-						<div class="grid6 login"><input type="text" name="pw"  value="패스워드" /><div>	</div></div>
+						<div class="grid6 login"><input type="text" name="pw" value="패스워드" tabIndex="2"/><div>	<p>&nbsp;&nbsp; 패스워드를 입력해주세요</p></div>
+						<div class="loginfail"><p>&nbsp;&nbsp; 아이디 또는 비밀번호를 다시 확인하세요.</p></div></div>
 						<div class="grid3">&nbsp;</div>
 					</div>
 					<br/><br/>
 					<div class="container_12">					
 						<div class="grid4">&nbsp;</div>
-						<div class="grid5 login"><button type="submit">login</button></div>					
+						<div class="grid5 login"><button type="submit" tabIndex="3">login</button></div>					
 						<div class="grid3">&nbsp;</div>
 					</div>
-				</form>		 
+			<!-- 	</form>		 --> 
 				
 				<br/><br/><br/><br/>
 				<hr/>
 				<br/>
 				<div class="container_12">					
 					<div class="grid3">&nbsp;</div>
-					<div class="grid6 reg"> <a href="#">회원가입</a>	</div>
+					<div class="grid6 reg"> <a href="../agreejoin.korean">회원가입</a>	</div>
 					<div class="grid3">&nbsp;</div>
 				</div>				
 		</div>

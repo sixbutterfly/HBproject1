@@ -158,28 +158,12 @@ insert into attend ('attdNo', 'attdValue1', 'attdValue2', 'attdValue3', 'attdVal
 'attdValue20', 'attdValue21', 'attdValue22', 'attdValue23', 'attdValue24', 'attdValue25', 'attdValue26', 'attdValue27', 'attdValue28', 'attdValue29',
 'attdValue30', 'attdValue31', 'attdDate') 
 
-insert into attend (attdNo) values (1);
-insert into attend (attdNo) values (2);
-insert into attend (attdNo) values (3);
-insert into attend (attdNo) values (4);
-insert into attend (attdNo) values (5);
-insert into attend (attdNo) values (6);
-insert into attend (attdNo) values (7);
-insert into attend (attdNo) values (8);
-insert into attend (attdNo) values (9);
-insert into attend (attdNo) values (10);
-insert into attend (attdNo) values (11);
-insert into attend (attdNo) values (12);
-insert into attend (attdNo) values (13);
-insert into attend (attdNo) values (14);
-insert into attend (attdNo) values (15);
-insert into attend (attdNo) values (16);
-insert into attend (attdNo) values (17);
-insert into attend (attdNo) values (18);
-insert into attend (attdNo) values (19);
-insert into attend (attdNo) values (20);
--- 한국인 더미데이터  끝 ---
-
+insert into attend (attdNo,stuNo) values (1, 1);
+insert into attend (attdNo,stuNo) values (2, 2);
+insert into attend (attdNo,stuNo) values (3, 3);
+insert into attend (attdNo,stuNo) values (4, 4);
+insert into attend (attdNo,stuNo) values (5, 5);
+insert into attend (attdNo,stuNo) values (6, 6);
 
 update attend set attdValue+'' = ? where attdNo = ?
 
@@ -194,17 +178,21 @@ update attend set attdValue2 = '' where attdNo = 2;
 update attend set attdValue3 = '조퇴' where attdNo = 2;
 				 
 
-select a.attdNo, memName, nvl(attdvalue1,'-'), nvl(attdvalue2,'-'), nvl(attdvalue3,'-'), nvl(attdvalue4,'-'), nvl(attdvalue5,'-'), nvl(attdvalue6,'-'), nvl(attdvalue7,'-'), nvl(attdvalue8,'-'), nvl(attdvalue9,'-'), nvl(attdvalue10,'-'),
+select rowNum, memName, nvl(attdvalue1,'-'), nvl(attdvalue2,'-'), nvl(attdvalue3,'-'), nvl(attdvalue4,'-'), nvl(attdvalue5,'-'), nvl(attdvalue6,'-'), nvl(attdvalue7,'-'), nvl(attdvalue8,'-'), nvl(attdvalue9,'-'), nvl(attdvalue10,'-'),
 							 nvl(attdvalue11,'-'), nvl(attdvalue12,'-'), nvl(attdvalue13,'-'), nvl(attdvalue14,'-'), nvl(attdvalue15,'-'), nvl(attdvalue16,'-'), nvl(attdvalue17,'-'), nvl(attdvalue18,'-'), nvl(attdvalue19,'-'), nvl(attdvalue20,'-'), nvl(attdvalue21,'-'), nvl(attdvalue22,'-'),
 							 nvl(attdvalue23,'-'), nvl(attdvalue24,'-'), nvl(attdvalue25,'-'), nvl(attdvalue26,'-'), nvl(attdvalue27,'-'), nvl(attdvalue28,'-'), nvl(attdvalue29,'-'), nvl(attdvalue30,'-'), nvl(attdvalue31,'-')
 							 from attend a,
 							 (
-						     select memName, attdNo from member m, student s where m.memNo = s.memNo
+						     select memName, s.stuNo from member m, student s where m.memNo = s.memNo
 						     and s.roomNo = (select r.roomNo from stuRoom r where 
-						    	 r.tchNo = (select t.tchNo from member m, teacher t where m.memno = t.memno and m.memid=' +korean3  + '))
+						    	 r.tchNo = (select t.tchNo from member m, teacher t where m.memno = t.memno and m.memid='korean3'))
 						     ) s 
-						     where a.attdNo = s.attdNo;
+						     where a.stuNo = s.stuNo;
 						     
+select * from attend;
 
 select * from student;
+
 select * from teacher;
+
+select * from stuRoom;

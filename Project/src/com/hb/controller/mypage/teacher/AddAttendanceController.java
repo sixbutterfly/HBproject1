@@ -28,12 +28,12 @@ public class AddAttendanceController extends HttpServlet {
 		// 강사이름
 		String tchName = attdDao.selectTchName(memberId);
 		req.setAttribute("tchName", tchName);
-		System.out.println(tchName);
+		//System.out.println(tchName);
 
 		// 강의실번호
 		int roomNo = attdDao.selectRoomNo(memberId);
 		req.setAttribute("roomNo", roomNo);
-		System.out.println(roomNo);
+		//System.out.println(roomNo);
 
 		// 출석리스트
 		ArrayList<AttdDto> attdList = attdDao.selectAttdList(memberId);

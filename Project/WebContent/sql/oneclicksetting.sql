@@ -434,4 +434,3 @@ insert into student values(stu_seq.nextval,9,null);
 insert into student values(stu_seq.nextval,10,null);
 insert into student values(stu_seq.nextval,11,null);
 insert into student values(stu_seq.nextval,12,null);
-

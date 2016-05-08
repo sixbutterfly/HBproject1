@@ -2,9 +2,9 @@
     pageEncoding="UTF-8"%>
 [
 	{
-	"attdDate":<%=(String)request.getAttribute("attdDate") %>
+		"day":<%=(Integer)request.getAttribute("day") %>
 		,"attdStatus":"<%=(String)request.getAttribute("attdStatus") %>"
-		,"attdNo":"<%=(Integer)request.getAttribute("attdNo") %>"
-		,"tchId":"<%=(Integer)request.getAttribute("tchId") %>"
+		,"atdNo":"<%=(String[])request.getAttribute("atdNo[0]") %>"
+		,"level":"<%=(Integer)request.getAttribute("level") %>"
 	}
 ]

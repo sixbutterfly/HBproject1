@@ -30,7 +30,6 @@ public class MemberDao {
          rs = pstmt.executeQuery();
          if(rs.next()){
             authNo = rs.getInt("authNo");
-            System.out.println("authNo:"+authNo);
          }
       } catch (SQLException e) {
          e.printStackTrace();

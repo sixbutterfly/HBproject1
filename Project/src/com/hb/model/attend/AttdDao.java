@@ -6,8 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
 
+import com.hb.model.member.MemberDto;
 import com.hb.util.DB;
 
 public class AttdDao {		
@@ -22,17 +22,15 @@ public class AttdDao {
 		
 		}
 		
-		//날짜
-		
-		//강사이름
-		public String selectTchName(String memberId) {
-			String teacherName = "";			
-			String sql = "select memName from member, teacher where member.memno = teacher.memno and memid='" +memberId + "'";
+		//관리자 : 강의실에 배정된 모든 강사의 이름
+		public String selectAllTchName() {
+			String tchAllName = "";			
+			String sql = "select m.memName from member m, teacher t where m.memNo = t.memNo and t.tchNo in (select r.tchNo from teacher t, stuRoom r where t.tchNo = r.tchNo)";
 			try {
 				pstmt = conn.prepareStatement(sql);
 				rs = pstmt.executeQuery();
 				if(rs.next()){
-					teacherName = rs.getString("memName");
+					tchAllName = rs.getString("memName");
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -49,8 +47,41 @@ public class AttdDao {
 					e.printStackTrace();
 				}*/
 			}			
-			return teacherName;
+			return tchAllName;
 		}
+		
+		
+		//강의실 배정되어 있으며, 로그인한 강사
+		public ArrayList<MemberDto> selectTchName(String memberId) {
+			ArrayList<MemberDto> tchlist = new ArrayList<MemberDto>();			
+			String sql = "select m.memName from member m, teacher t where m.memNo = t.memNo and t.tchNo in (select r.tchNo from teacher t, stuRoom r where t.tchNo = r.tchNo) and memid='" +memberId + "'";
+			try {
+				pstmt = conn.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				while(rs.next()){
+					MemberDto bean;
+					bean.setMemname(rs.getString("memName"));
+					tchlist.add(bean);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+			/*	try {
+					if (rs != null)
+						rs.close();
+					if (pstmt != null)
+						pstmt.close();
+					if (conn != null)
+						conn.close();
+					System.out.println("뿌??");
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}*/
+			}			
+			return tchlist;
+		}
+		
+		
 
 		public int selectRoomNo(String memberId) {
 			int roomNumber = 0;			
@@ -79,25 +110,24 @@ public class AttdDao {
 			return roomNumber;
 		}
 		
-		
 		public ArrayList<AttdDto> selectAttdList(String memberId) {
 			ArrayList<AttdDto> list = new ArrayList<AttdDto>();
-			String sql = "select a.attdNo, memName, nvl(attdvalue1,'-'), nvl(attdvalue2,'-'), nvl(attdvalue3,'-'), nvl(attdvalue4,'-'), nvl(attdvalue5,'-'), nvl(attdvalue6,'-'), nvl(attdvalue7,'-'), nvl(attdvalue8,'-'), nvl(attdvalue9,'-'), nvl(attdvalue10,'-')," 
+			String sql = "select rowNum, memName, nvl(attdvalue1,'-'), nvl(attdvalue2,'-'), nvl(attdvalue3,'-'), nvl(attdvalue4,'-'), nvl(attdvalue5,'-'), nvl(attdvalue6,'-'), nvl(attdvalue7,'-'), nvl(attdvalue8,'-'), nvl(attdvalue9,'-'), nvl(attdvalue10,'-')," 
 							+ " nvl(attdvalue11,'-'), nvl(attdvalue12,'-'), nvl(attdvalue13,'-'), nvl(attdvalue14,'-'), nvl(attdvalue15,'-'), nvl(attdvalue16,'-'), nvl(attdvalue17,'-'), nvl(attdvalue18,'-'), nvl(attdvalue19,'-'), nvl(attdvalue20,'-'), nvl(attdvalue21,'-'), nvl(attdvalue22,'-')," 
 							+ " nvl(attdvalue23,'-'), nvl(attdvalue24,'-'), nvl(attdvalue25,'-'), nvl(attdvalue26,'-'), nvl(attdvalue27,'-'), nvl(attdvalue28,'-'), nvl(attdvalue29,'-'), nvl(attdvalue30,'-'), nvl(attdvalue31,'-')" 
 							+ " from attend a," 
 							+ " (" 
-						    + " select memName, attdNo from member m, student s where m.memNo = s.memNo" 
+						    + " select memName, stuNo from member m, student s where m.memNo = s.memNo" 
 						    + " and s.roomNo = (select r.roomNo from stuRoom r where " 
 						    + "	 r.tchNo = (select t.tchNo from member m, teacher t where m.memno = t.memno and m.memid='" +memberId  + "'))" 
 						    + "	 ) s " 
-						    + " where a.attdNo = s.attdNo";		
+						    + " where a.stuNo = s.stuNo";		
 			try {
 				pstmt = conn.prepareStatement(sql);
 				rs = pstmt.executeQuery();
 				while(rs.next()){
 					AttdDto dto = new AttdDto();
-					dto.setAttdNo(rs.getInt("attdNo"));
+					dto.setAttdNo(rs.getInt("rowNum"));
 					dto.setMemName(rs.getString("memName"));
 					dto.setAttdValue1(rs.getString("nvl(attdvalue1,'-')"));					
 					dto.setAttdValue2(rs.getString("nvl(attdvalue2,'-')"));					
@@ -159,17 +189,20 @@ public class AttdDao {
 			return stuName;
 		}
 
-		public String updateAttdValue(int day, String attdStatus, int attdNo) {
-			String sql = "update attend set attdValue"+ day + " = '" + attdStatus + "' where attdNo = " + attdNo;
-			System.out.println(sql);
-			String attdValue = "";
+		public int updateAttdValue(int day, String attdStatus, Integer[] attdNo) {
+			String sql = "update attend set attdValue"+ day + " = '" + attdStatus + "' where attdNo = ?";
+			//System.out.println(sql);
+			int result = 0;
 			try {
 				pstmt = conn.prepareStatement(sql);
-				pstmt.executeUpdate();				
+				for (int i = 0; i < attdNo.length; i++) {
+					pstmt.setInt(1, attdNo[i].intValue());
+					result = pstmt.executeUpdate();
+				}
 			} catch (SQLException e) {
 				e.printStackTrace();
-			}
-			return attdValue;
+			}			
+			return result;
 		}
 		
 		public ArrayList<AttdDto> selectStuAttd(String memberId) {
