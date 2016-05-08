@@ -1,3 +1,5 @@
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.hb.model.curriculum.curriculumDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -183,10 +185,21 @@
 		<form action="register.korean" method="post">
 		<%
 			curriculumDto dto = (curriculumDto)request.getAttribute("dto");
+			ArrayList<String> al = (ArrayList<String>)request.getAttribute("al");
 		%>
-		<input type="hidden" name="curNo" value="<%=dto.getCurNo() %>"/>
 		<ul id="ul">
-			<li><label class="menu">지원과정</label><div id="answer"><span><%=dto.getCurName() %></span></div></li>
+			<li><label class="menu">지원과정</label><div id="answer"><select name="curname">
+																<%
+																	for(int i=0; i<al.size(); i++){
+																%>
+																		<option value="<%=al.get(i) %>">
+																		<%=al.get(i) %>
+																<%
+																	}
+																%>
+																  </select>
+												 </div>
+			</li>
 			<li><label class="menu">이름</label><div id="answer"><%=request.getAttribute("name") %><input type="hidden" name="name" value="<%=request.getAttribute("name") %>"/></div></li>
 			<li><label class="menu">이메일</label><div id="answer"><input type="text" maxlength="15" name="email1" id="email1">
 				@	<input type="text" size="15" name="email2" id="email2"> 

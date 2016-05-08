@@ -195,7 +195,7 @@ public class noticeDao {
 
 	public int updateOne(int notNo, String title, String content) {
 		int result = 0;
-		String sql = "update notice set notDate=sysdate, title='"+title+"',content='"+content+"' where notNo="+notNo;
+		String sql = "update notice set notDate=sysdate, title="+title+",content="+content+" where notNo="+notNo;
 		try {
 			pstmt = conn.prepareStatement(sql);
 			result = pstmt.executeUpdate();

@@ -18,7 +18,7 @@
 <script>
 	function checkLogin() {
 		if ($('#checkLogin').val()=='null') {
-			alert("가입해야 커리큘럼 신청이 가능합니다.");
+			alert("로그인 후 커리큘럼 신청이 가능합니다.");
 		}
 	}
 </script>

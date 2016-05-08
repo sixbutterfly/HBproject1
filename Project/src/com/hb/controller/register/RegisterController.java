@@ -1,6 +1,8 @@
 package com.hb.controller.register;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,6 +26,15 @@ public class RegisterController extends HttpServlet {
 		registerDao dao1 = new registerDao();
 		String name = dao1.getName(id);
 		request.setAttribute("name", name);
+		// 수강신청 상태인지 확인
+		registerDao dao2 = new registerDao();
+		int memno = dao2.getMemno(id);
+		registerDao dao3 = new registerDao();
+		boolean result = dao3.checkRegister(memno);
+		
+		curriculumDao dao4 = new curriculumDao();
+		ArrayList<String> al = dao4.selectOne2();
+		request.setAttribute("al", al);
 		
 		registerDao dao2 = new registerDao();
 		int memno = dao2.getMemno(id);

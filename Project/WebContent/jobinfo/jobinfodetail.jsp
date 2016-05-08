@@ -53,68 +53,6 @@
 <script type="text/javascript" src="js/menu.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		var level = <%= (Integer)session.getAttribute("level") %>;
-		console.log(level);
-	switch (level) {
-		case null:
-			$('form button:eq(0)').click(function(){
-				alert("접근 권한이 없습니다.");
-				return false;
-			});
-			$('form button:eq(1)>a').click(function(){
-				alert("접근 권한이 없습니다.");
-				return false;
-			});
-			break;
-		case 0:
-			$('form button:eq(0)').click(function(){
-				alert("접근 권한이 없습니다.");
-				return false;
-			});
-			break;
-		case 1:
-			break;
-		case 2:
-			$('form button:eq(0)').click(function(){
-				alert("접근 권한이 없습니다.");
-				return false;
-			});
-			$('form button:eq(1)>a').click(function(){
-				alert("접근 권한이 없습니다.");
-				return false;
-			});
-			break;
-		case 3:
-			$('form button:eq(0)').click(function(){
-				alert("접근 권한이 없습니다.");
-				return false;
-			});
-			$('form button:eq(1)>a').click(function(){
-				alert("접근 권한이 없습니다.");
-				return false;
-			});
-			break;
-		case 4:
-			$('form button:eq(0)').click(function(){
-				alert("접근 권한이 없습니다.");
-				return false;
-			});
-			$('form button:eq(1)>a').click(function(){
-				alert("접근 권한이 없습니다.");
-				return false;
-			});
-			break;
-		case 9:
-			$('form button:eq(0)').click(function(){
-				alert("접근 권한이 없습니다.");
-				return false;
-			});
-			$('form button:eq(1)>a').click(function(){
-				alert("접근 권한이 없습니다.");
-				return false;
-			});
-			break;
-		}
 		$('.table+button+button').click(function(){
 			if(confirm("게시물을 삭제하시겠습니까?")){
 				alert("삭제가 완료되었습니다.");
@@ -125,7 +63,6 @@
 		});
 	});//ready end
 </script>
-
 </head>
 <body>
 	<div class="container_12">

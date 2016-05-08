@@ -52,6 +52,29 @@ public class curriculumDao {
 		return list;
 	}//selectAll end
 
+	public ArrayList<String> selectOne2() {
+		ArrayList<String> al = new ArrayList<String>();
+		String sql = "SELECT CURNAME FROM CURRICULUM ORDER BY CURNO";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				al.add(rs.getString("curname"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				if(rs!=null){rs.close();}
+				if(pstmt!=null){pstmt.close();}
+				if(conn!=null){conn.close();}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return al;
+	}
+	
 	public curriculumDto selectOne(int curNo) {
 		curriculumDto dto = new curriculumDto();
 		String sql = "SELECT * FROM CURRICULUM WHERE CURNO="+curNo;
