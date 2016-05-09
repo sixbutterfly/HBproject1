@@ -36,11 +36,6 @@ public class RegisterController extends HttpServlet {
 		ArrayList<String> al = dao4.selectOne2();
 		request.setAttribute("al", al);
 		
-		registerDao dao2 = new registerDao();
-		int memno = dao2.getMemno(id);
-		registerDao dao3 = new registerDao();
-		boolean result = dao3.checkRegister(memno);
-		
 		curriculumDao dao = new curriculumDao();
 		curriculumDto dto = dao.selectOne(title);
 		request.setAttribute("dto", dto);

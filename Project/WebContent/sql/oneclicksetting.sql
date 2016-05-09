@@ -433,3 +433,6 @@ insert into student values(stu_seq.nextval,9,null,null);
 insert into student values(stu_seq.nextval,10,null,null);
 insert into student values(stu_seq.nextval,11,null,null);
 insert into student values(stu_seq.nextval,12,null,null);
+--공지사항 더미
+insert into notice values(not_seq.nextval, '한국인은 보아라', '두번봐라', sysdate,'관리자');
+--수강후기 더미
