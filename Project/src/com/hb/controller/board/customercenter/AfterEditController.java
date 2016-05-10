@@ -14,8 +14,12 @@ public class AfterEditController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int aftNo = Integer.parseInt(request.getParameter("aftNo"));
-		String aftTitle = request.getParameter("title");
-		String aftContent = request.getParameter("content");
+		
+		String aftTitle = new String(request.getParameter("title").getBytes("8859_1"), "UTF-8");
+		String aftContent = new String(request.getParameter("content").getBytes("8859_1"), "UTF-8");
+		
+//		String aftTitle = request.getParameter("title");
+//		String aftContent = request.getParameter("content");
 		
 		afterdao dao = new afterdao();
 		int result = dao.updateOne(aftNo, aftTitle, aftContent);

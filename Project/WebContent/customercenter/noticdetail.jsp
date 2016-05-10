@@ -72,6 +72,13 @@
 			});
 			break;
 		case 1:
+			$('form button:eq(1)>a').click(function(){
+				if(confirm("게시물을 삭제하시겠습니까?")){
+					return true;
+				}else{
+					return false;
+				}
+			});
 			break;
 		case 2:
 			$('form button:eq(0)').click(function(){
@@ -114,14 +121,6 @@
 			});
 			break;
 		}
-		$('.table+button+button').click(function(){
-			if(confirm("게시물을 삭제하시겠습니까?")){
-				alert("삭제가 완료되었습니다.");
-			}else{
-				alert("삭제가 취소되었습니다.");
-				return false;
-			}
-		});
 	});//ready end
 </script>
 </head>
