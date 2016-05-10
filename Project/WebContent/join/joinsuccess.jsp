@@ -43,7 +43,7 @@ hr {
 	<div>
 		<img src="join/joinimage/step3.gif"/>
 	</div>
-	<div>
+	<div> 
 	<h1>ㅊㅋㅊㅋ</h1>
 	<a href="login/login.korean">로그인하기</a>
 	</div>
