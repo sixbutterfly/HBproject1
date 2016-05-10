@@ -12,6 +12,11 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/subnav5.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/aside2.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
+<script type="text/javascript">
+	function alertOnce() {
+		
+	}
+</script>
 <style type="text/css">
 	.title>p{
 		font-size: 30pt;
@@ -73,7 +78,7 @@
 			
 			<input type="hidden" value="<%=bean.getCurNo() %>" name="curno">
 			신청한 과정명 출력
-			<button>수강 취소</button>
+			<button onclick="alertOnce()">수강 취소</button>
 			</form>
 		<!-- content end -->
 		
