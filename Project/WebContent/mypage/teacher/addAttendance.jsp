@@ -1,4 +1,6 @@
 <%@page import="com.hb.model.attend.AttdDto"%>
+<%@page import="com.hb.model.teacher.TeacherDto"%>
+<%@page import="com.hb.model.sturoom.SturoomDto"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
@@ -18,6 +20,11 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
 
 <style type="text/css">
+	*{
+		margin: 0px;
+		padding: 0px;
+	}
+/* 
 	.title>p{
 		font-size: 30pt;
 		font-style: oblique;
@@ -29,13 +36,13 @@
 		margin: 20px;
 		border-bottom: 3px solid #ddd;
 		color: #666;
-	}
+	} */
 	h1{
 		text-align: center;
 	}
 	
 	table{
-		width: 780px;
+		width: 800px;
 		border: 1px solid black;
 	}
 	
@@ -46,12 +53,20 @@
 	
 	td{
 		border: 1px solid black;
+	}
+			
+	.btnList{
+		display:inline-block;
+		width: 100px;
+		height: 30px;
+		margin-left: 300px;
 	}	
 	
-	button{
+	.ins{
 		display:inline-block;
 		width: 50px;
 		height: 30px;
+		margin-left: 300px;
 	}
 	
 	.left{
@@ -74,7 +89,7 @@
 </style>
 <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
 <script type="text/javascript" src="js/menu.js"></script>
-<script type="text/javascript" src="/Project/js/attend.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/attend.js" charset="utf-8"></script>
 
 </head>
 <body>
@@ -88,32 +103,60 @@
 		<%@include file="/templet/subnav5.jsp" %>
 		
 		<!-- content start -->
+			
 			<h1> 출결 입력</h1>
 			<div>			
-			<p><span class="left"><input type="date" name="attdDate" value="<%=new SimpleDateFormat("yyyy-MM-dd").format(new Date()) %>"/> </span> <span class="right">담당강사 : <%= request.getAttribute("tchName") %> 강사님</span></p>
-			<br/><br/>
-			<p><span class="left">강의실 : <%= request.getAttribute("roomNo") %>번 강의실</span>			
+			<p><span class="left"><input type="date" name="attdDate" value="<%=new SimpleDateFormat("yyyy-MM-dd").format(new Date()) %>"/> </span>
+			<%
+				int level = ((Integer)session.getAttribute("level")).intValue();
+				 ArrayList<TeacherDto> tchList = (ArrayList<TeacherDto>)request.getAttribute("tchList");
+				 ArrayList<SturoomDto> roomList = (ArrayList<SturoomDto>)request.getAttribute("roomList");
+				if(level == 3){
+			%>	
+					<span class="right">담당강사 : <%= request.getAttribute("tchName") %> 강사님</span></p>
+					<br/><br/>
+					<p><span class="left">강의실 : <%= request.getAttribute("roomNo") %>번 강의실</span>
+			<%}%>
+			<%if(level == 9){ %>				
+					<span class="right" >담당강사 : 					
+					<select name="MtchName">
+					<%for(TeacherDto bean : tchList){    %>					
+						  <option value="<%= bean.getTchname() %>">  <%= bean.getTchname() %> </option>
+					 <%}%> 	
+					</select> 강사님</span></p>
+					 					  
+			   
+					<br/><br/>
+					<p><span class="left">강의실 : 
+					<select name="MroomName">
+					  <%for(SturoomDto bean : roomList){    %>					
+						  <option value="<%= bean.getRoomNo() %>">  <%= bean.getRoomNo() %> </option>
+					 <%}%> 	  
+					</select>번 강의실</span>
+			<%} %>
+						
 			<span class="right"><select name="attdStatus">
-					  <option value="출석">● 출석</option>
-					  <option value="결석">X 결석</option>
-					  <option value="지각">▲ 지각</option>
-					  <option value="조퇴">■ 조퇴</option>
-					  <option value="미등록">- 미등록</option>
+					  <option value="●">● 출석</option>
+					  <option value="X">X 결석</option>
+					  <option value="▲">▲ 지각</option>
+					  <option value="■">■ 조퇴</option>
+					  <option value="-">- 미등록</option>
 			</select></span></p>
 			</div>
 			<table>
 				<tr class="attendHeader">
-					<th>번호</th><th>이름</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th>
+					<th><input type="checkbox" name="checkAll"/></th><th>이름</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th>
 					<th>9</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th>
 					<th>19</th><th>20</th><th>21</th><th>22</th><th>23</th><th>24</th><th>25</th><th>26</th><th>27</th><th>28</th>
 					<th>29</th><th>30</th><th>31</th>
 				</tr>
-				<%	
+				 <%
+				 if(level == 3){
 					ArrayList<AttdDto> attdList = (ArrayList<AttdDto>)request.getAttribute("attdList");
 					for(AttdDto bean : attdList){
 				%>
-					<tr class="attendBody">
-						<td><input type="checkbox" name="attdNo" value="<%= bean.getAttdNo() %>"/><%= bean.getAttdNo() %></td>
+					<tr class="attendBody">						
+						<td><input type="checkbox" name="attdNo" value="<%= bean.getAttdNo() %>"/><%= bean.getRowNum() %></td>
 						<td><%= bean.getMemName() %></td>
 						<td><input type="text" name="val1" value="<%= bean.getAttdValue1() %>" size="1" maxlength="1" readonly="readonly"/></td>
 						<td><input type="text" name="val2" value="<%= bean.getAttdValue2() %>" size="1" maxlength="1" readonly="readonly"/></td>
@@ -148,11 +191,25 @@
 						<td><input type="text" name="val31" value="<%= bean.getAttdValue31() %>" size="1" maxlength="1" readonly="readonly"/></td>										
 					</tr>
 				<%		
+					}}
+				
+				 
+				 if(level == 9){
+					
+				%>
+					
+				<%		
 					}
 				%>
 			</table>
+			<div>
+			<% 
+			 if(level == 9){%>
+			<button class="btnList">리스트 보기</button>
+			<%}%>
+			</div>
 			<div class="btnPage">
-			<button class="left">←</button><button id="ins">입력</button><button class="right">→</button>
+			<button class="left">←</button><button class="ins">입력</button><button class="right">→</button>
 			</div>
 		<!-- content end -->
 		

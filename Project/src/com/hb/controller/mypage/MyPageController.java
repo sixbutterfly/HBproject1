@@ -21,7 +21,7 @@ public class MyPageController extends HttpServlet{
 		Boolean login = (Boolean)req.getSession().getAttribute("login");
 		System.out.println(login);
 		if(login==false){
-			resp.sendRedirect("login/login.jsp");
+			resp.sendRedirect("login/login.korean");
 		}
 		else{
 			req.getRequestDispatcher("mypage/mypage.jsp").forward(req, resp);

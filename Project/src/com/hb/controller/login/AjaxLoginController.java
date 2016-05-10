@@ -30,9 +30,9 @@ public class AjaxLoginController extends HttpServlet {
 		
 			request.setAttribute("level", authNo);
 			request.setAttribute("id", id);
-			
+			request.getRequestDispatcher("/login/json.jsp").forward(request, response);		
 		}		
-		request.getRequestDispatcher("/login/json.jsp").forward(request, response);		
+		
 	}
 
 }

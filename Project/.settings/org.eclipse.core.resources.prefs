@@ -1,4 +1,4 @@
-﻿=\=\=\=\=\=\=
+=\=\=\=\=\=\=
 eclipse.preferences.version=1
 encoding//WebContent/customercenter/noticeadd.jsp=UTF-8
 encoding//WebContent/js/login.js=UTF-8
@@ -9,3 +9,4 @@ encoding//src/com/hb/controller/board/customercenter=UTF-8
 encoding//src/com/hb/controller/board/customercenter/NoticeAddFormController.java=UTF-8
 encoding//src/com/hb/controller/board/customercenter/NoticeListController.java=UTF-8
 encoding//src/com/hb/controller/mypage/management/CurriculumAddController.java=UTF-8
+encoding/<project>=UTF-8

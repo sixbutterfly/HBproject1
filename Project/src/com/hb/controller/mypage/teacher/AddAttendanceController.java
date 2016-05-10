@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.hb.model.attend.AttdDao;
 import com.hb.model.attend.AttdDto;
+import com.hb.model.sturoom.SturoomDto;
+import com.hb.model.teacher.TeacherDto;
 
 @WebServlet("/addatt.korean")
 public class AddAttendanceController extends HttpServlet {
@@ -28,16 +30,28 @@ public class AddAttendanceController extends HttpServlet {
 		// 강사이름
 		String tchName = attdDao.selectTchName(memberId);
 		req.setAttribute("tchName", tchName);
-		System.out.println(tchName);
+		//System.out.println(tchName);
+		
+		// 관리자의 강사리스트
+		ArrayList<TeacherDto> tchList = attdDao.selectTchList();		
+		req.setAttribute("tchList", tchList);
 
 		// 강의실번호
 		int roomNo = attdDao.selectRoomNo(memberId);
 		req.setAttribute("roomNo", roomNo);
-		System.out.println(roomNo);
+		//System.out.println(roomNo);
+		
+		// 관리자의 강의실리스트
+		ArrayList<SturoomDto> roomList = attdDao.selectRoomList();		
+		req.setAttribute("roomList", roomList);
 
 		// 출석리스트
 		ArrayList<AttdDto> attdList = attdDao.selectAttdList(memberId);
 		req.setAttribute("attdList", attdList);
+		
+		/*// 관리자의 출석리스트
+		ArrayList<AttdDto> attdList = attdDao.selectAttdmList(memberId);
+		req.setAttribute("attdList", attdList);*/
 
 		req.getRequestDispatcher("mypage/teacher/addAttendance.jsp").forward(req, resp);
 	}

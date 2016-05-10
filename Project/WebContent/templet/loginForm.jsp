@@ -14,11 +14,11 @@
 					%>
 			
 				<div class="login">
-					<input type="text" name="id"  value="아이디" />
-					<input type="text" name="pw"  value="패스워드"/>			
+					<input type="text" name="id" value="아이디"  tabIndex="1"  >
+					<input type="text" name="pw" value="패스워드" tabIndex="2"/>			
 				</div>
 				<div class="login">
-					<button>login</button>
+					<button tabIndex="3">login</button>
 				</div>
 
 				<a class="reg" href="agreejoin.korean">회원가입</a>
@@ -28,11 +28,13 @@
 					}else{ %>
 				
 				<div class="login">
-					<input type="text" name="id"  value="아이디" />
-					<input type="text" name="pw"  value="패스워드"/>						
+					<!-- <input type="text" name="id"  value="아이디" />
+					<input type="text" name="pw"  value="패스워드"/> -->
+					<input type="text" name="id" value="아이디"  tabIndex="1"  >
+					<input type="text" name="pw" value="패스워드" tabIndex="2"/>	
 				</div>
 				<div class="login">
-					<button>login</button>
+					<button tabIndex="3">login</button>
 				</div>
 
 				<a class="reg" href="agreejoin.korean">회원가입</a>

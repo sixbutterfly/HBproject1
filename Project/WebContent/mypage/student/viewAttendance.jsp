@@ -1,6 +1,8 @@
-<%@page import="java.util.Calendar"%>
-<%@page import="java.util.ArrayList"%>
 <%@page import="com.hb.model.attend.AttdDto"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.util.Calendar"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,38 +18,60 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
 
 <style type="text/css">
-	.title>p{
-		font-size: 30pt;
-		font-style: oblique;
+	.attdstuList{
+		width: 780px;
 	}
-	.title>span{
-		font-size: 15pt;
-	}
-	.title{
-		margin: 20px;
-		border-bottom: 3px solid #ddd;
-		color: #666;
+
+	*{
+		margin: 0px;
+		padding: 0px;
 	}
 	h1{
 		text-align: center;
+		margin: 10px;
 	}
-	
-	table{
-		width: 780px;
+	h2{
+		text-align: center;
+		margin: 30px;
+	}	
+	.attdStatus{
+		float:right;
+		margin : 30px;
+		margin-right: 50px;	
+	}	
+	.attdStatus>span{
+		font-size: 20px;
+		margin-right: 30px;
+	}
+	.attdValue{
+		margin-left: 20px;
+	}
+		
+	.attdValue>div>div{
+		float: left;
+		width: 100px;
+		height: 100px;
 		border: 1px solid black;
 	}
 	
-	th{
-		background-color:dda0dd;
-		border: 1px solid black;
+	.attdValue>div>div>p{
+		font-size: 50px;
+		text-align: center;
 	}
+	
+	.clear{
+		clear:both;
+	}
+	
+	
+	
 </style>
 <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
 <script type="text/javascript" src="js/menu.js"></script>
+<script type="text/javascript" src="js/attend.js" charset="utf-8"></script>
 
 </head>
 <body>
-	
 	<div class="container_12">
 		<!-- header -->
 		<%@include file="/templet/header.jsp" %>
@@ -58,61 +82,65 @@
 		<%@include file="/templet/subnav5.jsp" %>
 		
 		<!-- content start -->
-		<h1><%= request.getAttribute("stuName") %> 님의 출결 현황 </h1>
-		
-		<table>
-				<tr>
-					<th>번호</th><th>이름</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th>
-					<th>9</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th>
-					<th>19</th><th>20</th><th>21</th><th>22</th><th>23</th><th>24</th><th>25</th><th>26</th><th>27</th><th>28</th>
-					<th>29</th><th>30</th><th>31</th>
-				</tr>
+		<div class="attdstuList">
+		<h1><p><%= request.getAttribute("stuName") %>님의 출결 현황</h1>
+			<h2><p><%=new SimpleDateFormat("yyyy년 MM월").format(new Date()) %></h2>
+			<div class="attdStatus">					
+				<span>● 출석</span><span>X 결석</span><span>▲ 지각</span><span>■ 조퇴</span><span>- 미등록</span>		
+			</div>
+			<div class="clear"></div>
+			<div class="attdValue">
 				<%	
 					ArrayList<AttdDto> attdList = (ArrayList<AttdDto>)request.getAttribute("attdList");
 					for(AttdDto bean : attdList){
 				%>
-					<tr>
-						<td><%= bean.getAttdNo() %></td>
-						<td><%= bean.getMemName() %></td>
-						<td><%= bean.getAttdValue1() %> </td>
-						<td><%= bean.getAttdValue2() %> </td>
-						<td><%= bean.getAttdValue3() %> </td>
-						<td><%= bean.getAttdValue4() %> </td>
-						<td><%= bean.getAttdValue5() %> </td>
-						<td><%= bean.getAttdValue6() %> </td>
-						<td><%= bean.getAttdValue7() %> </td>
-						<td><%= bean.getAttdValue8() %> </td>
-						<td><%= bean.getAttdValue9() %> </td>
-						<td><%= bean.getAttdValue10() %> </td>
-						<td><%= bean.getAttdValue11() %> </td>
-						<td><%= bean.getAttdValue12() %> </td>
-						<td><%= bean.getAttdValue13() %> </td>
-						<td><%= bean.getAttdValue14() %> </td>
-						<td><%= bean.getAttdValue15() %> </td>
-						<td><%= bean.getAttdValue16() %> </td>
-						<td><%= bean.getAttdValue17() %> </td>
-						<td><%= bean.getAttdValue18() %> </td>
-						<td><%= bean.getAttdValue19() %> </td>
-						<td><%= bean.getAttdValue20() %> </td>
-						<td><%= bean.getAttdValue21() %> </td>
-						<td><%= bean.getAttdValue22() %> </td>
-						<td><%= bean.getAttdValue23() %> </td>
-						<td><%= bean.getAttdValue24() %> </td>
-						<td><%= bean.getAttdValue25() %> </td>
-						<td><%= bean.getAttdValue26() %> </td>
-						<td><%= bean.getAttdValue27() %> </td>
-						<td><%= bean.getAttdValue28() %> </td>
-						<td><%= bean.getAttdValue29() %> </td>
-						<td><%= bean.getAttdValue30() %> </td>
-						<td><%= bean.getAttdValue31() %> </td>
-															
-					</tr>
+				<div>
+					<div>1 <p><%= bean.getAttdValue1() %></p></div>							
+					<div>2 <p><%= bean.getAttdValue2() %></p></div>			
+					<div>3 <p><%= bean.getAttdValue3() %></p></div>			
+					<div>4 <p><%= bean.getAttdValue4() %></p></div>			
+					<div>5 <p><%= bean.getAttdValue5() %></p></div>			
+					<div>6 <p><%= bean.getAttdValue6() %></p></div>			
+					<div>7 <p><%= bean.getAttdValue7() %></p></div>	
+				</div>
+				<div>		
+					<div>8 <p><%= bean.getAttdValue8() %></p></div>			
+					<div>9 <p><%= bean.getAttdValue9() %></p></div>			
+					<div>10 <p><%= bean.getAttdValue10() %></p></div>			
+					<div>11 <p><%= bean.getAttdValue11() %></p></div>			
+					<div>12 <p><%= bean.getAttdValue12() %></p></div>			
+					<div>13 <p><%= bean.getAttdValue13() %></p></div>			
+					<div>14 <p><%= bean.getAttdValue14() %></p></div>
+				</div>
+				<div>			
+					<div>15 <p><%= bean.getAttdValue15() %></p></div>			
+					<div>16 <p><%= bean.getAttdValue16() %></p></div>			
+					<div>17 <p><%= bean.getAttdValue17() %></p></div>			
+					<div>18 <p><%= bean.getAttdValue18() %></p></div>			
+					<div>19 <p><%= bean.getAttdValue19() %></p></div>			
+					<div>20 <p><%= bean.getAttdValue20() %></p></div>			
+					<div>21 <p><%= bean.getAttdValue21() %></p></div>
+				</div>
+				<div>			
+					<div>22 <p><%= bean.getAttdValue22() %></p></div>			
+					<div>23 <p><%= bean.getAttdValue23() %></p></div>			
+					<div>24 <p><%= bean.getAttdValue24() %></p></div>			
+					<div>25 <p><%= bean.getAttdValue25() %></p></div>			
+					<div>26 <p><%= bean.getAttdValue26() %></p></div>			
+					<div>27 <p><%= bean.getAttdValue27() %></p></div>			
+					<div>28 <p><%= bean.getAttdValue28() %></p></div>
+				</div>
+				<div>			
+					<div>29 <p><%= bean.getAttdValue29() %></p></div>			
+					<div>30 <p><%= bean.getAttdValue30() %></p></div>			
+					<div>31 <p><%= bean.getAttdValue31() %></p></div>
+				</div>
+				<div class="clear"></div>			
 				<%		
 					}
 				%>
-								
-			</table>
-			
+		 	</div>
+		 </div>
 		<!-- content end -->
 		
 		<!-- aside2 -->

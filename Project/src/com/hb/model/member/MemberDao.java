@@ -30,7 +30,6 @@ public class MemberDao {
          rs = pstmt.executeQuery();
          if(rs.next()){
             authNo = rs.getInt("authNo");
-            System.out.println("authNo:"+authNo);
          }
       } catch (SQLException e) {
          e.printStackTrace();
@@ -93,7 +92,7 @@ public class MemberDao {
    public int updateLevel(MemberDto dto) {
       int result = 0;
       String sql = "UPDATE MEMBER SET AUTHNO=? WHERE MEMNO=?";
-      String sql2 = "INSERT INTO STUDENT (STUNO,MEMNO,ROOMNO,ATTDNO) VALUES (STU_SEQ.NEXTVAL, ?, NULL, NULL)";
+      String sql2 = "INSERT INTO STUDENT (STUNO,MEMNO,ROOMNO) VALUES (STU_SEQ.NEXTVAL, ?, NULL)";
       String sql3 = "INSERT INTO TEACHER (TCHNO,MEMNO,ROOMNO) VALUES (TCH_SEQ.NEXTVAL, ?, NULL)";
       String sql4 = "INSERT INTO SALES (SALESNO,MEMNO) VALUES (SAL_SEQ.NEXTVAL, ?)";
       String sql5 = "INSERT INTO MANAGEMENT (MNGNO,MEMNO) VALUES (MNG_SEQ.NEXTVAL, ?)";

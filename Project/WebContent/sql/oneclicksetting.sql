@@ -1,5 +1,5 @@
 ---------------------------------------------------------------------------------------------
---Å×ÀÌºí »èÁ¦
+--ï¿½ë€’ï¿½ì” é‡‰ï¿½ ï¿½ê¶˜ï¿½ì £
 drop table attend CASCADE CONSTRAINT purge;
 
 drop table grade CASCADE CONSTRAINT purge;
@@ -35,11 +35,11 @@ drop table notice CASCADE CONSTRAINT purge;
 purge recyclebin;
 
 ---------------------------------------------------------------------------------------------
---Å×ÀÌºí »ı¼º
 CREATE TABLE attend
 (
 	attdNo                NUMBER(5)  NOT NULL ,
-	attdDate              DATE  NULL 
+	attdDate              DATE  NULL,
+	stuNo					NUMBER(5) NULL
 );
 
 ALTER TABLE attend
@@ -192,20 +192,21 @@ ALTER TABLE sales
 	ADD  PRIMARY KEY (salesNo);
 
 
-
+-- å ìˆë¦½ï¿½ë¤ƒå ì™ì˜™ï¿½ëµ¥ : student å ìˆï¿½ë¯­ì˜™ï¿½ëµ ï¿½ë‡¡å ï¿½ å ìˆë•¾å ìŒì Ÿ attdNo ï¿½ëšë±ì“¥ å ì„í…£å ìŒì «
 CREATE TABLE student
 (
 	stuNo                 NUMBER(10)  NOT NULL ,
 	memNo                 NUMBER(5)  NULL ,
-	roomNo                NUMBER(5)  NULL, 
-	attdNo                NUMBER(5) NULL 
+	roomNo                NUMBER(5)  NULL
 );
 
 ALTER TABLE student
 	ADD  PRIMARY KEY (stuNo);
 
-ALTER TABLE student
-	ADD ( FOREIGN KEY (attdNo) REFERENCES attend(attdNo) ON DELETE SET NULL);
+
+-- å ìˆë¦½ï¿½ë¤ƒå ì™ì˜™ï¿½ëµ¥ attend, student å ìˆï¿½ë¯­ì˜™ï¿½ëµ ï¿½ë‡¡å ï¿½ æ¶ì„ì‘´ï¿½ë²¥ ç­Œã€“ì±·ï¿½ï¿½ å ìˆë•¾å ìŒì Ÿ
+ALTER TABLE attend
+	ADD ( FOREIGN KEY (stuno) REFERENCES student(stuno) ON DELETE SET NULL);
 
 CREATE TABLE stuRoom
 (
@@ -295,7 +296,7 @@ create table notice (
 ALTER TABLE notice
 	ADD  PRIMARY KEY (notNo);
 	
--- ¹®ÀÇ»çÇ× °Ô½ÃÆÇ
+-- è‡¾ëª„ì“½ï¿½ê¶—ï¿½ë¹† å¯ƒëš¯ë–†ï¿½ë™‹
 	create table qna(
 		qnaNo		number(5) not null,
 		qnaTitle	varchar2(100) not null,
@@ -304,7 +305,7 @@ ALTER TABLE notice
 		qnaName		varchar2(50) null
 	);
 	alter table qna add primary key(qnaNo);
--- ¼ö°­ÈÄ±â °Ô½ÃÆÇ
+-- ï¿½ë‹”åª›ëº¥ì‘æ¹²ï¿½ å¯ƒëš¯ë–†ï¿½ë™‹
 	create table after(
 		aftNo		number(5) not null,
 		aftTitle	varchar2(100) not null,
@@ -313,7 +314,7 @@ ALTER TABLE notice
 		aftName		varchar2(50) null
 	);
 	alter table after add primary key(aftNo);
--- Ã¤¿ëÁ¤º¸ °Ô½ÃÆÇ
+-- ï§¢ê¾©ìŠœï¿½ì ™è¹‚ï¿½ å¯ƒëš¯ë–†ï¿½ë™‹
 	create table jobinfo(
 		jobNo		number(5) not null,
 		jobTitle	varchar2(100) not null,
@@ -322,7 +323,7 @@ ALTER TABLE notice
 		jobName		varchar2(50) null
 	);
 	alter table jobinfo add primary key(jobNo);
--- Ãë¾÷ÈÄ±â °Ô½ÃÆÇ
+-- ç—â‘¥ë¾½ï¿½ì‘æ¹²ï¿½ å¯ƒëš¯ë–†ï¿½ë™‹
 	create table jobafter(
 		jafNo		number(5) not null,
 		jafTitle	varchar2(100) not null,
@@ -333,7 +334,7 @@ ALTER TABLE notice
 	alter table jobafter add primary key(jafNo);
 
 -------------------------------------------------------------------------------
--- ½ÃÄö½º »èÁ¦ --
+-- ï¿½ë–†ï¿½ï¿½ï¿½ë’ª ï¿½ê¶˜ï¿½ì £ --
 
 drop SEQUENCE mng_seq;
 
@@ -362,7 +363,7 @@ drop SEQUENCE job_seq;
 drop SEQUENCE jaf_seq;
 
 -------------------------------------------------------------------------------
--- ½ÃÄö½º »ı¼º --
+-- ï¿½ë–†ï¿½ï¿½ï¿½ë’ª ï¿½ê¹®ï¿½ê½¦ --
 
 CREATE SEQUENCE mng_seq start with 1 increment by 1 maxvalue 1000;
 
@@ -384,55 +385,56 @@ CREATE SEQUENCE room_seq start with 1 increment by 1 maxvalue 1000;
 
 CREATE SEQUENCE tch_seq start with 1 increment by 1 maxvalue 1000;
 
--- °øÁö»çÇ× ½ÃÄı½º
+-- æ€¨ë“­ï¿½ï¿½ê¶—ï¿½ë¹† ï¿½ë–†ï¿½ëª„ë’ª
 CREATE SEQUENCE not_seq start with 1 increment by 1 maxvalue 1000;
--- ¹®ÀÇ°Ô½ÃÆÇ ½ÃÄı½º
+-- è‡¾ëª„ì“½å¯ƒëš¯ë–†ï¿½ë™‹ ï¿½ë–†ï¿½ëª„ë’ª
 CREATE SEQUENCE qna_seq start with 1 increment by 1 maxvalue 1000;
--- ¼ö°­ÈÄ±â ½ÃÄı½º
+-- ï¿½ë‹”åª›ëº¥ì‘æ¹²ï¿½ ï¿½ë–†ï¿½ëª„ë’ª
 CREATE SEQUENCE aft_seq start with 1 increment by 1 maxvalue 1000;
--- Ã¤¿ëÁ¤º¸ ½ÃÄı½º
+-- ï§¢ê¾©ìŠœï¿½ì ™è¹‚ï¿½ ï¿½ë–†ï¿½ëª„ë’ª
 CREATE SEQUENCE job_seq start with 1 increment by 1 maxvalue 1000;
--- Ãë¾÷ ÈÄ±â ½ÃÄı½º
+-- ç—â‘¥ë¾½ ï¿½ì‘æ¹²ï¿½ ï¿½ë–†ï¿½ëª„ë’ª
 CREATE SEQUENCE jaf_seq start with 1 increment by 1 maxvalue 1000;
 
 -------------------------------------------------------------------------------
---±ÇÇÑ ´õ¹Ì
-insert into authority (authNo, departName) values (0, 'ÀÏ¹İÀ¯Àú');
-insert into authority (authNo, departName) values (1, 'ÇàÁ¤ºÎ');
-insert into authority (authNo, departName) values (2, '¿µ¾÷ºÎ');
-insert into authority (authNo, departName) values (3, '°­»ç');
-insert into authority (authNo, departName) values (4, 'ÇĞ»ı');
-insert into authority (authNo, departName) values (5, '¼ö·áÀÚ');
-insert into authority (authNo, departName) values (9, '°ü¸®ÀÚ');
---admin ´õ¹Ì
-insert into MEMBER values(1, 'admin', 'admin', '°ü¸®ÀÚ','03721, ¼­¿ï ¼­´ë¹®±¸ ºÀ¿ø»ç2±æ 10-2 (½ÅÃÌµ¿) ¤¤¤·¤©','korea1@naver.com','010-0000-0000','02-0000-0000', '³²ÀÚ','n',sysdate,9);
---È¸¿ø ´õ¹Ì
-insert into MEMBER values(mem_seq.nextval, 'a1111111', 'korean1', 'ÇÑ±¹ÀÎ1','03721, ¼­¿ï ¼­´ë¹®±¸ ºÀ¿ø»ç2±æ 10-2 (½ÅÃÌµ¿) ¤¤¤·¤©','korea1@naver.com','010-0000-0000','02-0000-0000', '³²ÀÚ','n',sysdate,1);
-insert into MEMBER values(mem_seq.nextval, 'a1111111', 'korean2', 'ÇÑ±¹ÀÎ2','03721, ¼­¿ï ¼­´ë¹®±¸ ºÀ¿ø»ç2±æ 10-2 (½ÅÃÌµ¿) ¤¤¤·¤©','korea2@naver.com','010-0000-0000','02-0000-0000', '³²ÀÚ','n',sysdate,2);
-insert into MEMBER values(mem_seq.nextval, 'a1111111', 'korean3', 'ÇÑ±¹ÀÎ3','03721, ¼­¿ï ¼­´ë¹®±¸ ºÀ¿ø»ç2±æ 10-2 (½ÅÃÌµ¿) ¤¤¤·¤©','korea3@naver.com','010-0000-0000','02-0000-0000', '³²ÀÚ','n',sysdate,3);
-insert into MEMBER values(mem_seq.nextval, 'a1111111', 'korean4', 'ÇÑ±¹ÀÎ4','03721, ¼­¿ï ¼­´ë¹®±¸ ºÀ¿ø»ç2±æ 10-2 (½ÅÃÌµ¿) ¤¤¤·¤©','korea4@naver.com','010-0000-0000','02-0000-0000', '³²ÀÚ','n',sysdate,3);
-insert into MEMBER values(mem_seq.nextval, 'a1111111', 'korean5', 'ÇÑ±¹ÀÎ5','03721, ¼­¿ï ¼­´ë¹®±¸ ºÀ¿ø»ç2±æ 10-2 (½ÅÃÌµ¿) ¤¤¤·¤©','korea5@naver.com','010-0000-0000','02-0000-0000', '³²ÀÚ','n',sysdate,3);
-insert into MEMBER values(mem_seq.nextval, 'a1111111', 'korean6', 'ÇÑ±¹ÀÎ6','03721, ¼­¿ï ¼­´ë¹®±¸ ºÀ¿ø»ç2±æ 10-2 (½ÅÃÌµ¿) ¤¤¤·¤©','korea5@naver.com','010-0000-0000','02-0000-0000', '³²ÀÚ','n',sysdate,4);
-insert into MEMBER values(mem_seq.nextval, 'a1111111', 'korean7', 'ÇÑ±¹ÀÎ7','03721, ¼­¿ï ¼­´ë¹®±¸ ºÀ¿ø»ç2±æ 10-2 (½ÅÃÌµ¿) ¤¤¤·¤©','korea5@naver.com','010-0000-0000','02-0000-0000', '³²ÀÚ','n',sysdate,4);
-insert into MEMBER values(mem_seq.nextval, 'a1111111', 'korean8', 'ÇÑ±¹ÀÎ8','03721, ¼­¿ï ¼­´ë¹®±¸ ºÀ¿ø»ç2±æ 10-2 (½ÅÃÌµ¿) ¤¤¤·¤©','korea5@naver.com','010-0000-0000','02-0000-0000', '³²ÀÚ','n',sysdate,4);
-insert into MEMBER values(mem_seq.nextval, 'a1111111', 'korean9', 'ÇÑ±¹ÀÎ9','03721, ¼­¿ï ¼­´ë¹®±¸ ºÀ¿ø»ç2±æ 10-2 (½ÅÃÌµ¿) ¤¤¤·¤©','korea5@naver.com','010-0000-0000','02-0000-0000', '³²ÀÚ','n',sysdate,4);
-insert into MEMBER values(mem_seq.nextval, 'a1111111', 'korean10', 'ÇÑ±¹ÀÎ10','03721, ¼­¿ï ¼­´ë¹®±¸ ºÀ¿ø»ç2±æ 10-2 (½ÅÃÌµ¿) ¤¤¤·¤©','korea5@naver.com','010-0000-0000','02-0000-0000', '³²ÀÚ','n',sysdate,4);
-insert into MEMBER values(mem_seq.nextval, 'a1111111', 'korean11', 'ÇÑ±¹ÀÎ11','03721, ¼­¿ï ¼­´ë¹®±¸ ºÀ¿ø»ç2±æ 10-2 (½ÅÃÌµ¿) ¤¤¤·¤©','korea5@naver.com','010-0000-0000','02-0000-0000', '³²ÀÚ','n',sysdate,4);
---ÇàÁ¤ºÎ ´õ¹Ì
+--ê¶Œí•œ ë”ë¯¸
+insert into authority (authNo, departName) values (0, 'ì¼ë°˜ìœ ì €');
+insert into authority (authNo, departName) values (1, 'í–‰ì •ë¶€');
+insert into authority (authNo, departName) values (2, 'ì˜ì—…ë¶€');
+insert into authority (authNo, departName) values (3, 'ê°•ì‚¬');
+insert into authority (authNo, departName) values (4, 'í•™ìƒ');
+insert into authority (authNo, departName) values (5, 'ìˆ˜ë£Œì');
+insert into authority (authNo, departName) values (9, 'ê´€ë¦¬ì');
+--admin ë”ë¯¸
+insert into MEMBER values(1, 'admin', 'admin', 'ê´€ë¦¬ì','03721, ì„œìš¸ ì„œëŒ€ë¬¸êµ¬ ë´‰ì›ì‚¬2ê¸¸ 10-2 (ì‹ ì´Œë™) ã„´ã…‡ã„¹','korea1@naver.com','010-0000-0000','02-0000-0000', 'ë‚¨ì','n',sysdate,9);
+--íšŒì› ë”ë¯¸
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'korean1', 'í•œêµ­ì¸1','03721, ì„œìš¸ ì„œëŒ€ë¬¸êµ¬ ë´‰ì›ì‚¬2ê¸¸ 10-2 (ì‹ ì´Œë™) ã„´ã…‡ã„¹','korea1@naver.com','010-0000-0000','02-0000-0000', 'ë‚¨ì','n',sysdate,1);
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'korean2', 'í•œêµ­ì¸2','03721, ì„œìš¸ ì„œëŒ€ë¬¸êµ¬ ë´‰ì›ì‚¬2ê¸¸ 10-2 (ì‹ ì´Œë™) ã„´ã…‡ã„¹','korea2@naver.com','010-0000-0000','02-0000-0000', 'ë‚¨ì','n',sysdate,2);
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'korean3', 'í•œêµ­ì¸3','03721, ì„œìš¸ ì„œëŒ€ë¬¸êµ¬ ë´‰ì›ì‚¬2ê¸¸ 10-2 (ì‹ ì´Œë™) ã„´ã…‡ã„¹','korea3@naver.com','010-0000-0000','02-0000-0000', 'ë‚¨ì','n',sysdate,3);
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'korean4', 'í•œêµ­ì¸4','03721, ì„œìš¸ ì„œëŒ€ë¬¸êµ¬ ë´‰ì›ì‚¬2ê¸¸ 10-2 (ì‹ ì´Œë™) ã„´ã…‡ã„¹','korea4@naver.com','010-0000-0000','02-0000-0000', 'ë‚¨ì','n',sysdate,3);
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'korean5', 'í•œêµ­ì¸5','03721, ì„œìš¸ ì„œëŒ€ë¬¸êµ¬ ë´‰ì›ì‚¬2ê¸¸ 10-2 (ì‹ ì´Œë™) ã„´ã…‡ã„¹','korea5@naver.com','010-0000-0000','02-0000-0000', 'ë‚¨ì','n',sysdate,3);
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'korean6', 'í•œêµ­ì¸6','03721, ì„œìš¸ ì„œëŒ€ë¬¸êµ¬ ë´‰ì›ì‚¬2ê¸¸ 10-2 (ì‹ ì´Œë™) ã„´ã…‡ã„¹','korea5@naver.com','010-0000-0000','02-0000-0000', 'ë‚¨ì','n',sysdate,4);
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'korean7', 'í•œêµ­ì¸7','03721, ì„œìš¸ ì„œëŒ€ë¬¸êµ¬ ë´‰ì›ì‚¬2ê¸¸ 10-2 (ì‹ ì´Œë™) ã„´ã…‡ã„¹','korea5@naver.com','010-0000-0000','02-0000-0000', 'ë‚¨ì','n',sysdate,4);
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'korean8', 'í•œêµ­ì¸8','03721, ì„œìš¸ ì„œëŒ€ë¬¸êµ¬ ë´‰ì›ì‚¬2ê¸¸ 10-2 (ì‹ ì´Œë™) ã„´ã…‡ã„¹','korea5@naver.com','010-0000-0000','02-0000-0000', 'ë‚¨ì','n',sysdate,4);
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'korean9', 'í•œêµ­ì¸9','03721, ì„œìš¸ ì„œëŒ€ë¬¸êµ¬ ë´‰ì›ì‚¬2ê¸¸ 10-2 (ì‹ ì´Œë™) ã„´ã…‡ã„¹','korea5@naver.com','010-0000-0000','02-0000-0000', 'ë‚¨ì','n',sysdate,4);
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'korean10', 'í•œêµ­ì¸10','03721, ì„œìš¸ ì„œëŒ€ë¬¸êµ¬ ë´‰ì›ì‚¬2ê¸¸ 10-2 (ì‹ ì´Œë™) ã„´ã…‡ã„¹','korea5@naver.com','010-0000-0000','02-0000-0000', 'ë‚¨ì','n',sysdate,4);
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'korean11', 'í•œêµ­ì¸11','03721, ì„œìš¸ ì„œëŒ€ë¬¸êµ¬ ë´‰ì›ì‚¬2ê¸¸ 10-2 (ì‹ ì´Œë™) ã„´ã…‡ã„¹','korea5@naver.com','010-0000-0000','02-0000-0000', 'ë‚¨ì','n',sysdate,4);
+--í–‰ì •ë¶€ ë”ë¯¸
 insert into MANAGEMENT values(mng_seq.nextval, 2);
---¿µ¾÷ºÎ ´õ¹Ì
+--ï¿½ìºï¿½ë¾½éºï¿½ ï¿½ëœ‘èª˜ï¿½
 insert into sales values(sal_seq.nextval, 3);
---°­»ç ´õ¹Ì
+--åª›ëº¤ê¶— ï¿½ëœ‘èª˜ï¿½
 insert into teacher values(tch_seq.nextval,4,null);
 insert into teacher values(tch_seq.nextval,5,null);
 insert into teacher values(tch_seq.nextval,6,null);
---ÇĞ»ı ´õ¹Ì
-insert into student values(stu_seq.nextval,7,null,null);
-insert into student values(stu_seq.nextval,8,null,null);
-insert into student values(stu_seq.nextval,9,null,null);
-insert into student values(stu_seq.nextval,10,null,null);
-insert into student values(stu_seq.nextval,11,null,null);
-insert into student values(stu_seq.nextval,12,null,null);
---°øÁö»çÇ× ´õ¹Ì
-insert into notice values(not_seq.nextval, 'ÇÑ±¹ÀÎÀº º¸¾Æ¶ó', 'µÎ¹øºÁ¶ó', sysdate,'°ü¸®ÀÚ');
---¼ö°­ÈÄ±â ´õ¹Ì
+--ï¿½ë¸°ï¿½ê¹® ï¿½ëœ‘èª˜ï¿½
+insert into student values(stu_seq.nextval,7,null);
+insert into student values(stu_seq.nextval,8,null);
+insert into student values(stu_seq.nextval,9,null);
+insert into student values(stu_seq.nextval,10,null);
+insert into student values(stu_seq.nextval,11,null);
+insert into student values(stu_seq.nextval,12,null);
+--æ€¨ë“­ï¿½ï¿½ê¶—ï¿½ë¹† ï¿½ëœ‘èª˜ï¿½
+insert into notice values(not_seq.nextval, 'í•œêµ­ì¸ì€ ë³´ì•„ë¼', 'ë‘ë²ˆë´ë¼', sysdate,'ê´€ë¦¬ì');
+--ï¿½ë‹”åª›ëº¥ì‘æ¹²ï¿½ ï¿½ëœ‘èª˜ï¿½
+
