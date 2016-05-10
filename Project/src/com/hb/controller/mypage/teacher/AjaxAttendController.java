@@ -28,6 +28,11 @@ public class AjaxAttendController extends HttpServlet {
 		
 		int result = dao.updateAttdValue(day, attdStatus, attdNo);
 		
+		/*// 관리자의 출석리스트
+		ArrayList<AttdDto> attdList = attdDao.selectAttdmList(memberId);
+		req.setAttribute("attdList", attdList);*/
+		
+		
 		int level = (Integer)request.getSession().getAttribute("level");
 		
 		if(result==1){

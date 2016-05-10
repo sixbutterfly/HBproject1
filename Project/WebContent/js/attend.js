@@ -39,8 +39,24 @@ $(document).ready(function(){
 		}
 	});
 	
+	$(".btnList").click(function(){
+		$.ajax({
+			"url":"/Project/attend/ajaxAttend.korean",
+			"data":{"attdDate":$('.left:eq(0)>input').val(), "attdStatus":$('.right:eq(1)>select').val(), checkArray:checkArray},
+			"method":"POST",
+			"dataType":"json",
+			"error" : function( jqXHR, textStatus, errorThrown ) {
+				alert(jqXHR.responseText);
+			},				
+			"success":function(data){						
+			
+			}	
+		});		
+		
+	});
 	
-	$("#ins").click(function(){	
+	
+	$(".ins").click(function(){	
 		
 		var checkArray = new Array();		
 		
