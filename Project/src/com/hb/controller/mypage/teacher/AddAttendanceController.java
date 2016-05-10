@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.hb.model.attend.AttdDao;
 import com.hb.model.attend.AttdDto;
+import com.hb.model.teacher.TeacherDto;
 
 @WebServlet("/addatt.korean")
 public class AddAttendanceController extends HttpServlet {
@@ -29,6 +30,10 @@ public class AddAttendanceController extends HttpServlet {
 		String tchName = attdDao.selectTchName(memberId);
 		req.setAttribute("tchName", tchName);
 		//System.out.println(tchName);
+		
+		// 관리자의 강사리스트
+		ArrayList<TeacherDto> tchList = new ArrayList<TeacherDto>();
+		req.setAttribute("tchList", tchList);
 
 		// 강의실번호
 		int roomNo = attdDao.selectRoomNo(memberId);

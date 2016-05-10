@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class AttdDto {
 	private int attdNo;	
+	private int rowNum;
 	private Date attdDate;	
 	private String memName;
 	private String attdValue1;
@@ -37,6 +38,7 @@ public class AttdDto {
 	private String attdValue29;
 	private String attdValue30;
 	private String attdValue31;
+	
 	public int getAttdNo() {
 		return attdNo;
 	}
@@ -240,6 +242,13 @@ public class AttdDto {
 	}
 	public void setAttdValue31(String attdValue31) {
 		this.attdValue31 = attdValue31;
+	}
+	
+	public int getRowNum() {
+		return rowNum;
+	}
+	public void setRowNum(int rowNum) {
+		this.rowNum = rowNum;
 	}
 	
 }

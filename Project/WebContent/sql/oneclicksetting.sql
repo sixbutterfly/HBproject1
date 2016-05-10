@@ -8,7 +8,7 @@ drop table sales CASCADE CONSTRAINT purge;
 
 drop table student CASCADE CONSTRAINT purge;
 
-drop table sturoom CASCADE CONSTRAINT purge;
+drop table sturoom CASCADE CONSTRAINT pu	rge;
 
 drop table teacher CASCADE CONSTRAINT purge;
 
@@ -434,3 +434,4 @@ insert into student values(stu_seq.nextval,9,null);
 insert into student values(stu_seq.nextval,10,null);
 insert into student values(stu_seq.nextval,11,null);
 insert into student values(stu_seq.nextval,12,null);
+

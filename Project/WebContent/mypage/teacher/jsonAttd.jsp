@@ -4,7 +4,7 @@
 	{
 		"day":<%=(Integer)request.getAttribute("day") %>
 		,"attdStatus":"<%=(String)request.getAttribute("attdStatus") %>"
-		,"atdNo":"<%=(String[])request.getAttribute("atdNo[0]") %>"
-		,"level":"<%=(Integer)request.getAttribute("level") %>"
+		,"atdNo":"<%=(String[])request.getAttribute("atdNo") %>"
+		<%-- ,"level":"<%=(Integer)request.getAttribute("level") %>" --%>
 	}
 ]

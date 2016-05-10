@@ -165,6 +165,13 @@ insert into attend (attdNo,stuNo) values (4, 4);
 insert into attend (attdNo,stuNo) values (5, 5);
 insert into attend (attdNo,stuNo) values (6, 6);
 
+delete from attend where stuNo = 1;
+delete from attend where stuNo = 2;
+delete from attend where stuNo = 3;
+delete from attend where stuNo = 4;
+delete from attend where stuNo = 5;
+delete from attend where stuNo = 6;
+
 update attend set attdValue+'' = ? where attdNo = ?
 
 select * from attend;
@@ -191,8 +198,19 @@ select rowNum, memName, nvl(attdvalue1,'-'), nvl(attdvalue2,'-'), nvl(attdvalue3
 						     
 select * from attend;
 
+select * from member;
+
+update member set memName = '국인6' where memName = '한국인6';
+update member set memName = '국인7' where memName = '한국인7';
+update member set memName = '국인8' where memName = '한국인8';
+update member set memName = '국인9' where memName = '한국인9';
+update member set memName = '국인10' where memName = '한국인10';
+update member set memName = '국인11' where memName = '한국인11';
+
 select * from student;
 
 select * from teacher;
 
 select * from stuRoom;
+
+select m.memName from member m, teacher t where m.memNo = t.memNo and t.tchNo in (select r.tchNo from teacher t, stuRoom r where t.tchNo = r.tchNo)

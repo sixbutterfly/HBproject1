@@ -38,10 +38,9 @@ public class AjaxAttendController extends HttpServlet {
 			//System.out.println(attdNo[0]);
 			//System.out.println(attdNo[1]);
 			//}
-			request.setAttribute("level", level);
-			request.getRequestDispatcher("/mypage/teacher/jsonAttd.jsp").forward(request, response);
-		}
-		
+			request.setAttribute("level", level);			
+			request.getRequestDispatcher("/mypage/teacher/jsonAttd.jsp").forward(request, response);			
+		}		
 	}
 
 }

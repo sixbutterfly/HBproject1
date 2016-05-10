@@ -77,43 +77,63 @@ public class StuDao {
 
 	public int updateRoomno(String[] stulist, String roomno) {
 		int result = 0;
+		String sqlAttd = null;
+		PreparedStatement pstmtAttd = null;
 		sql = "UPDATE STUDENT SET ROOMNO = ? WHERE STUNO = ?";
+		sqlAttd = "INSERT INTO ATTEND (ATTDNO, STUNO) VALUES (ATTD_SEQ.NEXTVAL, ?)";
 		try {
-			pstmt = conn.prepareStatement(sql);
+			pstmt = conn.prepareStatement(sql);			
 			for (int i = 0; i < stulist.length; i++) {
 				pstmt.setString(1, roomno);
 				pstmt.setString(2, stulist[i]);
 				result = pstmt.executeUpdate();
 			}
+			pstmtAttd = conn.prepareStatement(sqlAttd);
+			for (int i = 0; i < stulist.length; i++) {
+				pstmtAttd.setString(1, stulist[i]);
+				pstmtAttd.executeUpdate();
+			}
+				
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally{
 			try {
 				if(rs!=null)rs.close();
 				if(pstmt!=null)pstmt.close();
+				if(pstmtAttd!=null)pstmt.close();
 				if(conn!=null)conn.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-	}
+		}
 		return result;
 	}
 
 	public int delRoomno(String[] stulist, String roomno) {
 		int result = 0;
+		String sqlAttd = null;
+		PreparedStatement pstmtAttd = null;
 		sql = "update student set roomno = null where stuno = ?";
+		sqlAttd = "delete from attend where stuno = ?";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			for (int i = 0; i < stulist.length; i++) {
 				pstmt.setString(1, stulist[i]);
 				result = pstmt.executeUpdate();
 			}
+			pstmtAttd = conn.prepareStatement(sqlAttd);
+			for (int i = 0; i < stulist.length; i++) {
+				pstmtAttd.setString(1, stulist[i]);
+				pstmtAttd.executeUpdate();
+			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally{
 			try {
 				if(rs!=null)rs.close();
 				if(pstmt!=null)pstmt.close();
+				if(pstmtAttd!=null)pstmt.close();
 				if(conn!=null)conn.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
