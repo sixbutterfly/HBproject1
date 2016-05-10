@@ -70,6 +70,10 @@
 				alert("접근 권한이 없습니다.");
 				return false;
 			});
+			$('form button:eq(1)>a').click(function(){
+				alert("접근 권한이 없습니다.");
+				return false;
+			});
 			break;
 		case 1:
 			$('form button:eq(1)>a').click(function(){

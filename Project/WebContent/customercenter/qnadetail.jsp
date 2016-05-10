@@ -53,13 +53,32 @@
 <script type="text/javascript" src="js/menu.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		$('.table+button+button').click(function(){
-			if(confirm("게시물을 삭제하시겠습니까?")){
-				return true;
-			}else{
+		var level = <%= (Integer)session.getAttribute("level") %>;
+		console.log(level);
+	switch (level) {
+		case null:
+			$('form button:eq(0)').click(function(){
+				alert("접근 권한이 없습니다.");
 				return false;
-			}
-		});
+			});
+			$('form button:eq(1)>a').click(function(){
+				alert("접근 권한이 없습니다.");
+				return false;
+			});
+			break;
+		case 0:
+			break;
+		case 1:
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		case 4:
+			break;
+		case 9:
+			break;
+		}
 	});//ready end
 </script>
 </head>

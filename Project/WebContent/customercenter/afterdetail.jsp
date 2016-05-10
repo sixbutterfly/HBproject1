@@ -72,8 +72,19 @@
 				alert("접근 권한이 없습니다.");
 				return false;
 			});
+			$('form button:eq(1)>a').click(function(){
+				alert("접근 권한이 없습니다.");
+				return false;
+			});
 			break;
 		case 1:
+			$('form button:eq(1)>a').click(function(){
+				if(confirm("게시물을 삭제하시겠습니까?")){
+					return true;
+				}else{
+					return false;
+				}
+			});
 			break;
 		case 2:
 			$('form button:eq(0)').click(function(){

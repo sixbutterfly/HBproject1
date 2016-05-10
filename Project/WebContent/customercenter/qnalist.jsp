@@ -68,7 +68,34 @@
 </style>
 <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
 <script type="text/javascript" src="js/menu.js"></script>
-<!-- 로그인한 사람만 글 작성할수 있도록. -->
+<script type="text/javascript">
+	$(document).ready(function(){
+		var level = <%= (Integer)session.getAttribute("level") %>;
+		console.log(level);
+	switch (level) {
+		case null:
+			$('form button:eq(1)>a').click(function(){
+				alert("접근 권한이 없습니다.");
+				return false;
+			});
+			break;
+		case 0:
+			break;
+		case 1:
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		case 4:
+			break;
+		case 5:
+			break;
+		case 9:
+			break;
+		}
+	});//ready end
+</script>
 </head>
 <%
 	String sreach = request.getParameter("sreach");

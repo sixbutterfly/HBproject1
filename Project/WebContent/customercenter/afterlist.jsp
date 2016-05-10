@@ -89,9 +89,6 @@
 			});
 			break;
 		case 1:
-			$('form button:eq(1)>a').click(function(){
-				return true;
-			});
 			break;
 		case 2:
 			$('form button:eq(1)>a').click(function(){

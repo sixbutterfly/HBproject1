@@ -50,8 +50,7 @@ $(document).ready(function(){
 			return false;
 		}
 		else if(confirm("커리큘럼을 추가하시겠습니까?")){
-		}
-		else{
+		}else{
 			return false;
 		}
 	});

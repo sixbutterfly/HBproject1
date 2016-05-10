@@ -8,17 +8,17 @@ public class DB {
 
 	public static Connection getConnection() {
 		Connection conn = null;
-		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		String url = "jdbc:oracle:thin:@127.0.0.1:1521:xe";
 		String id = "scott";
 		String pw = "tiger";
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, id, pw);
 		} catch (ClassNotFoundException e) {
-			System.out.println("µå¶óÀÌ¹ö ·Îµù ½ÇÆĞ");
+			System.out.println("ë“œë¼ì´ë²„ ì ‘ì†ì˜¤ë¥˜");
 			e.printStackTrace();
 		} catch (SQLException e) {
-			System.out.println("url/id/pw Á¢¼Ó ½ÇÆĞ");
+			System.out.println("url/id/pw ì˜¤ë¥˜");
 			e.printStackTrace();
 		}
 		return conn;

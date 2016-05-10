@@ -46,17 +46,15 @@
 	$(document).ready(function(){
 		$('#cur button').eq(0).click(function(){
 			if(confirm("정보를 수정하시겠습니까?")){
-				alert("수정을 완료하였습니다.");
+				return true;
 			}else{
-				alert("수정을 취소하였습니다.");
 				return false;
 			}
 		});
 		$('#cur button').eq(1).click(function(){
 			if(confirm("삭제한 정보는 복구할 수 업습니다.\n정말로 삭제하시겠습니까?")){
-				alert("삭제를 완료하였습니다.");
+				return true;
 			}else{
-				alert("삭제를 취소하였습니다.");
 				return false;
 			}
 		});
