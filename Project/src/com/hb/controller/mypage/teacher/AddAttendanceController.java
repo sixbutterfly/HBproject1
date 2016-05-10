@@ -24,32 +24,32 @@ public class AddAttendanceController extends HttpServlet {
 		AttdDto attdDto = new AttdDto();
 		String memberId = (String) req.getSession().getAttribute("id");
 		
-		//³¯Â¥
+		//ï¿½ï¿½Â¥
 		//Date attdDate = attdDao.selectAttendDate();
 
-		// °­»çÀÌ¸§
+		// ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½
 		String tchName = attdDao.selectTchName(memberId);
 		req.setAttribute("tchName", tchName);
 		//System.out.println(tchName);
 		
-		// °ü¸®ÀÚÀÇ °­»ç¸®½ºÆ®
-		ArrayList<TeacherDto> tchList = attdDao.selectTchList();		
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ç¸®ï¿½ï¿½Æ®
+		/*ArrayList<TeacherDto> tchList = attdDao.selectTchOne();		
 		req.setAttribute("tchList", tchList);
-
-		// °­ÀÇ½Ç¹øÈ£
+*/
+		// ï¿½ï¿½ï¿½Ç½Ç¹ï¿½È£
 		int roomNo = attdDao.selectRoomNo(memberId);
 		req.setAttribute("roomNo", roomNo);
 		//System.out.println(roomNo);
 		
-		// °ü¸®ÀÚÀÇ °­ÀÇ½Ç¸®½ºÆ®
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç½Ç¸ï¿½ï¿½ï¿½Æ®
 		ArrayList<SturoomDto> roomList = attdDao.selectRoomList();		
 		req.setAttribute("roomList", roomList);
 
-		// Ãâ¼®¸®½ºÆ®
+		// ï¿½â¼®ï¿½ï¿½ï¿½ï¿½Æ®
 		ArrayList<AttdDto> attdList = attdDao.selectAttdList(memberId);
 		req.setAttribute("attdList", attdList);
 		
-		/*// °ü¸®ÀÚÀÇ Ãâ¼®¸®½ºÆ®
+		/*// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½â¼®ï¿½ï¿½ï¿½ï¿½Æ®
 		ArrayList<AttdDto> attdList = attdDao.selectAttdmList(memberId);
 		req.setAttribute("attdList", attdList);*/
 

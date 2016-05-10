@@ -21,9 +21,9 @@
 	.content{
 		height: 800px;
 	}
-	span{
+	/* span{
 		margin-left: 43px;
-	}
+	} */
 	.detailmenu{
 		width:100%;
 		background-color: #fddad3;

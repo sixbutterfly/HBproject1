@@ -227,4 +227,3 @@ select * from teacher;
 select * from stuRoom;
 
 select m.memName from member m, teacher t where m.memNo = t.memNo and t.tchNo in (select r.tchNo from teacher t, stuRoom r where t.tchNo = r.tchNo)
->>>>>>> branch '한국인' of https://github.com/sixbutterfly/HBproject1

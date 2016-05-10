@@ -1,6 +1,7 @@
 package com.hb.controller.mypage.teacher;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.hb.model.attend.AttdDao;
+import com.hb.model.teacher.TeacherDto;
 
 @WebServlet("/attend/ajaxAttend.korean")
 public class AjaxAttendController extends HttpServlet {
@@ -26,9 +28,12 @@ public class AjaxAttendController extends HttpServlet {
 		int day = Integer.parseInt(attdDate.substring(8, 10));
 		AttdDao dao = new AttdDao();
 		
+		ArrayList<TeacherDto> tchList = dao.selectTchOne();		
+		request.setAttribute("tchList", tchList);
+		
 		int result = dao.updateAttdValue(day, attdStatus, attdNo);
 		
-		/*// °ü¸®ÀÚÀÇ Ãâ¼®¸®½ºÆ®
+		/*// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½â¼®ï¿½ï¿½ï¿½ï¿½Æ®
 		ArrayList<AttdDto> attdList = attdDao.selectAttdmList(memberId);
 		req.setAttribute("attdList", attdList);*/
 		

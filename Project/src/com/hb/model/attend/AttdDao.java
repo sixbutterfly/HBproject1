@@ -22,7 +22,7 @@ public class AttdDao {
 			conn = DB.getConnection();
 		
 		}
-		//°­ÀÇ½Ç ¹èÁ¤µÇ¾î ÀÖÀ¸¸ç, ·Î±×ÀÎÇÑ °­»ç
+		//ï¿½ï¿½ï¿½Ç½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½Î±ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		public String selectTchName(String memberId) {
 			String tchName = "";	
 			String sql = "select m.memName from member m, teacher t where m.memNo = t.memNo and t.tchNo in (select r.tchNo from teacher t, stuRoom r where t.tchNo = r.tchNo) and memid='" +memberId + "'";
@@ -50,8 +50,8 @@ public class AttdDao {
 			return tchName;
 		}
 		
-		//°ü¸®ÀÚ : °­»ç ¼±ÅÃ
-				public ArrayList<TeacherDto> selectTchList() {
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+				public ArrayList<TeacherDto> selectTchOne() {
 					ArrayList<TeacherDto> tchList = new ArrayList<TeacherDto>();
 					String sql = "select m.memName from member m, teacher t where m.memNo = t.memNo and t.tchNo in (select r.tchNo from teacher t, stuRoom r where t.tchNo = r.tchNo)";
 					
@@ -108,7 +108,7 @@ public class AttdDao {
 		}
 		
 		
-		//°ü¸®ÀÚ : °­ÀÇ½Ç ¼±ÅÃ
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : ï¿½ï¿½ï¿½Ç½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		public ArrayList<SturoomDto> selectRoomList() {
 			ArrayList<SturoomDto> roomList = new ArrayList<SturoomDto>();
 			String sql = "select roomNo from stuRoom";
@@ -139,7 +139,7 @@ public class AttdDao {
 			return roomList;
 		}
 		
-		// °­»ç : Ãâ°á°ü¸®
+		// ï¿½ï¿½ï¿½ï¿½ : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		public ArrayList<AttdDto> selectAttdList(String memberId) {
 			ArrayList<AttdDto> list = new ArrayList<AttdDto>();
 			String sql = "select rowNum, attdNo, memName, nvl(attdvalue1,'-'), nvl(attdvalue2,'-'), nvl(attdvalue3,'-'), nvl(attdvalue4,'-'), nvl(attdvalue5,'-'), nvl(attdvalue6,'-'), nvl(attdvalue7,'-'), nvl(attdvalue8,'-'), nvl(attdvalue9,'-'), nvl(attdvalue10,'-')," 
@@ -210,7 +210,7 @@ public class AttdDao {
 			return list;
 		}
 		
-		/*// °ü¸®ÀÚ : Ãâ°á°ü¸®
+		/*// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				public ArrayList<AttdDto> selectAttdmList() {
 					ArrayList<AttdDto> list = new ArrayList<AttdDto>();
 					String sql = "select rowNum, attdNo, memName, nvl(attdvalue1,'-'), nvl(attdvalue2,'-'), nvl(attdvalue3,'-'), nvl(attdvalue4,'-'), nvl(attdvalue5,'-'), nvl(attdvalue6,'-'), nvl(attdvalue7,'-'), nvl(attdvalue8,'-'), nvl(attdvalue9,'-'), nvl(attdvalue10,'-')," 
@@ -338,7 +338,7 @@ public class AttdDao {
 			return stuName;
 		}
 		
-		//·Î±×ÀÎÇÑ ÇÐ»ý ÀÌ¸§
+		//ï¿½Î±ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ð»ï¿½ ï¿½Ì¸ï¿½
 				public String selectStuName(String memberId) {
 					String stuName = "";	
 					String sql = "select memName, stuNo from member m, student s where m.memNo = s.memNo and memid='" +memberId + "'";
@@ -385,7 +385,7 @@ public class AttdDao {
 								pstmt.close();
 							if (conn != null)
 								conn.close();
-							System.out.println("»Ñ??");
+							System.out.println("ï¿½ï¿½??");
 						} catch (SQLException e) {
 							e.printStackTrace();
 						}

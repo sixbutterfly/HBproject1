@@ -59,13 +59,18 @@
 		display:inline-block;
 		width: 100px;
 		height: 30px;
-		margin-left: 300px;
-	}	
+		margin : 15px;
+		margin-left: 320px;
+
+	}
+	
+	.btnPage>*{
+		width:40px;
+		height:40px;
+	}
 	
 	.ins{
 		display:inline-block;
-		width: 50px;
-		height: 30px;
 		margin-left: 300px;
 	}
 	
@@ -118,17 +123,10 @@
 					<p><span class="left">강의실 : <%= request.getAttribute("roomNo") %>번 강의실</span>
 			<%}%>
 			<%if(level == 9){ %>				
-					<span class="right" >담당강사 : 					
-					<select name="MtchName">
-					<%for(TeacherDto bean : tchList){    %>					
-						  <option value="<%= bean.getTchname() %>">  <%= bean.getTchname() %> </option>
-					 <%}%> 	
-					</select> 강사님</span></p>
-					 					  
-			   
+					<span class="right">담당강사 : <%= request.getAttribute("tchName") %> 강사님</span></p>		   
 					<br/><br/>
 					<p><span class="left">강의실 : 
-					<select name="MroomName">
+					<select name="mRoomNo">
 					  <%for(SturoomDto bean : roomList){    %>					
 						  <option value="<%= bean.getRoomNo() %>">  <%= bean.getRoomNo() %> </option>
 					 <%}%> 	  

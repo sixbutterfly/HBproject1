@@ -42,11 +42,11 @@ $(document).ready(function(){
 	$(".btnList").click(function(){
 		$.ajax({
 			"url":"/Project/attend/ajaxAttend.korean",
-			"data":{"attdDate":$('.left:eq(0)>input').val(), "attdStatus":$('.right:eq(1)>select').val(), checkArray:checkArray},
+			"data":{"mRoomNo":$('.left:eq(1)>select').val()},
 			"method":"POST",
 			"dataType":"json",
 			"error" : function( jqXHR, textStatus, errorThrown ) {
-				alert(jqXHR.responseText);
+				//alert(jqXHR.responseText);
 			},				
 			"success":function(data){						
 			

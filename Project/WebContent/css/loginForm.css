@@ -1,6 +1,7 @@
 	.aside1{
 		margin-top: 10px;
 	}
+	
 	.login>div{
 		width: 130px;
 		margin: 10px 0px;
@@ -28,6 +29,8 @@
 		clear: both;			
 		font-size: 10pt;	
 		margin-left: 80px;
+		text-decoration:none;
+		color:black;
 		height: 30px;
 	}
 	.user+div>a{

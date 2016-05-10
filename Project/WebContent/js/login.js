@@ -35,6 +35,7 @@ $(document).ready(function(){
 				
 		var login = $(".login>button").click(function(){
 			var arr =[];
+			var loginValue = "아이디 또는 비밀번호를 다시 확인하세요.";
 			
 			if((inputId.val() == "") || (inputId.val() =="아이디")){	
 				inputId.val("아이디 입력");		
@@ -60,16 +61,14 @@ $(document).ready(function(){
 				"method":"POST",
 				"dataType":"json",
 				"error" : function( jqXHR, textStatus, errorThrown ) {
-					alert(jqXHR+textStatus+errorThrown);
+					//alert(jqXHR.responseText);
+					location.href="login/login.korean?loginValue="+loginValue;
 				},
 				"success":function(data){
 					if(data[0].authNo==0 || data[0].authNo==1 || data[0].authNo==2 || data[0].authNo==3 || data[0].authNo==4 || data[0].authNo==5 || data[0].authNo==9){
 						var st = "<div class='user'>"+data[0].id+"님 </div>";
 						st +="<div><a href='/Project/login/logout.korean'><span>logout</span></a></div>";
 						$(".login").html(st);							
-					}
-					else{
-						location.href="login/login.korean";						
 					}
 				}
 			});

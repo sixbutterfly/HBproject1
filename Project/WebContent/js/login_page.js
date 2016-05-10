@@ -11,6 +11,7 @@ $(document).ready(function(){
 	inputId.focus(function(){
 		if((inputId.val() == "") || (inputId.val() =="아이디")){
 			inputId.val("");
+			$('.loginValue').css('display', 'none');
 		}
 	 });
 	
@@ -18,6 +19,7 @@ $(document).ready(function(){
 		inputPw.attr("type", "password");
 		if((inputPw.val() == "") || (inputPw.val() =="패스워드")){
 			inputPw.val("");
+			$('.loginValue').css('display', 'none');
 		}
 	 });
 	
@@ -32,13 +34,13 @@ $(document).ready(function(){
 		}
 	});
 	
-	
 	$(".login>div").eq(0).css('display', 'none');
 	$(".login>div").eq(1).css('display', 'none');
 	$(".login>div").eq(2).css('display', 'none');	
 				
 	var login =	$(".login>button").click(function(){
-			var arr =[];			
+			var arr =[];
+			$('.loginValue').css('display', 'none');
 			
 			if((inputId.val() == "") || (inputId.val() =="아이디")){	
 				inputId.val("아이디");
@@ -77,7 +79,7 @@ $(document).ready(function(){
 					$(".login>div").eq(2).css('display', '');
 				},
 				"success":function(data){
-					location.href="../index.korean";
+					location.href="/Project/index.korean";
 				}
 			});
 		
