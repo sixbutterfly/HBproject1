@@ -12,7 +12,8 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/subnav1.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
 <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
-<script type="text/javascript" src="js/menu.js">
+<script type="text/javascript" src="js/menu.js"></script>
+<script type="text/javascript">
 	$(document).ready(function(){
 		alert('축하합니다 회원가입 되셨습니다.');
 	});
@@ -44,6 +45,7 @@ hr {
 	</div>
 	<div>
 	<h1>ㅊㅋㅊㅋ</h1>
+	<a href="login/login.korean">로그인하기</a>
 	</div>
 	<%@include file="/templet/aside2.jsp" %>
 		<!-- footer -->

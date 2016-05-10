@@ -55,9 +55,8 @@
 	$(document).ready(function(){
 		$('.table+button+button').click(function(){
 			if(confirm("게시물을 삭제하시겠습니까?")){
-				alert("삭제가 완료되었습니다.");
+				return true;
 			}else{
-				alert("삭제가 취소되었습니다.");
 				return false;
 			}
 		});

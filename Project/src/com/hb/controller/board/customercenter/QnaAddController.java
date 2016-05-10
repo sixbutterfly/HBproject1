@@ -15,9 +15,9 @@ public class QnaAddController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String title = request.getParameter("title");
-		String name = request.getParameter("name");
-		String content = request.getParameter("content");
+		String title = new String(request.getParameter("title").getBytes("8859_1"), "UTF-8");
+		String name = new String(request.getParameter("name").getBytes("8859_1"), "UTF-8");
+		String content = new String(request.getParameter("content").getBytes("8859_1"), "UTF-8");
 		
 		qnadao dao = new qnadao();
 		int result = dao.addOne(title,name,content);

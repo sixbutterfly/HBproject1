@@ -14,8 +14,8 @@ public class JobEditController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int jobNo = Integer.parseInt(request.getParameter("jobNo"));
-		String jobTitle = request.getParameter("title");
-		String jobContent = request.getParameter("content");
+		String jobTitle = new String(request.getParameter("title").getBytes("8859_1"), "UTF-8");
+		String jobContent = new String(request.getParameter("content").getBytes("8859_1"), "UTF-8");
 		
 		jobDao dao = new jobDao();
 		int result = dao.updateOne(jobNo, jobTitle, jobContent);

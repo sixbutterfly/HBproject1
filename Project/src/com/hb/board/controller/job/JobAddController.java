@@ -13,9 +13,9 @@ import com.hb.model.job.jobDao;
 public class JobAddController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String Title = request.getParameter("title");
-		String Name = request.getParameter("name");
-		String Content = request.getParameter("content");
+		String Title = new String(request.getParameter("title").getBytes("8859_1"), "UTF-8");
+		String Name = new String(request.getParameter("name").getBytes("8859_1"), "UTF-8");
+		String Content = new String(request.getParameter("content").getBytes("8859_1"), "UTF-8");
 		
 		jobDao dao = new jobDao();
 		int result = dao.addOne(Title, Name, Content);

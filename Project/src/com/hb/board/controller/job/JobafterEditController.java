@@ -14,8 +14,8 @@ public class JobafterEditController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int jafNo = Integer.parseInt(request.getParameter("jafNo"));
-		String jafTitle = request.getParameter("title");
-		String jafContent = request.getParameter("content");
+		String jafTitle = new String(request.getParameter("title").getBytes("8859_1"), "UTF-8");
+		String jafContent = new String(request.getParameter("content").getBytes("8859_1"), "UTF-8");
 		
 		jobafterDao dao = new jobafterDao();
 		int result = dao.updateOne(jafNo, jafTitle, jafContent);
