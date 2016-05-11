@@ -305,6 +305,7 @@
 						return false;
 					}else{
 						$('form').submit();
+						alert('축하합니다 회원가입 되셨습니다');
 						return false;
 					}
 				}
