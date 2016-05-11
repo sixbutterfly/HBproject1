@@ -16,12 +16,11 @@ public class NoticeEditController extends HttpServlet {
 		
 		int notNo = Integer.parseInt(request.getParameter("notNo"));
 		
-		String title = new String(request.getParameter("title").getBytes("8859_1"), "UTF-8");
-		String content = new String(request.getParameter("content").getBytes("8859_1"), "UTF-8");
-		
-//		String title = request.getParameter("title");
-//		String content = request.getParameter("content");
-//		System.out.println(notNo+"/"+title+"/"+content);
+//		String title = new String(request.getParameter("title").getBytes("8859_1"), "UTF-8");
+//		String content = new String(request.getParameter("content").getBytes("8859_1"), "UTF-8");
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+		System.out.println(notNo+"/"+title+"/"+content);
 		
 		noticeDao dao = new noticeDao();
 		int result = dao.updateOne(notNo,title,content);

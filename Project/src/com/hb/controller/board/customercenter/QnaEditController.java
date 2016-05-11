@@ -15,8 +15,10 @@ public class QnaEditController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int qnaNo = Integer.parseInt(request.getParameter("qnaNo"));
-		String qnaTitle = new String(request.getParameter("title").getBytes("8859_1"), "UTF-8");
-		String qnaContent = new String(request.getParameter("content").getBytes("8859_1"), "UTF-8");
+//		String qnaTitle = new String(request.getParameter("title").getBytes("8859_1"), "UTF-8");
+//		String qnaContent = new String(request.getParameter("content").getBytes("8859_1"), "UTF-8");
+		String qnaTitle = request.getParameter("title");
+		String qnaContent = request.getParameter("content");
 		
 		qnadao dao = new qnadao();
 		int result = dao.updateOne(qnaNo,qnaTitle,qnaContent);
