@@ -109,7 +109,8 @@
 			break;
 		case 5:
 			$('form button:eq(1)>a').click(function(){
-				return true;
+				alert("접근 권한이 없습니다.");
+				return false;
 			});
 			break;
 		case 9:
