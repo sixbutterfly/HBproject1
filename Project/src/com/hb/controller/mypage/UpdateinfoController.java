@@ -26,8 +26,8 @@ public class UpdateinfoController extends HttpServlet {
 		String phone3 = request.getParameter("phone3");
 		String phone = phone1+"-"+phone2+"-"+phone3;
 		String address1 = request.getParameter("postnum");
-		String address2 = request.getParameter("addrresult1");
-		String address3 = request.getParameter("addrresult2");
+		String address2 = new String(request.getParameter("addrresult1").getBytes("8859_1"), "UTF-8");
+		String address3 = new String(request.getParameter("addrresult2").getBytes("8859_1"), "UTF-8");
 		String address = address1+", "+address2+" "+address3;
 		String email1 = request.getParameter("email1");
 		String email2 = request.getParameter("email2");

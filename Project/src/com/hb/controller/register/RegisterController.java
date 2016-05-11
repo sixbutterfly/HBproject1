@@ -20,13 +20,13 @@ public class RegisterController extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String title = "ÀÚ¹Ù(JAVA)°³¹ßÀÚ °úÁ¤";
+		String title = "ìë°”(JAVA)ê°œë°œì ê³¼ì •";
 		String id = (String)request.getSession().getAttribute("id");
 		
 		registerDao dao1 = new registerDao();
 		String name = dao1.getName(id);
 		request.setAttribute("name", name);
-		// ¼ö°­½ÅÃ» »óÅÂÀÎÁö È®ÀÎ
+		
 		registerDao dao2 = new registerDao();
 		int memno = dao2.getMemno(id);
 		registerDao dao3 = new registerDao();

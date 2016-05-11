@@ -12,11 +12,6 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/subnav5.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/aside2.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
-<script type="text/javascript">
-	function alertOnce() {
-		
-	}
-</script>
 <style type="text/css">
 	.title>p{
 		font-size: 30pt;
@@ -50,6 +45,22 @@
 </style>
 <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
 <script type="text/javascript" src="js/menu.js"></script>
+<script type="text/javascript">
+	function confirmAsk() {
+		if (confirm("정말 수강신청을 취소하시겠습니까?")) {
+			return true;
+		}
+		return false;
+	}
+	
+	function getFilename() {
+		if (confirm("첨부파일을 업로드 하시겠습니까?")) {
+			return true;
+		} else {
+			return false;
+		}
+	};
+</script>
 </head>
 <body>
 	<div class="container_12">
@@ -65,20 +76,27 @@
 		<%
 			registerDto bean = (registerDto)request.getAttribute("bean");
 			String curname = (String)request.getAttribute("curname");
+			
 		%>
 			<div class="title">
 				<p>MY PAGE</p>
 				<span>수강 신청 목록</span>
 			</div>
-			<form action="del.korean">
+			<form action="fileReupload.korean">
 			<table class="table">
-				<tr><th>이름</th><th>연락처</th><th>신청과정명</th></tr>
-				<tr><td><%=bean.getName() %></td><td><%=bean.getTel() %></td><td><%=curname %></td>
+				<tr><th>이름</th><th>연락처</th><th>신청과정명</th><th>첨부파일1</th><th>첨부파일2</th></tr>
+				<tr><td><%=bean.getName() %></td><td><%=bean.getTel() %></td><td><%=curname %></td><td id="file1"><%=bean.getFile1() %></td><td id="file2"><%=bean.getFile2() %></td>
+				<tr><td></td><td></td><td></td><td><input type="file" name="newfile1"></td><td><input type="file" name="newfile2"></td>
 			</table>
+				<input type="hidden" value="<%=bean.getFile1() %>" name="oldfile1">
+				<input type="hidden" value="<%=bean.getFile2() %>" name="oldfile2">
+				<input type="hidden" value="<%=bean.getCurNo() %>" name="curno">
+				<button onclick="return getFilename();">파일 업로드</button>
+			</form>
 			
+			<form action="del.korean" onsubmit="return confirmAsk();">
 			<input type="hidden" value="<%=bean.getCurNo() %>" name="curno">
-			신청한 과정명 출력
-			<button onclick="alertOnce()">수강 취소</button>
+			<button>수강 취소</button>
 			</form>
 		<!-- content end -->
 		
