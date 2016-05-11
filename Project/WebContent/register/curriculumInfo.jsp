@@ -73,6 +73,9 @@
 	.register a {
 		text-decoration: none;
 	}
+	.a {
+		margin-left: 42%;
+	}
 </style>
 </head>
 <body>
@@ -142,7 +145,7 @@
 				} else if("web".equals(result3)) {
 					imgName="web.jpg";
 				} else {
-					imgName="framework.png";
+					imgName="framework.jpg";
 				}
 		%>
 		<img src="<%=request.getContextPath() %>/imgs/<%=imgName %>" style="width:228px; height:289px;">
@@ -159,6 +162,12 @@
 		<tr><td><strong>교육비용</strong></td><td> : </td><td>전화/온라인 문의</td></tr>
 		<tr><td><strong>문의전화</strong></td><td> : </td><td>02-707-1480</td></tr>
 		</table>
+		<br/>
+		<br/>
+		<form action="detailController.korean" class="a">
+			<input type="hidden" name="title" value="<%=array.get(i).getCurName() %>">
+			<input type="image" src="<%=request.getContextPath() %>/imgs/curriculumdetailBtn.png">
+		</form>
 		<hr/>
 		<%
 		}
@@ -170,9 +179,6 @@
 		%>	
 			<a href="resisterController.korean"><input type="hidden" id="checkLogin" value="<%=id %>">
 				<img src="<%=request.getContextPath() %>/imgs/btn.jpg" onclick="checkLogin()">
-			</a>
-			<a href="detailController.korean">
-				<img src="<%=request.getContextPath() %>/imgs/curriculumdetailBtn.png">
 			</a>
 		</div>
 		<br/>

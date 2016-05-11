@@ -18,8 +18,7 @@ public class DetailController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		
-		String title = request.getParameter("title");
+		String title = new String(request.getParameter("title").getBytes("8859_1"),"utf-8");
 		curriculumDao dao = new curriculumDao();
 		curriculumDto dto = dao.selectOne(title);
 		

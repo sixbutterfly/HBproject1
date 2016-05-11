@@ -104,13 +104,16 @@ public class curriculumDao {
 	
 	public curriculumDto selectOne(String title) {
 		curriculumDto dto = new curriculumDto();
-		String sql = "SELECT * FROM CURRICULUM WHERE CURNAME='"+title+"'";
+		String sql = "SELECT CURNO, CURNAME, CURLOCATION, CURDATE, LAST_DAY(CURDATE) AS ENDDATE, CURSUPPLY FROM CURRICULUM WHERE CURNAME='"+title+"'";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			if(rs.next()){
 				dto.setCurNo(rs.getInt("curNo"));
 				dto.setCurName(rs.getString("curName"));
+				dto.setCurDate(rs.getDate("curDate"));
+				dto.setCurDateEnd(rs.getDate("ENDDATE"));
+				dto.setCurSupply(rs.getInt("cursupply"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -1,4 +1,5 @@
-<%@page import="com.hb.model.curriculum.curriculumDto"%>
+<%@ page import="java.util.StringTokenizer"%>
+<%@ page import="com.hb.model.curriculum.curriculumDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -110,24 +111,62 @@
 		
 		<br/>
 		<br/>
-		<img src="<%=request.getContextPath() %>/imgs/java1.jpg">
 		<%
 			curriculumDto dto = (curriculumDto)request.getAttribute("dto");
+			String imgName="";
+				String a = dto.getCurName();
+				String b ="";
+				String result1 ="";
+				String result2 ="";
+				String d ="";
+				String e ="";
+				StringTokenizer st = new StringTokenizer(a, "(");
+				while(st.hasMoreElements()) {
+					b = (String)st.nextElement();
+					if(st.hasMoreElements()) {
+						result1 = (String)st.nextElement();
+					}
+					if(result1=="" || result1==null) {
+						result1=b;
+					}
+				}
+				
+				StringTokenizer st2 = new StringTokenizer(result1, ")");
+				while(st2.hasMoreElements()) {
+					result2 = (String)st2.nextElement();
+					if(st2.hasMoreElements()) {
+						e = "";
+						e = (String)st2.nextElement();
+					}
+				}
+				String result3 = result2.toLowerCase();
+				
+				if("java".equals(result3)) {
+					imgName="java1.jpg";
+				} else if("web".equals(result3)) {
+					imgName="web.jpg";
+				} else {
+					imgName="framework.jpg";
+				}
 		%>
+		
+		<img src="<%=request.getContextPath() %>/imgs/<%=imgName %>" style="width:228px; height:289px;">
+		
 		<table class="table1">
 		<tr><td><strong>교육과목</strong></td><td> : </td><td><%=dto.getCurName() %></td></tr>
-		<tr><td><strong>교육기간</strong></td><td> : </td><td>[주중반] 2016.05.02 ~ 2016.05.30</td></tr>
-		<tr><td></td><td> : </td><td>[주말반] 2016.05.1 ~ 2016.05.29</td></tr>
+		<tr><td><strong>교육기간</strong></td><td> : </td><td>[주중반] <%=dto.getCurDate() %></td></tr>
+		<tr><td></td><td> : </td><td>[주말반] <%=dto.getCurDateEnd() %></td></tr>
 		<tr><td><strong>교육일정</strong></td><td> : </td><td>[주중반] 총 160시간 월~금 09:00~18:00</td></tr>
-		<tr><td></td><td> : </td><td>[주말반] 2016.05.1 ~ 2016.06.29</td></tr>
+		<tr><td></td><td> : </td><td>[주말반] 총 64시간 토,일 09:00~18:00</td></tr>
 		<tr><td><strong>교육장소</strong></td><td> : </td><td>한빛 건대교육센터</td></tr>
+		<tr><td><strong>모집인원</strong></td><td> : </td><td><%=dto.getCurSupply() %> 명</td></tr>
 		<tr><td><strong>교육대상</strong></td><td> : </td><td>재직자 환급, 일반인, 대학생</td></tr>
 		<tr><td><strong>교육비용</strong></td><td> : </td><td>전화/온라인 문의</td></tr>
 		<tr><td><strong>문의전화</strong></td><td> : </td><td>02-707-1480</td></tr>
 		</table>
 		<br/>
 		﻿<h5>Programming Course</h5>
-		<h1>자바(JAVA)개발자 입문과정</h1>
+		<h1><%=dto.getCurName() %> 입문과정</h1>
 		<br/>
 		<h3>교육개요</h3>
 		객체 지향적인 JAVA 프로그래밍 언어를 학습하여 Java기반의 프로그래밍과 Java 기반의 웹 어플리케이션 프레임 워크 환경으로 개발 할 수 있는 가장 핵심적이고 효과적인 방법을 교육하는 과정으로, 차세대 IDE인 오라클사의 NetBeans을 사용해서 객체 지향 개념과 핵심적인 자바 프로그래밍 기능에 대해서 학습하게 되고, 이런 지식과 기술을 기반으로 JSP, Struts2 Spring과 같은 개발을 가능하도록 구성되어 있다.
