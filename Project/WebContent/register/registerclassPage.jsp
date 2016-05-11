@@ -98,6 +98,18 @@
 	});
 </script>
 <style type="text/css">
+	.title>p{
+		font-size: 30pt;
+		font-style: oblique;
+	}
+	.title>span{
+		font-size: 15pt;
+	}
+	.title{
+		margin: 20px;
+		border-bottom: 3px solid #ddd;
+		color: #666;
+	}
 	hr {
 		width: 100%;
 		height: 3px;
@@ -129,7 +141,7 @@
 		display: inline-block;
 	}
 	.direction {
-		padding-left: 57%;
+		padding-left: 75%;
 		font-size: 8pt;
 	}
 	#ul li {
@@ -161,7 +173,10 @@
 		<!-- content start -->
 	<div>
 		<div>
-			<h3>수강 신청 페이지</h3>
+			<div class="title">
+				<p>REGULAR CURRICULUM</p>
+				<span>수강 신청 페이지</span>
+			</div>
 			<span class="direction">
 				<a href='index.do'>
 					<span>
@@ -182,7 +197,7 @@
 		</div>
 		<hr/>
 		
-		<form action="register.korean" method="post">
+		<form action="register.korean" method="post" enctype="multipart/form-data">
 		<%
 			curriculumDto dto = (curriculumDto)request.getAttribute("dto");
 			ArrayList<String> al = (ArrayList<String>)request.getAttribute("al");

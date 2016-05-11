@@ -1,3 +1,7 @@
+<%@page import="java.util.Enumeration"%>
+<%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
+<%@page import="com.oreilly.servlet.MultipartRequest"%>
+<%@page import="com.oreilly.servlet.multipart.FileRenamePolicy"%>
 <%@page import="com.hb.model.curriculum.curriculumDto"%>
 <%@page import="com.hb.model.register.registerDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -84,8 +88,8 @@
 					<li>이름 : <%=dto.getName() %></li>
 					<li>전화번호 : <%=dto.getTel() %></li>
 					<li>이메일 : <%=dto.getEmail() %></li>
-					<li>서류1 : <%=dto.getFile1() %></li>
-					<li>서류2 : <%=dto.getFile2() %></li>
+					<li>서류1 : <a href="up/<%=dto.getFile1() %>" download><%=dto.getFile1() %></a></li>
+					<li>서류2 : <a href="up/<%=dto.getFile2() %>" download><%=dto.getFile2() %></a></li>
 					<li>회사명 : <%=dto.getJob() %></li>
 					<li>구분 : <%=dto.getGubun() %></li>
 					<li>관련항목 : <%=dto.getJobinfo() %></li>

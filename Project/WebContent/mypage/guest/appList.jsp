@@ -72,7 +72,6 @@
 			</table>
 			
 			<input type="hidden" value="<%=bean.getCurNo() %>" name="curno">
-			신청한 과정명 출력
 			<button>수강 취소</button>
 			</form>
 		<!-- content end -->
