@@ -212,7 +212,6 @@ public class registerDao {
 		int result = 0;
 		String sql = "delete from register where memNo="+memNo;
 		String sql2 = "insert into grade (grdNo, stuNo ) values (grd_seq.nextval, (select stuNo from student where memNo="+memNo+"))";
-		System.out.println(sql2);
 		try {
 			conn.setAutoCommit(false);
 			pstmt = conn.prepareStatement(sql);
@@ -260,7 +259,7 @@ public class registerDao {
 	public boolean checkRegister(int memno) {
 		boolean result=false;
 		int regno=0;
-		String sql = "select regno from register where memno=?";
+		String sql = "SELECT REGNO FROM REGISTER WHERE MEMNO=?";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, memno);
@@ -271,6 +270,28 @@ public class registerDao {
 			if (regno!=0) {
 				result=true;
 			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				if(pstmt!=null){pstmt.close();}
+				if(conn!=null){conn.close();}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+
+	public int updateFile(String file1, String file2, String curno) {
+		int result =0;
+		String sql = "UPDATE REGISTER SET FILE1=?, FILE2=? WHERE CURNO=?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, file1);
+			pstmt.setString(2, file2);
+			pstmt.setString(3, curno);
+			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally{

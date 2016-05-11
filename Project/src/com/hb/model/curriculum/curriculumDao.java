@@ -184,8 +184,6 @@ public class curriculumDao {
 		int result = 0;
 		String sql = "UPDATE STUROOM SET CURNO=NULL WHERE CURNO="+curNo;
 		String sql2 = "DELETE FROM CURRICULUM WHERE CURNO="+curNo;
-		System.out.println(sql);
-		System.out.println(sql2);
 		try {
 			conn.setAutoCommit(false);
 			pstmt = conn.prepareStatement(sql);
@@ -205,6 +203,4 @@ public class curriculumDao {
 		}
 		return result;
 	}//deleteOne end
-	
-	
 }

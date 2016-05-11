@@ -1,6 +1,8 @@
 package com.hb.controller.mypage.management;
 
 import java.io.IOException;
+import java.util.Enumeration;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,6 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.hb.model.curriculum.curriculumDao;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import com.oreilly.servlet.multipart.FileRenamePolicy;
 
 @WebServlet("/addcurriculum.korean")
 public class AddCurriculumnController extends HttpServlet {
@@ -32,5 +37,4 @@ public class AddCurriculumnController extends HttpServlet {
 			response.sendRedirect("curadd.korean");
 		}
 	}
-
 }
