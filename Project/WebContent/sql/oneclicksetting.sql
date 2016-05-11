@@ -408,33 +408,60 @@ insert into authority (authNo, departName) values (9, '관리자');
 --admin 더미
 insert into MEMBER values(1, 'admin', 'admin', '관리자','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea1@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,9);
 --회원 더미
-insert into MEMBER values(mem_seq.nextval, 'a1111111', 'korean1', '한국인1','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea1@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,1);
-insert into MEMBER values(mem_seq.nextval, 'a1111111', 'korean2', '한국인2','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea2@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,2);
-insert into MEMBER values(mem_seq.nextval, 'a1111111', 'korean3', '한국인3','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea3@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,3);
-insert into MEMBER values(mem_seq.nextval, 'a1111111', 'korean4', '한국인4','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea4@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,3);
-insert into MEMBER values(mem_seq.nextval, 'a1111111', 'korean5', '한국인5','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea5@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,3);
-insert into MEMBER values(mem_seq.nextval, 'a1111111', 'korean6', '한국인6','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea5@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,4);
-insert into MEMBER values(mem_seq.nextval, 'a1111111', 'korean7', '한국인7','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea5@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,4);
-insert into MEMBER values(mem_seq.nextval, 'a1111111', 'korean8', '한국인8','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea5@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,4);
-insert into MEMBER values(mem_seq.nextval, 'a1111111', 'korean9', '한국인9','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea5@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,4);
-insert into MEMBER values(mem_seq.nextval, 'a1111111', 'korean10', '한국인10','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea5@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,4);
-insert into MEMBER values(mem_seq.nextval, 'a1111111', 'korean11', '한국인11','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea5@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,4);
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'manager1', '행정부','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea1@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,1);
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'sales1', '영업부','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea2@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,2);
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'teacher1', '강사1','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea3@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,3);
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'teacher2', '강사2','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea4@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,3);
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'teacher3', '강사3','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea5@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,3);
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'student1', '학생1','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea5@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,4);
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'student2', '학생2','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea5@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,4);
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'student3', '학생3','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea5@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,4);
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'student4', '학생4','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea5@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,4);
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'student5', '학생5','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea5@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,4);
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'student6', '학생6','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea5@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,4);
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'student7', '학생7','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea5@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,4);
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'student8', '학생8','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea5@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,4);
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'student9', '학생9','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea5@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,4);
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'student10', '학생10','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea5@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,4);
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'nomal1', '일반회원1','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea5@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,0);
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'nomal2', '일반회원2','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea5@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,0);
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'nomal3', '일반회원3','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea5@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,0);
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'nomal4', '일반회원4','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea5@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,0);
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'nomal5', '일반회원5','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea5@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,0);
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'nomal6', '일반회원6','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea5@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,0);
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'nomal7', '일반회원7','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea5@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,0);
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'nomal8', '일반회원8','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea5@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,0);
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'nomal9', '일반회원9','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea5@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,0);
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'nomal10', '일반회원10','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea5@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,0);
+insert into MEMBER values(mem_seq.nextval, 'a1111111', 'after1', '수료자1','03721, 서울 서대문구 봉원사2길 10-2 (신촌동) ㄴㅇㄹ','korea5@naver.com','010-0000-0000','02-0000-0000', '남자','n',sysdate,5);
 --행정부 더미
 insert into MANAGEMENT values(mng_seq.nextval, 2);
---�쁺�뾽遺� �뜑誘�
+--영업부 
 insert into sales values(sal_seq.nextval, 3);
---媛뺤궗 �뜑誘�
+--강사
 insert into teacher values(tch_seq.nextval,4,null);
 insert into teacher values(tch_seq.nextval,5,null);
 insert into teacher values(tch_seq.nextval,6,null);
---�븰�깮 �뜑誘�
+--학생
 insert into student values(stu_seq.nextval,7,null);
 insert into student values(stu_seq.nextval,8,null);
 insert into student values(stu_seq.nextval,9,null);
 insert into student values(stu_seq.nextval,10,null);
 insert into student values(stu_seq.nextval,11,null);
 insert into student values(stu_seq.nextval,12,null);
---怨듭��궗�빆 �뜑誘�
+insert into student values(stu_seq.nextval,13,null);
+insert into student values(stu_seq.nextval,14,null);
+insert into student values(stu_seq.nextval,15,null);
+insert into student values(stu_seq.nextval,16,null);
+--수강최종승인 더미
+insert into REGISTER values(reg_seq.nextval, 26, 'file1','file2', '일반회원10','nomal10@naver.com','02-0000-0000','대학생,일반','한빛','회사',sysdate,'신용카드','내용을입력하세요','a1111111','1');
+--강의실
+insert into STUROOM values(1,null,null);
+--커리큘럼
+insert into CURRICULUM values(cur_seq.nextval, '한국인프레임워크','건국대점',sysdate,10);
+--공지게시판
 insert into notice values(not_seq.nextval, '한국인은 보아라', '두번봐라', sysdate,'관리자');
---�닔媛뺥썑湲� �뜑誘�
-
+--질문게시판
+insert into qna values(qna_seq.nextval, '커리큘럼질문있어요','한국인과정은없나여',sysdate,'한국인');
+--후기게시판
+insert into after values(aft_seq.nextval,'삼성전자사장으로취직','삼성전자사장으로취직',sysdate,'한국인');
