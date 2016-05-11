@@ -460,8 +460,8 @@ insert into STUROOM values(1,null,null);
 --커리큘럼
 insert into CURRICULUM values(cur_seq.nextval, '한국인프레임워크','건국대점',sysdate,10);
 --공지게시판
-insert into notice values(not_seq.nextval, '한국인은 보아라', '두번봐라', sysdate,'관리자');
+insert into notice values(not_seq.nextval, '한국인프레임워크가 개설', '한국인프레임워크가 개설되었습니다', sysdate,'관리자');
 --질문게시판
 insert into qna values(qna_seq.nextval, '커리큘럼질문있어요','한국인과정은없나여',sysdate,'한국인');
 --후기게시판
-insert into after values(aft_seq.nextval,'삼성전자사장으로취직','삼성전자사장으로취직',sysdate,'한국인');
+insert into after values(aft_seq.nextval,'대통령으로 취직','한빛교육센터에서 수업 듣고 대통령으로 취직했습니다!',sysdate,'한국인');
