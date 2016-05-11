@@ -129,8 +129,11 @@ public class curriculumDao {
 	public int editOne(int curNo, String curDate, String curLocation, int curSupply) {
 		int result = 0;
 		String sql = "UPDATE CURRICULUM SET CURDATE='"+curDate+"', CURLOCATION='"+curLocation+"', CURSUPPLY="+curSupply+" WHERE CURNO="+curNo;
-		String sql2 = "UPDATE CURRICULUM SET CURNO=NULL WHERE CURNO="+curNo;
-		String sql3 = "UPDATE CURRICULUM SET CURNO="+curNo+" WHERE ROOMNO=SUBSTR('"+curLocation+"',1,1)";
+		String sql2 = "UPDATE STUROOM SET CURNO=NULL WHERE CURNO="+curNo;
+		String sql3 = "UPDATE STUROOM SET CURNO="+curNo+" WHERE ROOMNO=SUBSTR('"+curLocation+"',1,1)";
+		System.out.println(sql);
+		System.out.println(sql2);
+		System.out.println(sql3);
 		try {
 			conn.setAutoCommit(false);
 			pstmt = conn.prepareStatement(sql);

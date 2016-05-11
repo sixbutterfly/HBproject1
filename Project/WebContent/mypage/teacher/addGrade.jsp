@@ -14,28 +14,34 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/aside2.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
 <style type="text/css">
-	.content{
-		height: 800px;
+	.title>p{
+		font-size: 30pt;
+		font-style: oblique;
 	}
-	table {
-		border-collapse: collapse;
-		margin-left: 10%;
+	.title>span{
+		font-size: 15pt;
 	}
-	table th {
-		background-color: rgb(10, 120, 230);
-		color: white;
+	.title{
+		margin: 20px;
+		border-bottom: 3px solid #ddd;
+		color: #666;
 	}
-	table tr {
-		border-bottom: 1px solid black;
-		border-top: 1px solid black;
-		height: 50px;
+	.table{
+		width: 700px;
+		margin: 10px auto;
 	}
-	table tr td {
-		width: 100px;
+	.table th{
+		background-color: rgba(204,229,255,0.5);
+	}
+	.table tr{
 		text-align: center;
 	}
-	a {
+	.table tr a{
+		text-decoration: none;
 		color: black;
+	}
+	.table tr a:hover{
+		color: #06c;
 	}
 </style>
 <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
@@ -51,8 +57,11 @@
 		<%@include file="/templet/loginForm.jsp" %>
 		<%@include file="/templet/subnav5.jsp" %>
 		<!-- content start -->
-			<h1 align="center">성적 입력 페이지</h1><br/>
-			<table>
+		<div class="title">
+			<p>MY PAGE</p>
+			<span>성적 입력</span>
+		</div>
+			<table class="table">
 				<tr><th>학번</th><th>이름</th><th>강의실</th><th>자바</th><th>웹</th><th>프레임워크</th></tr>
 				<%
 					ArrayList<GradeDto> al = (ArrayList)request.getAttribute("al");

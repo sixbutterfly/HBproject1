@@ -10,19 +10,32 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/loginForm.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/subnav1.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/aside2.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
 <style type="text/css">
-	div>p{
-		font-size: 15px;
+	.title>p{
+		font-size: 30pt;
+		font-style: oblique;
 	}
-	hr {
-	width: 100%;
-	background-color: silver;
-	height: 2px;
-	border: none;
-}
+	.title>span{
+		font-size: 15pt;
+	}
+	.title{
+		margin: 20px;
+		border-bottom: 3px solid #ddd;
+		color: #666;
+	}
+	.joinimg{
+		margin-left: 50px;
+	}
+	.login>input{
+		margin: 1px auto;
+	}
+	.login>button{
+		margin-top: 0px;
+	}
 	button{
-	width: 50px;
+		width: 50px;
 	}
 	select{
 		width: 80px;
@@ -32,111 +45,110 @@
 		margin-left: 13px;
 	}
 	.form{
-	height: 36px;
-	text-align: left;
-	width:150px;
-	background-color: silver;
-	display: inline-block;
-	vertical-align: middle;
-	border-bottom: white solid 1px;
-}
+		height: 36px;
+		text-align: left;
+		width:150px;
+		background-color: silver;
+		display: inline-block;
+		vertical-align: middle;
+		border-bottom: white solid 1px;
+	}
 	.form>p{
 		font-size: 13px;
 	}
 	.forminput{
-	height: 36px;
-	width:80%;
-	background-color: #eeeeee;
-	display: inline-block;
-	vertical-align: middle;
-	border-bottom: white solid 1px;
+		height: 36px;
+		width:80%;
+		background-color: #eeeeee;
+		display: inline-block;
+		vertical-align: middle;
+		border-bottom: white solid 1px;
 	}
 	input{
 		height: 15px;
 		margin-left: 10px;
 	}
-#hrsub{
-	width: 100%;
-	background-color: silver;
-	height: 1px;
-	border: none;
-}
-.email{
-	height: 55px;
-	text-align: left;
-	width:150px;
-	background-color: silver;
-	display: inline-block;
-	vertical-align: middle;
-	border-bottom: white solid 1px;
-}
-.emailset{
-	height: 55px;
-	width:80%;
-	background-color: #eeeeee;
-	display: inline-block;
-	vertical-align: middle;
-	border-bottom: white solid 1px;
-}
-.button{
-	text-align: center;
-	margin-top: 20px;
-}
-.btn{
-	width: 8px;
-	height: 12px;
-}
-.inputwidth{
-	width: 140px;
-}
-.inputtel{
-	width: 60px;
-}
-.subbtn{
-	margin-right: 20px;
-}
-#overlab{
-	width:65px;
-}
-#serchaddr{
-	width:95px;
-	height: 22px;
-}
-#addrresult1{
-	width:230px;
-}
-#addrresult2{
-	width:230px;
-}
-#emailtype{
-}
-#close{
-    width:50px;
-    margin-bottom:50px;
-    cursor:pointer;
-    font-weight:bold;
+	#hrsub{
+		width: 100%;
+		background-color: silver;
+		height: 1px;
+		border: none;
+	}
+	.email{
+		height: 55px;
+		text-align: left;
+		width:150px;
+		background-color: silver;
+		display: inline-block;
+		vertical-align: middle;
+		border-bottom: white solid 1px;
+	}
+	.emailset{
+		height: 55px;
+		width:80%;
+		background-color: #eeeeee;
+		display: inline-block;
+		vertical-align: middle;
+		border-bottom: white solid 1px;
+	}
+	.button{
+		text-align: center;
+		margin-top: 20px;
+	}
+	.btn{
+		width: 8px;
+		height: 12px;
+	}
+	.inputwidth{
+		width: 140px;
+	}
+	.inputtel{
+		width: 60px;
+	}
+	.subbtn{
+		margin-right: 20px;
+	}
+	#overlab{
+		width:65px;
+	}
+	#serchaddr{
+		width:95px;
+		height: 22px;
+	}
+	#addrresult1{
+		width:230px;
+	}
+	#addrresult2{
+		width:230px;
+	}
+	#close{
+	    width:50px;
+	    margin-bottom:50px;
+	    cursor:pointer;
+	    font-weight:bold;
    }
- #popup{
-    width: 350px;
-    height: 180px;
-    background: #DAFCd1;
-    position: absolute;
-    top: 150px;
-    left: 500px;
-    text-align: center;
-    border: 2px solid #000;
-    display: none;
+	#popup{
+	    width: 350px;
+	    height: 180px;
+	    background: #eee;
+	    position: absolute;
+	    top: 150px;
+	    left: 500px;
+	    text-align: center;
+	    border: 2px solid #000;
+	    border-radius: 10px;
+	    display: none;
    }
-.errmsg{
-	font-size: 9pt;
-	color: red;
-}
-.emailagree{
-	font-size: 10pt;
-}
-.radio{
-	margin-top: 10px;
-}
+	.errmsg{
+		font-size: 9pt;
+		color: red;
+	}
+	.emailagree{
+		font-size: 10pt;
+	}
+	.radio{
+		margin-top: 10px;
+	}
 
 </style>
 <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
@@ -157,9 +169,9 @@
 				success:function(data){
 					var using=$(data).find("result").text();
 					if(using=='true'){
-						$('#popup>div>span').text("사용중인 아이디입니다");
+						$('#popup>div>span').text(id+"는 사용중인 아이디입니다");
 					}else{
-						$('#popup>div>span').text("사용 가능한 아이디입니다");
+						$('#popup>div>span').text(id+"는 사용 가능한 아이디입니다");
 						$('#overlab').next().text("");
 					}
 				}
@@ -250,7 +262,7 @@
 		$('#emailselect').change(email);
 		
 		
-		$('button:eq(2)').click(function(){
+		$('button:eq(3)').click(function(){
 			if($('#id').val()==""||$('#id').val()==null){
 				alert("id를 입력하세요!");
 				$('#id').focus();
@@ -279,7 +291,7 @@
 			} 
 		});
 		
-		$('button:eq(2)').click(function(){
+		$('button:eq(3)').click(function(){
 			var id=$('#id').val();
 			$.ajax({
 				url:"join/overlab.jsp",
@@ -309,154 +321,151 @@
 		<%@include file="/templet/nav.jsp" %>
 		<!-- aside1 -->
 		<%@include file="/templet/loginForm.jsp" %>
-		<%@include file="/templet/subnav1.jsp" %>
-		
-	<div>
-		<p>회원가입</p>
-		<hr/>
+		<%@include file="/templet/subnav0.jsp" %>
+		<!-- content start -->
+		<div class="title">
+			<p>JOIN MEMBER</p>
+			<span>회원 가입</span>
+		</div>
+
+	<div class="joinimg">
+		<img src="join/joinimage/step2.png"/>
 	</div>
-	<div>
-		<img src="join/joinimage/step2.gif"/>
-	</div>
+	
 	<div id="popup">
 		<div style=" height:80px; margin-top:70px;"><span></span></div>
-		<div id="popclose">닫기</div>
+		<button id="popclose">닫기</button>
 	</div>
+	
 	<form action="memberjoin.korean" method="post">
-	<div>
-		<p><b><img class="btn" src="join/joinimage/btn_r.gif"> 회원정보입력</b><label style="font-size:9pt">*표 필수 입력</label></p>
-		<hr id="hrsub"/>
-		<div class="form"><label>아이디*</label></div>
-		<div class="forminput"><input type="text" name="id" class="inputwidth" id="id"/>
-		<button type="submit" id="overlab" name="overlab">중복확인</button><span class="errmsg"> 영문 및 숫자만 사용 가능합니다</span>
-		</div>
-		<div class="form"><label>비밀번호*</label></div>
-		<div class="forminput"><input type="password" name="pw" class="inputwidth" id="pw" placeholder="비밀번호"/><span class="errmsg"></span></div>
-		<div class="form"><label>비밀번호확인*</label></div>
-		<div class="forminput"><input type="password" name="pw2" class="inputwidth" id="pw2" placeholder="비밀번호 확인"/><span class="errmsg"></span></div>
-		<div class="form"><label>이름*</label></div>
-		<div class="forminput"><input type="text" class="inputwidth" id="name" name="name"/></div>
-		<div class="form"><label>성별*</label></div>
-		<div class="forminput">
-		<input type="radio" name="gender" value="남자" class="radio" id="male">남자
-		<input type="radio" name="gender" value="여자" class="radio" id="female">여자
-		</div>
-		<div class="form"><label>전화번호</label></div>
-		<div class="forminput">
-			<select name="tel">
-				<option value="02">02</option>
-				<option value="031">031</option>
-				<option value="032">032</option>
-				<option value="033">033</option>
-				<option value="041">041</option>
-				<option value="042">042</option>
-				<option value="043">043</option>
-				<option value="051">051</option>
-				<option value="052">052</option>
-				<option value="053">053</option>
-				<option value="054">054</option>
-				<option value="055">055</option>
-				<option value="061">061</option>
-				<option value="062">062</option>
-				<option value="063">063</option>
-				<option value="064">064</option>
-				<option value="070">070</option>
-				<option value="0505">0505</option>
-				<option value="0502">0502</option>
-			</select>
-			-<input type="text" name="tel2" class="inputtel" maxlength="4" id="tel2">
-			-<input type="text" name="tel3" class="inputtel" maxlength="4" id="tel3"><span class="errmsg"></span>
-		</div>
-		<div class="form"><label>H.P*</label></div>
-		<div class="forminput">
-			<select name="phone">
-				<option value="010">010</option>
-				<option value="011">011</option>
-				<option value="016">016</option>
-				<option value="017">017</option>
-				<option value="018">018</option>
-				<option value="019">019</option>
-				<option value="070">070</option>
-			</select>
-			-<input type="text" name="phone2" class="inputtel"  maxlength="4" id="phone2">
-			-<input type="text" name="phone3" class="inputtel"  maxlength="4" id="phone3"><span class="errmsg"></span>
+		<div>
+			<p><b><img class="btn" src="join/joinimage/btn_r.gif"> 회원정보입력</b><label style="font-size:9pt">*표 필수 입력</label></p>
+			<hr id="hrsub"/>
+			<div class="form"><label>아이디*</label></div>
+			<div class="forminput"><input type="text" name="id" class="inputwidth" id="id"/>
+			<button type="submit" id="overlab" name="overlab">중복확인</button><span class="errmsg"> 영문 및 숫자만 사용 가능합니다</span>
 			</div>
-		<div class="email"><label>이메일</label></div>
-		<div class="emailset">
-		<input type="text" name="email" class="inputwidth"/ id="emailtype2">@<input type="text" name="email2" class="inputwidth" id="emailtype"/>
-			<select name="emailselect" id="emailselect">
-				<option value="" selected>직접입력</option>
-				<option value="naver.com">naver.com</option>
-				<option value="chol.com">chol.com</option>
-				<option value="dreamwiz.com">dreamwiz.com</option>
-				<option value="empal.com">empal.com</option>
-				<option value="freechal.com">freechal.com</option>
-				<option value="gmail.com">gmail.com</option>
-				<option value="hanafos.com">hanafos.com</option>
-				<option value="hanmail.net">hanmail.net</option>
-				<option value="hanmir.com">hanmir.com</option>
-				<option value="hitel.net">hitel.net</option>
-				<option value="hotmail.com">hotmail.com</option>
-				<option value="korea.com">korea.com</option>
-				<option value="lycos.co.kr">lycos.co.kr</option>
-				<option value="nate.com">nate.com</option>
-				<option value="netian.com">netian.com</option>
-				<option value="paran.com">paran.com</option>
-				<option value="yahoo.com">yahoo.com</option>
-				<option value="yahoo.co.kr">yahoo.co.kr</option>
-			</select><br/>
-			<label class="emailagree">이메일 수신동의</label>
-			<input type="radio" name="emailagree" value="y" class="radio"><label class="emailagree">예</label>
-			<input type="radio" name="emailagree" value="n" class="radio" checked><label class="emailagree">아니오</label>
-			
-		</div>
-		<div class="email"><label>주소*</label></div>
-		<div class="emailset">
-		<input type="text" id="postnum" class="inputwidth" placeholder="우편번호" name="postnum"/>
-		<input type="button" id="serchaddr" value="우편번호 찾기" onclick="searchAddress()">
-		<script>
-  		function searchAddress(){
-  			new daum.Postcode({
-  	            oncomplete: function(data) {
-  	                var fullAddr = ''; // 최종 주소 변수
-  	                var extraAddr = ''; // 조합형 주소 변수
-
-  	                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-  	                    fullAddr = data.roadAddress;
-
-  	                } else { // 사용자가 지번 주소를 선택했을 경우(J)
-  	                    fullAddr = data.jibunAddress;
-  	                }
-
-  	                if(data.userSelectedType === 'R'){
-  	                    if(data.bname !== ''){
-  	                        extraAddr += data.bname;
-  	                    }
-  	                    if(data.buildingName !== ''){
-  	                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-  	                    }
-  	                    fullAddr += (extraAddr !== '' ? ' ('+ extraAddr +')' : '');
-  	                }
-
-  	                document.getElementById('postnum').value = data.zonecode; //5자리 새우편번호 사용
-  	                document.getElementById('addrresult1').value = fullAddr;
-  	                document.getElementById('addrresult2').focus();
-  	            }
-  	        }).open();
-  	    }
+			<div class="form"><label>비밀번호*</label></div>
+			<div class="forminput"><input type="password" name="pw" class="inputwidth" id="pw" placeholder="비밀번호"/><span class="errmsg"></span></div>
+			<div class="form"><label>비밀번호확인*</label></div>
+			<div class="forminput"><input type="password" name="pw2" class="inputwidth" id="pw2" placeholder="비밀번호 확인"/><span class="errmsg"></span></div>
+			<div class="form"><label>이름*</label></div>
+			<div class="forminput"><input type="text" class="inputwidth" id="name" name="name"/></div>
+			<div class="form"><label>성별*</label></div>
+			<div class="forminput">
+			<input type="radio" name="gender" value="남자" class="radio" id="male">남자
+			<input type="radio" name="gender" value="여자" class="radio" id="female">여자
+			</div>
+			<div class="form"><label>전화번호</label></div>
+			<div class="forminput">
+				<select name="tel">
+					<option value="02">02</option>
+					<option value="031">031</option>
+					<option value="032">032</option>
+					<option value="033">033</option>
+					<option value="041">041</option>
+					<option value="042">042</option>
+					<option value="043">043</option>
+					<option value="051">051</option>
+					<option value="052">052</option>
+					<option value="053">053</option>
+					<option value="054">054</option>
+					<option value="055">055</option>
+					<option value="061">061</option>
+					<option value="062">062</option>
+					<option value="063">063</option>
+					<option value="064">064</option>
+					<option value="070">070</option>
+					<option value="0505">0505</option>
+					<option value="0502">0502</option>
+				</select>
+				-<input type="text" name="tel2" class="inputtel" maxlength="4" id="tel2">
+				-<input type="text" name="tel3" class="inputtel" maxlength="4" id="tel3"><span class="errmsg"></span>
+			</div>
+			<div class="form"><label>H.P*</label></div>
+			<div class="forminput">
+				<select name="phone">
+					<option value="010">010</option>
+					<option value="011">011</option>
+					<option value="016">016</option>
+					<option value="017">017</option>
+					<option value="018">018</option>
+					<option value="019">019</option>
+					<option value="070">070</option>
+				</select>
+				-<input type="text" name="phone2" class="inputtel"  maxlength="4" id="phone2">
+				-<input type="text" name="phone3" class="inputtel"  maxlength="4" id="phone3"><span class="errmsg"></span>
+				</div>
+			<div class="email"><label>이메일</label></div>
+			<div class="emailset">
+			<input type="text" name="email" class="inputwidth"/ id="emailtype2">@<input type="text" name="email2" class="inputwidth" id="emailtype"/>
+				<select name="emailselect" id="emailselect">
+					<option value="" selected>직접입력</option>
+					<option value="naver.com">naver.com</option>
+					<option value="chol.com">chol.com</option>
+					<option value="dreamwiz.com">dreamwiz.com</option>
+					<option value="empal.com">empal.com</option>
+					<option value="freechal.com">freechal.com</option>
+					<option value="gmail.com">gmail.com</option>
+					<option value="hanafos.com">hanafos.com</option>
+					<option value="hanmail.net">hanmail.net</option>
+					<option value="hanmir.com">hanmir.com</option>
+					<option value="hitel.net">hitel.net</option>
+					<option value="hotmail.com">hotmail.com</option>
+					<option value="korea.com">korea.com</option>
+					<option value="lycos.co.kr">lycos.co.kr</option>
+					<option value="nate.com">nate.com</option>
+					<option value="netian.com">netian.com</option>
+					<option value="paran.com">paran.com</option>
+					<option value="yahoo.com">yahoo.com</option>
+					<option value="yahoo.co.kr">yahoo.co.kr</option>
+				</select><br/>
+				<label class="emailagree">이메일 수신동의</label>
+				<input type="radio" name="emailagree" value="y" class="radio"><label class="emailagree">예</label>
+				<input type="radio" name="emailagree" value="n" class="radio" checked><label class="emailagree">아니오</label>
+				
+			</div>
+			<div class="email"><label>주소*</label></div>
+			<div class="emailset">
+			<input type="text" id="postnum" class="inputwidth" placeholder="우편번호" name="postnum"/>
+			<input type="button" id="serchaddr" value="우편번호 찾기" onclick="searchAddress()">
+<script>
+	function searchAddress(){
+		new daum.Postcode({
+            oncomplete: function(data) {
+                var fullAddr = ''; // 최종 주소 변수
+                var extraAddr = ''; // 조합형 주소 변수
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    fullAddr = data.roadAddress;
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    fullAddr = data.jibunAddress;
+                }
+                if(data.userSelectedType === 'R'){
+                    if(data.bname !== ''){
+                        extraAddr += data.bname;
+                    }
+                    if(data.buildingName !== ''){
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    fullAddr += (extraAddr !== '' ? ' ('+ extraAddr +')' : '');
+                }
+                document.getElementById('postnum').value = data.zonecode; //5자리 새우편번호 사용
+                document.getElementById('addrresult1').value = fullAddr;
+                document.getElementById('addrresult2').focus();
+            }
+        }).open();
+    }
 </script>
-		<br/><input type="text" id="addrresult1" placeholder="주소" name="addrresult1"/> 
-		<input type="text" id="addrresult2" placeholder="상세주소" name="addrresult2"/>
+			<br/><input type="text" id="addrresult1" placeholder="주소" name="addrresult1"/> 
+			<input type="text" id="addrresult2" placeholder="상세주소" name="addrresult2"/>
+			</div>
 		</div>
-	</div>
-<div>
-	<div class="button">
-		<button class="subbtn" type="submit">확인</button>
-		<button class="subbtn" type="reset" onclick="history.back();">취소</button>
-	</div>
+		<div class="button">
+			<button class="subbtn" type="submit">확인</button>
+			<button class="subbtn" type="reset" onclick="history.back();">취소</button>
+		</div>
 	</form>
-</div>
-	<%@include file="/templet/aside2.jsp" %>
+		<%@include file="/templet/aside2.jsp" %>
 		<!-- footer -->
 		<%@include file="/templet/footer.jsp" %>
 	</div>

@@ -9,29 +9,36 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/loginForm.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/subnav1.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/aside2.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
 <style type="text/css">
-div>p {
-	font-size: 15px;
-	padding-right: 45px;
-}
-
-hr {
-	width: 100%;
-	background-color: silver;
-	height: 2px;
-	border: none;
-}
+	.title>p{
+		font-size: 30pt;
+		font-style: oblique;
+	}
+	.title>span{
+		font-size: 15pt;
+	}
+	.title{
+		margin: 20px;
+		border-bottom: 3px solid #ddd;
+		color: #666;
+	}
+	.joinimg{
+		margin-left: 50px;
+	}
+	.login>input{
+		margin: 1px auto;
+	}
+	.login>button{
+		margin-top: 0px;
+	}
 b{
 	font-size: 13px;
 }
 textarea{
 	resize: none;
 	margin-bottom: 10px;
-}
-button{
-	margin: 0 10px;
-	width: 50px;
 }
 .button{
 	margin-right: 70px;
@@ -83,13 +90,15 @@ button{
 		<%@include file="/templet/nav.jsp" %>
 		<!-- aside1 -->
 		<%@include file="/templet/loginForm.jsp" %>
-		<%@include file="/templet/subnav1.jsp" %>
-	<div>
-		<p>회원가입동의</p>
-		<hr />
-	</div>
-	<div>
-		<img src="join/joinimage/step1.gif"/>
+		<%@include file="/templet/subnav0.jsp" %>
+		<!-- content start -->
+		<div class="title">
+			<p>JOIN MEMBER</p>
+			<span>회원 가입 동의</span>
+		</div>
+			
+	<div class="joinimg">
+		<img src="join/joinimage/step1.png"/>
 	</div>
 	<div>
 		<p><b><img class="btn" src="join/joinimage/btn_r.gif">이용약관</b></p>
@@ -322,8 +331,8 @@ button{
 <div class="subbutton">
 	<form id="link" >
 	<div class="button">
-	<button type="submit" id="joinagree">확인</button>
-	<button type="reset" onclick="history.back();">취소</button>
+		<button type="submit" id="joinagree">확인</button>
+		<button type="reset" onclick="history.back();">취소</button>
 	</div>
 	</form>
 </div>

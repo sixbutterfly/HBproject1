@@ -18,9 +18,6 @@
       <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
       <style type="text/css">
         <!--전부 탭메뉴 구현 css입니다-->
-        .content {
-          height: 800px;
-        }
         .room ul.tabs {
           margin: 0;
           padding: 0;
@@ -77,6 +74,21 @@
           width: 249px;
           margin: 0 auto;
         }
+    .title>p{
+		font-size: 30pt;
+		font-style: oblique;
+	}
+	.title>span{
+		font-size: 15pt;
+	}
+	.title{
+		margin: 20px;
+		border-bottom: 3px solid #ddd;
+		color: #666;
+	}
+	.tabs, .tab_container{
+		margin-left: 20px;
+	}
       </style>
       <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
       <script type="text/javascript" src="js/menu.js"></script>
@@ -456,7 +468,10 @@
 
         <!-- content start -->
         <div class="room">
-          <h1>강의실 관리</h1>
+        <div class="title">
+			<p>MY PAGE</p>
+			<span>강의실 관리</span>
+		</div>
           <div>
             <!-- 탭 메뉴 -->
             <ul class="tabs">

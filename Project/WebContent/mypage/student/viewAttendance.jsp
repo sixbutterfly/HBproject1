@@ -26,11 +26,11 @@
 		margin: 0px;
 		padding: 0px;
 	}
-	h1{
+	h2{
 		text-align: center;
 		margin: 10px;
 	}
-	h2{
+	h3{
 		text-align: center;
 		margin: 30px;
 	}	
@@ -40,7 +40,7 @@
 		margin-right: 50px;	
 	}	
 	.attdStatus>span{
-		font-size: 20px;
+		font-size: 13px;
 		margin-right: 30px;
 	}
 	.attdValue{
@@ -49,20 +49,31 @@
 		
 	.attdValue>div>div{
 		float: left;
-		width: 100px;
-		height: 100px;
+		width: 70px;
+		height: 70px;
 		border: 1px solid black;
 	}
 	
 	.attdValue>div>div>p{
-		font-size: 50px;
+		font-size: 25px;
 		text-align: center;
 	}
 	
 	.clear{
 		clear:both;
 	}
-	
+	.title>p{
+		font-size: 30pt;
+		font-style: oblique;
+	}
+	.title>span{
+		font-size: 15pt;
+	}
+	.title{
+		margin: 20px;
+		border-bottom: 3px solid #ddd;
+		color: #666;
+	}
 	
 	
 </style>
@@ -82,9 +93,14 @@
 		<%@include file="/templet/subnav5.jsp" %>
 		
 		<!-- content start -->
+		<div class="title">
+			<p>MY PAGE</p>
+			<span>출결 확인</span>
+		</div>
+		
 		<div class="attdstuList">
-		<h1><p><%= request.getAttribute("stuName") %>님의 출결 현황</h1>
-			<h2><p><%=new SimpleDateFormat("yyyy년 MM월").format(new Date()) %></h2>
+		<h3><p><%= request.getAttribute("stuName") %>님의 출결 현황</h3>
+			<h3><p><%=new SimpleDateFormat("yyyy년 MM월").format(new Date()) %></h3>
 			<div class="attdStatus">					
 				<span>● 출석</span><span>X 결석</span><span>▲ 지각</span><span>■ 조퇴</span><span>- 미등록</span>		
 			</div>

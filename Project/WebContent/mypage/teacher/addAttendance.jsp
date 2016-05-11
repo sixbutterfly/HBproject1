@@ -24,7 +24,6 @@
 		margin: 0px;
 		padding: 0px;
 	}
-/* 
 	.title>p{
 		font-size: 30pt;
 		font-style: oblique;
@@ -36,7 +35,7 @@
 		margin: 20px;
 		border-bottom: 3px solid #ddd;
 		color: #666;
-	} */
+	}
 	h1{
 		text-align: center;
 	}
@@ -108,8 +107,11 @@
 		<%@include file="/templet/subnav5.jsp" %>
 		
 		<!-- content start -->
-			
-			<h1> 출결 입력</h1>
+			<div class="title">
+				<p>MY PAGE</p>
+				<span>출결 입력</span>
+			</div>
+
 			<div>			
 			<p><span class="left"><input type="date" name="attdDate" value="<%=new SimpleDateFormat("yyyy-MM-dd").format(new Date()) %>"/> </span>
 			<%

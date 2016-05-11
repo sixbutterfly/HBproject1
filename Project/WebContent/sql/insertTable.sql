@@ -159,6 +159,12 @@ update teacher set roomno = null where tchno = 1;
 select r.roomNo from stuRoom r, teacher t where 
 r.tchNo = (select t.tchNo from member m, teacher t where m.memno = t.memno and m.memid='b');
 
+
+
+UPDATE CURRICULUM SET CURDATE='2016-05-01', CURLOCATION='5강의실', CURSUPPLY=20 WHERE CURNO=21;
+UPDATE stuRoom SET CURNO=NULL WHERE CURNO=21;
+UPDATE stuRoom SET CURNO=21 WHERE ROOMNO=SUBSTR('5강의실',1,1);
+
 --끝난 실험은 삭제할 것!----------------
 delete from member where memno is not null;
 delete from REGISTER where memno is null;

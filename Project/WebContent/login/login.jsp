@@ -81,7 +81,11 @@
 						<div class="grid3">&nbsp;</div>
 						<div class="grid6 login"><input type="text" name="pw" value="패스워드" tabIndex="2"/><div>	<p>&nbsp;&nbsp; 패스워드를 입력해주세요</p></div>
 						<div class="loginfail"><p>&nbsp;&nbsp; 아이디 또는 비밀번호를 다시 확인하세요.</p></div>
-						<div class="loginValue"><p>&nbsp;&nbsp; <%=new String((request.getParameter("loginValue")).getBytes("8859_1"), "utf-8") %></p></div></div>
+						<div class="loginValue"><p>&nbsp;&nbsp; 
+						 <%if(request.getParameter("loginValue") != null){ %>
+		                  <%=new String(request.getParameter("loginValue")) %>
+		                  <%} %>
+						</p></div></div>
 						
 						<div class="grid3">&nbsp;</div>
 					</div>

@@ -16,17 +16,14 @@
 <style type="text/css">
 	#detailcon>div :hover{
 		list-style: none;
-		background-color:pink;
-	}
-	.content{
-		height: 800px;
+		background-color: rgba(204,229,255,0.5);
 	}
 	/* span{
 		margin-left: 43px;
 	} */
 	.detailmenu{
 		width:100%;
-		background-color: #fddad3;
+		background-color: rgba(204,229,255,0.5);
 		margin-top: 34px;
 	}
 	.detailmenu>div{
@@ -34,10 +31,19 @@
 		width: 11.8%;
 		display: inline-block;
 	}
-	.subtitle{
-		font-size: 25pt;
-		margin-bottom: 10px;
-   	 	margin-left: 20px;
+	.title{
+		color: #666;
+		margin-left: 20px;
+		margin-top: 20px;	
+	}
+	.title>p{
+		font-size: 30pt;
+		font-style: oblique;
+	}
+	.title>span{
+		color: #666;
+		font-size: 15pt;
+		font-style: normal;
 	}
 	#detailcon>div>a{
 		text-decoration: none;
@@ -58,10 +64,10 @@
 	}
 	hr {
 	width: 100%;
-	background-color: silver;
-	height: 2px;
+	background-color: #ddd;
+	height: 3px;
 	border: none;
-}
+	}
 	.no9{
 	display:none;
 	}
@@ -137,10 +143,12 @@
 		<%@include file="/templet/loginForm.jsp" %>
 		<%@include file="/templet/subnav5.jsp" %>
 		<!-- content start -->
-	<div>
-		<p class="subtitle"><b>회원 관리</b></p>
+	<div class="title">
+		<p>MY PAGE</p>
+		<span>회원 관리</span>
 		<hr/>
 	</div>
+
 	<div>
 		<select id="selauth" name="selauth">
 			<option value="all">전체보기</option>

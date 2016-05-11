@@ -14,34 +14,30 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/aside2.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
 <style type="text/css">
-	.subhead{
-		font-size: 19pt;
-		margin-bottom: 17px;
-		margin-top: 15px;
-		margin-left: 120px;
+	.title>p{
+		font-size: 30pt;
+		font-style: oblique;
 	}
-	.subtitle{
-		font-size: 25pt;
-		margin-bottom: 10px;
-   	 	margin-left: 20px;
-	}
-	hr {
-	width: 100%;
-	background-color: silver;
-	height: 2px;
-	border: none;
-}
-	.conarray{
-		display: inline-block;
-		margin-left: 74px;
+	.title>span{
 		font-size: 15pt;
 	}
-	.infor{
-		margin-top: 5px;
-		margin-bottom: 20px;
+	.title{
+		margin: 20px;
+		border-bottom: 3px solid #ddd;
+		color: #666;
+	}
+	.subtitle{
+		font-size: 20pt;
+		text-align: center;
+	}
+	.ul{
+		font-size: 15pt;
+	}
+	.ul li{
+		margin-left: 50px;
 	}
 	button{
-		margin-right: 23px;
+		margin-right: 20px;
     	width: 50px;
 	}
 	
@@ -96,60 +92,54 @@
 		<%@include file="/templet/loginForm.jsp" %>
 		<%@include file="/templet/subnav5.jsp" %>
 		<!-- content start -->
-	<div>
-		<p class="subtitle"><b>회원 권한 수정</b></p>
-		<hr/>
-	</div>
+			<div class="title">
+				<p>MY PAGE</p>
+				<span>회원 권한 수정</span>
+			</div>
 	
 	<%
 		MemberDto dto = (MemberDto) request.getAttribute("dto");
 		%>
 		<div>
 			<form action="managelevel.korean">
-			<div>
-			<div class="subhead"><b style="background-color: #FFEDAA;"><%=dto.getMemname()%>님의 정보</b></div>
-			<div  style="background-color: rgba(214, 255, 231, 0.61);">
-			<div class="conarray">
-			<div class="infor">회원 번호 : <%=dto.getMemno()%></div>
-			<input type="hidden" name="num" value="<%=dto.getMemno()%>"/>
-			<input type="hidden" name="level" value="<%=dto.getLevel()%>" id="level"/>
-			<div class="infor">회원등급 : <% if(dto.getLevel()==0){%>회원
-			<% }else if(dto.getLevel()==1){%>행정부
-			<% }else if(dto.getLevel()==2){%>영업부
-			<% }else if(dto.getLevel()==3){%>강사
-			<% }else if(dto.getLevel()==4){%>학생
-			<% }else if(dto.getLevel()==5){%>수료자
-			<% }%>
-			<select name="chlevel">
-				<option value="0" id="mem">회원</option>
-				<option value="1" id="manage">행정부</option>
-				<option value="2" id="sales">영업부</option>
-				<option value="3" id="teacher">강사</option>
-				<option value="4" id="student">학생</option>
-				<option value="5">수료자</option>
-			</select></div>
-			<div class="infor">성별 : <%=dto.getMemgender()%></div>
-			<div class="infor">가입일 : <%=dto.getJoinday()%></div>
-			</div>
-			<div class="conarray">
-			<div class="infor">전화번호 : <% if(dto.getMemtel()==null){%>없음
-			<%}else%><%=dto.getMemtel()%>
-			</div>
-			<div class="infor">핸드폰번호 : <%=dto.getMemphone()%></div>
-			<div class="infor">이메일 : <input type="hidden" value="<%=dto.getMememail()%>" id="emailchk"> <label></label>
-			</div>
-			<div class="infor">이메일 수신 동의 : <%if(dto.getEmailagree().equals("y")){%>수신
-			<%}else {%>거부
-			<%} %>
-			</div>
-			</div>
-			<div class="infor conarray" style="display:block;">주소 : <%=dto.getMemaddress()%></div>
-			</div>
-			</div>
-			<div style="text-align:center">
-			<button type="submit" id="submit">수정</button>
-			<button type="reset" onclick="history.back();">취소</button>
-			</div>
+				<div class="subtitle"><b>[<%=dto.getMemname()%>]님의 정보</b></div>
+				<input type="hidden" name="num" value="<%=dto.getMemno()%>"/>
+				<input type="hidden" name="level" value="<%=dto.getLevel()%>" id="level"/>
+				<ul class="ul">
+					<li><span>회원 번호 : </span><%=dto.getMemno()%></li>
+					<li><span>회원등급 : </span><% if(dto.getLevel()==0){%>회원
+												<% }else if(dto.getLevel()==1){%>행정부
+												<% }else if(dto.getLevel()==2){%>영업부
+												<% }else if(dto.getLevel()==3){%>강사
+												<% }else if(dto.getLevel()==4){%>학생
+												<% }else if(dto.getLevel()==5){%>수료자
+												<% }%>
+												<select name="chlevel">
+													<option value="0" id="mem">회원</option>
+													<option value="1" id="manage">행정부</option>
+													<option value="2" id="sales">영업부</option>
+													<option value="3" id="teacher">강사</option>
+													<option value="4" id="student">학생</option>
+													<option value="5">수료자</option>
+												</select>
+					</li>
+					<li><span>성별 : </span><%=dto.getMemgender()%></li>
+					<li><span>가입일 : </span><%=dto.getJoinday()%></li>
+					<li><span>전화번호 : </span><% if(dto.getMemtel()==null){%>없음
+												<%}else%><%=dto.getMemtel()%>
+					</li>
+					<li><span>핸드폰번호 : </span><%=dto.getMemphone()%></li>
+					<li><span>이메일 수신 동의 : </span><%if(dto.getEmailagree().equals("y")){%>수신
+														<%}else {%>거부
+														<%} %>
+					</li>
+					<li><span>주소 : </span><%=dto.getMemaddress()%></li>
+				</ul>
+
+				<div style="text-align:center">
+					<button type="submit" id="submit">수정</button>
+					<button type="reset" onclick="history.back();">취소</button>
+				</div>
 			</form>
 		</div>
 			<!-- content end -->

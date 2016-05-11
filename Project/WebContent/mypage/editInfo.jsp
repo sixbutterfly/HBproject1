@@ -15,8 +15,24 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/aside2.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
 <style type="text/css">
-	.content{
-		height: 800px;
+	.title>p{
+		font-size: 30pt;
+		font-style: oblique;
+	}
+	.title>span{
+		font-size: 15pt;
+	}
+	.title{
+		margin: 20px;
+		border-bottom: 3px solid #ddd;
+		color: #666;
+	}
+	.ul{
+		margin-left: 50px;
+		font-size: 15pt;
+	}
+	#submit{
+		margin-left: 300px;
 	}
 </style>
 <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
@@ -77,13 +93,13 @@
 		if ($('#pw0').val()==$('#pw1').val()) {
 			$('#pw1').next().text('비밀번호가 일치합니다.');
 		} else {
-			$('#pw1').next().text('비밀번호가 일치하지 않습니다.');
+			$('#pw1').next().text('비밀번호가 일치하지 않습니다.').css('color','red').css('font-size','9pt');
 			$('#pw1').val("");
 		}
 	}
 	function check2() {
 		if(!($.trim($("#pw").val()).match(/^(?=.*\d)(?=.*[A-z])[A-z0-9]{8,20}$/))){
-			$('#pw').next().text('영문 숫자조합의 8~20자리의 비밀번호여야 합니다');
+			$('#pw').next().text('영문 숫자조합의 8~20자리의 비밀번호여야 합니다').css('color','red').css('font-size','9pt');
 			$('#pw').val("");
 	 	}else{
 			$('#pw').next().text('사용 가능합니다');
@@ -91,7 +107,7 @@
 	}
 	function check3() {
 		if($('#pw2').val()!=$('#pw').val()){
-			$('#pw2').next().text('비밀번호는 동일해야합니다.');
+			$('#pw2').next().text('비밀번호는 동일해야합니다.').css('color','red').css('font-size','9pt');
 			$('#pw2').val("");
 		}else if($('#pw').val()==""|| $('#pw').val()==null){
 			$('#pw2').next().text(' ');
@@ -129,9 +145,13 @@
 		<%@include file="/templet/subnav5.jsp" %>
 		
 		<!-- content start -->
-		<h1>회원 정보 수정</h1>
+		<div class="title">
+			<p>MY PAGE</p>
+			<span>개인정보 수정</span>
+		</div>
+		
 		<form action="updateinfo.korean">
-		<ul>
+		<ul class="ul">
 			<li>회원 가입일 : <%=joinday %></li>
 			<li>회원번호 : <%=memno %><input type="hidden" name="memno" value="<%=memno %>"/></li>
 			<li>이름 : <%=memname %></li>
@@ -160,8 +180,8 @@
 								<option value="0505">0505</option>
 								<option value="0502">0502</option>
 							</select> - 
-				<input type="text" value="<%=tel2 %>" id="tel2" name="tel2" maxlength="4"> - 
-				<input type="text" value="<%=tel3 %>" id="tel3" name="tel3" maxlength="4">
+				<input type="text" value="<%=tel2 %>" id="tel2" name="tel2" maxlength="4" style="width: 50px;"> - 
+				<input type="text" value="<%=tel3 %>" id="tel3" name="tel3" maxlength="4" style="width: 50px;">
 			</li>
 			<li>핸드폰 번호 :	<select name="phone1">
 								<option value="010">010</option>
@@ -172,8 +192,8 @@
 								<option value="019">019</option>
 								<option value="070">070</option>
 							</select> - 
-							<input type="text" value="<%=phone2 %>" maxlength="4" id="phone2" name="phone2"> - 
-							<input type="text" value="<%=phone3 %>" maxlength="4" id="phone3" name="phone3">
+							<input type="text" value="<%=phone2 %>" maxlength="4" id="phone2" name="phone2" style="width: 50px;"> - 
+							<input type="text" value="<%=phone3 %>" maxlength="4" id="phone3" name="phone3" style="width: 50px;">
 			</li>
 			<li class="email"><label>주소* 수정 전 주소 : <%=address %></label>
 			<div class="emailset">
