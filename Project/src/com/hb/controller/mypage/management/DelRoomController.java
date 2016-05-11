@@ -15,7 +15,7 @@ import com.hb.model.sturoom.SturoomDao;
 import com.hb.model.teacher.TeacherDao;
 import com.hb.model.teacher.TeacherDto;
 
-//°­ÀÇ½Ç »èÁ¦
+//ï¿½ï¿½ï¿½Ç½ï¿½ ï¿½ï¿½ï¿½ï¿½
 @WebServlet("/delroom.korean")
 public class DelRoomController extends HttpServlet {
 	@Override
@@ -23,7 +23,7 @@ public class DelRoomController extends HttpServlet {
 			throws ServletException, IOException {
 
 		String roomlist[] = req.getParameterValues("roomlist" + "[]");
-		// °­»ç Å×ÀÌºí ¾÷µ¥ÀÌÆ®
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
 		SturoomDao rdao = new SturoomDao();
 		int result = rdao.delRoom(roomlist);
 		
@@ -31,9 +31,9 @@ public class DelRoomController extends HttpServlet {
 		PrintWriter out = resp.getWriter();
 		
 		if(result>0){
-			out.print("»èÁ¦ ¼º°ø");
+			out.print("ì‚­ì œëìŠµë‹ˆë‹¤");
 		}else{
-			out.print("»èÁ¦ÇÒ ¼ö ¾ø´Â °­ÀÇ½ÇÀÌ Æ÷ÇÔµÇ¾î ÀÖ½À´Ï´Ù.");
+			out.print("ì‚­ì œí•  ìˆ˜ ì—†ëŠ” ê°•ì˜ì‹¤ì´ í¬í•¨ë˜ì–´ ìˆìŠµë‹ˆë‹¤.");
 		}
 	}
 }

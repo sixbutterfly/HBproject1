@@ -83,7 +83,7 @@
 						<div class="loginfail"><p>&nbsp;&nbsp; 아이디 또는 비밀번호를 다시 확인하세요.</p></div>
 						<div class="loginValue"><p>&nbsp;&nbsp; 
 						 <%if(request.getParameter("loginValue") != null){ %>
-		                  <%=new String(request.getParameter("loginValue")) %>
+		                  <%=new String(request.getParameter("loginValue").getBytes("8859_1"), "UTF-8") %>
 		                  <%} %>
 						</p></div></div>
 						

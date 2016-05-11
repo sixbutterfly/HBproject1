@@ -79,7 +79,7 @@
 			
 			<%
 							curriculumDto dto = (curriculumDto)request.getAttribute("dto");
-												ArrayList<SturoomDto> list = (ArrayList)request.getAttribute("list");
+							ArrayList<SturoomDto> list = (ArrayList)request.getAttribute("list");
 						%>
 			
 			<form action="curedit.korean">
@@ -88,7 +88,7 @@
 				<ul>
 					<li>커리큘럼 명 : <%=dto.getCurName()%></li>
 					<li>교육 시작날짜 : <input type="date" name="curDate" value="<%=dto.getCurDate()%>"/></li>
-					<li>교육 장소 : <select name="curLocation">
+					<li>교육 장소 : <%=dto.getCurLocation() %><select name="curLocation">
 									<%
 										for(SturoomDto bean : list){
 																		if(bean.getCurNo()==0){

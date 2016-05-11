@@ -21,7 +21,8 @@ public class CurriculumEditController extends HttpServlet {
 		
 		int curNo = Integer.parseInt(request.getParameter("curNo"));
 		String curDate = request.getParameter("curDate");
-		String curLocation = request.getParameter("curLocation");
+//		String curLocation = request.getParameter("curLocation");
+		String curLocation = new String(request.getParameter("curLocation").getBytes("8859_1"), "UTF-8");
 		int curSupply = Integer.parseInt(request.getParameter("curSupply"));
 		
 		curriculumDao dao = new curriculumDao();

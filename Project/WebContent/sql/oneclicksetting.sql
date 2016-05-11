@@ -466,6 +466,7 @@ insert into student values(stu_seq.nextval,16,null);
  insert into grade (grdNo, stuNo ) values (grd_seq.nextval, (select stuNo from student where memNo=16;
 --강의실
 insert into STUROOM values(1,null,null);
+insert into STUROOM values(2,null,null);
 --커리큘럼
 insert into CURRICULUM values(cur_seq.nextval, '한국인프레임워크','1강의실',sysdate,10);
 --공지게시판
