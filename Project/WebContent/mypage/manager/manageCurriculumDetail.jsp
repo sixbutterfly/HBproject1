@@ -89,7 +89,6 @@
 					<li>커리큘럼 명 : <%=dto.getCurName()%></li>
 					<li>교육 시작날짜 : <input type="date" name="curDate" value="<%=dto.getCurDate()%>"/></li>
 					<li>교육 장소 : <select name="curLocation">
-										<option value="<%=dto.getCurLocation()%>" selected="selected"><%=dto.getCurLocation()%></option>
 									<%
 										for(SturoomDto bean : list){
 																		if(bean.getCurNo()==0){

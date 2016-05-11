@@ -20,7 +20,7 @@ public class registerDao {
 	
 	public ArrayList<registerDto> selectNull() {
 		ArrayList<registerDto> list = new ArrayList<>();
-		String sql = "select memNo, name, tel, email, file1, file2 from register where file1 is null and file2 is null";
+		String sql = "select memNo, name, tel, email, file1, file2 from register where file1 is null or file2 is null";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -124,7 +124,7 @@ public class registerDao {
 		int result = 0;
 		String sql = "INSERT INTO REGISTER (REGNO, MEMNO, NAME, EMAIL, TEL, GUBUN, JOB, JOBINFO, TIME, PAY, CONTENT, PASSWORD, FILE1, FILE2, CURNO) VALUES " +
 					"(REG_SEQ.NEXTVAL, (select memNo from member where memName='"+name+"'), '"+name+"', '"+email+"', '"+tel+"', '"+gubun+"', '"+job+"', '"+jobinfo+"', '"+time+"', '"+pay+"', '"+content+"', '"+password+"', '"+file1+"', '"+file2+"',"+curNo+")";
-//		System.out.println(sql);
+		System.out.println(sql);
 		try {
 			pstmt = conn.prepareStatement(sql);
 			result = pstmt.executeUpdate();
@@ -283,14 +283,14 @@ public class registerDao {
 		return result;
 	}
 
-	public int updateFile(String file1, String file2, String curno) {
+	public int updateFile(String file1, String file2, int memno) {
 		int result =0;
-		String sql = "UPDATE REGISTER SET FILE1=?, FILE2=? WHERE CURNO=?";
+		String sql = "UPDATE REGISTER SET FILE1=?, FILE2=? WHERE MEMNO=?";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, file1);
 			pstmt.setString(2, file2);
-			pstmt.setString(3, curno);
+			pstmt.setInt(3, memno);
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

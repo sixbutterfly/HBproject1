@@ -33,7 +33,7 @@ public class RegisterclassController extends HttpServlet {
 		curriculumDto dto = dao2.selectOne(curname);
 		int curNo = dto.getCurNo();
 		
-		String name = mr.getParameter("name");
+		String name = new String(mr.getParameter("name").getBytes("8859_1"),"utf-8");
 		String email1 = mr.getParameter("email1");
 //		String email2 = request.getParameter("email2");
 		String email2 = new String(mr.getParameter("email2").getBytes("8859_1"),"utf-8");
@@ -55,7 +55,7 @@ public class RegisterclassController extends HttpServlet {
 		String time = mr.getParameter("time");
 		String pay = new String(mr.getParameter("pay").getBytes("8859_1"),"utf-8");
 		String content = mr.getParameter("content");
-		String password = mr.getParameter("password");
+		String password="";
 		
 		Enumeration fname = mr.getFileNames();
 		int cnt = 0;
@@ -66,8 +66,8 @@ public class RegisterclassController extends HttpServlet {
 //			down[cnt] = new String(mr.getOriginalFileName(paramnm).getBytes("8859_1"),"utf-8");
 			cnt++;
 		}
-		String file1 = down[0];
-		String file2 = down[1];
+		String file1 = down[1];
+		String file2 = down[0];
 		
 		registerDao dao = new registerDao();
 		int result = dao.registerClass(curNo, name, email, tel, gubun, job, jobinfo, time, pay, content, password, file1, file2);

@@ -16,7 +16,7 @@ import com.hb.model.student.StuDto;
 import com.hb.model.teacher.TeacherDao;
 import com.hb.model.teacher.TeacherDto;
 
-//°­ÀÇ½Ç¿¡ ÇÐ»ý ¹èÄ¡
+//ï¿½ï¿½ï¿½Ç½Ç¿ï¿½ ï¿½Ð»ï¿½ ï¿½ï¿½Ä¡
 @WebServlet("/addroom.korean")
 public class AddRoomController extends HttpServlet {
 	@Override
@@ -24,15 +24,15 @@ public class AddRoomController extends HttpServlet {
 			throws ServletException, IOException {
 		String newroomno = req.getParameter("newroomno");
 		
-		//ÇÐ»ý Å×ÀÌºí ¾÷µ¥ÀÌÆ®
+		//ï¿½Ð»ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
 		StuDao sdao = new StuDao();
 		int result = sdao.addRoom(newroomno);
 		resp.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = resp.getWriter();
 		if(result>0){
-			out.print("Ãß°¡ ¼º°ø");
+			out.print("ì¶”ê°€ì„±ê³µ");
 		}else{
-			out.print("Ãß°¡ ½ÇÆÐ");
+			out.print("ì¶”ê°€ì‹¤íŒ¨");
 		}
 	}
 }

@@ -310,7 +310,6 @@
 				</div>
 			</li>
 			<li><label class="menu">내용</label><div id="answer"><textarea rows="10" cols="80" name="content"></textarea></div></li>
-			<li><label class="menu">비밀번호</label><div id="answer"><input type="password" name="password" id="pw"></div></li>
 			<li><label class="menu">파일첨부#1</label><div id="answer"><input type="file" name="file1" id="file1"></div></li>
 			<li><label class="menu">파일첨부#2</label><div id="answer"><input type="file" name="file2" id="file2"></div></li>
 		</ul>

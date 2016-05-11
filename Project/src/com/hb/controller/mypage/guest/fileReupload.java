@@ -19,25 +19,22 @@ public class fileReupload extends HttpServlet {
 		String newfile2 = new String(request.getParameter("newfile2").getBytes("8859_1"), "UTF-8");
 		String oldfile1 = new String(request.getParameter("oldfile1").getBytes("8859_1"), "UTF-8");
 		String oldfile2 = new String(request.getParameter("oldfile2").getBytes("8859_1"), "UTF-8");
-		System.out.println("newfile1 : "+newfile1);
-		System.out.println("newfile2 : "+newfile2);
-		System.out.println("oldfile1 : "+oldfile1);
-		System.out.println("oldfile2 : "+oldfile2);
 		
 		if (oldfile1==null || oldfile1=="" || oldfile1.equals("null") || oldfile1.equals("")) {
-			if (newfile1==null || newfile1=="" || newfile1.equals("null") || newfile1.equals("")) newfile1="첨부파일 없음";
+			if (newfile1==null || newfile1=="" || newfile1.equals("null") || newfile1.equals("")) newfile1=null;
 		} else {
 			if (newfile1==null || newfile1=="" || newfile1.equals("null") || newfile1.equals("")) newfile1=oldfile1;
 		}
 		if (oldfile2==null || oldfile2=="" || oldfile2.equals("null") || oldfile2.equals("")) {
-			if (newfile2==null || newfile2=="" || newfile2.equals("null") || newfile2.equals("")) newfile2="첨부파일 없음";
+			if (newfile2==null || newfile2=="" || newfile2.equals("null") || newfile2.equals("")) newfile2=null;
 		} else {
 			if (newfile1==null || newfile1=="" || oldfile2.equals("null") || oldfile2.equals("")) newfile2=oldfile2;
 		}
-		String curno = request.getParameter("curno");
+		int memno = Integer.parseInt(request.getParameter("memno"));
+		System.out.println("memno : "+memno);
 		
 		registerDao dao  = new registerDao();
-		int result = dao.updateFile(newfile1, newfile2, curno);
+		int result = dao.updateFile(newfile1, newfile2, memno);
 		if (result>0) {
 			request.getRequestDispatcher("/mypage/guest/fileReuploadDone.jsp").forward(request, response);
 		} else {

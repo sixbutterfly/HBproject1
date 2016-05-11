@@ -24,7 +24,7 @@ public class GradeDao {
 	public GradeDao() {
 		conn = DB.getConnection();
 	}
-	// °­»ç Á¶È¸¿ë
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¸ï¿½ï¿½
 	public ArrayList<GradeDto> list(int roomno) {
 		ArrayList<GradeDto> al = new ArrayList<GradeDto>();
 		sql="SELECT STUDENT.STUNO, MEMBER.MEMNAME, STUDENT.ROOMNO, NVL(GRADE.JAVAGRADE, 0) JAVAGRADE, " +
@@ -58,7 +58,7 @@ public class GradeDao {
 		}
 		return al;
 	}
-	// ADMIN Á¢¼Ó¿ë
+	// ADMIN ï¿½ï¿½ï¿½Ó¿ï¿½
 	public ArrayList<GradeDto> list() {
 		ArrayList<GradeDto> al = new ArrayList<GradeDto>();
 		sql="SELECT STUDENT.STUNO, MEMBER.MEMNAME, STUDENT.ROOMNO, NVL(GRADE.JAVAGRADE, 0) JAVAGRADE, " +
@@ -77,6 +77,7 @@ public class GradeDao {
 				bean.setWebgrade(rs.getString("webgrade"));
 				bean.setFramegrade(rs.getString("framegrade"));
 				al.add(bean);
+				System.out.println(bean.getStuno());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

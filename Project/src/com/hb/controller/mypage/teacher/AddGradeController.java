@@ -21,6 +21,8 @@ public class AddGradeController extends HttpServlet{
 		
 		String id = (String)req.getSession().getAttribute("id");
 		int roomno = dao.getRoomno(id);
+		System.out.println(id);
+		System.out.println(roomno);
 		if (id.equals("admin")) {
 			ArrayList<GradeDto> al = dao.list();
 			req.setAttribute("al", al);

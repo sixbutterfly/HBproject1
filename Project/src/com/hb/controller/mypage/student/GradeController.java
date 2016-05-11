@@ -29,17 +29,30 @@ public class GradeController extends HttpServlet{
 		} else {
 			StuDao dao = new StuDao();
 			String info = dao.selectGrade(id);
+			System.out.println(info);
 			if (info=="" || info==null) {
 				req.getRequestDispatcher("/mypage/teacher/deniedPage.jsp").forward(req, resp);
 			} else {
 				StringTokenizer st = new StringTokenizer(info);
 				while (st.hasMoreTokens()) {
-					memno = (String) st.nextToken();
-					name = (String) st.nextToken();
-					roomno = (String) st.nextToken();
-					javagrade = (String) st.nextToken();
-					webgrade = (String) st.nextToken();
-					framegrade = (String) st.nextToken();
+					if (st.hasMoreTokens()) {
+						memno = (String) st.nextToken();
+						if (st.hasMoreTokens()) {
+							name = (String) st.nextToken();
+							if (st.hasMoreTokens()) {
+								roomno = (String) st.nextToken();
+								if (st.hasMoreTokens()) {
+									javagrade = (String) st.nextToken();
+									if (st.hasMoreTokens()) {
+										webgrade = (String) st.nextToken();
+										if (st.hasMoreTokens()) {
+											framegrade = (String) st.nextToken();
+										}
+									}
+								}
+							}
+						}
+					}
 				}
 				req.setAttribute("memno", memno);
 				req.setAttribute("name", name);

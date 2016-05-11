@@ -453,15 +453,26 @@ insert into student values(stu_seq.nextval,13,null);
 insert into student values(stu_seq.nextval,14,null);
 insert into student values(stu_seq.nextval,15,null);
 insert into student values(stu_seq.nextval,16,null);
---수강최종승인 더미
-insert into REGISTER values(reg_seq.nextval, 26, 'file1','file2', '일반회원10','nomal10@naver.com','02-0000-0000','대학생,일반','한빛','회사',sysdate,'신용카드','내용을입력하세요','a1111111','1');
+--성적 입력
+ insert into grade (grdNo, stuNo ) values (grd_seq.nextval, (select stuNo from student where memNo=7;
+ insert into grade (grdNo, stuNo ) values (grd_seq.nextval, (select stuNo from student where memNo=8;
+ insert into grade (grdNo, stuNo ) values (grd_seq.nextval, (select stuNo from student where memNo=9;
+ insert into grade (grdNo, stuNo ) values (grd_seq.nextval, (select stuNo from student where memNo=10;
+ insert into grade (grdNo, stuNo ) values (grd_seq.nextval, (select stuNo from student where memNo=11;
+ insert into grade (grdNo, stuNo ) values (grd_seq.nextval, (select stuNo from student where memNo=12;
+ insert into grade (grdNo, stuNo ) values (grd_seq.nextval, (select stuNo from student where memNo=13;
+ insert into grade (grdNo, stuNo ) values (grd_seq.nextval, (select stuNo from student where memNo=14;
+ insert into grade (grdNo, stuNo ) values (grd_seq.nextval, (select stuNo from student where memNo=15;
+ insert into grade (grdNo, stuNo ) values (grd_seq.nextval, (select stuNo from student where memNo=16;
 --강의실
 insert into STUROOM values(1,null,null);
 --커리큘럼
-insert into CURRICULUM values(cur_seq.nextval, '한국인프레임워크','건국대점',sysdate,10);
+insert into CURRICULUM values(cur_seq.nextval, '한국인프레임워크','1강의실',sysdate,10);
 --공지게시판
 insert into notice values(not_seq.nextval, '한국인프레임워크가 개설', '한국인프레임워크가 개설되었습니다', sysdate,'관리자');
 --질문게시판
 insert into qna values(qna_seq.nextval, '커리큘럼질문있어요','한국인과정은없나여',sysdate,'한국인');
 --후기게시판
 insert into after values(aft_seq.nextval,'대통령으로 취직','한빛교육센터에서 수업 듣고 대통령으로 취직했습니다!',sysdate,'한국인');
+--수강최종승인 더미
+insert into REGISTER values(reg_seq.nextval, 26, 'file1','file2', '일반회원10','nomal10@naver.com','02-0000-0000','대학생,일반','한빛','회사',sysdate,'신용카드','내용을입력하세요','a1111111','1');
