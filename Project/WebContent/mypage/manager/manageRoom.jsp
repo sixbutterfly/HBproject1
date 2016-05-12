@@ -34,7 +34,7 @@
           float: left;
           text-align: center;
           cursor: pointer;
-          width: 82px;
+          width: 100px;
           height: 31px;
           line-height: 31px;
           border: 1px solid #eee;
@@ -53,7 +53,7 @@
           border-top: none;
           clear: both;
           float: left;
-          width: 248px;
+          width: 348px;
           background: #FFFFFF;
         }
         .room .tab_content {

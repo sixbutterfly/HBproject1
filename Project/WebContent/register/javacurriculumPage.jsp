@@ -115,6 +115,7 @@
 			curriculumDto dto = (curriculumDto)request.getAttribute("dto");
 			String imgName="";
 				String a = dto.getCurName();
+				System.out.println(dto.getCurName());
 				String b ="";
 				String result1 ="";
 				String result2 ="";
