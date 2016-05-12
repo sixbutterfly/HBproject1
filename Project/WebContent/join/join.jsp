@@ -287,11 +287,6 @@
 				$('#addrresult2').focus();
 				return false;
 			}else{
-				return false;
-			} 
-		});
-		
-		$('button:eq(3)').click(function(){
 			var id=$('#id').val();
 			$.ajax({
 				url:"join/overlab.jsp",
@@ -305,11 +300,15 @@
 						return false;
 					}else{
 						$('form').submit();
-						alert('축하합니다 회원가입 되셨습니다');
 						return false;
 					}
 				}
 			});
+				return false;
+			} 
+		});
+		
+		$('button:eq(3)').click(function(){
 		}); 
 	});
 </script>

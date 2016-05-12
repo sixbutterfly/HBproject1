@@ -17,8 +17,10 @@ public class DelController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int result = 0;
 		int curno = Integer.parseInt(request.getParameter("curno"));
+		String name = request.getParameter("memname");
+		
 		registerDao dao = new registerDao();
-		result = dao.deleteRegister(curno);
+		result = dao.deleteRegister(name);
 		if (result>0) {
 			request.getRequestDispatcher("/mypage/guest/deldone.jsp").forward(request, response);
 		} else {

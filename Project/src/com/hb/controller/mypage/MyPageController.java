@@ -20,7 +20,8 @@ public class MyPageController extends HttpServlet{
 				
 		Boolean login = (Boolean)req.getSession().getAttribute("login");
 		System.out.println(login);
-		if(login==false){
+	
+		if(login == null || login==false){
 			resp.sendRedirect("login/login.korean");
 		}
 		else{

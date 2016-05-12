@@ -22,8 +22,8 @@ public class RegisterclassController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
-//		String path = request.getRealPath("up");
-		String path = "C:\\Users\\USER\\git\\HBproject1\\Project\\WebContent\\up";
+		String path = request.getRealPath("up");
+//		String path = "C:\\Users\\USER\\git\\HBproject1\\Project\\WebContent\\up";
 //		System.out.println(path);
 		FileRenamePolicy policy = new DefaultFileRenamePolicy();
 		MultipartRequest mr = new MultipartRequest(request,path,1024*1024*10,policy);

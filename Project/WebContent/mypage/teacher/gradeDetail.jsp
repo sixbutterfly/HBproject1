@@ -14,8 +14,17 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/aside2.css"/>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css"/>
 <style type="text/css">
-	.content{
-		height: 800px;
+	.title>p{
+		font-size: 30pt;
+		font-style: oblique;
+	}
+	.title>span{
+		font-size: 15pt;
+	}
+	.title{
+		margin: 20px;
+		border-bottom: 3px solid #ddd;
+		color: #666;
 	}
 </style>
 <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
@@ -106,7 +115,11 @@
 		<%@include file="/templet/loginForm.jsp" %>
 		<%@include file="/templet/subnav5.jsp" %>
 		<!-- content start -->
-			<h2><%=request.getAttribute("name") %></h2><br/>
+			<div class="title">
+				<p>MY PAGE</p>
+				<span>성적 입력</span>
+			</div>
+			<h3>[<%=request.getAttribute("name") %>] 성적 입력</h3>
 			<form action="editGrade.korean">
 				<div>학번 : <%=request.getAttribute("stuno") %><input type="hidden" name="stuno" value="<%=request.getAttribute("stuno") %>"></div>
 				<div>강의실 : <%=request.getAttribute("roomno") %></div>

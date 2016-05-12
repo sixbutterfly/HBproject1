@@ -45,7 +45,7 @@ public class MemJoin extends HttpServlet{
 		try {
 			rs = dao.memjoin(dto);
 			if(rs>0){
-				resp.sendRedirect("index.korean");
+				resp.sendRedirect("joinsuccess.korean");
 			}
 			else {
 				resp.sendRedirect("join.korean");

@@ -96,6 +96,8 @@
 			</form>
 				
 			<form action="del.korean" onsubmit="return confirmAsk();">
+				<input type="hidden" name="curno" value="<%=bean.getCurNo() %>">
+				<input type="hidden" name="memname" value="<%=bean.getName() %>">
 				<button>수강 취소</button>
 			</form>
 		<!-- content end -->

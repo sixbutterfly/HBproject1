@@ -123,8 +123,7 @@ public class registerDao {
 	public int registerClass(int curNo, String name, String email, String tel,String gubun, String job, String jobinfo, String time, String pay,String content, String password, String file1, String file2) {
 		int result = 0;
 		String sql = "INSERT INTO REGISTER (REGNO, MEMNO, NAME, EMAIL, TEL, GUBUN, JOB, JOBINFO, TIME, PAY, CONTENT, PASSWORD, FILE1, FILE2, CURNO) VALUES " +
-					"(REG_SEQ.NEXTVAL, (select memNo from member where memName='"+name+"'), '"+name+"', '"+email+"', '"+tel+"', '"+gubun+"', '"+job+"', '"+jobinfo+"', '"+time+"', '"+pay+"', '"+content+"', '"+password+"', '"+file1+"', '"+file2+"',"+curNo+")";
-		System.out.println(sql);
+				"(REG_SEQ.NEXTVAL, (select memNo from member where memName='"+name+"'), '"+name+"', '"+email+"', '"+tel+"', '"+gubun+"', '"+job+"', '"+jobinfo+"', '"+time+"', '"+pay+"', '"+content+"', '"+password+"', '"+file1+"', '"+file2+"',"+curNo+")";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			result = pstmt.executeUpdate();
@@ -236,12 +235,12 @@ public class registerDao {
 		return result;
 	}//deleteOne end
 
-	public int deleteRegister(int curno) {
+	public int deleteRegister(String name) {
 		int result = 0;
-		String sql = "DELETE FROM REGISTER WHERE CURNO=?";
+		String sql = "DELETE FROM REGISTER WHERE NAME=?";
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, curno);
+			pstmt.setString(1, name);
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

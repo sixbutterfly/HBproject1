@@ -15,7 +15,7 @@ public class DetailGradeController extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setAttribute("stuno", Integer.parseInt(req.getParameter("stuno")));
-		req.setAttribute("name", req.getParameter("name"));
+		req.setAttribute("name", new String(req.getParameter("name").getBytes("8859_1"), "UTF-8"));
 		req.setAttribute("roomno", req.getParameter("roomno"));
 		req.setAttribute("javagrade", req.getParameter("javagrade"));
 		req.setAttribute("webgrade", req.getParameter("webgrade"));
