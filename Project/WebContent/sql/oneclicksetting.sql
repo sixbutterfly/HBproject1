@@ -454,19 +454,20 @@ insert into student values(stu_seq.nextval,14,null);
 insert into student values(stu_seq.nextval,15,null);
 insert into student values(stu_seq.nextval,16,null);
 --성적 입력
- insert into grade (grdNo, stuNo ) values (grd_seq.nextval, (select stuNo from student where memNo=7;
- insert into grade (grdNo, stuNo ) values (grd_seq.nextval, (select stuNo from student where memNo=8;
- insert into grade (grdNo, stuNo ) values (grd_seq.nextval, (select stuNo from student where memNo=9;
- insert into grade (grdNo, stuNo ) values (grd_seq.nextval, (select stuNo from student where memNo=10;
- insert into grade (grdNo, stuNo ) values (grd_seq.nextval, (select stuNo from student where memNo=11;
- insert into grade (grdNo, stuNo ) values (grd_seq.nextval, (select stuNo from student where memNo=12;
- insert into grade (grdNo, stuNo ) values (grd_seq.nextval, (select stuNo from student where memNo=13;
- insert into grade (grdNo, stuNo ) values (grd_seq.nextval, (select stuNo from student where memNo=14;
- insert into grade (grdNo, stuNo ) values (grd_seq.nextval, (select stuNo from student where memNo=15;
- insert into grade (grdNo, stuNo ) values (grd_seq.nextval, (select stuNo from student where memNo=16;
+ insert into grade (grdNo, stuNo ) values (grd_seq.nextval, (select stuNo from student where memNo=7));
+ insert into grade (grdNo, stuNo ) values (grd_seq.nextval, (select stuNo from student where memNo=8));
+ insert into grade (grdNo, stuNo ) values (grd_seq.nextval, (select stuNo from student where memNo=9));
+ insert into grade (grdNo, stuNo ) values (grd_seq.nextval, (select stuNo from student where memNo=10));
+ insert into grade (grdNo, stuNo ) values (grd_seq.nextval, (select stuNo from student where memNo=11));
+ insert into grade (grdNo, stuNo ) values (grd_seq.nextval, (select stuNo from student where memNo=12));
+ insert into grade (grdNo, stuNo ) values (grd_seq.nextval, (select stuNo from student where memNo=13));
+ insert into grade (grdNo, stuNo ) values (grd_seq.nextval, (select stuNo from student where memNo=14));
+ insert into grade (grdNo, stuNo ) values (grd_seq.nextval, (select stuNo from student where memNo=15));
+ insert into grade (grdNo, stuNo ) values (grd_seq.nextval, (select stuNo from student where memNo=16));
 --강의실
 insert into STUROOM values(1,null,null);
 insert into STUROOM values(2,null,null);
+insert into STUROOM values(3,null,null);
 --커리큘럼
 insert into CURRICULUM values(cur_seq.nextval, '한국인프레임워크','1강의실',sysdate,10);
 --공지게시판
